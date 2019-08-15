@@ -1,14 +1,12 @@
 // eslint-disable-next-line no-unused-vars
-import React, {Fragment} from "react";
+import React from "react";
+import MainPage from "./pages/MainPage/index";
 
 const App = () => {
   return (
-    <Fragment>
-      <h1 style={{textAlign: "center", color: "blue"}}>Hello, Gays!!!</h1>
-      <p style={{textAlign: "center", color: "blue", fontSize: "30px"}}>
-        Gooooooood luck
-      </p>
-    </Fragment>
+    <>
+      <MainPage />
+    </>
   );
 };
 
