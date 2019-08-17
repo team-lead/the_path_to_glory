@@ -9,7 +9,8 @@ let headerStyle = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    width: "100%"
+    width: "100%",
+    height: "10vh"
   },
   navbarMenu: {
     display: "flex",
@@ -24,14 +25,8 @@ let headerStyle = {
     fontSize: 20,
     borderBottom: "1px solid transparent",
     color: "#fff",
-    "&:hover:after": {
-      content: "''",
-      position: "relative",
-      top: "2px",
-      width: "100%",
-      height: "1px",
-      display: "block",
-      background: "#fff"
+    "&:hover": {
+      borderBottom: "1px solid #fff"
     }
   },
   logoItem: {
@@ -51,14 +46,8 @@ let headerStyle = {
     display: "inline-block",
     fontSize: "16px",
     borderBottom: "1px solid transparent",
-    "&:hover:after": {
-      content: "''",
-      position: "relative",
-      top: "2px",
-      width: "100%",
-      height: "1px",
-      display: "block",
-      background: "#fff"
+    "&:hover": {
+      borderBottom: "1px solid #fff"
     }
   },
   headerActionsItemImg: {

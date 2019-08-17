@@ -1,6 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import Header from "../../components/MainPage/Header";
+import SliderView from "../../components/MainPage/Slider";
 
 const MainPage = () => {
   return (
@@ -9,6 +10,7 @@ const MainPage = () => {
         <title>Main Page</title>
       </Helmet>
       <Header />
+      <SliderView />
     </>
   );
 };
