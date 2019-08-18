@@ -54,6 +54,33 @@ let headerStyle = {
     color: "#fff",
     fontSize: "16px",
     paddingRight: "7px"
+  },
+  search: {
+    width: "100%",
+    height: "50%",
+    backgroundColor: "#fff",
+    position: "absolute",
+    display: "flex",
+    zIndex: "999",
+    justifyContent: "center",
+    flexDirection: "column",
+    alignItems: "center"
+  },
+  searchInput: {
+    border: "none",
+    display: "block",
+    borderBottom: "2px solid #111",
+    outline: "none",
+    width: "50%",
+    paddingBottom: "5px",
+    marginBottom: "61px"
+  },
+  searchBtn: {
+    fontSize: 18,
+    color: "#fff",
+    backgroundColor: "#000",
+    padding: "18px 85px",
+    textDecoration: "none"
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
