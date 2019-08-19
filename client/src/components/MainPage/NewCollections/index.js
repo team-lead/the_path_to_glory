@@ -12,7 +12,7 @@ const NewCollections = () => {
             <ClothesImgItem
               classes={classes}
               alt="new collection"
-              src="https://periscope.com.ua/sites/default/files/u1275/vertical-landscapes/vertical-landscape1.jpg"
+              src="https://images.unsplash.com/photo-1549920867-1629df28cdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"
               className={classes.mainCollectionImg}
               text="NEW IN"
             />
@@ -21,14 +21,14 @@ const NewCollections = () => {
             <ClothesImgItem
               classes={classes}
               alt="new collection"
-              src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80"
+              src="https://images.unsplash.com/photo-1459501462159-97d5bded1416?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
               className={classes.сollectionImg}
               text="NEW COLLECTION"
             />
             <ClothesImgItem
               classes={classes}
               alt="new collection"
-              src="https://images.unsplash.com/photo-1500514966906-fe245eea9344?ixlib=rb-1.2.1&auto=format&fit=crop&w=967&q=80"
+              src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
               className={classes.сollectionImg}
               text="NEW COLLECTION"
             />

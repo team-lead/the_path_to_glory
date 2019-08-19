@@ -47,21 +47,21 @@ const SliderView = () => {
           <img
             alt="clothes"
             className={classes.slide}
-            src="https://images.unsplash.com/photo-1492799808351-30d7d3955cac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1354&q=80"
+            src="https://images.unsplash.com/photo-1523268755815-fe7c372a0349?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
           />
         </div>
         <div>
           <img
             alt="clothes"
             className={classes.slide}
-            src="https://images.unsplash.com/photo-1443428018053-13da55589fed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+            src="https://images.unsplash.com/photo-1506667527953-22eca67dd919?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80"
           />
         </div>
         <div>
           <img
             alt="clothes"
             className={classes.slide}
-            src="https://images.unsplash.com/photo-1460500063983-994d4c27756c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjI0MX0&auto=format&fit=crop&w=1350&q=80"
+            src="https://images.unsplash.com/photo-1471119017026-179f1bb0a70e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1322&q=80"
           />
         </div>
       </Slider>

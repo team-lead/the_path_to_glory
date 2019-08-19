@@ -16,22 +16,23 @@ let newCollectionsStyle = {
   },
   collectionImgsBlock: {
     display: "flex",
-    justifyContent: "space-between"
+    flexDirection: "column",
+    justifyContent: "space-between",
+    height: '100vh'
   },
   collectionItem: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-    alignItems: "center"
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   mainCollectionImg: {
     display: "block",
-    width: "45vw",
-    height: "100vh"
+    width: "100%",
+    height: "49vh"
   },
   сollectionImg: {
     display: "block",
-    width: "45vw",
+    width: "30vw",
     height: "49vh"
   },
   collectionItemImg: {
