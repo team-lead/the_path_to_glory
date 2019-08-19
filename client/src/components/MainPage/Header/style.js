@@ -5,12 +5,13 @@ jss.setup(preset());
 
 let headerStyle = {
   header: {
+    userSelect: 'none',
     background: "#000",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    height: "10vh"
+    height: "11vh"
   },
   navbarMenu: {
     display: "flex",
@@ -42,6 +43,7 @@ let headerStyle = {
     width: "33%"
   },
   headerActionsItemText: {
+    fontFamily: "Josefin Sans",
     color: "#fff",
     display: "inline-block",
     fontSize: "16px",

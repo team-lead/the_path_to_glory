@@ -3,7 +3,7 @@ import preset from "jss-preset-default";
 
 jss.setup(preset());
 
-let headerStyle = {
+let sliderStyle = {
   slider: {
     width: "100%",
     "& > div.slick-dots": {
@@ -13,7 +13,7 @@ let headerStyle = {
     }
   },
   slide: {
-    height: "90vh",
+    height: "89vh",
     width: "100%"
   },
   dotItem: {
@@ -24,9 +24,6 @@ let headerStyle = {
   },
   dots: {
     margin: "0px",
-    // position: "relative",
-    // bottom: "40px",
-    // right: "43vw",
     "& > li.slick-active > div": {
       backgroundColor: "#fff",
       borderRadius: "100%"
@@ -54,4 +51,4 @@ let headerStyle = {
     textDecoration: "underline"
   }
 };
-export const { classes } = jss.createStyleSheet(headerStyle).attach();
+export const { classes } = jss.createStyleSheet(sliderStyle).attach();

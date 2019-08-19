@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import Header from "../../components/MainPage/Header";
 import SliderView from "../../components/MainPage/Slider";
+import NewCollections from "../../components/MainPage/NewCollections";
 
 const MainPage = () => {
   return (
@@ -9,8 +10,11 @@ const MainPage = () => {
       <Helmet>
         <title>Main Page</title>
       </Helmet>
-      <Header />
-      <SliderView />
+      <div style={{ backgroundColor: "#111" }}>
+        <Header />
+        <SliderView />
+        <NewCollections />
+      </div>
     </>
   );
 };
