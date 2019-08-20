@@ -1,12 +1,15 @@
 // eslint-disable-next-line no-unused-vars
-import React from "react";
+import React, { Fragment } from "react";
+import { Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage/index";
 
 const App = () => {
   return (
-    <>
-      <MainPage />
-    </>
+    <Fragment>
+      <Switch>
+        <Route exact path="/" component={MainPage} />
+      </Switch>
+    </Fragment>
   );
 };
 
