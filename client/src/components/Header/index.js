@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { classes } from "./style";
-import { SHOW_MODAL_WINDOW } from "../../../actions/searchActions";
+import { SHOW_MODAL_WINDOW } from "../../actions/searchActions";
 
 class Header extends Component {
   render() {
