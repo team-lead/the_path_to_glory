@@ -6,9 +6,7 @@ jss.setup(preset());
 const cartSummaryStyles = {
   cartSummary: {
     boxSizing: 'border-box',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    position: 'relative',
     padding: '40px 0 40px 40px',
     backgroundColor: '#C4C4C4',
     width: '362px',
@@ -38,7 +36,9 @@ const cartSummaryStyles = {
   checkoutBtn: {
     boxSizing: 'berder-box',
     display: 'block',
+    position: 'absolute',
     marginLeft: '6px',
+    bottom: '40px',
     backgroundColor: 'black',
     fontFamily: 'Open Sans, sans-serif',
     color: 'white',
@@ -56,6 +56,7 @@ const cartSummaryStyles = {
     }
   },
   orderDetails: {
+    marginTop: '50px',
     width: '166px',
     height: '116px',
     fontSize: '14px'
