@@ -4,6 +4,7 @@ import { classes } from './style';
 
 const CartSummary = () => {
   const {
+    summaryContainer,
     cartSummary,
     header,
     headerHeading,
@@ -14,10 +15,8 @@ const CartSummary = () => {
     orderDetailsItem
   } = classes;
 
-  console.log(headerHeading);
-
   return (
-    <div>
+    <div className={summaryContainer}>
       <form className={cartSummary}>
         <header className={header}>
           <h2 className={headerHeading}>SHOPPING BAG TOTAL</h2>

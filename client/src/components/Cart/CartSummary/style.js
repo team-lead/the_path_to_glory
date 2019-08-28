@@ -4,7 +4,12 @@ import preset from 'jss-preset-default';
 jss.setup(preset());
 
 const cartSummaryStyles = {
+  summaryContainer: {
+    display: 'inline-block',
+    verticalAlign: 'top'
+  },
   cartSummary: {
+    display: 'inline-block',
     boxSizing: 'border-box',
     position: 'relative',
     padding: '40px 0 40px 40px',
