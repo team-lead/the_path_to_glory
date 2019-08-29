@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { classes } from "./style";
 import { SHOW_MODAL_WINDOW } from "../../actions/searchActions";
-
+/* eslint-disable */
 class Header extends Component {
   render() {
+
     const { searchModal, showSearchModal } = this.props;
 
     const searchModalItem = showSearchModal ? (
