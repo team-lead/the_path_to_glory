@@ -1,16 +1,16 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import Header from "../../components/Header";
-import MyProfile from "../../components/MyAccount/MyProfile"
+import Header from "../../../components/Header";
+import MyProfile from "../../../components/MyAccount/MyProfile"
 
 
 const MyAccount = () => {
     return (
         <>
             <Helmet>
-                <title>Main Page</title>
+                <title>My Profile</title>
             </Helmet>
-            <div style={{ backgroundColor: "#111" }}>
+            <div >
             <Header />
             <MyProfile />
             </div>

@@ -3,33 +3,45 @@ import preset from "jss-preset-default";
 
 jss.setup(preset());
 
-let aboutUserStyle = {
-  aboutUserContainer: {
-    width: "100%",
-    height: "50%",
-    backgroundColor: "#fff",
-    position: "absolute",
-    display: "flex",
-
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center" ,
-    
+let myProfileStyle = {
+  container: {
+    margin: "3%"
   },
-  aboutUserText: {
-    fontSize: "26px",
+  myProfileContainer: {
+    padding: "1vw",
+    fontFamily: "Josefin Sans",
+    fontSize: "1.5vw",
+    marginLeft: "15vw",
+  },
+  myProfileTitle: {
+    marginTop: "3vw",
+    marginBottom: "1vw",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
+  myProfileText: {
+    width: "50%",
     paddingRight: "7px",
-    borderBottom: "2px solid #111",
+    borderBottom: "2px solid silver",
   },
-  searchBtn: {
-    margin: '10px',
-    fontSize: '18',
-    color: "#fff",
-    backgroundColor: "#000",
-    padding: "18px 85px",
-    textDecoration: "none"
-  }
+  saveBtn: {
+    marginTop: "6vw",
+    backgroundColor: 'black',
+    textTransform: "uppercase",
+    color: 'white',
+    fontSize: '1.8vw',
+    width: '20vw',
+    height: '5vw',
+    outline: 'none',
+    cursor: 'pointer',
+    border: '1px solid black',
+    transition: 'all 0.3s',
+    '&:hover': {
+      backgroundColor: 'white',
+      color: 'black'
+    }
+  },
 
 }
 
-export const { classes } = jss.createStyleSheet(aboutUserStyle).attach();
+export const { classes } = jss.createStyleSheet(myProfileStyle).attach();
