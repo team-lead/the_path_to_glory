@@ -4,9 +4,11 @@ import preset from 'jss-preset-default';
 jss.setup(preset());
 
 const productListStyle ={
+
     productListContainer:{
         width: '800px',
         marginLeft: '400px',
+        
     },
     
     productList:{
@@ -14,6 +16,7 @@ const productListStyle ={
         display: 'flex',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
+        overflow: 'hidden',
     },
 
     categoryName:{
@@ -23,10 +26,13 @@ const productListStyle ={
 
     productItem:{
         fontFamily: "Open Sans",
-        marginBottom: '105px',
-        cursor: 'pointer',  
+        margin: '0 5px 105px',
+
+        cursor: 'pointer',
         "&:hover":{
-            transform: 'scale(1.01)'
+            // transform: 'scale(1.01)',
+            boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.42)',
+
         }
     },
 
