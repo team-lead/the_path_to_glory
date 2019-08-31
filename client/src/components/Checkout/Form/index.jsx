@@ -55,7 +55,8 @@ class CheckoutForm extends React.Component {
                     </div>
                     <div className={text}>
                         <label htmlFor='cardName'>Card name &nbsp;</label>
-                        <input name="cardName"
+                        <input 
+                        name="cardName"
                                type="num"
                                placeholder={this.state.cardName}
                                onChange={this.handleChange}
