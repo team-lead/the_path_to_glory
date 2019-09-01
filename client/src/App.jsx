@@ -1,13 +1,17 @@
-import React from 'react';
-import { Route, Switch } from 'react-router-dom';
-
+// eslint-disable-next-line no-unused-vars
+import React, { Fragment } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
 
 const App = () => {
   return (
-    <Switch>
-      <Route path='/cart' component={Cart} />
-    </Switch>
+    <Fragment>
+      <Switch>
+        <Route exact path='/cart' component={Cart} />
+        <Route exact path='/' component={MainPage} />
+      </Switch>
+    </Fragment>
   );
 };
 
