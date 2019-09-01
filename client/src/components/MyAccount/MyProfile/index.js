@@ -4,21 +4,24 @@ import MyAccountMenu from "../MyAccountMenu";
 
 
 class MyProfile extends Component {
+  
+  state = {
+      user: null,
+      id: '5d6ab2a56a4ba22e08e86fc7'
+    }
+  
+  componentDidMount() {
+    
+    fetch('http://localhost:9000/users/'+this.state.id)
+      .then(response => response.json())
+      .then(json => {
+        this.setState({ user: json });
+      });
+  }
+
   render() {
 
-    // const { user } = this.props;
-
-    let user = undefined;
-
-    console.log('----', user);
-
-    user = {};
-      user.email = "email@gmail.com";
-      user.firstName = "FirstName";
-      user.secondName = "SecondName";
-      user.phone = "+380508765544";
-      user.gender = "male"
-      user.birthday = "10-12-2000";
+    let user = this.state.user;
 
     if (!user) {
       user = {};
@@ -44,7 +47,7 @@ class MyProfile extends Component {
               <h4 className={classes.myProfileTitle} >first Name</h4>
               <p className={classes.myProfileText}> {firstName} </p>
               <h4 className={classes.myProfileTitle}>second Name</h4>
-              <p className={classes.myProfileText} > {secondName}</p>             
+              <p className={classes.myProfileText} > {secondName}</p>
               <h4 className={classes.myProfileTitle}>mobile phone</h4>
               <p className={classes.myProfileText} > {phone}</p>
               <h4 className={classes.myProfileTitle}>gender</h4>
