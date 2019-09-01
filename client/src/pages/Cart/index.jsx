@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 import CartSummary from '../../components/Cart/CartSummary';
 import Header from '../../components/Header';
 import { classes } from './style';
