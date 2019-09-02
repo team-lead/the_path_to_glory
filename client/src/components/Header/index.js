@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { classes } from "./style";
 import { SHOW_MODAL_WINDOW } from "../../actions/searchActions";
 
+/* eslint-disable */
 class Header extends Component {
   render() {
     const { searchModal, showSearchModal } = this.props;
@@ -14,7 +15,9 @@ class Header extends Component {
           placeholder="Search for item"
           className={classes.searchInput}
         />
-        <a href="#" className={classes.searchBtn}>Search</a>
+        <a href="#" className={classes.searchBtn}>
+          Search
+        </a>
       </div>
     ) : null;
     return (
@@ -50,9 +53,7 @@ class Header extends Component {
             </a>
             <a href="#" className={classes.headerActionsItem}>
               <i
-                className={`fas fa-shopping-bag ${
-                  classes.headerActionsItemImg
-                }`}
+                className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}
               />
               <p className={classes.headerActionsItemText}>Shopping Bag</p>
             </a>
