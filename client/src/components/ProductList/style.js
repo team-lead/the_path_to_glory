@@ -6,8 +6,8 @@ jss.setup(preset());
 const productListStyle ={
 
     productListContainer:{
-        width: '800px',
-        marginLeft: '400px',
+        width: '900px',
+        marginLeft: '35px',
         
     },
     
