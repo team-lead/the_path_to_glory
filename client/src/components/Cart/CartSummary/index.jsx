@@ -2,7 +2,7 @@ import React from 'react';
 
 import { classes } from './style';
 
-const CartSummary = () => {
+const CartSummary = ({ settings }) => {
   const {
     summaryContainer,
     cartSummary,
@@ -15,8 +15,12 @@ const CartSummary = () => {
     orderDetailsItem
   } = classes;
 
+  const summaryContainerClasses = settings
+    ? `${summaryContainer} ${settings}`
+    : summaryContainer;
+
   return (
-    <div className={summaryContainer}>
+    <div className={summaryContainerClasses}>
       <form className={cartSummary}>
         <header className={header}>
           <h2 className={headerHeading}>SHOPPING BAG TOTAL</h2>

@@ -6,18 +6,24 @@ import CartProduct from '../../components/Cart/CartProduct';
 import Container from '../../components/Container';
 
 const Cart = () => {
-  const { products, keepShoppingBtn, cartContainer } = classes;
-  const cartProducts = [<CartProduct />, <CartProduct />, <CartProduct />];
+  const {
+    products,
+    keepShoppingBtn,
+    mainContent,
+    mainContentWrapper,
+    summarySettings
+  } = classes;
+  const cartProducts = [<CartProduct />, <CartProduct />];
 
   return (
     <Fragment>
       <Header />
-      <main>
-        <Container containerClass={cartContainer}>
+      <main className={mainContent}>
+        <Container>
           <button className={keepShoppingBtn}>KEEP SHOPPING</button>
-          <div>
+          <div className={mainContentWrapper}>
             <section className={products}>{cartProducts}</section>
-            <CartSummary />
+            <CartSummary settings={summarySettings} />
           </div>
         </Container>
       </main>

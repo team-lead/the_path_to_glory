@@ -4,8 +4,16 @@ import preset from 'jss-preset-default';
 jss.setup(preset());
 
 const CartPageStyles = {
+  mainContent: {
+    paddingTop: '38px'
+  },
+  mainContentWrapper: {
+    display: 'flex',
+    justifyContent: 'space-between'
+  },
   products: {
-    display: 'inline-block'
+    display: 'inline-block',
+    marginTop: '26px'
   },
   keepShoppingBtn: {
     boxSizing: 'berder-box',
@@ -25,8 +33,9 @@ const CartPageStyles = {
       color: 'black'
     }
   },
-  containerClass: {
-    marginTop: '38px'
+  summarySettings: {
+    position: 'relative',
+    bottom: '25px'
   }
 };
 

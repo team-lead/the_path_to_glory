@@ -6,7 +6,6 @@ jss.setup(preset());
 const cartSummaryStyles = {
   summaryContainer: {
     display: 'inline-block',
-    marginLeft: '50px',
     verticalAlign: 'top'
   },
   cartSummary: {
