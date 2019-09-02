@@ -3,6 +3,7 @@
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 nouislider@^9.2.0:
   version "9.2.0"
@@ -16,3 +17,5 @@ react-nouislider@^2.0.1:
   dependencies:
     nouislider "^9.2.0"
 >>>>>>> 286088b43b0e4cc2bc866d1b5b3239ed58efc0f9
+=======
+>>>>>>> 3d5c728b847d4b735004f0e0c0410215838172c4
