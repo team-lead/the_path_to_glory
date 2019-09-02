@@ -5,11 +5,11 @@ class CheckoutForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            cardNumber: '',
-            cardName: '',
-            expiryMonth: '',
-            expiryYear: '',
-            cardCCV: ''
+            cardNumber: 'noNumber',
+            cardName: 'noName',
+            expiryMonth: 'noMonth',
+            expiryYear: 'noYear',
+            cardCCV: 'noCCV'
         };
         this.handleChange = this.handleInputChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,7 +22,7 @@ class CheckoutForm extends React.Component {
         this.setState({
             [name]: value
         });
-        console.log('Change detected. State updated. New state:  ' + name + ' = ' + value);
+        console.log('Change detected. State updated. New state: ' + name + ' = ' + value);
     }
 
     handleSubmit(event) {
@@ -36,39 +36,39 @@ class CheckoutForm extends React.Component {
             text,
             input,
             inputForm,
-            test,
+            expireDate,
         } = classes;
 
         return (
             <div>
                 <form onSubmit={this.handleSubmit}
                       className={inputForm}>
-                    <fieldset className={text}>
+                    <div className={text}>
                         <label>Card number &nbsp;</label>
                         <input type="text"
                                name="cardNumber"
-                               value={this.state.cardNumber}
+                               placeholder={this.state.cardNumber}
                                onChange={this.handleChange}
                                className={input}
                                maxLength="16"
                         />
-                    </fieldset>
-                    <fieldset className={text}>
-                        <label>Card name &nbsp;</label>
-                        <input name="cardName"
+                    </div>
+                    <div className={text}>
+                        <label htmlFor='cardName'>Card name &nbsp;</label>
+                        <input 
+                        name="cardName"
                                type="num"
-                               value={this.state.cardName}
+                               placeholder={this.state.cardName}
                                onChange={this.handleChange}
                                className={input}
                                id="cardName"
                         />
-                    </fieldset>
-                    <fieldset className={text}>
-                        <label>Expiration date &nbsp;</label>
-                        <div className={test}>
+                    </div>
+                    <div className={expireDate}>
+                        <label className={text}>Expiration date &nbsp;</label>
+                        <div>
                             <select className={input}
                                     name="expiryMonth"
-                                    value={this.state.expiryMonth}
                                     onChange={this.handleChange}
                             >
                                 <option></option>
@@ -87,7 +87,7 @@ class CheckoutForm extends React.Component {
                             </select>
                         </div>
                         <span className={text}>&nbsp;/&nbsp;</span>
-                        <div className={test}>
+                        <div>
                             <select className={input}
                                     name="expiryYear"
                                     value={this.state.expiryYear}
@@ -106,18 +106,18 @@ class CheckoutForm extends React.Component {
                                 <option>2025</option>
                             </select>
                         </div>
-                    </fieldset>
-                    <fieldset className={text}>
-                        <label>CCV&nbsp;</label>
+                    </div>
+                    <div className={text}>
+                        <label htmlFor="cardCCV">CCV&nbsp;</label>
                         <input name="cardCCV"
+                               id="cardCCV"
                                type="text"
                                className={input}
                                maxLength="3"
-                               value={this.state.cardCCV}
                                onChange={this.handleChange}/>
-                        &nbsp;&nbsp;
-                        <a href="#">What is CCV?</a>
-                    </fieldset>
+                        &nbsp;
+                        <a href="#" className={text}>What is CCV?</a>
+                    </div>
                     <input type="submit" value="PAY" className={checkoutBtn}/>
                 </form>
             </div>

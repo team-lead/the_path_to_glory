@@ -4,8 +4,8 @@ import { Switch, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
 import Product from './pages/ProductPage'
-
 import Checkout from './pages/Checkout';
+
 
 const App = () => {
   return (
@@ -20,5 +20,4 @@ const App = () => {
     </Fragment>
   );
 };
-
 export default App;
