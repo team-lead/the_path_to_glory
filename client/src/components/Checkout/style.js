@@ -10,7 +10,7 @@ const checkoutStyle = {
         justifyContent: 'space-between',
         padding: '50px 60px',
         backgroundColor: '#E5E5E5;',
-        width: '645px',
+        width: '288px',
         height: '450px',
         margin: '0 auto',
         marginTop: '85px',
@@ -25,8 +25,8 @@ const checkoutStyle = {
     cardIcons:{
         display: 'flex',
         justifyContent: 'space-between',
-        width: '222px',
-        height: '41px'
+        width: '250px',
+        height: 'auto'
 
     },
     header: {
@@ -47,7 +47,7 @@ const checkoutStyle = {
         fontFamily: 'Open Sans',
         fontWeight: 'normal',
         fontSize: '14px',
-        lineHeight: '19px',
+        // lineHeight: '19px',
         color: '#000000',
         display: 'flex'
     },
@@ -59,7 +59,7 @@ const checkoutStyle = {
     },
     inputForm: {
         height: '200px',
-        width: '275px',
+        // width: '275px',
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-between',
@@ -92,7 +92,7 @@ const checkoutStyle = {
         }
     },
     expireDate: {
-        display: 'flex'
+        display: 'inline-flex'
     }
 };
 
