@@ -3,58 +3,66 @@ import { connect } from "react-redux";
 import { classes } from "./style";
 import { SHOW_MODAL_WINDOW } from "../../actions/searchActions";
 
+/* eslint-disable */
 class Header extends Component {
   render() {
     const { searchModal, showSearchModal } = this.props;
+    const {
+      header,
+      navbarMenu,
+      navbarMenuItem,
+      logoItem,
+      headerActions,
+      headerActionsItemText,
+      headerActionsItemImg,
+      search,
+      searchInput,
+      searchBtn
+    } = classes;
 
     const searchModalItem = showSearchModal ? (
-      <div className={classes.search}>
+      <div className={search}>
         <input
           type="text"
           placeholder="Search for item"
-          className={classes.searchInput}
+          className={searchInput}
         />
-        <a href="#" className={classes.searchBtn}>Search</a>
+        <a href="#" className={searchBtn}>
+          Search
+        </a>
       </div>
     ) : null;
     return (
       <>
-        <header className={classes.header}>
-          <nav className={classes.navbarMenu}>
-            <a href="#" className={classes.navbarMenuItem}>
+        <header className={header}>
+          <nav className={navbarMenu}>
+            <a href="#" className={navbarMenuItem}>
               man
             </a>
-            <a href="#" className={classes.navbarMenuItem}>
+            <a href="#" className={navbarMenuItem}>
               woman
             </a>
-            <a href="#" className={classes.navbarMenuItem}>
+            <a href="#" className={navbarMenuItem}>
               accessory
             </a>
           </nav>
           <div>
-            <a href="#" className={classes.logoItem}>
+            <a href="#" className={logoItem}>
               Originalité
             </a>
           </div>
-          <div className={classes.headerActions}>
-            <a
-              href="#"
-              className={classes.headerActionsItem}
-              onClick={this.props.searchModal}>
-              <i className={`fas fa-search ${classes.headerActionsItemImg}`} />
-              <p className={classes.headerActionsItemText}>Search</p>
+          <div className={headerActions}>
+            <a href="#" onClick={searchModal}>
+              <i className={`fas fa-search ${headerActionsItemImg}`} />
+              <p className={headerActionsItemText}>Search</p>
             </a>
-            <a href="#" className={classes.headerActionsItem}>
-              <i className={`far fa-user ${classes.headerActionsItemImg}`} />
-              <p className={classes.headerActionsItemText}>My account</p>
+            <a href="#">
+              <i className={`far fa-user ${headerActionsItemImg}`} />
+              <p className={headerActionsItemText}>My account</p>
             </a>
-            <a href="#" className={classes.headerActionsItem}>
-              <i
-                className={`fas fa-shopping-bag ${
-                  classes.headerActionsItemImg
-                }`}
-              />
-              <p className={classes.headerActionsItemText}>Shopping Bag</p>
+            <a href="#">
+              <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
+              <p className={headerActionsItemText}>Shopping Bag</p>
             </a>
           </div>
         </header>
