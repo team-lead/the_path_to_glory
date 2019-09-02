@@ -5,6 +5,7 @@ import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
 
 import Checkout from './pages/Checkout';
+import ProductsPage from './pages/ProductsPage';
 
 const App = () => {
   return (
@@ -13,7 +14,7 @@ const App = () => {
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/' component={MainPage} />
         <Route exact path='/checkout' component={Checkout} />
-
+        <Route exact path='/products' component={ProductsPage} />
       </Switch>
     </Fragment>
   );
