@@ -14,7 +14,7 @@ let FilterPathStyle = {
 
     filterPath: {
         paddingTop: '23px',
-        paddingBottom: '23px'
+        paddingBottom: '23px',
     }
 }
 export const { classes } = jss.createStyleSheet(FilterPathStyle).attach();

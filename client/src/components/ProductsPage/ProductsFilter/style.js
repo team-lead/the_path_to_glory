@@ -90,6 +90,7 @@ let ProductsFilterStyle = {
 
   priceSection: {
     marginTop: '68px',
+    
   },
 
   priceSectionTitle: {
@@ -104,13 +105,6 @@ let ProductsFilterStyle = {
     fontFamily: 'Open Sans',
     marginBottom: '45px'
   },
-
-
-
-  
-
-
-
 
 }
 export const { classes } = jss.createStyleSheet(ProductsFilterStyle).attach();

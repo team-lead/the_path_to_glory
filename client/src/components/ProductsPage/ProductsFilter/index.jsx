@@ -24,8 +24,8 @@ export default class ProductsFilter extends Component {
             priceSection,
             priceSectionTitle,
             priceDiapazon,
-           
         } = classes;
+
         const categories = this.props.categories;
         const items = categories.map((category) => <li key={category}><a href='#' className={`${categorySectionItem} ${sectionItem}`}>{category}</a></li>);
         const colors = this.props.colors;
@@ -38,25 +38,14 @@ export default class ProductsFilter extends Component {
                     <a href='#'className={`${categorySectionItem} ${sectionItem}`}>View All</a>
                     <ul>{items}</ul>
                 </div>
-
                 <div className={colorSection}>
                     <p className={`${sectionTitle} ${colorSectionTitle}`}>colors</p>
                     <ul>{colorItems}</ul>
                 </div>
-
                 <div className={priceSection}>
                     <p className={`${sectionTitle} ${priceSectionTitle}`}>price</p>
                     <p className={priceDiapazon}>$25 - $930</p>
-
-
-
                     <RangeSlider/>
-
-                    
-
-
-
-
                 </div>
             </div>
         )

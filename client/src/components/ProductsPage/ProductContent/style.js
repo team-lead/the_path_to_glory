@@ -9,8 +9,10 @@ let LeftSideMenuStyle = {
     paddingLeft: '72px',
     background: '#000',
   },
+  
   main:{
     display: 'flex',
+
   },
 
 };
