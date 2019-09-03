@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
-import WelcomPage from './components/MyAcc/MyAccWelcomePage'
+import WelcomPage from './components/MyAccount/MyAccWelcomePage'
 import Checkout from './pages/Checkout';
 
 const App = () => {
