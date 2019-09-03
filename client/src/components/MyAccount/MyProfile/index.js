@@ -40,7 +40,6 @@ class MyProfile extends Component {
         <div className={classes.container}>
           <MyAccountMenu />
           <div className={classes.myProfileContainer}>
-
             <div >
               <h4 className={classes.myProfileTitle}>EMAIL ADRESS</h4>
               <p className={classes.myProfileText} > {email}</p>
