@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { classes } from "./style";
 import { SHOW_MODAL_WINDOW } from "../../actions/searchActions";
+import DropdownHeaderMenu from "../DropdownHeaderMenu";
 
 /* eslint-disable */
 class Header extends Component {
@@ -17,7 +18,9 @@ class Header extends Component {
       headerActionsItemImg,
       search,
       searchInput,
-      searchBtn
+      searchBtn,
+      manDropdown,
+      dropdownContainer
     } = classes;
 
     const searchModalItem = showSearchModal ? (
@@ -32,6 +35,7 @@ class Header extends Component {
         </a>
       </div>
     ) : null;
+    const logoLink = window.location.pathname === "/" ? "#" : "/";
     return (
       <>
         <header className={header}>
@@ -47,7 +51,7 @@ class Header extends Component {
             </a>
           </nav>
           <div>
-            <a href="#" className={logoItem}>
+            <a href={logoLink} className={logoItem}>
               Originalité
             </a>
           </div>
@@ -67,6 +71,17 @@ class Header extends Component {
           </div>
         </header>
         {searchModalItem}
+        {/* <DropdownHeaderMenu>
+          <p>qwerty</p>
+          <p>qwerty</p>
+          <p>qwerty</p>
+        </DropdownHeaderMenu> */}
+        <div className={`${dropdownContainer} ${manDropdown}`}>
+          {" "}
+          <p>qwerty</p>
+          <p>qwerty</p>
+          <p>qwerty</p>
+        </div>
       </>
     );
   }

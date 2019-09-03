@@ -5,7 +5,7 @@ jss.setup(preset());
 
 let headerStyle = {
   header: {
-    userSelect: 'none',
+    userSelect: "none",
     background: "#000",
     display: "flex",
     justifyContent: "space-between",
@@ -83,6 +83,17 @@ let headerStyle = {
     backgroundColor: "#000",
     padding: "18px 85px",
     textDecoration: "none"
+  },
+  manDropdown: {
+    // display: "none"
+  },
+  dropdownContainer: {
+    width: "100%",
+    height: "80%",
+    backgroundColor: "#000",
+    color: "#fff",
+    position: "absolute",
+    zIndex: "999"
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
