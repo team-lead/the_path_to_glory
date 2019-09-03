@@ -15,6 +15,12 @@ app.use(logger("dev"));
 app.use(express.json({extended: false}));
 
 // Define routes hear
+const productList = require("./routes/productListBack/index");
+const detailPage = require("./routes/detailPageBack/index");
+
+app.use('/', productList);
+app.use('/detail', detailPage);
+
 
 app.use((req, res, next) => {
   next(createError(404));
