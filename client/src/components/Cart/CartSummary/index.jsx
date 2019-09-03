@@ -41,7 +41,9 @@ const CartSummary = ({ settings }) => {
             <span>$ 420</span>
           </span>
         </section>
-        <button className={checkoutBtn}>CHECKOUT</button>
+        <button className={checkoutBtn} to='/checkout'>
+          CHECKOUT
+        </button>
       </form>
     </div>
   );
