@@ -1,18 +1,20 @@
-// eslint-disable-next-line no-unused-vars
-import React, { Component } from "react";
-import { Switch, Route } from 'react-router-dom';
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import MainPage from "./pages/MainPage";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import DetailPage from "./pages/DetailPage/DetailPage"
 import ProductListPage from "./pages/GoodsPage/GoodsPage"
 
-class App extends Component {
-  render() {
-    return (
+const App = () => {
+  return (
       <Switch>
-        <Route path = "/product-list" component = {ProductListPage}/>
-        <Route path = "/detail/:id" component = {DetailPage}/>
+        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/" component={MainPage} />
+        <Route exact path="/checkout" component={Checkout} />
+        <Route exact path = "/product-list" component = {ProductListPage}/>
+        <Route exact path = "/detail/:id" component = {DetailPage}/>
       </Switch>
-    )
-  }
-}
-
+  );
+};
 export default App;
