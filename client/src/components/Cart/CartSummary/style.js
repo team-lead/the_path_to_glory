@@ -39,26 +39,24 @@ const cartSummaryStyles = {
     caretColor: '#959595'
   },
   checkoutBtn: {
-    boxSizing: 'berder-box',
-    display: 'block',
     position: 'absolute',
-    marginLeft: '6px',
-    bottom: '40px',
-    backgroundColor: 'black',
-    fontFamily: 'Open Sans, sans-serif',
-    color: 'white',
-    fontSize: '18px',
-    fontWeight: '300',
-    width: '269px',
-    height: '57px',
-    outline: 'none',
-    cursor: 'pointer',
-    border: '1px solid black',
-    transition: 'all 0.3s',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: 'black'
-    }
+    bottom: '40px'
+    // marginLeft: '6px',
+    // backgroundColor: 'black',
+    // fontFamily: 'Open Sans, sans-serif',
+    // color: 'white',
+    // fontSize: '18px',
+    // fontWeight: '300',
+    // width: '269px',
+    // height: '57px',
+    // outline: 'none',
+    // cursor: 'pointer',
+    // border: '1px solid black',
+    // transition: 'all 0.3s',
+    // '&:hover': {
+    //   backgroundColor: 'white',
+    //   color: 'black'
+    // }
   },
   orderDetails: {
     marginTop: '50px',

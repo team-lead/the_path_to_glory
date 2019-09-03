@@ -1,6 +1,6 @@
 import React from 'react';
-
 import { classes } from './style';
+import Button from '../../Button';
 
 const CartSummary = ({ settings }) => {
   const {
@@ -10,8 +10,8 @@ const CartSummary = ({ settings }) => {
     headerHeading,
     discountText,
     discountField,
-    checkoutBtn,
     orderDetails,
+    checkoutBtn,
     orderDetailsItem
   } = classes;
 
@@ -41,9 +41,15 @@ const CartSummary = ({ settings }) => {
             <span>$ 420</span>
           </span>
         </section>
-        <button className={checkoutBtn} to='/checkout'>
+        <Button
+          name='CHECKOUT'
+          btnSettings={checkoutBtn}
+          href='/cart/checkout'
+          black
+        />
+        {/* <button className={checkoutBtn} to='/checkout'>
           CHECKOUT
-        </button>
+        </button> */}
       </form>
     </div>
   );
