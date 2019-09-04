@@ -9,3 +9,4 @@ app.get('/users', userController.getAllUsers);
 app.get('/createSomeUser', userController.createSomeUser);
     
 }
+
