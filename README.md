@@ -6,4 +6,5 @@
 
 # Интерфейс компонента Container
     - компонент Container это привычный нам div.container, у которого стоит margin: 0 auto; и max-width соответствующий нашему макету
-    - там, где нужно обернуть код в Container мы делаем передаем в компонент Container jsx разметку в качестве children. Вот так **<Container>**<div><p>Контент Контейнера</p></div>**</Container>**
+    - там, где нужно обернуть код в Container мы делаем передаем в компонент Container jsx разметку в качестве children.
+      Вот так <Container><div><p>Контент</p></div></Container>
