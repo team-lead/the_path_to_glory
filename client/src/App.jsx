@@ -1,20 +1,20 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import DetailPage from "./pages/DetailPage/DetailPage"
-import ProductListPage from "./pages/GoodsPage/GoodsPage"
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import MainPage from './pages/MainPage';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import DetailPage from './pages/DetailPage/DetailPage';
+import ProductListPage from './pages/GoodsPage/GoodsPage';
 
 const App = () => {
   return (
-      <Switch>
-        <Route exact path="/cart" component={Cart} />
-        <Route exact path="/" component={MainPage} />
-        <Route exact path="/checkout" component={Checkout} />
-        <Route exact path = "/product-list" component = {ProductListPage}/>
-        <Route exact path = "/detail/:id" component = {DetailPage}/>
-      </Switch>
+    <Switch>
+      <Route exact path='/cart/checkout' component={Checkout} />
+      <Route exact path='/detail/:id' component={DetailPage} />
+      <Route exact path='/product-list' component={ProductListPage} />
+      <Route exact path='/cart' component={Cart} />
+      <Route exact path='/' component={MainPage} />
+    </Switch>
   );
 };
 export default App;

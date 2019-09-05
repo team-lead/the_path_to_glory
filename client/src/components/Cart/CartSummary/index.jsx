@@ -1,23 +1,26 @@
 import React from 'react';
-
 import { classes } from './style';
+import Button from '../../Button';
 
-const CartSummary = () => {
+const CartSummary = ({ settings }) => {
   const {
+    summaryContainer,
     cartSummary,
     header,
     headerHeading,
     discountText,
     discountField,
-    checkoutBtn,
     orderDetails,
+    checkoutBtn,
     orderDetailsItem
   } = classes;
 
-  console.log(headerHeading);
+  const summaryContainerClasses = settings
+    ? `${summaryContainer} ${settings}`
+    : summaryContainer;
 
   return (
-    <div>
+    <div className={summaryContainerClasses}>
       <form className={cartSummary}>
         <header className={header}>
           <h2 className={headerHeading}>SHOPPING BAG TOTAL</h2>
@@ -38,7 +41,15 @@ const CartSummary = () => {
             <span>$ 420</span>
           </span>
         </section>
-        <button className={checkoutBtn}>CHECKOUT</button>
+        <Button
+          name='CHECKOUT'
+          btnSettings={checkoutBtn}
+          href='/cart/checkout'
+          black
+        />
+        {/* <button className={checkoutBtn} to='/checkout'>
+          CHECKOUT
+        </button> */}
       </form>
     </div>
   );
