@@ -6,24 +6,6 @@ import Colors from './ClothesColors';
 import Button from '../Button/index';
 
 class DetailPageComponent extends Component {
-  // state = {
-  //     id: this.props._id,
-  //     img: [
-  //         this.props.goodsItemDetails.image[0],
-  //         this.props.goodsItemDetails.image[1]
-  //     ],
-  //     description: [
-  //         this.props.goodsItemDetails.description[0],
-  //         this.props.goodsItemDetails.description[1],
-  //         this.props.goodsItemDetails.description[2],
-  //     ],
-  //     category: this.props.category,
-  //     price: this.props.price,
-  //     name: this.props.name,
-  //     ref: this.props.name,
-  //     new: this.props.new
-  // }
-
   handlerComponent = () => {
     return (
       <div className={classes.container}>
@@ -61,6 +43,7 @@ class DetailPageComponent extends Component {
             </div>
 
             <Button
+              to='/'
               btnSettings={classes.btnSettings}
               black
               name='add to bascket'

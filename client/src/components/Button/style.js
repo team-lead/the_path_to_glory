@@ -5,7 +5,7 @@ jss.setup(preset());
 
 let button = {
   btn: {
-    fontFamily: 'Open Sans, sans-serif',
+    fontFamily: 'Open sans, sans-serif',
     textDecoration: 'none',
     textTransform: 'uppercase',
     display: 'inline-block',
