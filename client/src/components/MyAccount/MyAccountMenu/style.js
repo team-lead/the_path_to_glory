@@ -8,7 +8,8 @@ let headerStyle = {
     fontFamily: "Josefin Sans",
     fontSize: "3.2vw",
     fontWeight: "bold",
-
+    textDecoration: "none",
+    color: "black",
     margin: "3%",
   },
   navbarMenu: {

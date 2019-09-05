@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { NavLink } from 'react-router-dom';
 import { connect } from "react-redux";
 import { classes } from "./style";
 import { SHOW_MODAL_WINDOW } from "../../actions/searchActions";
@@ -44,10 +45,10 @@ class Header extends Component {
               <i className={`fas fa-search ${classes.headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>Search</p>
             </a>
-            <a href="#" className={classes.headerActionsItem}>
+            <NavLink to="/myaccount/main" className={classes.headerActionsItem}>
               <i className={`far fa-user ${classes.headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>My account</p>
-            </a>
+            </NavLink>
             <a href="#" className={classes.headerActionsItem}>
               <i
                 className={`fas fa-shopping-bag ${
