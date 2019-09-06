@@ -51,6 +51,9 @@ const checkoutStyle = {
         color: '#000000',
         display: 'flex'
     },
+    textlink: {
+
+    },
     checkout: {
         height: '400px',
         display: 'flex',
@@ -64,6 +67,7 @@ const checkoutStyle = {
         flexDirection: 'column',
         justifyContent: 'space-between',
     },
+
     input: {
         backgroundColor: 'transparent',
         border: 'none',
