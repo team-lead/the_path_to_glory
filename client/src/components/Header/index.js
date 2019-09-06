@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { classes } from './style';
 import { SHOW_MODAL_WINDOW } from '../../actions/searchActions';
-
 /* eslint-disable */
 class Header extends Component {
   render() {
@@ -65,6 +64,7 @@ class Header extends Component {
               <p className={headerActionsItemText}>Shopping Bag</p>
             </a>
           </div>
+          
         </header>
         {searchModalItem}
       </>
