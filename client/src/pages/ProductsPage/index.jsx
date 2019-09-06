@@ -1,7 +1,6 @@
 import React,{Fragment} from 'react';
 import Header from '../../components/Header'
-import ProductContent from '../../components/ProductsPage/ProductContent';
-
+import ProductContent from '../../components/SidebarProductList/ProductContent';
 
 
 const ProductsPage = () => {

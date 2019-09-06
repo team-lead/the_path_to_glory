@@ -7,7 +7,7 @@ const productListStyle ={
 
     productListContainer:{
         width: '900px',
-        marginLeft: '35px',
+        marginLeft: '100px',
         
     },
     
@@ -24,16 +24,14 @@ const productListStyle ={
         marginTop: '80px',
     },
 
+    linkItem:{
+        textDecoration: 'none',
+    },
+
     productItem:{
         fontFamily: "Open Sans",
-        margin: '0 5px 105px',
-
+        margin: '0 0 105px',
         cursor: 'pointer',
-        "&:hover":{
-            // transform: 'scale(1.01)',
-            boxShadow: '0px 0px 8px 1px rgba(0,0,0,0.42)',
-
-        }
     },
 
     itemImg:{
