@@ -1,10 +1,11 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
-import MainPage from "./pages/MainPage";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
-import DetailPage from "./pages/DetailPage/DetailPage";
-import ProductsPage from "./pages/ProductsPage";
+import React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import MainPage from './pages/MainPage';
+import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
+import DetailPage from './pages/DetailPage/DetailPage';
+import ProductsPage from './pages/ProductsPage';
+
 
 const App = () => {
   return (

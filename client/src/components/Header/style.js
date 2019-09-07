@@ -11,8 +11,8 @@ let headerStyle = {
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    height: "11vh"
-  },
+    height: "11vh",
+    },
   navbarMenu: {
     display: "flex",
     justifyContent: "space-evenly",
