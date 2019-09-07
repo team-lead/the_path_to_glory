@@ -4,11 +4,14 @@ import preset from 'jss-preset-default';
 jss.setup(preset());
 
 const cartSummaryStyles = {
+  summaryContainer: {
+    display: 'inline-block',
+    verticalAlign: 'top'
+  },
   cartSummary: {
+    display: 'inline-block',
     boxSizing: 'border-box',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
+    position: 'relative',
     padding: '40px 0 40px 40px',
     backgroundColor: '#C4C4C4',
     width: '362px',
@@ -36,26 +39,27 @@ const cartSummaryStyles = {
     caretColor: '#959595'
   },
   checkoutBtn: {
-    boxSizing: 'berder-box',
-    display: 'block',
-    marginLeft: '6px',
-    backgroundColor: 'black',
-    fontFamily: 'Open Sans, sans-serif',
-    color: 'white',
-    fontSize: '18px',
-    fontWeight: '300',
-    width: '269px',
-    height: '57px',
-    outline: 'none',
-    cursor: 'pointer',
-    border: '1px solid black',
-    transition: 'all 0.3s',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: 'black'
-    }
+    position: 'absolute',
+    bottom: '40px'
+    // marginLeft: '6px',
+    // backgroundColor: 'black',
+    // fontFamily: 'Open Sans, sans-serif',
+    // color: 'white',
+    // fontSize: '18px',
+    // fontWeight: '300',
+    // width: '269px',
+    // height: '57px',
+    // outline: 'none',
+    // cursor: 'pointer',
+    // border: '1px solid black',
+    // transition: 'all 0.3s',
+    // '&:hover': {
+    //   backgroundColor: 'white',
+    //   color: 'black'
+    // }
   },
   orderDetails: {
+    marginTop: '50px',
     width: '166px',
     height: '116px',
     fontSize: '14px'

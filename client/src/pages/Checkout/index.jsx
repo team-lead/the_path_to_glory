@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import {Helmet} from "react-helmet";
 
 const Cart = () => {
-    return (<>
+    return (<Fragment>
             <Helmet>
                 <title>Checkout page!</title>
             </Helmet>
@@ -15,7 +15,7 @@ const Cart = () => {
                 <CheckoutBox/>
             </Fragment>
 
-        </>
+        </Fragment>
     );
 };
 

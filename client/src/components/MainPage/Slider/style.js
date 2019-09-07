@@ -22,7 +22,7 @@ let sliderStyle = {
     borderRadius: "100%",
     margin: "3px"
   },
-  dots: {
+  dotsActive: {
     margin: "0px",
     "& > li.slick-active > div": {
       backgroundColor: "#fff",
