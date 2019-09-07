@@ -3,9 +3,15 @@ import {ADD_TO_CART} from "../../../actions/cartActions";
 const initialState = {
     cart: {
         product1: {
-            key1: "failure",
-            key2: true,
-            key3: 1
+            category: "Category",
+            images: [],
+            name: "Леопардовые",
+            subCategory: "Труселя",
+            ref: String,
+            description: Array,
+            new: Boolean,
+            price: Number,
+            quantity: Number
         }
     }
 };
@@ -13,8 +19,8 @@ const initialState = {
 function addToCartReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_TO_CART: {
-            // логика добавления в корзину
-            return {...state, product1: {key1: "success", key2: !state.cart.product1.key2, key3: state.cart.product1.key3+1},};
+        // логика добавления в корзину
+            return {...state, product1: {name: "Труселя оделись", id: action.id, new: !state.cart.product1.new},};
         }
         default: {
             return {...state};
