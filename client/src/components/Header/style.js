@@ -84,9 +84,6 @@ let headerStyle = {
     padding: "18px 85px",
     textDecoration: "none"
   },
-  manDropdown: {
-    // display: "none"
-  },
   dropdownContainer: {
     width: "100%",
     height: "80%",

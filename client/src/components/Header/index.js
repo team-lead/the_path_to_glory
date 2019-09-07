@@ -2,12 +2,24 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { classes } from "./style";
 import { SHOW_MODAL_WINDOW } from "../../actions/searchActions";
+import { SHOW_DROPDOWN_MENU, HIDE_DROPDOWN_MENU } from "../../actions/dropDownMenuAction";
 import DropdownHeaderMenu from "../DropdownHeaderMenu";
 
 /* eslint-disable */
 class Header extends Component {
+  // onMenuItemMouseOver = () => {
+  //   console.log("lesha rak"); //диспатчить событие, показывать выпадающее меню
+  // };
+
   render() {
-    const { searchModal, showSearchModal } = this.props;
+    const {
+      searchModal,
+      showSearchModal,
+      showDropdownMenu,
+      activeDropdownMenu,
+      dropDownMenuActive,
+      hideDropdownMenu
+    } = this.props;
     const {
       header,
       navbarMenu,
@@ -35,12 +47,25 @@ class Header extends Component {
         </a>
       </div>
     ) : null;
+    console.log(showDropdownMenu);
     const logoLink = window.location.pathname === "/" ? "#" : "/";
+
+    const showDropdownMenuItem = dropDownMenuActive ? (
+      <div className={dropdownContainer}>
+        <p>qwerty</p>
+        <p>qwerty</p>
+        <p>qwerty</p>
+      </div>
+    ) : null;
     return (
       <>
         <header className={header}>
           <nav className={navbarMenu}>
-            <a href="#" className={navbarMenuItem}>
+            <a
+              href="#"
+              className={navbarMenuItem}
+              onMouseOver={() => showDropdownMenu(0)}
+              onMouseLeave={hideDropdownMenu}>
               man
             </a>
             <a href="#" className={navbarMenuItem}>
@@ -76,12 +101,7 @@ class Header extends Component {
           <p>qwerty</p>
           <p>qwerty</p>
         </DropdownHeaderMenu> */}
-        <div className={`${dropdownContainer} ${manDropdown}`}>
-          {" "}
-          <p>qwerty</p>
-          <p>qwerty</p>
-          <p>qwerty</p>
-        </div>
+        {showDropdownMenuItem}
       </>
     );
   }
@@ -89,13 +109,17 @@ class Header extends Component {
 
 const mapStateToProps = state => {
   return {
-    showSearchModal: state.search.showSearchModal
+    showSearchModal: state.search.showSearchModal,
+    activeDropdownMenu: state.dropdownMenu.activeDropdownMenuItem,
+    dropDownMenuActive: state.dropdownMenu.dropDownMenuActive
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchModal: () => dispatch({ type: SHOW_MODAL_WINDOW })
+    searchModal: () => dispatch({ type: SHOW_MODAL_WINDOW }),
+    showDropdownMenu: id => dispatch({ type: SHOW_DROPDOWN_MENU, payload: id }),
+    hideDropdownMenu: () => dispatch({ type: HIDE_DROPDOWN_MENU})
   };
 };
 
