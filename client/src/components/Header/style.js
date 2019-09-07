@@ -24,10 +24,12 @@ let headerStyle = {
     textDecoration: "none",
     textTransform: "uppercase",
     fontSize: 20,
+    padding: "16px",
     borderBottom: "1px solid transparent",
     color: "#fff",
     "&:hover": {
-      borderBottom: "1px solid #fff"
+      // borderBottom: "1px solid #fff"
+      textDecoration: "underline"
     }
   },
   logoItem: {
@@ -84,13 +86,19 @@ let headerStyle = {
     padding: "18px 85px",
     textDecoration: "none"
   },
-  dropdownContainer: {
-    width: "100%",
-    height: "80%",
-    backgroundColor: "#000",
+  dropdownMenuItem: {
+    textDecoration: "none",
     color: "#fff",
-    position: "absolute",
-    zIndex: "999"
+    fontFamily: "Open Sans",
+    fontSize: "18px",
+    marginTop: "29px",
+    display: "block",
+    "&:hover": {
+      textDecoration: "underline"
+    }
+  },
+  dropdownMenuItemGender: {
+    textDecoration: "underline"
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();

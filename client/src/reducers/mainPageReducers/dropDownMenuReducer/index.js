@@ -20,8 +20,8 @@ function showDropdownMenuReducer(state = initalState, action) {
     case HIDE_DROPDOWN_MENU: {
       return {
         ...state,
-        // activeDropdownMenuItem: action.payload,
-        // dropDownMenuActive: false
+        activeDropdownMenuItem: action.payload,
+        dropDownMenuActive: false
       };
     }
     default: {
