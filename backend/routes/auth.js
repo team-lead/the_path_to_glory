@@ -1,10 +1,10 @@
 const router = require("express").Router();
 const { check } = require('express-validator');
 
-const {signup, signin, signout, checkAuth} = require("../controllers/auth");
+const {signup, signin, signout} = require("../controllers/auth");
 
 const validationSignUp = [
-  check("name", "Name is required").not().isEmpty(),
+  check("firstName", "Name is required").not().isEmpty(),
   check("email", "Email must be between 3 to 32 characters")
     .matches(/.+\@.+\..+/)
     .withMessage("Email must contain @")

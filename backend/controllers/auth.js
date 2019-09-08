@@ -1,32 +1,32 @@
 const User = require("../models/User");
-const {errorHandler} = require("../helpers/dbErrorHandler");
+const { errorHandler } = require("../helpers/dbErrorHandler");
 const { validationResult } = require('express-validator');
 const jwt = require('jsonwebtoken'); // to generate signed jsonwebtoken
-// const expressJwt = require("express-jwt");
+const expressJwt = require("express-jwt");
 const config = require("config");
 
-exports.signup =  (req, res) => {
+exports.signup = (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   };
   const user = new User(req.body);
   user.save((err, user) => {
-    if(err) {
+    if (err) {
       return res.status(400).json({
         error: errorHandler(err)
       });
     };
     // user.salt = undefined;
     // user.hashed_password = undefined;
-    return res.status(200).json({user});
+    return res.status(200).json({ user });
   })
 };
 
 exports.signin = (req, res) => {
   // find the user based on Email
-  const {email, password} = req.body;
-  User.findOne({email}, (err, user) => {
+  const { email, password } = req.body;
+  User.findOne({ email }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({
         err: "User with that email does not exist"
@@ -49,12 +49,18 @@ exports.signin = (req, res) => {
       expiresIn: 360000
     }, (err, token) => {
       if (err) throw new Error(err);
-      res.json({token})
+
+      let { firstName, secondName } = user;
+
+      res.json({ token, firstName, secondName })
     });
   });
 };
 
 exports.signout = (req, res) => {
   res.clearHeader("x-auth-token");
-  res.json({msg: "Signout success"});
+  res.json({ msg: "Signout success" });
 };
+
+
+
