@@ -34,6 +34,8 @@ class Header extends Component {
       dropdownMenuItemGender
     } = classes;
 
+    
+
     const searchModalItem = showSearchModal ? (
       <div className={search}  onMouseLeave={searchModal}>
         <input
@@ -198,19 +200,19 @@ class Header extends Component {
         <header className={header}>
           <nav className={navbarMenu}>
             <a
-              href="#"
+              href="/product-list/mens"
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
             </a>
             <a
-              href="#"
+              href="/product-list/womens"
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
             </a>
             <a
-              href="#"
+              href="/product-list/accessories"
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
