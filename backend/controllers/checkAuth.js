@@ -42,18 +42,49 @@ exports.profile = (req, res) => {
 };
 
 exports.updateUser = (req, res) => {
-   // find the user based on id
-   const user = new User(req.body);
-   const id = decodedID(req, res);
- 
-  user.updateOne({ _id: id}, (err, user) => {
-    if (err) {
+  // find the user based on id
+
+  const _id = decodedID(req, res);
+  let usser;
+  User.findOne({ _id }, (err, user) => {
+    if (err || !user) {
       return res.status(400).json({
-        error: errorHandler(err)
+        err: "User with that id does not exist"
       });
-    };
-    // user.salt = undefined;
-    // user.hashed_password = undefined;
-    return res.status(200).json({ user });
-  })
+    }
+    console.log(user);
+    const { phone, firstName, secondName, birthday, email } = req.body;
+    user.phone = phone;
+    user.firstName = firstName;
+    user.secondName = secondName;
+    user.birthday = birthday;
+    user.email = email;
+
+    user.save((err, user) => {
+      if (err) {
+        return res.status(400).json({
+          error: errorHandler(err)
+        });
+      };
+      // user.salt = undefined;
+      // user.hashed_password = undefined;
+      return res.status(200).json({ user });
+    })
+  });
+
+};
+
+exports.deliteUser = (req, res) => {
+  // find the user based on id
+  const _id = decodedID(req, res);
+  User.deleteOne({ _id }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        err: "User with that id does not exist"
+      });
+    }
+   
+    return res.json("Ok!");
+
+  });
 };
