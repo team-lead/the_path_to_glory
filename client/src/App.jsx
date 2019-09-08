@@ -12,7 +12,9 @@ const App = () => {
         <Route exact path="/cart" component={Cart} />
         <Route exact path="/" component={MainPage} />
         <Route exact path="/checkout" component={Checkout} />
-        <Route exact path = "/product-list" component = {ProductListPage}/>
+        <Route exact path = {`/product-list/mens`} component = {ProductListPage}/>
+        <Route exact path = {`/product-list/womens`} component = {ProductListPage}/>
+        <Route exact path = {`/product-list/accessories`} component = {ProductListPage}/>
         <Route exact path = "/detail/:id" component = {DetailPage}/>
       </Switch>
   );

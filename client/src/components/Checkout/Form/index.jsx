@@ -116,7 +116,7 @@ class CheckoutForm extends React.Component {
                                maxLength="3"
                                onChange={this.handleChange}/>
                         &nbsp;
-                        <a href="#" className={text}>What is CCV?</a>
+                        <a href="/checkout" className={text}>What is CCV?</a>
                     </div>
                     <input type="submit" value="PAY" className={checkoutBtn}/>
                 </form>

@@ -20,6 +20,8 @@ class Header extends Component {
       searchBtn
     } = classes;
 
+    
+
     const searchModalItem = showSearchModal ? (
       <div className={search}>
         <input
@@ -36,18 +38,18 @@ class Header extends Component {
       <>
         <header className={header}>
           <nav className={navbarMenu}>
-            <a href="#" className={navbarMenuItem}>
+            <a href="/product-list/mens" className={navbarMenuItem}>
               man
             </a>
-            <a href="#" className={navbarMenuItem}>
+            <a href="/product-list/womens" className={navbarMenuItem}>
               woman
             </a>
-            <a href="#" className={navbarMenuItem}>
+            <a href="/product-list/accessories" className={navbarMenuItem}>
               accessory
             </a>
           </nav>
           <div>
-            <a href="#" className={logoItem}>
+            <a href="/" className={logoItem}>
               Originalité
             </a>
           </div>
