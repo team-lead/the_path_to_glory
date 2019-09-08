@@ -5,9 +5,9 @@ import { getGoodsDetailID } from "../../actions/detailGoodsAction"
 import { getMensGoods } from "../../actions/getGoodsAction"
 import { getWomensGoods } from "../../actions/getGoodsAction"
 import { getAcsGoods } from "../../actions/getGoodsAction"
-import Header from '../Header';
+import {classes} from './style'
 
-class GoodsListComponent extends Component {
+class ProductItem extends Component {
     
     componentDidMount () {
         if(window.location.href === "http://localhost:3000/product-list/mens") {
@@ -28,11 +28,11 @@ class GoodsListComponent extends Component {
             this.props.mensGoods.map((goods) => {
                 
                 return (
-                    <Link onClick = {() => this.props.getDataID(goods)} key = {goods.id} to = {`/detail/${goods.id}`}>
-                        <li>
-                            <div>{goods.name}</div>
-                            <div>{goods.price}</div>
-                            <img src={goods.image[0]} alt={goods.image}/>
+                    <Link className = {classes.linkItem} onClick = {() => this.props.getDataID(goods)} key = {goods.id} to = {`/detail/${goods.id}`}>
+                        <li className = {classes.productItem}>
+                            <img className={classes.itemImg} src={goods.image[0]} alt={goods.image}/>
+                            <p className={classes.goodsTitle}>{goods.name}</p>
+                            <p className={classes.goodsPrise}>{goods.price}</p>
                         </li>
                     </Link>
                 )
@@ -47,11 +47,11 @@ class GoodsListComponent extends Component {
             this.props.womensGoods.map((goods) => {
                 
                 return (
-                    <Link onClick = {() => this.props.getDataID(goods)} key = {goods.id} to = {`/detail/${goods.id}`}>
-                        <li>
-                            <div>{goods.name}</div>
-                            <div>{goods.price}</div>
-                            <img src={goods.image[0]} alt={goods.image}/>
+                    <Link className = {classes.linkItem} onClick = {() => this.props.getDataID(goods)} key = {goods.id} to = {`/detail/${goods.id}`}>
+                        <li className = {classes.productItem}>
+                            <img className={classes.itemImg} src={goods.image[0]} alt={goods.image}/>
+                            <p className={classes.goodsTitle}>{goods.name}</p>
+                            <p className={classes.goodsPrise}>{goods.price}</p>
                         </li>
                     </Link>
                 )
@@ -66,11 +66,11 @@ class GoodsListComponent extends Component {
             this.props.acsGoods.map((goods) => {
                 
                 return (
-                    <Link onClick = {() => this.props.getDataID(goods)} key = {goods.id} to = {`/detail/${goods.id}`}>
-                        <li>
-                            <div>{goods.name}</div>
-                            <div>{goods.price}</div>
-                            <img src={goods.image[0]} alt={goods.image}/>
+                    <Link className = {classes.linkItem} onClick = {() => this.props.getDataID(goods)} key = {goods.id} to = {`/detail/${goods.id}`}>
+                        <li className = {classes.productItem}>
+                            <img className={classes.itemImg} src={goods.image[0]} alt={goods.image}/>
+                            <p className={classes.goodsTitle}>{goods.name}</p>
+                            <p className={classes.goodsPrise}>{goods.price}</p>
                         </li>
                     </Link>
                 )
@@ -96,10 +96,9 @@ class GoodsListComponent extends Component {
 
     render() {
         return (
-            <Fragment>
-                <Header/>
-            <div style = {{display: "flex", flexWrap: "wrap"}}>{this.currentGoodsList()}</div>
-            </Fragment>
+            <>
+            {this.currentGoodsList()}
+            </>
         )
     }
 }
@@ -122,4 +121,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(GoodsListComponent)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductItem)
