@@ -34,7 +34,6 @@ const Footer = () => {
           </a>
         </div>
         <div className={footerItem}>
-          <p className={footerItemTitle}>COMPANY</p>
           <a className={footerLink} href="#">
             History of the brand
           </a>

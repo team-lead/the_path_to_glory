@@ -5,7 +5,7 @@ jss.setup(preset());
 
 let headerStyle = {
   header: {
-    userSelect: 'none',
+    userSelect: "none",
     background: "#000",
     display: "flex",
     justifyContent: "space-between",
@@ -24,10 +24,12 @@ let headerStyle = {
     textDecoration: "none",
     textTransform: "uppercase",
     fontSize: 20,
+    padding: "16px",
     borderBottom: "1px solid transparent",
     color: "#fff",
     "&:hover": {
-      borderBottom: "1px solid #fff"
+      // borderBottom: "1px solid #fff"
+      textDecoration: "underline"
     }
   },
   logoItem: {
@@ -83,6 +85,20 @@ let headerStyle = {
     backgroundColor: "#000",
     padding: "18px 85px",
     textDecoration: "none"
+  },
+  dropdownMenuItem: {
+    textDecoration: "none",
+    color: "#fff",
+    fontFamily: "Open Sans",
+    fontSize: "18px",
+    marginTop: "29px",
+    display: "block",
+    "&:hover": {
+      textDecoration: "underline"
+    }
+  },
+  dropdownMenuItemGender: {
+    textDecoration: "underline"
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
