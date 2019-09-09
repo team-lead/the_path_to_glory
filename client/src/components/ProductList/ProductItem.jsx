@@ -4,15 +4,19 @@ import { Link } from 'react-router-dom';
 import { getGoodsData } from '../../actions/goodsListAction';
 import { getGoodsDetailID } from '../../actions/detailGoodsAction';
 import {classes} from './style'
+import InfiniteScroll from 'react-infinite-scroller'
+
 
 class ProductItem extends Component {
 componentDidMount() {
+    console.log(this.props);
     this.props.getData();
 }
 
 getGoodsItems = () => {
     return this.props.goodsList.map(goods => {
         return (
+            
         <Link className = {classes.linkItem}
             onClick={() => this.props.getDataID(goods)}
             key={goods._id}
