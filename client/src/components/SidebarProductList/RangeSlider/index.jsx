@@ -7,21 +7,19 @@ import { red } from '@material-ui/core/colors';
 const useStyles = makeStyles({
   root: {
     width: 250,
-    color: '#fff',
+    color: "#fff"
   },
   rail: {
-    
-      color: '#847A7A',
-      // opacity: '1',
-    
-
+    color: "#847A7A"
+    // opacity: '1',
   },
   valueLabel: {
-    color: '#fff',
-  },
-
-  
+    color: "#fff"
+  }
 });
+
+
+
 
 
 function valuetext(value) {
@@ -39,6 +37,7 @@ export default function RangeSlider() {
   return (
     <div className={root}>
       <Slider className={`${rail} ${track} ${valueLabel}`}
+
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"
