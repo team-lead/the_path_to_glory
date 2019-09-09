@@ -37,6 +37,7 @@ class CheckoutForm extends React.Component {
             input,
             inputForm,
             expireDate,
+            textlink,
         } = classes;
 
         return (
@@ -116,7 +117,7 @@ class CheckoutForm extends React.Component {
                                maxLength="3"
                                onChange={this.handleChange}/>
                         &nbsp;
-                        <a href="#" className={text}>What is CCV?</a>
+                        <a href="http://localhost:3000" className={textlink}>What is CCV?</a>
                     </div>
                     <input type="submit" value="PAY" className={checkoutBtn}/>
                 </form>

@@ -9,7 +9,6 @@ import Button from '../../components/Button';
 const Cart = () => {
   const {
     products,
-    keepShoppingBtn,
     mainContent,
     mainContentWrapper,
     summarySettings
