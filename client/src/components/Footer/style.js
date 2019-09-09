@@ -28,7 +28,14 @@ let footerStyle = {
     fontSize: "18px",
     lineHeight: "35px",
     textDecoration: "none",
+<<<<<<< HEAD
     color: "#fff"
+=======
+    color: "#fff",
+    "&:hover": {
+      textDecoration: "underline"
+    }
+>>>>>>> d8e2db5bcc88245d8861d3af92dda68701ad5c24
   }
 };
 export const { classes } = jss.createStyleSheet(footerStyle).attach();
