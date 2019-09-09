@@ -19,13 +19,13 @@ const getMensItems = require("./routes/getMensItemsBack/index");
 const getWomensItems = require("./routes/getWomensItemsBack/index")
 const getAccsseroiesItems = require("./routes/getAcsItemsBack/index");
 const detailPage = require("./routes/detailPageBack/index");
-
+const authRoutes = require("./routes/auth");
 
 app.use('/detail', detailPage);
 app.use('/product-list', getMensItems);
 app.use('/product-list', getWomensItems);
 app.use('/product-list', getAccsseroiesItems);
-
+app.use('/api', authRoutes);
 
 app.use((req, res, next) => {
   next(createError(404));
