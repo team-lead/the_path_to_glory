@@ -35,7 +35,7 @@ class Header extends Component {
     } = classes;
 
     const searchModalItem = showSearchModal ? (
-      <div className={search}  onMouseLeave={searchModal}>
+      <div className={search} onMouseLeave={searchModal}>
         <input
           type="text"
           placeholder="Search for item"
@@ -173,7 +173,7 @@ class Header extends Component {
                 Bags
               </a>
               <a className={dropdownMenuItem} href="#">
-              Waletts, Card Cases
+                Waletts, Card Cases
               </a>
               <a className={dropdownMenuItem} href="#">
                 Belts
