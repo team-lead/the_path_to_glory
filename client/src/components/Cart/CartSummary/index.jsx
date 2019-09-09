@@ -47,9 +47,6 @@ const CartSummary = ({ settings }) => {
           href='/cart/checkout'
           black
         />
-        {/* <button className={checkoutBtn} to='/checkout'>
-          CHECKOUT
-        </button> */}
       </form>
     </div>
   );
