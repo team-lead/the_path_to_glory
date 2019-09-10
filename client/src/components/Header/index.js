@@ -1,6 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { classes } from './style';
 import { SHOW_MODAL_WINDOW } from '../../actions/searchActions';
 import {
@@ -222,17 +223,21 @@ class Header extends Component {
             </a>
           </div>
           <div className={headerActions}>
-            <a href='#' onClick={searchModal}>
+            <NavLink href='#' onClick={searchModal}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>Search</p>
-            </a>
-            <a href='#'>
+              <p className={classes.headerActionsItemText}>Search</p>
+            </NavLink>
+            <NavLink to="/myaccount/main" className={classes.headerActionsItem}>
               <i className={`far fa-user ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>My account</p>
-            </a>
-            <a href='/cart'>
-              <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>Shopping Bag</p>
+              <p className={classes.headerActionsItemText}>My account</p>
+            </NavLink>
+            <a href="#" className={classes.headerActionsItem}>
+              <i
+                className={`fas fa-shopping-bag ${
+                  classes.headerActionsItemImg
+                }`}
+              />
+              <p className={classes.headerActionsItemText}>Shopping Bag</p>
             </a>
           </div>
         </header>
