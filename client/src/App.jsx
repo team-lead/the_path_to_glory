@@ -5,6 +5,9 @@ import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
 import MyAccountPage from './pages/MyAccountPage'
 import LoginPage from './pages/LoginPage';
+import Checkout from './pages/Checkout';
+import DetailPage from './pages/DetailPage/DetailPage';
+import ProductsPage from './pages/ProductsPage';
 
 const App = () => {
   return (
@@ -15,10 +18,15 @@ const App = () => {
           <Route exact path='/:id' component={LoginPage} />
           <Route exact path='/cart' component={Cart} />
           <Route exact path='/' component={MainPage} />
+          <Route exact path='/cart/checkout' component={Checkout} />
+          <Route exact path='/product-list/mens' component={ProductsPage} />
+          <Route exact path='/product-list/womens' component={ProductsPage} />
+          <Route exact path='/product-list/accessories' component={ProductsPage} />
+          <Route exact path='/detail/:id' component={DetailPage} />
+
         </Switch>
       </BrowserRouter>
     </Fragment>
   );
 };
-
 export default App;

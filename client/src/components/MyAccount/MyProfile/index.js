@@ -7,12 +7,12 @@ class MyProfile extends Component {
   
   state = {
       user: null,
-      id: '5d6e99ad307d4b263c586370'
+      id: '5d777dbc30ebd8186804e67e'
     }
   
   componentDidMount() {
     
-    fetch('http://localhost:9000/users/'+this.state.id)
+    fetch('http://localhost:8080/users/'+this.state.id)
       .then(response => response.json())
       .then(json => {
         this.setState({ user: json });

@@ -1,5 +1,5 @@
 import React,{Fragment} from 'react';
-import {Link,BrowserRouter,Switch,Route} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import {classes} from './style';
 const WelcomePage =()=>{
     const name =  'SUZANNE EATON'// после удалить
