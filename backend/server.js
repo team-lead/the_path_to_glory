@@ -23,8 +23,8 @@ app.use(bodyParser.json());
 app.use("/api", authUser);
 app.use("/api", checkAuthUser);
 app.use("/api", history);
-const port = process.env.PORT || 9000;
 
+const port = process.env.PORT || 9000;
 app.listen(port, (err) => {
   if (err) {
     throw new Error(err);
