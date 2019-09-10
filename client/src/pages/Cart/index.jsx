@@ -5,15 +5,18 @@ import { classes } from './style';
 import CartProduct from '../../components/Cart/CartProduct';
 import Container from '../../components/Container';
 import Button from '../../components/Button';
+import { connect } from 'react-redux';
 
-const Cart = () => {
+const Cart = ({ productsInCart }) => {
   const {
     products,
     mainContent,
     mainContentWrapper,
     summarySettings
   } = classes;
-  const cartProducts = [<CartProduct />, <CartProduct />];
+  const cartProducts = productsInCart.map(product => (
+    <CartProduct key={product.id} {...product} />
+  ));
 
   return (
     <Fragment>
@@ -31,4 +34,10 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+const mapStateToProps = state => {
+  return {
+    productsInCart: state.active.cart
+  };
+};
+
+export default connect(mapStateToProps)(Cart);

@@ -48,7 +48,6 @@ class Header extends Component {
       </div>
     ) : null;
     const logoLink = window.location.pathname === '/' ? '#' : '/';
-    console.log('----', typeof activeDropdownMenu);
 
     let showDropdownMenuItem = null;
 

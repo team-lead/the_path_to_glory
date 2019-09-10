@@ -2,7 +2,16 @@ import React from 'react';
 import { classes } from './style';
 import productImg from './img/lady.jpg';
 
-const CartProduct = () => {
+const CartProduct = ({
+  id,
+  images,
+  name,
+  reference,
+  price,
+  quantity,
+  color,
+  size
+}) => {
   const {
     cartProduct,
     removeProduct,
@@ -23,30 +32,31 @@ const CartProduct = () => {
     <div className={cartProduct}>
       <img src={productImg} alt='product name' />
       <div className={productDetails}>
-        <h3 className={productName}>Gold Dress</h3>
-        <p className={ref}>REF: 3294786 - 01</p>
+        <h3 className={productName}>{name}</h3>
+        <p className={ref}>REF: {reference}</p>
         <p className={pruductColor}>
           <span className={detailName}>Color:</span>
-          <span>gold</span>
+          <span>{color}</span>
         </p>
         <p className={productSize}>
           <span className={detailName}>Size:</span>
-          <span>8</span>
+          <span>{size}</span>
         </p>
         <p className={productQuant}>
           <span className={detailName}>Quantity:</span>
           <span className={productQuantSelectWrapper}>
-            <button className={productQuantSelectBtn}>+</button> 1
+            <button className={productQuantSelectBtn}>+</button>
+            {quantity}
             <button className={productQuantSelectBtn}>-</button>
           </span>
         </p>
         <p className={productPrice}>
           <span className={detailName}>Price:</span>
-          <span>420 $</span>
+          <span>{price} $</span>
         </p>
         <p className={TotalProductPrice}>
           <span className={detailName}>Total:</span>
-          <span>420 $</span>
+          <span>{price} $</span>
         </p>
       </div>
       <a className={removeProduct}>Remove from basket</a>

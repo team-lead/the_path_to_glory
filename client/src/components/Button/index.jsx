@@ -2,8 +2,6 @@ import React from 'react';
 import { classes } from './style';
 
 export default function Button(props) {
-  console.log(props);
-
   let colorBtn = '';
   let btnSettings = '';
   if (props.black) colorBtn = classes.black;
