@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
-
 import MyAccountApp from '../../components/MyAccount'
 import WelcomePage from '../../components/MyAccount/Main'
 import MyProfile from '../../components/MyAccount/MyProfile'

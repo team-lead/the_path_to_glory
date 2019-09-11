@@ -75,16 +75,15 @@ class LoginUser extends Component {
   render() {
     const { formErrors } = this.state;
     return (
-      <Fragment>
-        <div className="wrapper">
-          <div className="form-wrapper">
-            <h1>Login</h1>
-            <form onSubmit={this.handleSubmit} noValidate>
+      <>
+        <div className={classes.wrapper}>
+          <div className={classes.formWrapper}>
+            <form className={classes.form} onSubmit={this.handleSubmit} noValidate>
 
-              <div className="email">
-                <label htmlFor="email">Email</label>
+              <div className={classes.wrapperItem}>
+                <label htmlFor={classes.email} className={classes.title}>Email</label>
                 <input
-                  className={formErrors.email.length > 0 ? "error" : null}
+                  className={classes.text}
                   placeholder="Email"
                   type="email"
                   name="email"
@@ -92,13 +91,13 @@ class LoginUser extends Component {
                   onChange={this.handleChange}
                 />
                 {formErrors.email.length > 0 && (
-                  <span className="errorMessage">{formErrors.email}</span>
+                  <span className={classes.errorMessage}>{formErrors.email}</span>
                 )}
               </div>
-              <div className="password">
-                <label htmlFor="password">Password</label>
+              <div className={classes.wrapperItem}>
+                <label htmlFor={classes.password} className={classes.title} >Password</label>
                 <input
-                  className={formErrors.password.length > 0 ? "error" : null}
+                  className={classes.text}
                   placeholder="Password"
                   type="password"
                   name="password"
@@ -106,20 +105,16 @@ class LoginUser extends Component {
                   onChange={this.handleChange}
                 />
                 {formErrors.password.length > 0 && (
-                  <span className="errorMessage">{formErrors.password}</span>
+                  <span className={classes.errorMessage}>{formErrors.password}</span>
                 )}
               </div>
-              <div className="createAccount">
-                <button type="submit">Create Account</button>
-                <small>Already Have an Account?</small>
+              <div className={classes.wrapperSaveBtn} >
+                <button type="submit" className={classes.saveBtn} >Login</button>
               </div>
             </form>
           </div>
         </div>
-        );
-      }
-    }
-      </Fragment>
+      </>
 
     )
   }

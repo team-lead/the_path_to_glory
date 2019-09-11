@@ -5,15 +5,23 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 // const cookieParser = require("cookie-parser");
 const db = require("./config/db");
+
 // import routes
 const authUser = require("./routes/auth");
 const checkAuthUser = require("./routes/checkAuth");
 const history = require("./routes/history");
 const cors = require("cors");
-//connect database
+
+const getMensItems = require("./routes/getMensItemsBack/index");
+const getWomensItems = require("./routes/getWomensItemsBack/index")
+const getAccsseroiesItems = require("./routes/getAcsItemsBack/index");
+const detailPage = require("./routes/detailPageBack/index");
+
 
 // Init app
 const app = express();
+
+//connect database
 db();
 
 app.use(cors());
@@ -27,13 +35,8 @@ app.use(bodyParser.json());
 app.use("/api", authUser);
 app.use("/api", checkAuthUser);
 app.use("/api", history);
+
 // Define routes hear
-const getMensItems = require("./routes/getMensItemsBack/index");
-const getWomensItems = require("./routes/getWomensItemsBack/index")
-const getAccsseroiesItems = require("./routes/getAcsItemsBack/index");
-const detailPage = require("./routes/detailPageBack/index");
-
-
 app.use('/detail', detailPage);
 app.use('/product-list', getMensItems);
 app.use('/product-list', getWomensItems);

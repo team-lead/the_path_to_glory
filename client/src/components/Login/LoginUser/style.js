@@ -3,45 +3,67 @@ import preset from "jss-preset-default";
 
 jss.setup(preset());
 
-let myProfileStyle = {
-  container: {
-    margin: "3%"
+let Register = {
+  wrapper: {
+    width: "40%",
+    margin: "auto",
+    backgroundColor: "black"
   },
-  myProfileContainer: {
+  formWrapper: {
     padding: "1vw",
     fontFamily: "Josefin Sans",
-    fontSize: "1.5vw",
-    marginLeft: "15vw",
+    fontSize: "1vw",
+    color: "#fff"
   },
-  myProfileTitle: {
-    marginTop: "3vw",
+  title: {
+    marginTop: "2.5vw",
     marginBottom: "1vw",
     fontWeight: "bold",
     textTransform: "uppercase",
   },
-  myProfileText: {
-    width: "50%",
-    paddingRight: "7px",
-    borderBottom: "2px solid silver",
+  text: {
+    borderBottom: "2px solid white",
+    border: "0px",
+    outline: "none",
+    color: "black",
+    backgroundColor: "black"
   },
   saveBtn: {
-    marginTop: "6vw",
-    backgroundColor: 'black',
+    marginLeft: "23%",
+    marginTop: "5vw",
+    marginBottom: "5vw",
+    backgroundColor: 'white',
     textTransform: "uppercase",
-    color: 'white',
-    fontSize: '1.8vw',
-    width: '20vw',
-    height: '5vw',
+    color: 'black',
+    fontSize: '1.3vw',
+    width: '16vw',
+    height: '4vw',
     outline: 'none',
     cursor: 'pointer',
-    border: '1px solid black',
+    border: '1px solid white',
     transition: 'all 0.3s',
     '&:hover': {
-      backgroundColor: 'white',
-      color: 'black'
+      backgroundColor: 'black',
+      color: 'white'
     }
+  },
+
+  error: {
+    border: "1px solid red"
+  },
+
+  errorMessage: {
+    paddingTop: "10px",
+    color: "red",
+    fontSize: "0.75em",
+    display: "relative",
+  },
+
+  wrapperItem: {
+    display: "flex",
+    flexDirection: "column",
   },
 
 }
 
-export const { classes } = jss.createStyleSheet(myProfileStyle).attach();
+export const { classes } = jss.createStyleSheet(Register).attach();

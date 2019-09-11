@@ -86,9 +86,6 @@ class RegisterUser extends Component {
     this.setState({ formErrors, [name]: value }, () => console.log(this.state));
   };
 
-
-
-
   render() {
 
     const { formErrors } = this.state;
@@ -111,12 +108,11 @@ class RegisterUser extends Component {
       <>
         <div className={classes.wrapper}>
           <div className={classes.formWrapper}>
-            <h1 className = {classes.h1 }>Create Account</h1>
-            <form onSubmit={this.handleSubmit} noValidate>
-              <div className={classes.firstName}>
-                <label htmlFor={classes.firstName}>First Name</label>
-                <input
-                  className={formErrors.firstName.length > 0 ? "error" : null}
+            <form className = { classes.form } onSubmit={this.handleSubmit} noValidate>
+              <div className={classes.wrapperItem}>
+                <label htmlFor={classes.firstName} className = { classes.title }> First Name </label>
+                <input 
+                  className={ classes.text }
                   placeholder="First Name"
                   type="text"
                   name="firstName"
@@ -127,10 +123,10 @@ class RegisterUser extends Component {
                   <span className={classes.errorMessage}>{formErrors.firstName}</span>
                 )}
               </div>
-              <div className={classes.lastName}>
-                <label htmlFor={classes.lastName}>Last Name</label>
+              <div className={classes.wrapperItem}>
+                <label htmlFor={classes.lastName} className = { classes.title }>Last Name</label>
                 <input
-                  className={formErrors.lastName.length > 0 ? "error" : null}
+                  className={classes.text }
                   placeholder="Last Name"
                   type="text"
                   name="lastName"
@@ -141,10 +137,10 @@ class RegisterUser extends Component {
                   <span className={classes.errorMessage}>{formErrors.lastName}</span>
                 )}
               </div>
-              <div className={classes.email}>
-                <label htmlFor={classes.email}>Email</label>
+              <div className={classes.wrapperItem}>
+                <label htmlFor={classes.email} className = { classes.title }>Email</label>
                 <input
-                  className={formErrors.email.length > 0 ? "error" : null}
+                  className={classes.text }
                   placeholder="Email"
                   type="email"
                   name="email"
@@ -155,10 +151,10 @@ class RegisterUser extends Component {
                   <span className={classes.errorMessage}>{formErrors.email}</span>
                 )}
               </div>
-              <div className={classes.password}>
-                <label htmlFor={classes.password}>Password</label>
+              <div className={classes.wrapperItem}>
+                <label htmlFor={classes.password} className = { classes.title } >Password</label>
                 <input
-                  className={formErrors.password.length > 0 ? "error" : null}
+                  className={classes.text }
                   placeholder="Password"
                   type="password"
                   name="password"
@@ -169,9 +165,8 @@ class RegisterUser extends Component {
                   <span className={classes.errorMessage}>{formErrors.password}</span>
                 )}
               </div>
-              <div className={classes.createAccount}>
-                <button type="submit">Create Account</button>
-                <small>Already Have an Account?</small>
+              <div className={classes.wrapperSaveBtn} >
+                <button type="submit" className={classes.saveBtn} >Register</button>
               </div>
             </form>
           </div>

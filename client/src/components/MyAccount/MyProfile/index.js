@@ -42,17 +42,17 @@ class MyProfile extends Component {
           <div className={classes.myProfileContainer}>
             <div >
               <h4 className={classes.myProfileTitle}>EMAIL ADRESS</h4>
-              <p className={classes.myProfileText} > {email}</p>
+              <p  className={classes.myProfileText} > {email}</p>
               <h4 className={classes.myProfileTitle} >first Name</h4>
-              <p className={classes.myProfileText}> {firstName} </p>
+              <p  className={classes.myProfileText}> {firstName} </p>
               <h4 className={classes.myProfileTitle}>second Name</h4>
-              <p className={classes.myProfileText} > {secondName}</p>
+              <p  className={classes.myProfileText} > {secondName}</p>
               <h4 className={classes.myProfileTitle}>mobile phone</h4>
-              <p className={classes.myProfileText} > {phone}</p>
+              <p  className={classes.myProfileText} > {phone}</p>
               <h4 className={classes.myProfileTitle}>gender</h4>
-              <p className={classes.myProfileText} > {gender}</p>
+              <p  className={classes.myProfileText} > {gender}</p>
               <h4 className={classes.myProfileTitle} >birthday</h4>
-              <p className={classes.myProfileText} > {birthday}</p>
+              <p  className={classes.myProfileText} > {birthday}</p>
             </div>
             <button className={classes.saveBtn}>save</button>
           </div>
