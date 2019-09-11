@@ -1,6 +1,8 @@
 import React from 'react';
 import { classes } from './style';
 import productImg from './img/lady.jpg';
+import { connect } from 'react-redux';
+import { REMOVE_PRODUCT_FROM_CART } from '../../../actions/detailGoodsAction';
 
 const CartProduct = ({
   id,
@@ -10,58 +12,59 @@ const CartProduct = ({
   price,
   quantity,
   color,
-  size
+  size,
+  removeProductFromCart
 }) => {
-  const {
-    cartProduct,
-    removeProduct,
-    productDetails,
-    productName,
-    ref,
-    pruductColor,
-    productSize,
-    detailName,
-    productQuant,
-    productQuantSelectWrapper,
-    productQuantSelectBtn,
-    productPrice,
-    TotalProductPrice
-  } = classes;
-
+  console.log(id);
   return (
-    <div className={cartProduct}>
+    <div className={classes.cartProduct}>
       <img src={productImg} alt='product name' />
-      <div className={productDetails}>
-        <h3 className={productName}>{name}</h3>
-        <p className={ref}>REF: {reference}</p>
-        <p className={pruductColor}>
-          <span className={detailName}>Color:</span>
+      <div className={classes.productDetails}>
+        <h3 className={classes.productName}>{name}</h3>
+        <p className={classes.ref}>REF: {reference}</p>
+        <p className={classes.pruductColor}>
+          <span className={classes.detailName}>Color:</span>
           <span>{color}</span>
         </p>
-        <p className={productSize}>
-          <span className={detailName}>Size:</span>
+        <p className={classes.productSize}>
+          <span className={classes.detailName}>Size:</span>
           <span>{size}</span>
         </p>
-        <p className={productQuant}>
-          <span className={detailName}>Quantity:</span>
-          <span className={productQuantSelectWrapper}>
-            <button className={productQuantSelectBtn}>+</button>
+        <p className={classes.productQuant}>
+          <span className={classes.detailName}>Quantity:</span>
+          <span className={classes.productQuantSelectWrapper}>
+            <button className={classes.productQuantSelectBtn}>+</button>
             {quantity}
-            <button className={productQuantSelectBtn}>-</button>
+            <button className={classes.productQuantSelectBtn}>-</button>
           </span>
         </p>
-        <p className={productPrice}>
-          <span className={detailName}>Price:</span>
+        <p className={classes.productPrice}>
+          <span className={classes.detailName}>Price:</span>
           <span>{price} $</span>
         </p>
-        <p className={TotalProductPrice}>
-          <span className={detailName}>Total:</span>
+        <p className={classes.TotalProductPrice}>
+          <span className={classes.detailName}>Total:</span>
           <span>{price} $</span>
         </p>
       </div>
-      <a className={removeProduct}>Remove from basket</a>
+      <a
+        className={classes.removeProduct}
+        onClick={() => removeProductFromCart(id)}>
+        Remove from basket
+      </a>
     </div>
   );
 };
 
-export default CartProduct;
+const mapDispatchToProps = dispatch => {
+  return {
+    removeProductFromCart: payload => {
+      dispatch({ type: REMOVE_PRODUCT_FROM_CART, payload });
+    }
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CartProduct);
