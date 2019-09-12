@@ -47,7 +47,7 @@ const productListStyle ={
     goodsPrise:{
         marginTop: '15px',
         color: 'rgba(132, 122, 122, 1)'
-    }
+    },
 }
 
 
