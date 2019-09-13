@@ -45,6 +45,7 @@ class Header extends Component {
           placeholder="Search for item"
           className={searchInput}
         />
+
         <Button black btnSettings={searchBtn} name="Search" />
       </div>
     ) : null;
@@ -241,47 +242,6 @@ class Header extends Component {
               </a>
             </div>
           </Container>
-          {/* <nav className={navbarMenu}>
-            <a
-              href="/product-list/mens"
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(0)}>
-              man
-            </a>
-            <a
-              href="/product-list/womens"
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(1)}>
-              woman
-            </a>
-            <a
-              href="/product-list/accessories"
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(2)}>
-              accessory
-            </a>
-          </nav>
-          <div onMouseOver={hideDropdownMenu}>
-            <a href={logoLink} className={logoItem}>
-              Originalité
-            </a>
-          </div>
-          <div className={headerActions}>
-            <NavLink href="#" onClick={searchModal}>
-              <i className={`fas fa-search ${headerActionsItemImg}`} />
-              <p className={classes.headerActionsItemText}>Search</p>
-            </NavLink>
-            <NavLink to="/myaccount/main" className={classes.headerActionsItem}>
-              <i className={`far fa-user ${headerActionsItemImg}`} />
-              <p className={classes.headerActionsItemText}>My account</p>
-            </NavLink>
-            <a href="#" className={classes.headerActionsItem}>
-              <i
-                className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}
-              />
-              <p className={classes.headerActionsItemText}>Shopping Bag</p>
-            </a>
-          </div> */}
         </header>
         {searchModalItem}
         {showDropdownMenuItem}

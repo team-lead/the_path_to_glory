@@ -38,6 +38,7 @@ const Footer = () => {
           <p className={footerItemTitle}>COMPANY</p>
 
           <a className={footerLink} href="/">
+
             History of the brand
           </a>
           <a className={footerLink} href="/">

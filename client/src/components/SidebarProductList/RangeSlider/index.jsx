@@ -6,7 +6,7 @@ import { red } from "@material-ui/core/colors";
 
 const useStyles = makeStyles({
   root: {
-    width: 250, 
+    width: 250,
     color: "#fff"
   },
   rail: {
@@ -24,6 +24,7 @@ function valuetext(value) {
 
 export default function RangeSlider() {
   const { rail, root, track, valueLabel } = useStyles();
+
   const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
