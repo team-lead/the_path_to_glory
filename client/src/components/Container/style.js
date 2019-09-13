@@ -5,7 +5,7 @@ jss.setup(preset());
 
 const containerStyles = {
   container: {
-    maxWidth: '1266px',
+    maxWidth: '1200px',
     margin: '0 auto'
   }
 };

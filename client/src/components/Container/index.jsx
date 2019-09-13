@@ -1,9 +1,13 @@
-import React from 'react';
-import { classes } from './style';
+import React from "react";
+import { classes } from "./style";
 
-const Container = ({ children }) => {
+const Container = ({ children, containerStg }) => {
   const { container } = classes;
-  return <div className={container}>{children}</div>;
+  return (
+    <div className={`${container} ${containerStg ? containerStg : ''}`}>
+      {children}
+    </div>
+  );
 };
 
 export default Container;

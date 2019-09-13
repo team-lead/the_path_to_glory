@@ -32,7 +32,8 @@ let newCollectionsStyle = {
   },
   сollectionImg: {
     display: "block",
-    width: "30vw",
+    // width: "30vw",
+    width: "390px",
     height: "49vh"
   },
   collectionItemImg: {

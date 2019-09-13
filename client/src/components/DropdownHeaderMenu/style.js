@@ -6,7 +6,7 @@ jss.setup(preset());
 let dropdownMenuStyle = {
   container: {
     width: "100%",
-    height: "80%",
+    height: "742px",
     backgroundColor: "#000",
     color: "#fff",
     position: "absolute",
@@ -21,7 +21,9 @@ let dropdownMenuStyle = {
     marginBottom: "68px"
   },
   content: {
-    padding: "62px 0 0 74px"
+    padding: "62px 0 0 74px",
+    width: "1200px",
+    margin: "0 auto"
   },
   categories: {
     display: "flex",

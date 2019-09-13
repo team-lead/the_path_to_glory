@@ -4,14 +4,48 @@ import preset from "jss-preset-default";
 jss.setup(preset());
 
 let headerStyle = {
+  // "@media (min-width: 320px)": {
+  //   header: {
+  //     userSelect: "none",
+  //     background: "#000",
+  //     width: "100%",
+  //     paddingBottom: "14px",
+  //     paddingTop: "14px"
+  //   },
+  //   containerStg: {
+  //     display: "flex",
+  //     justifyContent: "space-between",
+  //     alignItems: "center"
+  //   },
+  //   navbarMenu: {
+  //     display: "flex",
+  //     justifyContent: "space-evenly",
+  //     alignItems: "center",
+  //     width: "33%"
+  //   },
+  //   navbarMenuItem: {},
+  //   logoItem: {},
+  //   headerActions: {},
+  //   headerActionsItemText: {},
+  //   headerActionsItemImg: {},
+  //   search: {},
+  //   searchInput: {},
+  //   searchBtn: {},
+  //   dropdownMenuItem: {},
+  //   dropdownMenuItemGender: {}
+  // }
+  // "@media (min-width: 1266px)": {
   header: {
     userSelect: "none",
     background: "#000",
+    width: "100%",
+    paddingBottom: "18px",
+    paddingTop: "18px"
+  },
+  containerStg: {
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    height: "11vh"
+    alignItems: "center"
   },
   navbarMenu: {
     display: "flex",
@@ -30,14 +64,16 @@ let headerStyle = {
     "&:hover": {
       // borderBottom: "1px solid #fff"
       textDecoration: "underline"
+    },
+    "&.active": {
+      textDecoration: "underline"
     }
   },
   logoItem: {
     fontFamily: "Sofia, sans",
     color: "#fff",
     fontSize: "56px",
-    textDecoration: "none",
-    lineHeight: 1.5
+    textDecoration: "none"
   },
   headerActions: {
     display: "flex",
@@ -61,7 +97,7 @@ let headerStyle = {
   },
   search: {
     width: "100%",
-    height: "50%",
+    height: "514px",
     backgroundColor: "#fff",
     position: "absolute",
     display: "flex",
@@ -100,5 +136,6 @@ let headerStyle = {
   dropdownMenuItemGender: {
     textDecoration: "underline"
   }
+  // }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();

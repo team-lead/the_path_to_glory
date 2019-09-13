@@ -8,6 +8,8 @@ import {
   HIDE_DROPDOWN_MENU
 } from "../../actions/dropDownMenuAction";
 import DropdownHeaderMenu from "../DropdownHeaderMenu";
+import Button from "../Button";
+import Container from "../Container";
 
 class Header extends Component {
   render() {
@@ -31,7 +33,8 @@ class Header extends Component {
       searchInput,
       searchBtn,
       dropdownMenuItem,
-      dropdownMenuItemGender
+      dropdownMenuItemGender,
+      containerStg
     } = classes;
 
     const searchModalItem = showSearchModal ? (
@@ -42,9 +45,10 @@ class Header extends Component {
           className={searchInput}
         />
 
-        <a href="#" className={searchBtn}>
+        {/* <a href="#" className={searchBtn}>
           Search
-        </a>
+        </a> */}
+        <Button black btnSettings={searchBtn} name="Search" />
       </div>
     ) : null;
     const logoLink = window.location.pathname === "/" ? "#" : "/";
@@ -196,45 +200,51 @@ class Header extends Component {
     return (
       <>
         <header className={header}>
-          <nav className={navbarMenu}>
+          <Container containerStg={containerStg}>
+            <nav className={navbarMenu}>
+              <a
+                href="#"
+                className={navbarMenuItem}
+                onMouseOver={() => showDropdownMenu(0)}>
+                man
+              </a>
+              <a
+                href="#"
+                className={navbarMenuItem}
+                onMouseOver={() => showDropdownMenu(1)}>
+                woman
+              </a>
+              <a
+                href="#"
+                className={navbarMenuItem}
+                onMouseOver={() => showDropdownMenu(2)}>
+                accessory
+              </a>
+            </nav>
+            {/* <div onMouseOver={hideDropdownMenu}> */}
             <a
-              href="#"
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(0)}>
-              man
-            </a>
-            <a
-              href="#"
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(1)}>
-              woman
-            </a>
-            <a
-              href="#"
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(2)}>
-              accessory
-            </a>
-          </nav>
-          <div onMouseOver={hideDropdownMenu}>
-            <a href={logoLink} className={logoItem}>
+              href={logoLink}
+              className={logoItem}
+              onMouseOver={hideDropdownMenu}>
               Originalité
             </a>
-          </div>
-          <div className={headerActions}>
-            <a href="#" onClick={searchModal}>
-              <i className={`fas fa-search ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>Search</p>
-            </a>
-            <a href="#">
-              <i className={`far fa-user ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>My account</p>
-            </a>
-            <a href="/cart">
-              <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>Shopping Bag</p>
-            </a>
-          </div>
+
+            {/* </div> */}
+            <div className={headerActions}>
+              <a href="#" onClick={searchModal} onMouseOver={hideDropdownMenu}>
+                <i className={`fas fa-search ${headerActionsItemImg}`} />
+                <p className={headerActionsItemText}>Search</p>
+              </a>
+              <a href="#">
+                <i className={`far fa-user ${headerActionsItemImg}`} />
+                <p className={headerActionsItemText}>My account</p>
+              </a>
+              <a href="/cart">
+                <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
+                <p className={headerActionsItemText}>Shopping Bag</p>
+              </a>
+            </div>
+          </Container>
         </header>
         {searchModalItem}
         {showDropdownMenuItem}

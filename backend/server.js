@@ -15,13 +15,7 @@ app.use(logger("dev"));
 app.use(express.json({extended: false}));
 
 // Define routes hear
-<<<<<<< HEAD
-const productList = require("./routes/productListBack/index");
-const detailPage = require("./routes/detailPageBack/index");
 
-app.use('/', productList);
-app.use('/detail', detailPage);
-=======
 const getMensItems = require("./routes/getMensItemsBack/index");
 const getWomensItems = require("./routes/getWomensItemsBack/index")
 const getAccsseroiesItems = require("./routes/getAcsItemsBack/index");
@@ -32,7 +26,7 @@ app.use('/detail', detailPage);
 app.use('/product-list', getMensItems);
 app.use('/product-list', getWomensItems);
 app.use('/product-list', getAccsseroiesItems);
->>>>>>> d8e2db5bcc88245d8861d3af92dda68701ad5c24
+
 
 
 app.use((req, res, next) => {

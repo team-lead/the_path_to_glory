@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import ClothesImgItem from "../ClothesImgItem";
 import { classes } from "./style";
+import Container from "../../Container";
 
 const NewCollections = () => {
   const {
@@ -13,7 +14,7 @@ const NewCollections = () => {
   } = classes;
   return (
     <Fragment>
-      <div className={collectionsContainer}>
+      <Container containerStg={collectionsContainer}>
         <p className={collectionsTitle}>Shop by Category</p>
         <div className={collectionImgsBlock}>
           <div className={collectionItem}>
@@ -49,7 +50,7 @@ const NewCollections = () => {
             />
           </div>
         </div>
-      </div>
+      </Container>
     </Fragment>
   );
 };
