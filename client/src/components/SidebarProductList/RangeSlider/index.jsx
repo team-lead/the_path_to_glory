@@ -7,6 +7,7 @@ import { red } from "@material-ui/core/colors";
 const useStyles = makeStyles({
   root: {
     width: 250,
+
     color: "#fff"
   },
   rail: {
