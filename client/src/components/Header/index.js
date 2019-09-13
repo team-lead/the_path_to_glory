@@ -1,4 +1,5 @@
 /* eslint-disable */
+<<<<<<< HEAD
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { classes } from "./style";
@@ -8,11 +9,18 @@ class Header extends Component {
   render() {
     const { searchModal, showSearchModal } = this.props;
 =======
+=======
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { classes } from './style';
+import { SHOW_MODAL_WINDOW } from '../../actions/searchActions';
+>>>>>>> fa6bd6ea5b036070e468544f875fa889a8957ede
 import {
   SHOW_DROPDOWN_MENU,
   HIDE_DROPDOWN_MENU
-} from "../../actions/dropDownMenuAction";
-import DropdownHeaderMenu from "../DropdownHeaderMenu";
+} from '../../actions/dropDownMenuAction';
+import DropdownHeaderMenu from '../DropdownHeaderMenu';
 
 class Header extends Component {
   render() {
@@ -47,24 +55,26 @@ class Header extends Component {
       dropdownMenuItemGender
     } = classes;
 
-    
-
     const searchModalItem = showSearchModal ? (
+<<<<<<< HEAD
       <div className={search}  onMouseLeave={searchModal}>
 >>>>>>> d8e2db5bcc88245d8861d3af92dda68701ad5c24
+=======
+      <div className={search} onMouseLeave={searchModal}>
+>>>>>>> fa6bd6ea5b036070e468544f875fa889a8957ede
         <input
-          type="text"
-          placeholder="Search for item"
+          type='text'
+          placeholder='Search for item'
           className={searchInput}
         />
 
-        <a href="#" className={searchBtn}>
+        <a href='#' className={searchBtn}>
           Search
         </a>
       </div>
     ) : null;
-    const logoLink = window.location.pathname === "/" ? "#" : "/";
-    console.log("----", typeof activeDropdownMenu);
+    const logoLink = window.location.pathname === '/' ? '#' : '/';
+    console.log('----', typeof activeDropdownMenu);
 
     let showDropdownMenuItem = null;
 
@@ -72,34 +82,34 @@ class Header extends Component {
       case 0: {
         showDropdownMenuItem = (
           <DropdownHeaderMenu
-            title={"CATEGORIES"}
+            title={'CATEGORIES'}
             onMouseOver={() => showDropdownMenu(0)}
             onMouseLeave={hideDropdownMenu}>
             <div>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 New arrivals
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Shirts
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Coats
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Jackets
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Sweaters
               </a>
             </div>
             <div>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Polos & Tees
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Jeans & Pants
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Outerwear
               </a>
             </div>
@@ -110,40 +120,40 @@ class Header extends Component {
       case 1: {
         showDropdownMenuItem = (
           <DropdownHeaderMenu
-            title={"CATEGORIES"}
+            title={'CATEGORIES'}
             onMouseOver={() => showDropdownMenu(1)}
             onMouseLeave={hideDropdownMenu}>
             <div>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 New arrivals
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Dresses
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Knitwear
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Coats
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Jackets
               </a>
             </div>
             <div>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Suits & Combined
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 T-shirts
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Jeans
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Skirts
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Underwear
               </a>
             </div>
@@ -154,50 +164,50 @@ class Header extends Component {
       case 2: {
         showDropdownMenuItem = (
           <DropdownHeaderMenu
-            title={"CATEGORIES"}
+            title={'CATEGORIES'}
             onMouseOver={() => showDropdownMenu(2)}
             onMouseLeave={hideDropdownMenu}>
             <div>
               <a
                 className={`${dropdownMenuItem} ${dropdownMenuItemGender}`}
-                href="#">
+                href='#'>
                 For Woman
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Bags
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Waletts
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Belts
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Scarves & hats
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Sunglasses
               </a>
             </div>
             <div>
               <a
                 className={`${dropdownMenuItem} ${dropdownMenuItemGender}`}
-                href="#">
+                href='#'>
                 For Man
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Bags
               </a>
-              <a className={dropdownMenuItem} href="#">
-              Waletts, Card Cases
+              <a className={dropdownMenuItem} href='#'>
+                Waletts, Card Cases
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Belts
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Ties & Cummerbunds
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Sunglasses
               </a>
             </div>
@@ -228,19 +238,19 @@ class Header extends Component {
             <a href="/" className={logoItem}>
 =======
             <a
-              href="/product-list/mens"
+              href='/product-list/mens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
             </a>
             <a
-              href="/product-list/womens"
+              href='/product-list/womens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
             </a>
             <a
-              href="/product-list/accessories"
+              href='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
@@ -253,17 +263,21 @@ class Header extends Component {
             </a>
           </div>
           <div className={headerActions}>
-            <a href="#" onClick={searchModal}>
+            <NavLink href='#' onClick={searchModal}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>Search</p>
-            </a>
-            <a href="#">
+              <p className={classes.headerActionsItemText}>Search</p>
+            </NavLink>
+            <NavLink to="/myaccount/main" className={classes.headerActionsItem}>
               <i className={`far fa-user ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>My account</p>
-            </a>
-            <a href="/cart">
-              <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>Shopping Bag</p>
+              <p className={classes.headerActionsItemText}>My account</p>
+            </NavLink>
+            <a href="#" className={classes.headerActionsItem}>
+              <i
+                className={`fas fa-shopping-bag ${
+                  classes.headerActionsItemImg
+                }`}
+              />
+              <p className={classes.headerActionsItemText}>Shopping Bag</p>
             </a>
           </div>
         </header>

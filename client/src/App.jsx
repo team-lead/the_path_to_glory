@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import MainPage from "./pages/MainPage";
@@ -9,12 +10,20 @@ import ProductsPage from "./pages/ProductsPage";
 =======
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+=======
+// eslint-disable-next-line no-unused-vars
+import React, { Fragment } from 'react';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+>>>>>>> fa6bd6ea5b036070e468544f875fa889a8957ede
 import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
+import MyAccountPage from './pages/MyAccountPage'
+import LoginPage from './pages/LoginPage';
 import Checkout from './pages/Checkout';
 import DetailPage from './pages/DetailPage/DetailPage';
 import ProductsPage from './pages/ProductsPage';
 
+<<<<<<< HEAD
 >>>>>>> d8e2db5bcc88245d8861d3af92dda68701ad5c24
 
 const App = () => {
@@ -32,6 +41,26 @@ const App = () => {
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/" component={MainPage} />
     </Switch>
+=======
+const App = () => {
+  return (
+    <Fragment>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path='/myaccount/:id' component={MyAccountPage} />
+          <Route exact path='/:id' component={LoginPage} />
+          <Route exact path='/cart' component={Cart} />
+          <Route exact path='/' component={MainPage} />
+          <Route exact path='/cart/checkout' component={Checkout} />
+          <Route exact path='/product-list/mens' component={ProductsPage} />
+          <Route exact path='/product-list/womens' component={ProductsPage} />
+          <Route exact path='/product-list/accessories' component={ProductsPage} />
+          <Route exact path='/detail/:id' component={DetailPage} />
+
+        </Switch>
+      </BrowserRouter>
+    </Fragment>
+>>>>>>> fa6bd6ea5b036070e468544f875fa889a8957ede
   );
 };
 export default App;
