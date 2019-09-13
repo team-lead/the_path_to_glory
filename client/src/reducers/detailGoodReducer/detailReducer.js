@@ -1,16 +1,24 @@
 import { GET_GOODS_DETAIL } from "../../actions/detailGoodsAction"
 
 const initialState = {
-    some: ["dqsdq"]
+    objectId: {
+        id: "",
+        img: [],
+        description: [],
+        category: "",
+        price: "",
+        name: "",
+        ref: "",
+        new: false
+    }
 }
 
 export const activeGoodsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_GOODS_DETAIL:
             return {
-                some: action.payload
+                objectId: action.payload
             }
-
         default: 
             return state
     }

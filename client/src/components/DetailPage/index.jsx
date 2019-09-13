@@ -3,10 +3,28 @@ import { connect } from 'react-redux';
 import { classes } from './style';
 import Sizes from './ClothesSizes';
 import Colors from './ClothesColors';
-import Button from '../Button';
+import Button from '../Button/index';
 import Header from '../Header';
 
 class DetailPageComponent extends Component {
+  state = {
+    id: this.props.goodsItemDetails.id,
+    img: [
+      this.props.goodsItemDetails.image[0],
+      this.props.goodsItemDetails.image[1]
+    ],
+    description: [
+      this.props.goodsItemDetails.description[0],
+      this.props.goodsItemDetails.description[1],
+      this.props.goodsItemDetails.description[2]
+    ],
+    category: this.props.goodsItemDetails.category,
+    price: this.props.goodsItemDetails.price,
+    name: this.props.goodsItemDetails.name,
+    ref: this.props.goodsItemDetails.name,
+    new: this.props.goodsItemDetails.new
+  };
+
   handlerComponent = () => {
     return (
       <Fragment>
@@ -46,7 +64,6 @@ class DetailPageComponent extends Component {
               </div>
 
               <Button
-                to='/'
                 btnSettings={classes.btnSettings}
                 black
                 name='add to bascket'
@@ -64,7 +81,7 @@ class DetailPageComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    goodsItemDetails: state.active.some
+    goodsItemDetails: state.active.objectId
   };
 };
 
