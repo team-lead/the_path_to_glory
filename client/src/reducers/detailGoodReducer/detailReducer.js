@@ -1,8 +1,8 @@
-import { GET_GOODS_DETAIL } from "../../actions/detailGoodsAction"
+import {GET_GOODS_DETAIL} from "../../actions/detailGoodsAction"
 
 const initialState = {
-    objectId: {
-        id: "",
+    cart: [{
+        id: "resul",
         img: [],
         description: [],
         category: "",
@@ -10,8 +10,8 @@ const initialState = {
         name: "",
         ref: "",
         new: false
-    }
-}
+    }],
+};
 
 export const activeGoodsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -19,7 +19,7 @@ export const activeGoodsReducer = (state = initialState, action) => {
             return {
                 objectId: action.payload
             }
-        default: 
+        default:
             return state
     }
 }

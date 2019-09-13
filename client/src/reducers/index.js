@@ -1,6 +1,5 @@
 import { combineReducers } from "redux";
-import { goods } from "./goodsListReducer/listGoogdsReducer";
-import { activeGoodsReducer } from "./goodsListReducer/detailReducer";
+// import { goods } from "./goodsListReducer/listGoogdsReducer";
 import { activeGoodsReducer } from "./detailGoodReducer/detailReducer"
 import { allGoods } from "./getGoodsReducer/index"
 import searchReducer from "./mainPageReducers/searchReducer";

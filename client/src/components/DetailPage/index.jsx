@@ -5,6 +5,8 @@ import Sizes from './ClothesSizes';
 import Colors from './ClothesColors';
 import Button from '../Button/index';
 import Header from '../Header';
+import {applyMiddleware as dispatch} from "redux";
+// import addToCart from '../../actions/cartActions'
 
 class DetailPageComponent extends Component {
   state = {
@@ -23,6 +25,15 @@ class DetailPageComponent extends Component {
     name: this.props.goodsItemDetails.name,
     ref: this.props.goodsItemDetails.name,
     new: this.props.goodsItemDetails.new
+  };
+
+
+  tests = () => {
+    // console.log(this.store.getState();
+    console.log(this.props.goodsItemDetails.id);
+    console.log(this.props.goodsItemDetails.price);
+    console.log(this.props);
+
   };
 
   handlerComponent = () => {
@@ -67,6 +78,8 @@ class DetailPageComponent extends Component {
                 btnSettings={classes.btnSettings}
                 black
                 name='add to bascket'
+            // clickHandler={() => dispatch({ type: "ADD_TO_CART" })}
+              onClick={() => dispatch({ type: "SOMETHING" })}
               />
             </div>
           </li>
@@ -81,8 +94,10 @@ class DetailPageComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    goodsItemDetails: state.active.objectId
+    goodsItemDetails: state.active.objectId,
+    cart: state.add
   };
 };
 
 export default connect(mapStateToProps)(DetailPageComponent);
+//;'ХУЙ
