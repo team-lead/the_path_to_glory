@@ -36,20 +36,22 @@ class Header extends Component {
     } = classes;
 
     const searchModalItem = showSearchModal ? (
+
       <div className={search} onMouseLeave={searchModal}>
         <input
-          type='text'
-          placeholder='Search for item'
+          type="text"
+          placeholder="Search for item"
           className={searchInput}
         />
-
         <a href='#' className={searchBtn}>
           Search
         </a>
       </div>
     ) : null;
+
     const logoLink = window.location.pathname === '/' ? '#' : '/';
     console.log('----', typeof activeDropdownMenu);
+
 
     let showDropdownMenuItem = null;
 
@@ -95,40 +97,40 @@ class Header extends Component {
       case 1: {
         showDropdownMenuItem = (
           <DropdownHeaderMenu
-            title={'CATEGORIES'}
+            title={"CATEGORIES"}
             onMouseOver={() => showDropdownMenu(1)}
             onMouseLeave={hideDropdownMenu}>
             <div>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 New arrivals
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Dresses
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Knitwear
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Coats
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Jackets
               </a>
             </div>
             <div>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Suits & Combined
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 T-shirts
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Jeans
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Skirts
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Underwear
               </a>
             </div>
@@ -139,50 +141,50 @@ class Header extends Component {
       case 2: {
         showDropdownMenuItem = (
           <DropdownHeaderMenu
-            title={'CATEGORIES'}
-            onMouseOver={() => showDropdownMenu(2)}
+            title={"CATEGORIES"}
+           onMouseOver={() => showDropdownMenu(2)}
             onMouseLeave={hideDropdownMenu}>
             <div>
               <a
                 className={`${dropdownMenuItem} ${dropdownMenuItemGender}`}
-                href='#'>
+                href="#">
                 For Woman
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Bags
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Waletts
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Belts
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Scarves & hats
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Sunglasses
               </a>
             </div>
             <div>
               <a
                 className={`${dropdownMenuItem} ${dropdownMenuItemGender}`}
-                href='#'>
+                href="#">
                 For Man
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Bags
               </a>
-              <a className={dropdownMenuItem} href='#'>
-                Waletts, Card Cases
+              <a className={dropdownMenuItem} href="#">
+              Waletts, Card Cases
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Belts
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Ties & Cummerbunds
               </a>
-              <a className={dropdownMenuItem} href='#'>
+              <a className={dropdownMenuItem} href="#">
                 Sunglasses
               </a>
             </div>

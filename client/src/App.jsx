@@ -9,6 +9,7 @@ import Checkout from './pages/Checkout';
 import DetailPage from './pages/DetailPage/DetailPage';
 import ProductsPage from './pages/ProductsPage';
 
+
 const App = () => {
   return (
     <Fragment>
