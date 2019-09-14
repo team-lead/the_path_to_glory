@@ -79,7 +79,7 @@ class DetailPageComponent extends Component {
                 black
                 name='add to bascket'
             // clickHandler={() => dispatch({ type: "ADD_TO_CART" })}
-              onClick={() => dispatch({ type: "SOMETHING" })}
+              onClick={() => dispatch({ type: "ADD_TO_CART" })}
               />
             </div>
           </li>
@@ -95,9 +95,13 @@ class DetailPageComponent extends Component {
 const mapStateToProps = state => {
   return {
     goodsItemDetails: state.active.objectId,
-    cart: state.add
+    cart: state.cart
   };
 };
+const mapDispatchToProps= (dispatch)=>{
+  return{
+    addToCart: (id)=>{dispatch(addToCart(id))}
+  }};
+export default connect(mapStateToProps,mapDispatchToProps)(DetailPageComponent);
 
-export default connect(mapStateToProps)(DetailPageComponent);
-//;'ХУЙ
+

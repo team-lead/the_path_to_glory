@@ -3,13 +3,13 @@ import { combineReducers } from "redux";
 import { activeGoodsReducer } from "./detailGoodReducer/detailReducer"
 import { allGoods } from "./getGoodsReducer/index"
 import searchReducer from "./mainPageReducers/searchReducer";
-import addToCartReducer from "./cartReducers/addToCart";
+import cartReducer from "./cartReducers/addToCart";
 import showDropdownMenuReducer from "./mainPageReducers/dropDownMenuReducer";
 
 const rootReducer = combineReducers({
   active: activeGoodsReducer,
   search: searchReducer,
-  add: addToCartReducer,
+  cart: cartReducer,
   dropdownMenu: showDropdownMenuReducer,
   allGoods: allGoods
 });

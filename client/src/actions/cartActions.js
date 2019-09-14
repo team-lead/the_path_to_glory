@@ -1,15 +1,11 @@
-
 export const ADD_TO_CART = "ADD_TO_CART";
 
-export  function addToCart(id, count) {
+export function addToCart(id) {
     console.log("working");
 
-    return async (dispatch) => {
-        await dispatch({
-            type: 'ADD_TO_CART',
-            id: id,
-            count: count,
-        })
-
+    return {
+        type: ADD_TO_CART,
+        payload: id,
     }
+
 }
