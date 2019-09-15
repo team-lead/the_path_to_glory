@@ -47,14 +47,12 @@ class ProductItem extends Component {
 
 const mapStateToProps = state => {
     return {
-        goodsIdItem: state.active.objectId,
-        goodsList: state.allGoods.goodsList,
+        goodsList: state.allGoods.goodsList
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        getDataID: id => dispatch(getGoodsDetailID(id)),
         getGoods: url => dispatch(getGoods(url)),
     }
 }
