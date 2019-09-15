@@ -11,9 +11,7 @@ const App = () => {
   return (
     <Switch>
       <Route exact path="/cart/checkout" component={Checkout} />
-      <Route exact path = "/product-list/mens" component = {ProductsPage}/>
-      <Route exact path = "/product-list/womens" component = {ProductsPage}/>
-      <Route exact path = "/product-list/accessories" component = {ProductsPage}/>
+      <Route exact path = "/product-list/:category" component = {ProductsPage}/>
       <Route exact path="/detail/:id" component={DetailPage} />
       <Route exact path="/cart" component={Cart} />
       <Route exact path="/" component={MainPage} />
