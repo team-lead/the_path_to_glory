@@ -7,16 +7,7 @@ import {
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
-  objectId: {
-    id: '',
-    img: [],
-    description: [],
-    category: '',
-    price: '',
-    name: '',
-    reference: '',
-    new: false
-  },
+  objectId: [],
   checkoutTotal: 0,
   cart: [
     {
@@ -56,6 +47,7 @@ export const activeGoodsReducer = (state = initialState, action) => {
   switch (action.type) {
     case GET_GOODS_DETAIL: {
       return {
+        ...state,
         objectId: action.payload
       };
     }
@@ -84,6 +76,6 @@ export const activeGoodsReducer = (state = initialState, action) => {
       return { ...state, cart };
     }
     default:
-      return state;
+      return { ...state };
   }
 };

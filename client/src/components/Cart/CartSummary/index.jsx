@@ -4,7 +4,6 @@ import Button from '../../Button';
 import { connect } from 'react-redux';
 import { setCheckoutTotal } from '../../../actions/detailGoodsAction';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import Checkout from '../../../pages/Checkout';
 
 const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
   const {
