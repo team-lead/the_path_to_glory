@@ -1,7 +1,7 @@
 # Запуск backend 
     - Для запуска нужно создать файл default.json, в него поместить следующее 
         {
-        "mongoURI": "mongodb+srv://yourlogin:yourpasword@dan-tld42.mongodb.net/goods?retryWrites=true&w=majority",
+        "mongoURI": "mongodb+srv://yourlogin:yourpassword@dan-tld42.mongodb.net/goods?retryWrites=true&w=majority",
         "jwtSecret": "dfgjksdgkjnsdvgjhsdgjsdg"
         }
 
