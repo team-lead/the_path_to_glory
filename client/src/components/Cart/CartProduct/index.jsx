@@ -2,7 +2,11 @@ import React from 'react';
 import { classes } from './style';
 import productImg from './img/lady.jpg';
 import { connect } from 'react-redux';
-import { REMOVE_PRODUCT_FROM_CART } from '../../../actions/detailGoodsAction';
+import {
+  removeProductFromCart,
+  decCartProductQuantity,
+  incCartProductQuantity
+} from '../../../actions/detailGoodsAction';
 
 const CartProduct = ({
   id,
@@ -13,9 +17,12 @@ const CartProduct = ({
   quantity,
   color,
   size,
-  removeProductFromCart
+  removeProductFromCart,
+  incCartProductQuantity,
+  decCartProductQuantity
 }) => {
-  console.log(id);
+  const totalPrice = price * quantity;
+
   return (
     <div className={classes.cartProduct}>
       <img src={productImg} alt='product name' />
@@ -33,9 +40,17 @@ const CartProduct = ({
         <p className={classes.productQuant}>
           <span className={classes.detailName}>Quantity:</span>
           <span className={classes.productQuantSelectWrapper}>
-            <button className={classes.productQuantSelectBtn}>+</button>
+            <button
+              className={classes.productQuantSelectBtn}
+              onClick={() => decCartProductQuantity(id)}>
+              -
+            </button>
             {quantity}
-            <button className={classes.productQuantSelectBtn}>-</button>
+            <button
+              className={classes.productQuantSelectBtn}
+              onClick={() => incCartProductQuantity(id)}>
+              +
+            </button>
           </span>
         </p>
         <p className={classes.productPrice}>
@@ -44,7 +59,7 @@ const CartProduct = ({
         </p>
         <p className={classes.TotalProductPrice}>
           <span className={classes.detailName}>Total:</span>
-          <span>{price} $</span>
+          <span>{totalPrice} $</span>
         </p>
       </div>
       <a
@@ -58,9 +73,12 @@ const CartProduct = ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    removeProductFromCart: payload => {
-      dispatch({ type: REMOVE_PRODUCT_FROM_CART, payload });
-    }
+    removeProductFromCart: productId =>
+      dispatch(removeProductFromCart(productId)),
+    decCartProductQuantity: productId =>
+      dispatch(decCartProductQuantity(productId)),
+    incCartProductQuantity: productId =>
+      dispatch(incCartProductQuantity(productId))
   };
 };
 

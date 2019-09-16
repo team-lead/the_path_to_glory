@@ -10,7 +10,8 @@ export default function Button(props) {
   return (
     <a
       className={`${classes.btn} ${colorBtn} ${btnSettings} `}
-      href={props.href}>
+      href={props.href}
+      onClick={props.clickHandler}>
       {props.name}
     </a>
   );

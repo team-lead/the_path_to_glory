@@ -2,7 +2,9 @@ import React from 'react';
 import { classes } from './style';
 import Button from '../../Button';
 import { connect } from 'react-redux';
-import { SET_CHECKOUT_TOTAL } from '../../../actions/detailGoodsAction';
+import { setCheckoutTotal } from '../../../actions/detailGoodsAction';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
+import Checkout from '../../../pages/Checkout';
 
 const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
   const {
@@ -22,7 +24,7 @@ const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
     : summaryContainer;
 
   const orderValue = productsInCart.reduce(
-    (value, product) => value + +product.price,
+    (value, product) => value + +product.price * product.quantity,
     0
   );
 
@@ -50,13 +52,17 @@ const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
             <span>{orderValue} $</span>
           </span>
         </section>
-        <Button
-          name='CHECKOUT'
-          btnSettings={checkoutBtn}
-          href='/cart/checkout'
-          black
-          onClick={() => setCheckoutTotal(checkoutTotal)}
-        />
+        <Link to='/cart/checkout'>
+          <Button
+            name='CHECKOUT'
+            btnSettings={checkoutBtn}
+            black
+            clickHandler={() => setCheckoutTotal(checkoutTotal)}
+          />
+        </Link>
+        <div onClick={() => setCheckoutTotal(checkoutTotal)}>
+          setCheckoutTotal
+        </div>
       </form>
     </div>
   );
@@ -70,7 +76,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    setCheckoutTotal: payload => dispatch({ type: SET_CHECKOUT_TOTAL, payload })
+    setCheckoutTotal: totalValue => dispatch(setCheckoutTotal(totalValue))
   };
 };
 

@@ -1,7 +1,9 @@
 import {
   GET_GOODS_DETAIL,
   REMOVE_PRODUCT_FROM_CART,
-  SET_CHECKOUT_TOTAL
+  SET_CHECKOUT_TOTAL,
+  DEC_CART_PRODUCT_QUANTITY,
+  INC_CART_PRODUCT_QUANTITY
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
@@ -62,8 +64,24 @@ export const activeGoodsReducer = (state = initialState, action) => {
       return { ...state, cart };
     }
     case SET_CHECKOUT_TOTAL: {
-      console.log(action.payload);
-      return { state, checkoutTotal: action.payload };
+      const checkoutTotal = action.payload;
+      return { ...state, checkoutTotal };
+    }
+    case INC_CART_PRODUCT_QUANTITY: {
+      const cart = state.cart.map(product => {
+        return product.id === action.payload
+          ? { ...product, quantity: product.quantity + 1 }
+          : { ...product };
+      });
+      return { ...state, cart };
+    }
+    case DEC_CART_PRODUCT_QUANTITY: {
+      const cart = state.cart.map(product => {
+        return product.id === action.payload && product.quantity > 1
+          ? { ...product, quantity: product.quantity - 1 }
+          : { ...product };
+      });
+      return { ...state, cart };
     }
     default:
       return state;
