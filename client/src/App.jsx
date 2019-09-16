@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { Fragment } from 'react';
+import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import Cart from './pages/Cart';
@@ -21,7 +21,6 @@ const App = () => {
           <Route exact path='/cart/checkout' component={Checkout} />
           <Route exact path = "/product-list/:category" component = {ProductsPage}/>
           <Route exact path='/detail/:id' component={DetailPage} />
-
         </Switch>
       </BrowserRouter>
   );
