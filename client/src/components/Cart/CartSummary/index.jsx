@@ -60,9 +60,6 @@ const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
             clickHandler={() => setCheckoutTotal(checkoutTotal)}
           />
         </Link>
-        <div onClick={() => setCheckoutTotal(checkoutTotal)}>
-          setCheckoutTotal
-        </div>
       </form>
     </div>
   );
