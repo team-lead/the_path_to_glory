@@ -12,7 +12,6 @@ import ProductsPage from './pages/ProductsPage';
 
 const App = () => {
   return (
-    <Fragment>
       <BrowserRouter>
         <Switch>
           <Route exact path='/myaccount/:id' component={MyAccountPage} />
@@ -20,14 +19,11 @@ const App = () => {
           <Route exact path='/cart' component={Cart} />
           <Route exact path='/' component={MainPage} />
           <Route exact path='/cart/checkout' component={Checkout} />
-          <Route exact path='/product-list/mens' component={ProductsPage} />
-          <Route exact path='/product-list/womens' component={ProductsPage} />
-          <Route exact path='/product-list/accessories' component={ProductsPage} />
+          <Route exact path = "/product-list/:category" component = {ProductsPage}/>
           <Route exact path='/detail/:id' component={DetailPage} />
 
         </Switch>
       </BrowserRouter>
-    </Fragment>
   );
 };
 export default App;
