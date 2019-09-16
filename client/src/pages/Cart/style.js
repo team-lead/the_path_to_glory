@@ -36,6 +36,19 @@ const CartPageStyles = {
   summarySettings: {
     position: 'relative',
     bottom: '25px'
+  },
+  emptyCartMsg: {
+    display: 'flex'
+  },
+  emptyCartMsgIcon: {
+    fontSize: '30px'
+  },
+  emptyCartMsgText: {
+    fontFamily: 'Josefin Sans, sans-serif',
+    textTransform: 'uppercase',
+    marginTop: '8 px',
+    marginLeft: '13px',
+    fontSize: '25px'
   }
 };
 

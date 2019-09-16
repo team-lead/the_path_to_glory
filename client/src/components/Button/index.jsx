@@ -2,8 +2,6 @@ import React from 'react';
 import { classes } from './style';
 
 export default function Button(props) {
-  console.log(props);
-
   let colorBtn = '';
   let btnSettings = '';
   if (props.black) colorBtn = classes.black;
@@ -13,8 +11,7 @@ export default function Button(props) {
     <a
       className={`${classes.btn} ${colorBtn} ${btnSettings} `}
       href={props.href}
-      onClick={props.clickHandler}
-    >
+      onClick={props.clickHandler}>
       {props.name}
     </a>
   );
