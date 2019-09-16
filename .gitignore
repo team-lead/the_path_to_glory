@@ -31,3 +31,5 @@ yarn-error.log*
 /backend/package-lock.json
 /.gitignore
 .gitignore
+/yarn.lock
+/client/yarn.lock
