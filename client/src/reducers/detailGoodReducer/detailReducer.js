@@ -1,25 +1,16 @@
-import {GET_GOODS_DETAIL} from "../../actions/detailGoodsAction"
+import { GET_GOODS_DETAIL } from "../../actions/detailGoodsAction"
 
 const initialState = {
-    cart: [{
-        id: "resul",
-        img: [],
-        description: [],
-        category: "",
-        price: "",
-        name: "",
-        ref: "",
-        new: false
-    }],
-};
+    objectId: []
+}
 
 export const activeGoodsReducer = (state = initialState, action) => {
     switch (action.type) {
         case GET_GOODS_DETAIL:
             return {
-                objectId: action.payload
+                ...state, objectId: action.payload
             }
-        default:
+        default: 
             return state
     }
 }
