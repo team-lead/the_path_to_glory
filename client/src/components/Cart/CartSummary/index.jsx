@@ -1,8 +1,11 @@
 import React from 'react';
 import { classes } from './style';
 import Button from '../../Button';
+import { connect } from 'react-redux';
+import { setCheckoutTotal } from '../../../actions/detailGoodsAction';
+import { BrowserRouter as Router, Link } from 'react-router-dom';
 
-const CartSummary = ({ settings }) => {
+const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
   const {
     summaryContainer,
     cartSummary,
@@ -19,6 +22,13 @@ const CartSummary = ({ settings }) => {
     ? `${summaryContainer} ${settings}`
     : summaryContainer;
 
+  const orderValue = productsInCart.reduce(
+    (value, product) => value + +product.price * product.quantity,
+    0
+  );
+
+  const checkoutTotal = orderValue;
+
   return (
     <div className={summaryContainerClasses}>
       <form className={cartSummary}>
@@ -30,7 +40,7 @@ const CartSummary = ({ settings }) => {
         <section className={orderDetails}>
           <span className={orderDetailsItem}>
             <span>ORDER VALUE</span>
-            <span>$ 1260</span>
+            <span>{orderValue} $</span>
           </span>
           <span className={orderDetailsItem}>
             <span>DELIVERY</span>
@@ -38,18 +48,35 @@ const CartSummary = ({ settings }) => {
           </span>
           <span className={`${orderDetailsItem} bold`}>
             <span>TOTAL</span>
-            <span>$ 420</span>
+            <span>{orderValue} $</span>
           </span>
         </section>
-        <Button
-          name='CHECKOUT'
-          btnSettings={checkoutBtn}
-          href='/cart/checkout'
-          black
-        />
+        <Link to='/cart/checkout'>
+          <Button
+            name='CHECKOUT'
+            btnSettings={checkoutBtn}
+            black
+            clickHandler={() => setCheckoutTotal(checkoutTotal)}
+          />
+        </Link>
       </form>
     </div>
   );
 };
 
-export default CartSummary;
+const mapStateToProps = state => {
+  return {
+    productsInCart: state.active.cart
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    setCheckoutTotal: totalValue => dispatch(setCheckoutTotal(totalValue))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(CartSummary);
