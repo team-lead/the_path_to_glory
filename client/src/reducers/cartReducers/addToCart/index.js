@@ -1,7 +1,7 @@
 import {ADD_TO_CART} from "../../../actions/cartActions";
 
-const initialState = {
-    cart: [
+const initialState =
+     [
         {
             category: "Category",
             images: [],
@@ -13,14 +13,16 @@ const initialState = {
             price: Number,
             quantity: Number
         }
-    ]
-};
+    ];
+
 
 export function cartReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_TO_CART: {
             // логика добавления в корзину
-            return {...state, product1: {name: "Труселя оделись", id: action.id, new: !state.cart.product1.new},};
+            return {
+                ...state, cart: {name: "Труселя оделись", id: action.id}
+            }
         }
         default: {
             return {...state};
