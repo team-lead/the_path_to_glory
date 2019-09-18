@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import ProductItem from "./ProductItem"
 import {classes} from './style'
-import {VerticleButton as ScrollUpButton} from "react-scroll-up-button";
+import {CircleArrow as ScrollUpButton} from "react-scroll-up-button";
 
 class ProductList extends Component {
     render() { 
