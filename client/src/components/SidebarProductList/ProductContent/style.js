@@ -14,6 +14,11 @@ let LeftSideMenuStyle = {
     display: 'flex',
 
   },
+  '@media (max-width: 576px)':{
+    leftMenu:{
+      display: 'none'
+    }
+  }
 
 };
 export const { classes } = jss.createStyleSheet(LeftSideMenuStyle).attach();

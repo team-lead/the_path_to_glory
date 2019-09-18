@@ -10,11 +10,26 @@ class ProductList extends Component {
             productListContainer,
             categoryName,
             productList,
+            filter,
         }=classes;
 
+        const nameCategory=()=>{
+            if (window.location.pathname === "/product-list/mens"){
+                return "Man"
+            } else if (window.location.pathname === "/product-list/womens") {
+                return "Woman"
+            } else if (window.location.pathname === "/product-list/accessories") {
+                return "Accessory"
+            }
+        }
+        const openFiltr =()=>{
+            console.log('Filter open')
+        
+        }
             return ( 
             <div className={productListContainer}>
-                <h3 className = {categoryName}>All goods</h3>
+                <h3 className = {categoryName}>{nameCategory()}</h3>
+                <h3 className = {filter} onClick={openFiltr}>Filters</h3>
                 <ul className = {productList}>
                     <ProductItem />
                 </ul>
