@@ -3,7 +3,10 @@ const Accessories = mongoose.model("Accessories", {
   category: String,
   images: Array,
   name: String,
-  subCategory: String,
+  subCategory: {
+    type: String,
+    trim: true
+  },
   ref: String,
   description: Array,
   new: Boolean,

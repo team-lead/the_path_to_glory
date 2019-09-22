@@ -3,26 +3,29 @@ const router = express.Router();
 const Man = require("../../models/Man");
 const Accessories = require("../../models/Accessories");
 const Woman = require("../../models/Woman");
+const { getCategory, sortByNewCollections } = require("../../controllers/category");
 
-const goodsRoutes = ["/mens", "/womens", "/accessories"];
-
-goodsRoutes.forEach(name => {
-    router.get(name, async (req, res) => {
-        if(name === "/mens") {
+router.get("/", async (req, res) => {
+    const { collections } = req.query;
+    try {
+        if(collection === "mens") {
             let menGoods = await Man.find();
-            return res.send({mens: menGoods}).json()
-        } else if(name === "/womens") {
+            return res.status(200).json({mens: menGoods});
+        } else if(collections === "womens") {
             let womensGoods = await Woman.find();
-            return res.send({womens: womensGoods}).json()
-        } else if(name === "/accessories") {
+            return res.status(200).json({womens: womensGoods});
+        } else if(collections === "accessories") {
             let acsGoods = await Accessories.find();
-            return res.send({acs: acsGoods}).json()
+            return res.status(200).json({acs: acsGoods});
         } else {
             return res.send("err")
         }
-      })
-})
+    } catch (error) {
+        return res.status(500).json({error: "Server Error"});
+    }
+});
 
+router.get("/category", getCategory);
+router.get("/new-collections", sortByNewCollections);
 
-  
-  module.exports = router;
+module.exports = router;
