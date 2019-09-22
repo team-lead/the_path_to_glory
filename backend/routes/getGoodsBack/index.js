@@ -4,24 +4,27 @@ const Man = require("../../models/Man");
 const Accessories = require("../../models/Accessories");
 const Woman = require("../../models/Woman");
 
-const goodsRoutes = ["/mens", "/womens", "/accessories"];
-
-goodsRoutes.forEach(name => {
-    router.get(name, async (req, res) => {
-        if(name === "/mens") {
+router.get("/", async (req, res) => {
+    const { collection } = req.query;
+    console.log(req);
+    try {
+        if(collection === "mens") {
             let menGoods = await Man.find();
-            return res.send({mens: menGoods}).json()
-        } else if(name === "/womens") {
+            return res.status(200).json({mens: menGoods});
+        } else if(collection === "womens") {
             let womensGoods = await Woman.find();
-            return res.send({womens: womensGoods}).json()
-        } else if(name === "/accessories") {
+            return res.status(200).json({womens: womensGoods});
+        } else if(collection === "accessories") {
             let acsGoods = await Accessories.find();
-            return res.send({acs: acsGoods}).json()
+            return res.status(200).json({acs: acsGoods});
         } else {
-            return res.send("err")
+            return res.send("Wrong url")
         }
-      })
-})
+    } catch (error) {
+        res.send(500).json("Error server")
+    }
+    
+});
 
 
   

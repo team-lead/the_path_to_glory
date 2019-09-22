@@ -26,12 +26,28 @@ const productListStyle ={
 
     linkItem:{
         textDecoration: 'none',
+        transition: '0.5s',
+        color: '#000',
+
+        '&:hover': {
+            transform: 'scale(1.01)',
+        }
     },
 
     productItem:{
         fontFamily: "Open Sans",
         margin: '0 0 105px',
         cursor: 'pointer',
+        transition: '0.5s',
+
+        '& > p': {
+            transition: '0.5s',
+        },
+
+
+        '&:hover > p': {
+            marginLeft: '1.5px',
+        }
     },
 
     itemImg:{
@@ -45,7 +61,7 @@ const productListStyle ={
         marginTop: '20px',
     },
     goodsPrise:{
-        marginTop: '15px',
+        marginTop: '14px',
         color: 'rgba(132, 122, 122, 1)'
     }
 }

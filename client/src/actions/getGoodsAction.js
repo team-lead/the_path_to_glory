@@ -4,7 +4,7 @@ export function getGoods(category) {
     console.log(category);
     
     return async (dispatch) => {
-        await fetch(`http://localhost:8080/product-list/${category}`)
+        await fetch(`http://localhost:8080/product-list?collection=${category}`)
             .then(response => {
                 if(!response.ok) {
                     throw new Error(response.statusText)
@@ -23,7 +23,9 @@ export function getGoods(category) {
                         description: goodsArr[key].description,
                         price: goodsArr[key].price,
                         ref: goodsArr[key].ref,
-                        new: goodsArr[key].new
+                        new: goodsArr[key].new,
+                        color: goodsArr[key].color,
+                        images: goodsArr[key].images
                     }
                     goodsList.push(goodItems)
                 }

@@ -9,6 +9,7 @@ let detailPageStyle = {
         width: '1266px',
         margin: '0 auto',
         marginTop: '19px',
+        marginBottom: '10px'
     },
 
     h3: {
@@ -40,6 +41,8 @@ let detailPageStyle = {
     },
 
     imageParams: {
+        display: 'flex',
+        
         '& > img': {
             width: '416px',
             height: '603px',

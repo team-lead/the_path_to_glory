@@ -6,6 +6,7 @@ import Colors from './ClothesColors';
 import Button from '../Button/index';
 import Header from '../Header';
 import { getGoodsDetailID } from "../../actions/detailGoodsAction"
+import GoodsSlider from './GoodsSlider';
 
 
 class DetailPageComponent extends Component  {
@@ -30,7 +31,7 @@ class DetailPageComponent extends Component  {
                     <li className = {classes.liStyle}>
                         <div className = {classes.imageParams}>
                             <img src = {item.image[0]} alt= "dsa"/>
-                            <img src = {item.image[1]} alt= "dsa"/>
+                            <GoodsSlider images = {[item.image[1], item.image[2], item.image[2], item.image[3]]}/>
                         </div>
                         
                         <div className = {classes.containerInfo}>
