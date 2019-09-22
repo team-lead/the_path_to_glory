@@ -1,7 +1,6 @@
-import React from "react";
-import { combineReducers } from "redux";
-import { activeGoodsReducer } from "./detailGoodReducer/detailReducer";
-import { allGoods } from "./getGoodsReducer/index";
+import { combineReducers } from 'redux';
+import { activeGoodsReducer } from "./detailGoodReducer/detailReducer"
+import { allGoods } from "./getGoodsReducer/index"
 import searchReducer from "./mainPageReducers/searchReducer";
 import addToCartReducer from "./cartReducers/addToCart";
 import showDropdownMenuReducer from "./mainPageReducers/dropDownMenuReducer";

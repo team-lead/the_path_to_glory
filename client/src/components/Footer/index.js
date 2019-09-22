@@ -1,12 +1,11 @@
 import React, { Fragment } from "react";
 import { classes } from "./style";
-import Container from "../Container";
 
 const Footer = () => {
   const { footer, footerItem, footerLink, footerItemTitle } = classes;
   return (
     <Fragment>
-      <Container containerStg={footer}>
+      <footer className={footer}>
         <div className={footerItem}>
           <p className={footerItemTitle}>HELP</p>
           <a className={footerLink} href="/">
@@ -36,7 +35,6 @@ const Footer = () => {
         </div>
         <div className={footerItem}>
           <p className={footerItemTitle}>COMPANY</p>
-
           <a className={footerLink} href="/">
             History of the brand
           </a>
@@ -47,7 +45,7 @@ const Footer = () => {
             Work with Us
           </a>
         </div>
-      </Container>
+      </footer>
     </Fragment>
   );
 };

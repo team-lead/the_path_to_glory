@@ -10,6 +10,8 @@ const authUser = require("./routes/auth");
 const checkAuthUser = require("./routes/checkAuth");
 const history = require("./routes/history");
 const cors = require("cors");
+const detailPage = require("./routes/detailPageBack/index");
+const goods = require("./routes/getGoodsBack/index");
 //connect database
 
 // Init app
@@ -28,19 +30,8 @@ app.use("/api", authUser);
 app.use("/api", checkAuthUser);
 app.use("/api", history);
 // Define routes hear
-
-const getMensItems = require("./routes/getMensItemsBack/index");
-const getWomensItems = require("./routes/getWomensItemsBack/index")
-const getAccsseroiesItems = require("./routes/getAcsItemsBack/index");
-const detailPage = require("./routes/detailPageBack/index");
-
-
 app.use('/detail', detailPage);
-app.use('/product-list', getMensItems);
-app.use('/product-list', getWomensItems);
-app.use('/product-list', getAccsseroiesItems);
-
-
+app.use('/product-list', goods);
 
 const port = process.env.PORT || 9000;
 app.listen(port, (err) => {

@@ -19,7 +19,6 @@ let newCollectionsStyle = {
     justifyContent: "space-between"
   },
   collectionItem: {
-    width: "50%",
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-between",
@@ -27,14 +26,12 @@ let newCollectionsStyle = {
   },
   mainCollectionImg: {
     display: "block",
-    // width: "45vw",
-    width: "590px",
+    width: "45vw",
     height: "100vh"
   },
   сollectionImg: {
     display: "block",
-    // width: "45vw",
-    width: "590px",
+    width: "45vw",
     height: "49vh"
   },
   collectionItemImg: {

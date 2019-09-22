@@ -1,7 +1,7 @@
 import {ADD_TO_CART} from "../../../actions/cartActions";
 
 const initialState = {
-    cart: {
+    cart: [{
         product1: {
             category: "Category",
             images: [],
@@ -13,7 +13,7 @@ const initialState = {
             price: Number,
             quantity: Number
         }
-    }
+    }]
 };
 
 function addToCartReducer(state = initialState, action) {

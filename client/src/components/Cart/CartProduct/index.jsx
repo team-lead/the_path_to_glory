@@ -1,57 +1,88 @@
 import React from 'react';
 import { classes } from './style';
 import productImg from './img/lady.jpg';
+import { connect } from 'react-redux';
+import {
+  removeProductFromCart,
+  decCartProductQuantity,
+  incCartProductQuantity
+} from '../../../actions/detailGoodsAction';
 
-const CartProduct = () => {
-  const {
-    cartProduct,
-    removeProduct,
-    productDetails,
-    productName,
-    ref,
-    pruductColor,
-    productSize,
-    detailName,
-    productQuant,
-    productQuantSelectWrapper,
-    productQuantSelectBtn,
-    productPrice,
-    TotalProductPrice
-  } = classes;
+const CartProduct = ({
+  id,
+  images,
+  name,
+  reference,
+  price,
+  quantity,
+  color,
+  size,
+  removeProductFromCart,
+  incCartProductQuantity,
+  decCartProductQuantity
+}) => {
+  const totalPrice = price * quantity;
 
   return (
-    <div className={cartProduct}>
+    <div className={classes.cartProduct}>
       <img src={productImg} alt='product name' />
-      <div className={productDetails}>
-        <h3 className={productName}>Gold Dress</h3>
-        <p className={ref}>REF: 3294786 - 01</p>
-        <p className={pruductColor}>
-          <span className={detailName}>Color:</span>
-          <span>gold</span>
+      <div className={classes.productDetails}>
+        <h3 className={classes.productName}>{name}</h3>
+        <p className={classes.ref}>REF: {reference}</p>
+        <p className={classes.pruductColor}>
+          <span className={classes.detailName}>Color:</span>
+          <span>{color}</span>
         </p>
-        <p className={productSize}>
-          <span className={detailName}>Size:</span>
-          <span>8</span>
+        <p className={classes.productSize}>
+          <span className={classes.detailName}>Size:</span>
+          <span>{size}</span>
         </p>
-        <p className={productQuant}>
-          <span className={detailName}>Quantity:</span>
-          <span className={productQuantSelectWrapper}>
-            <button className={productQuantSelectBtn}>+</button> 1
-            <button className={productQuantSelectBtn}>-</button>
+        <p className={classes.productQuant}>
+          <span className={classes.detailName}>Quantity:</span>
+          <span className={classes.productQuantSelectWrapper}>
+            <button
+              className={classes.productQuantSelectBtn}
+              onClick={() => decCartProductQuantity(id)}>
+              -
+            </button>
+            {quantity}
+            <button
+              className={classes.productQuantSelectBtn}
+              onClick={() => incCartProductQuantity(id)}>
+              +
+            </button>
           </span>
         </p>
-        <p className={productPrice}>
-          <span className={detailName}>Price:</span>
-          <span>420 $</span>
+        <p className={classes.productPrice}>
+          <span className={classes.detailName}>Price:</span>
+          <span>{price} $</span>
         </p>
-        <p className={TotalProductPrice}>
-          <span className={detailName}>Total:</span>
-          <span>420 $</span>
+        <p className={classes.TotalProductPrice}>
+          <span className={classes.detailName}>Total:</span>
+          <span>{totalPrice} $</span>
         </p>
       </div>
-      <a className={removeProduct}>Remove from basket</a>
+      <a
+        className={classes.removeProduct}
+        onClick={() => removeProductFromCart(id)}>
+        Remove from basket
+      </a>
     </div>
   );
 };
 
-export default CartProduct;
+const mapDispatchToProps = dispatch => {
+  return {
+    removeProductFromCart: productId =>
+      dispatch(removeProductFromCart(productId)),
+    decCartProductQuantity: productId =>
+      dispatch(decCartProductQuantity(productId)),
+    incCartProductQuantity: productId =>
+      dispatch(incCartProductQuantity(productId))
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(CartProduct);
