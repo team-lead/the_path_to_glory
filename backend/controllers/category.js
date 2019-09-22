@@ -35,7 +35,7 @@ exports.sortByNewCollections = async (req, res) => {
   try {
     if (collection === "man") {
       const manAggregate = await Man.aggregate([
-        {$match: { new: false }}
+        {$match: { new: true }}
       ]);
       return res.status(200).json({manAggregate})
     } else if (collection === "women") {
@@ -49,7 +49,7 @@ exports.sortByNewCollections = async (req, res) => {
       ]);
       return res.status(200).json({ accessoriesAggregate });
     }
-    return res.status(200).json({  });
+    return res.status(200).json({  }
   } catch (error) {
     return res.status(500).json({ error: "Server Error." });
   }

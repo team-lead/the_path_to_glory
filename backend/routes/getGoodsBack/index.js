@@ -6,15 +6,15 @@ const Woman = require("../../models/Woman");
 const { getCategory, sortByNewCollections } = require("../../controllers/category");
 
 router.get("/", async (req, res) => {
-    const { collections } = req.query;
+    const { collection } = req.query;
     try {
         if(collection === "mens") {
             let menGoods = await Man.find();
             return res.status(200).json({mens: menGoods});
-        } else if(collections === "womens") {
+        } else if(collection === "womens") {
             let womensGoods = await Woman.find();
             return res.status(200).json({womens: womensGoods});
-        } else if(collections === "accessories") {
+        } else if(collection === "accessories") {
             let acsGoods = await Accessories.find();
             return res.status(200).json({acs: acsGoods});
         } else {
