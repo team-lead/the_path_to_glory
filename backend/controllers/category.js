@@ -4,6 +4,7 @@ const Woman = require("../models/Woman");
 
 exports.getCategory = async (req, res) => {
   const { category, collection, subCategory, age } = req.query;
+  console.log(category, collection)
   try {
     if (category.length !== 0 && collection.length !== 0) {
       if (collection === "man") {
