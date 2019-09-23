@@ -55,7 +55,6 @@ class Header extends Component {
       resultCount
     } = classes;
 
-    // console.log(searchResults);
     const searchResultsView = this.state.searchText ? (
       <div>
         {searchResults.length ? (
@@ -92,8 +91,8 @@ class Header extends Component {
       </div>
     ) : null;
 
-    const logoLink = window.location.pathname === "/" ? "#" : "/";
-    // console.log("----", typeof activeDropdownMenu);
+    const logoLink = window.location.pathname === '/' ? '#' : '/';
+    console.log('----', typeof activeDropdownMenu);
 
     let showDropdownMenuItem = null;
 
@@ -274,11 +273,11 @@ class Header extends Component {
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>Search</p>
             </NavLink>
-            <NavLink to="/myaccount/main" className={classes.headerActionsItem}>
+            <NavLink to='/myaccount/main' className={classes.headerActionsItem}>
               <i className={`far fa-user ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>My account</p>
             </NavLink>
-            <a href="#" className={classes.headerActionsItem}>
+            <a href='#' className={classes.headerActionsItem}>
               <i
                 className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}
               />
