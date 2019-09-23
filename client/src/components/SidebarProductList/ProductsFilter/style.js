@@ -41,6 +41,14 @@ let ProductsFilterStyle = {
       borderBottom: '1px solid #fff',
     },
   },
+  categorySectionlinck: {
+    borderBottom: '1px solid transparent',
+    marginTop: '19px',
+    marginBottom: '19px',
+    '&:hover':{
+      borderBottom: '1px solid #fff',
+    },
+  },
 
   colorSection: {
     marginTop: '18px',
@@ -60,6 +68,7 @@ let ProductsFilterStyle = {
       borderBottom: '1px solid #fff',
     },
   },
+  
 
   colorCircle: {
     display: 'inline-block',
@@ -105,6 +114,49 @@ let ProductsFilterStyle = {
     fontFamily: 'Open Sans',
     marginBottom: '45px'
   },
+  mobileCategoiFilter:{
+    display: 'none'
+  },
+  '@media (max-width: 768px)':{
+    categorySectionItem:{
+      display: 'none'
+    },
+    categorySectionTitle:{
+      display: 'none'
+    },
+    mobileCategoiFilter:{
+      display: 'inline',
+      textTransform: 'uppercase',
+      fontFamily: 'Open Sans',
+      fontSize: '16px',
+      marginLeft: '25px',
+      '&:after':{
+        content:"f077",
+        height: '30px',
+        width: '30px',
+        
+      }
+    },
+    categoriesMenu:{
+      marginLeft: '50px',
+    },
+    categorySectionlinck:{
+      marginTop: '30px',
+      marginBottom: '0'
+    },
+    colorSectionTitle:{
+      fontFamily:" Open Sans",
+      fontWeight:" normal",
+      fontSize: "16px",
+      color:" #000000",
+      marginLeft: '25px',
+    },
+    sectionItem:{
+      color:" #000000",
+    },
+    
+    
+  }
 
 }
 export const { classes } = jss.createStyleSheet(ProductsFilterStyle).attach();

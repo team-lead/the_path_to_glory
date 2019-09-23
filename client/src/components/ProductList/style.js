@@ -4,31 +4,31 @@ import preset from 'jss-preset-default';
 jss.setup(preset());
 
 const productListStyle ={
+
     productListContainer:{
-        width: '900px',
-        marginLeft: '100px',
+        width: '100%',
     },
     filter:{
         display: 'none',
     },
     productList:{
-        marginTop: '22px',
         display: 'flex',
         flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         overflow: 'hidden',
     },
     categoryName:{
         fontSize: '24px',
         marginTop: '80px',
+        marginLeft: '7%'
+
     },
     linkItem:{
         textDecoration: 'none',
-        height: '390px',
-        width: '270px',
+        width: '30%',
         fontFamily: "Open Sans",
-        margin: '0 0 105px',
         cursor: 'pointer',
+        marginTop: '15vh'
     },
     itemImg:{
         width: '100%',
@@ -45,9 +45,8 @@ const productListStyle ={
         color: 'rgba(132, 122, 122, 1)'
     },
 
-    '@media (max-width: 576px)':{
+    '@media (max-width: 768px)':{
         productListContainer:{
-            width: '100vh',
             marginLeft: '0',
         },
         goodsTitle:{
