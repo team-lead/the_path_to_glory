@@ -15,7 +15,9 @@ const Cart = ({ productsInCart }) => {
     summarySettings,
     emptyCartMsg,
     emptyCartMsgIcon,
-    emptyCartMsgText
+    emptyCartMsgText,
+    keepShoppingBtn,
+    cartHeading
   } = classes;
 
   const emptyCartMessage = (
@@ -36,8 +38,14 @@ const Cart = ({ productsInCart }) => {
       <Header />
       <main className={mainContent}>
         <Container>
-          <Button name='KEEP SHOPING' href='/product-list' black />
+          <Button
+            btnSettings={keepShoppingBtn}
+            name='KEEP SHOPING'
+            href='/product-list'
+            black
+          />
           <div className={mainContentWrapper}>
+            <h1 className={cartHeading}>Shopping bag</h1>
             <section className={products}>{cartProductsData}</section>
             <CartSummary settings={summarySettings} />
           </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { classes } from './style';
-import productImg from './img/lady.jpg';
+import image from './img/lady.jpg';
 import { connect } from 'react-redux';
 import {
   removeProductFromCart,
@@ -25,7 +25,7 @@ const CartProduct = ({
 
   return (
     <div className={classes.cartProduct}>
-      <img src={productImg} alt='product name' />
+      <img src={image} alt='product name' className={classes.productImg} />
       <div className={classes.productDetails}>
         <h3 className={classes.productName}>{name}</h3>
         <p className={classes.ref}>REF: {reference}</p>
@@ -63,9 +63,14 @@ const CartProduct = ({
         </p>
       </div>
       <a
-        className={classes.removeProduct}
+        className={classes.removeProductBig}
         onClick={() => removeProductFromCart(id)}>
         Remove from basket
+      </a>
+      <a
+        className={classes.removeProductSmall}
+        onClick={() => removeProductFromCart(id)}>
+        <i class='fas fa-times'></i>
       </a>
     </div>
   );

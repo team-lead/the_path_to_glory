@@ -14,7 +14,7 @@ const App = () => {
     <BrowserRouter>
       <Switch>
         <Route exact path='/myaccount/:id' component={MyAccountPage} />
-        <Route exact path='/:id' component={LoginPage} />
+        {/* <Route exact path='/:id' component={LoginPage} /> */}
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/' component={MainPage} />
         <Route exact path='/cart/checkout' component={Checkout} />

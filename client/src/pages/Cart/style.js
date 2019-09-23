@@ -3,34 +3,33 @@ import preset from 'jss-preset-default';
 
 jss.setup(preset());
 
+const mobile = '@media screen and (max-width: 375px)';
+
 const CartPageStyles = {
   mainContent: {
-    paddingTop: '38px'
+    paddingTop: '38px',
+    [mobile]: {
+      paddingTop: '20px'
+    }
   },
   mainContentWrapper: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    [mobile]: {
+      alignItems: 'center',
+      flexDirection: 'column'
+    }
   },
   products: {
     display: 'inline-block',
-    marginTop: '26px'
+    marginTop: '26px',
+    [mobile]: {
+      marginTop: '10px'
+    }
   },
   keepShoppingBtn: {
-    boxSizing: 'berder-box',
-    backgroundColor: 'black',
-    fontFamily: 'Open Sans, sans-serif',
-    color: 'white',
-    fontSize: '18px',
-    fontWeight: '300',
-    width: '269px',
-    height: '57px',
-    outline: 'none',
-    cursor: 'pointer',
-    border: '1px solid black',
-    transition: 'all 0.3s',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: 'black'
+    [mobile]: {
+      display: 'none'
     }
   },
   summarySettings: {
@@ -49,6 +48,16 @@ const CartPageStyles = {
     marginTop: '8 px',
     marginLeft: '13px',
     fontSize: '25px'
+  },
+  cartHeading: {
+    display: 'none',
+    fontFamily: 'Roboto, sans-serif',
+    borderBottom: '1px solid black',
+    paddingBottom: '7px',
+    width: '320px',
+    [mobile]: {
+      display: 'block'
+    }
   }
 };
 
