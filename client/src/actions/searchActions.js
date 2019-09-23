@@ -7,7 +7,7 @@ export function searchGoods(searchKeywords) {
     let mens = await searchInProductListDb("mens");
     let womens = await searchInProductListDb("womens");
     let accessories = await searchInProductListDb("accessories");
-    // console.log(mens, womens, accessories, "---------------ccc--------------");
+    console.log(mens, womens, accessories, "---------------ccc--------------");
     let allGoods = [...mens, ...womens, ...accessories];
     let findedGoods = [];
 
@@ -31,7 +31,7 @@ export function searchGoods(searchKeywords) {
         if (text === search) {
           return true;
         }
-      });//TODO: побуквенный поиск
+      });
     }
     console.log(findedGoods, "fiiiiiiiiiiiiiiiiiiind");
     dispatch({
@@ -43,7 +43,7 @@ export function searchGoods(searchKeywords) {
 
 async function searchInProductListDb(category) {
   let goodsList = [];
-  await fetch(`http://localhost:8080/product-list/${category}`)
+  await fetch(`http://localhost:8080/product-list?collection=${category}`)
     .then(response => {
       if (!response.ok) {
         throw new Error(response.statusText);
@@ -52,8 +52,6 @@ async function searchInProductListDb(category) {
     })
     .then(response => response.json())
     .then(goods => {
-      //   console.log(goods);
-      //   let goodsList = [];
       let goodsArr = goods.mens || goods.womens || goods.acs;
       for (let key in goodsArr) {
         let goodItems = {
@@ -67,10 +65,6 @@ async function searchInProductListDb(category) {
         };
         goodsList.push(goodItems);
       }
-      //   dispatch({
-      //     type: SEARCH_ACTION,
-      //     payload: goodsList
-      //   });
     })
     .catch(err => {
       return new Error(err);
