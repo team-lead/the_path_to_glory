@@ -10,6 +10,8 @@ import {
 } from "../../actions/dropDownMenuAction";
 import DropdownHeaderMenu from "../DropdownHeaderMenu";
 import ProductItemSearch from "../ProductItemSearch";
+import Login from "../User/Login";
+
 
 class Header extends Component {
   constructor(props) {
@@ -274,10 +276,12 @@ class Header extends Component {
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>Search</p>
             </NavLink>
-            <NavLink to='/myaccount/main' className={classes.headerActionsItem}>
+
+          <Login />
+            {/* <NavLink to='/myaccount/main' className={classes.headerActionsItem}>
               <i className={`far fa-user ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>My account</p>
-            </NavLink>
+            </NavLink> */}
             <a href='#' className={classes.headerActionsItem}>
               <i
                 className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}

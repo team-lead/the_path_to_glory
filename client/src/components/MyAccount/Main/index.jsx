@@ -1,6 +1,8 @@
 import React,{Fragment} from 'react';
 import {Link} from 'react-router-dom'
 import {classes} from './style';
+import Login from '../../User/Login';
+
 const WelcomePage =()=>{
     const name =  'SUZANNE EATON'// после удалить
     const{
@@ -14,7 +16,6 @@ const WelcomePage =()=>{
 
     return(
         <Fragment>
-            
             <h1 className={title}>Welkome, {name}</h1>
             <main className={categoryList}>
                 <Link to='/myaccount/myprofile' className={categoryItem} >

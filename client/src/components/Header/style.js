@@ -50,6 +50,7 @@ let headerStyle = {
     display: "inline-block",
     fontSize: "16px",
     borderBottom: "1px solid transparent",
+    marginTop: "25px",
     "&:hover": {
       borderBottom: "1px solid #fff"
     }

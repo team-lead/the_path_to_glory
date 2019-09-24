@@ -8,11 +8,13 @@ import LoginPage from './pages/LoginPage';
 import Checkout from './pages/Checkout';
 import DetailPage from './pages/DetailPage/DetailPage';
 import ProductsPage from './pages/ProductsPage';
+import Login from './components/User/Login'
 
 const App = () => {
   return (
-    <BrowserRouter>
+    
       <Switch>
+        <Route exact path='/login' component={Login} />
         <Route exact path='/myaccount/:id' component={MyAccountPage} />
         <Route exact path='/:id' component={LoginPage} />
         <Route exact path='/cart' component={Cart} />
@@ -21,7 +23,7 @@ const App = () => {
         <Route exact path='/product-list/:category' component={ProductsPage} />
         <Route exact path='/detail/:id' component={DetailPage} />
       </Switch>
-    </BrowserRouter>
+    
   );
 };
 export default App;

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { classes } from "./style";
 import MyAccountMenu from "../MyAccountMenu";
 
-
 class MyProfile extends Component {
   
   state = {
