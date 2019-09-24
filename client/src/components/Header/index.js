@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { classes } from './style';
 import { SHOW_MODAL_WINDOW } from '../../actions/searchActions';
 import {
@@ -198,29 +198,29 @@ class Header extends Component {
       <>
         <header className={header}>
           <nav className={navbarMenu}>
-            <a
-              href='/product-list/mens'
+            <Link
+              to='/product-list/mens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
-            </a>
-            <a
-              href='/product-list/womens'
+            </Link>
+            <Link
+              to='/product-list/womens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
-            </a>
-            <a
-              href='/product-list/accessories'
+            </Link>
+            <Link
+              to='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
-            </a>
+            </Link>
           </nav>
           <div onMouseOver={hideDropdownMenu}>
-            <a href={logoLink} className={logoItem}>
+            <Link to={logoLink} className={logoItem}>
               Originalité
-            </a>
+            </Link>
           </div>
           <div className={headerActions}>
             <NavLink href='#' onClick={searchModal}>
@@ -231,12 +231,12 @@ class Header extends Component {
               <i className={`far fa-user ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>My account</p>
             </NavLink>
-            <a href='#' className={classes.headerActionsItem}>
+            <Link to='#' className={classes.headerActionsItem}>
               <i
                 className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}
               />
               <p className={classes.headerActionsItemText}>Shopping Bag</p>
-            </a>
+            </Link>
           </div>
         </header>
         {searchModalItem}
