@@ -23,7 +23,7 @@ const useStyles = makeStyles({
 
 
 function valuetext(value) {
-  return `${value}°C`;
+  return `${value}`;
 }
 
 export default function RangeSlider() {

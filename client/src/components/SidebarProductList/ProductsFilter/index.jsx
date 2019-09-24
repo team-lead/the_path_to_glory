@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import RangeSlider from '../RangeSlider'
 import { classes } from "./style";
 
-import RangeSlider from '../RangeSlider'
 import {
         getGoodsCategories,
         SHOW_CATEGORU_MENU,
