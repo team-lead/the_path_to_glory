@@ -36,6 +36,7 @@ const validationSignIn = [
       .matches(/\d/)
       .withMessage("Password must content a number")
 ]
+
 router.post("/signin", validationSignIn, signin);
 router.get("/signout", signout);
 

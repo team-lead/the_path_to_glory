@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 import {
   removeProductFromCart,
   decCartProductQuantity,
-  incCartProductQuantity
+  incCartProductQuantity,
+  saveUserCart
 } from '../../../actions/detailGoodsAction';
 
 const CartProduct = ({
@@ -19,7 +20,8 @@ const CartProduct = ({
   size,
   removeProductFromCart,
   incCartProductQuantity,
-  decCartProductQuantity
+  decCartProductQuantity,
+  saveUserCart
 }) => {
   const totalPrice = price * quantity;
 
@@ -42,13 +44,19 @@ const CartProduct = ({
           <span className={classes.productQuantSelectWrapper}>
             <button
               className={classes.productQuantSelectBtn}
-              onClick={() => decCartProductQuantity(id)}>
+              onClick={() => {
+                decCartProductQuantity(id);
+                saveUserCart();
+              }}>
               -
             </button>
             {quantity}
             <button
               className={classes.productQuantSelectBtn}
-              onClick={() => incCartProductQuantity(id)}>
+              onClick={() => {
+                incCartProductQuantity(id);
+                saveUserCart();
+              }}>
               +
             </button>
           </span>
@@ -64,12 +72,18 @@ const CartProduct = ({
       </div>
       <a
         className={classes.removeProductBig}
-        onClick={() => removeProductFromCart(id)}>
+        onClick={() => {
+          removeProductFromCart(id);
+          saveUserCart();
+        }}>
         Remove from basket
       </a>
       <a
         className={classes.removeProductSmall}
-        onClick={() => removeProductFromCart(id)}>
+        onClick={() => {
+          removeProductFromCart(id);
+          saveUserCart();
+        }}>
         <i className='fas fa-times'></i>
       </a>
     </div>
@@ -83,7 +97,8 @@ const mapDispatchToProps = dispatch => {
     decCartProductQuantity: productId =>
       dispatch(decCartProductQuantity(productId)),
     incCartProductQuantity: productId =>
-      dispatch(incCartProductQuantity(productId))
+      dispatch(incCartProductQuantity(productId)),
+    saveUserCart: () => dispatch(saveUserCart())
   };
 };
 

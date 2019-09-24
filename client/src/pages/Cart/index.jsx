@@ -6,6 +6,7 @@ import CartProduct from '../../components/Cart/CartProduct';
 import Container from '../../components/Container';
 import Button from '../../components/Button';
 import { connect } from 'react-redux';
+import { updateCart } from '../../actions/detailGoodsAction';
 
 const Cart = ({ productsInCart }) => {
   const {
@@ -27,11 +28,13 @@ const Cart = ({ productsInCart }) => {
     </div>
   );
 
-  const cartProductsData = productsInCart.length
-    ? productsInCart.map(product => (
-        <CartProduct key={product.id} {...product} />
-      ))
-    : emptyCartMessage;
+  const createCartProducts = cart => {
+    return cart.length
+      ? cart.map(product => <CartProduct key={product.id} {...product} />)
+      : emptyCartMessage;
+  };
+
+  const cartProductsData = createCartProducts(productsInCart);
 
   return (
     <Fragment>
@@ -58,6 +61,12 @@ const Cart = ({ productsInCart }) => {
 const mapStateToProps = state => {
   return {
     productsInCart: state.active.cart
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCart: newCart => dispatch(updateCart(newCart))
   };
 };
 
