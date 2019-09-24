@@ -3,44 +3,17 @@ import {
   REMOVE_PRODUCT_FROM_CART,
   SET_CHECKOUT_TOTAL,
   DEC_CART_PRODUCT_QUANTITY,
-  INC_CART_PRODUCT_QUANTITY
+  INC_CART_PRODUCT_QUANTITY,
+  SAVE_USER_CART,
+  UPDATE_CART
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
   objectId: [],
   checkoutTotal: 0,
-  cart: [
-    {
-      id: 126,
-      images: [],
-      name: 'Gold Dress',
-      reference: '3294786 - 01',
-      price: 420,
-      quantity: 1,
-      color: 'gold',
-      size: 8
-    },
-    {
-      id: 121,
-      images: [],
-      name: 'Gold Dress',
-      reference: '3294786 - 01',
-      price: 420,
-      quantity: 1,
-      color: 'gold',
-      size: 8
-    },
-    {
-      id: 124,
-      images: [],
-      name: 'Gold Dress',
-      reference: '3294786 - 01',
-      price: 420,
-      quantity: 1,
-      color: 'gold',
-      size: 8
-    }
-  ]
+  cart: localStorage.getItem('cart')
+    ? JSON.parse(localStorage.getItem('cart'))
+    : []
 };
 
 export const activeGoodsReducer = (state = initialState, action) => {
@@ -74,6 +47,13 @@ export const activeGoodsReducer = (state = initialState, action) => {
           : { ...product };
       });
       return { ...state, cart };
+    }
+    case SAVE_USER_CART: {
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+      return { ...state };
+    }
+    case UPDATE_CART: {
+      return { ...state, cart: action.payload };
     }
     default:
       return { ...state };
