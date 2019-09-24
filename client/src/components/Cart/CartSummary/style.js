@@ -3,14 +3,14 @@ import preset from 'jss-preset-default';
 
 jss.setup(preset());
 
-const mobile = '@media screen and (max-width: 375px)';
+const small = '@media screen and (max-width: 790px)';
 
 const cartSummaryStyles = {
   summaryContainer: {
     display: 'inline-block',
     verticalAlign: 'top',
-    [mobile]: {
-      marginTop: '100px'
+    [small]: {
+      marginTop: '60px'
     }
   },
   cartSummary: {
@@ -21,7 +21,11 @@ const cartSummaryStyles = {
     backgroundColor: '#C4C4C4',
     width: '362px',
     height: '591px',
-    [mobile]: {
+    '@media screen and (max-width: 1132px)': {
+      width: '320px',
+      height: '500px'
+    },
+    [small]: {
       width: '321px',
       height: '300px',
       padding: '27px 0 27px 22px'
@@ -31,7 +35,7 @@ const cartSummaryStyles = {
     width: '100%',
     paddingBottom: '77px',
     borderBottom: '1px solid #959595',
-    [mobile]: {
+    [small]: {
       borderBottom: 'none',
       paddingBottom: '0'
     }
@@ -39,7 +43,7 @@ const cartSummaryStyles = {
   headerHeading: {
     fontFamily: 'Josefin Sans, sans-serif',
     marginBottom: '29px',
-    [mobile]: {
+    [small]: {
       position: 'absolute',
       top: '-30px',
       left: '0'
@@ -61,7 +65,10 @@ const cartSummaryStyles = {
   checkoutBtn: {
     position: 'absolute',
     bottom: '40px',
-    [mobile]: {
+    '@media screen and (max-width: 1212px)': {
+      width: '241px !important'
+    },
+    [small]: {
       width: '241px !important'
     }
   },
@@ -70,7 +77,7 @@ const cartSummaryStyles = {
     width: '166px',
     height: '116px',
     fontSize: '14px',
-    [mobile]: {
+    [small]: {
       marginTop: '29px'
     }
   },

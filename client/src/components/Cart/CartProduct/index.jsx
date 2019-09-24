@@ -70,7 +70,7 @@ const CartProduct = ({
       <a
         className={classes.removeProductSmall}
         onClick={() => removeProductFromCart(id)}>
-        <i class='fas fa-times'></i>
+        <i className='fas fa-times'></i>
       </a>
     </div>
   );

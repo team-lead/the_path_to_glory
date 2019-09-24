@@ -3,19 +3,23 @@ import preset from 'jss-preset-default';
 
 jss.setup(preset());
 
-const mobile = '@media screen and (max-width: 375px)';
+const small = '@media screen and (max-width: 375px)';
 
 const CartPageStyles = {
   mainContent: {
-    paddingTop: '38px',
-    [mobile]: {
+    padding: '38px 20px',
+    [small]: {
       paddingTop: '20px'
     }
   },
   mainContentWrapper: {
     display: 'flex',
     justifyContent: 'space-between',
-    [mobile]: {
+    '@media screen and (max-width: 790px)': {
+      flexDirection: 'column',
+      width: '100%'
+    },
+    [small]: {
       alignItems: 'center',
       flexDirection: 'column'
     }
@@ -23,12 +27,19 @@ const CartPageStyles = {
   products: {
     display: 'inline-block',
     marginTop: '26px',
-    [mobile]: {
+    marginRight: '30px',
+    '@media screen and (max-width: 790px)': {
+      marginRight: '0'
+    },
+    [small]: {
       marginTop: '10px'
     }
   },
   keepShoppingBtn: {
-    [mobile]: {
+    '@media screen and (max-width: 790px)': {
+      display: 'none'
+    },
+    [small]: {
       display: 'none'
     }
   },
@@ -52,10 +63,15 @@ const CartPageStyles = {
   cartHeading: {
     display: 'none',
     fontFamily: 'Roboto, sans-serif',
+    fontSize: '18px',
     borderBottom: '1px solid black',
     paddingBottom: '7px',
-    width: '320px',
-    [mobile]: {
+    width: '100%',
+    '@media screen and (max-width: 790px)': {
+      display: 'block'
+    },
+    [small]: {
+      width: '320px',
       display: 'block'
     }
   }

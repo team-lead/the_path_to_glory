@@ -35,7 +35,6 @@ const Cart = ({ productsInCart }) => {
 
   return (
     <Fragment>
-      <Header />
       <main className={mainContent}>
         <Container>
           <Button
