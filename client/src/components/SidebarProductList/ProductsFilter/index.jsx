@@ -1,18 +1,31 @@
 import React, {Component} from 'react';
-import { Link } from "react-router-dom"
-import {connect} from "react-redux"
 
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { classes } from "./style";
 
 import RangeSlider from '../RangeSlider'
 import {
+        getGoodsCategories,
         SHOW_CATEGORU_MENU,
+        SHOW_COLOR_MENU,
         WINDOW_DESCTOP
-} from '../../../actions/showFilterMenuAction'
+    } from "../../../actions/getGoodsCategoryAction";
+
+
 
 
 class ProductsFilter extends Component {
-
+    componentDidMount () {
+        if (window.location.pathname === "/product-list/mens"){
+            return this.props.getGoodsCategories("mens")
+        } else if (window.location.pathname === "/product-list/womens") {
+            return this.props.getGoodsCategories("womens")
+        } else if (window.location.pathname === "/product-list/accessories") {
+            return this.props.getGoodsCategories("accessories")
+        }
+        this.props.getGoodsCategories()
+    }
     render() {
         const {
             categorySection,
@@ -31,26 +44,37 @@ class ProductsFilter extends Component {
             priceDiapazon,
             categoriesMenu,
             mobileCategoiFilter,
+            mobileColor,
         } = classes;
 
-        const categories = this.props.categories;
-        const items = categories.map((category) => <li key={category}><Link to='' className={`${categorySectionlinck} ${sectionItem}`}>{category}</Link></li>);
+
+        const items = this.props.categoriesList.map((category) => {
+                return (
+                <li key={category}><Link to={`/`} className={`${categorySectionlinck} ${sectionItem}`}>{category}</Link></li>
+                )
+            })
+
         const colors = this.props.colors;
         const colorItems = colors.map((color) => <li key={color} className={colorItem}><div className={`${colorCircle} ${color}`}></div><Link to ='' className={`${sectionItem} ${colorSectionItem}`}>{color}</Link></li>);
 
         const categoiesMenu =<div className={categorySection}>
-                                <p className={`${categorySectionTitle} ${sectionTitle}`}>woman</p>
+                                <p className={`${categorySectionTitle} ${sectionTitle}`}>{this.props.categoryName}</p>
                                 <a href='#'className={`${categorySectionItem} ${sectionItem}`}>View All</a>
                                 <div>
-                                <p className={mobileCategoiFilter} onClick={()=>this.props.showCategoru()}>Categories</p>
-                                {this.props.showCategoriMenu?<i class="fas fa-chevron-up"></i>:<i class="fas fa-chevron-down"></i>}
+                                    <p className={mobileCategoiFilter} onClick={()=>this.props.showCategoru()}>Categories</p>
+                                    {this.props.showCategoriMenu?<i class="fas fa-angle-up"></i>:<i class="fas fa-angle-down"></i>}
                                 </div>
                                 {this.props.showCategoriMenu? <ul className={categoriesMenu}>{items}</ul>:null  }
                             </div> ;
+
         const colorMenu = <div className={colorSection}>
-                                <p className={`${sectionTitle} ${colorSectionTitle}`}>colors</p>
-                                <ul>{colorItems}</ul>
-                            </div>
+                <div className = {mobileColor}>
+                    <p className={`${sectionTitle} ${colorSectionTitle}`} onClick ={()=>this.props.showColor()}>colors</p>
+                    {this.props.showColorMenu?<i class="fas fa-angle-up"></i>:<i class="fas fa-angle-down"></i>}
+                </div>
+                <ul>{colorItems}</ul>
+            </div>
+
         const priceMenu = <div className={priceSection}>
                             <p className={`${sectionTitle} ${priceSectionTitle}`}>price</p>
                             <p className={priceDiapazon}>$25 - $930</p>
@@ -62,7 +86,8 @@ class ProductsFilter extends Component {
                 this.props.showDesctop()
             }
         })
-    
+
+        
         return(
             <div>
                 {categoiesMenu}
@@ -75,14 +100,19 @@ class ProductsFilter extends Component {
 
 const mapStateToProps=state=>{
     return{
-        showCategoriMenu:state.showFilterMenu.isShowCategoriMenu
+        showCategoriMenu:state.allCategories.isShowCategoriMenu,
+        showColorMenu:state.allCategories.isShowColorMenu,
+        categoriesList: state.allCategories.categoriesList,
+        categoryName: state.allCategories.categoryName,
     }
 }
 
 const mapDispatchToProps = dispatch =>{
     return{
+        getGoodsCategories: url => dispatch(getGoodsCategories(url)),
         showCategoru:()=>dispatch({type:SHOW_CATEGORU_MENU}),
         showDesctop:()=>dispatch({type:WINDOW_DESCTOP}),
+        showColor:()=>dispatch({type:SHOW_COLOR_MENU})
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductsFilter);

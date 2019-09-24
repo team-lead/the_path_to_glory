@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import {classes} from './style'
-import {SHOW_FILTER_MENU} from "../../../actions/showFilterMenuAction"
+import {SHOW_FILTER_MENU} from "../../../actions/getGoodsCategoryAction"
 
 
 class FilterHeader extends Component{

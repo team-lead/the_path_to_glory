@@ -4,7 +4,7 @@ import { allGoods } from "./getGoodsReducer/index"
 import searchReducer from "./mainPageReducers/searchReducer";
 import addToCartReducer from "./cartReducers/addToCart";
 import showDropdownMenuReducer from "./mainPageReducers/dropDownMenuReducer";
-import showFilterMenu from "./productFilterReducers/productFilterReducers"
+import { allCategories } from "./getCategoriesReducer/index";
 
 const rootReducer = combineReducers({
   active: activeGoodsReducer,
@@ -12,7 +12,7 @@ const rootReducer = combineReducers({
   add: addToCartReducer,
   dropdownMenu: showDropdownMenuReducer,
   allGoods: allGoods,
-  showFilterMenu
+  allCategories,
 });
 
 export default rootReducer;

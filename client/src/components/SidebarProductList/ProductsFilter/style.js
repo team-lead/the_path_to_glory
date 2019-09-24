@@ -130,12 +130,7 @@ let ProductsFilterStyle = {
       fontFamily: 'Open Sans',
       fontSize: '16px',
       marginLeft: '25px',
-      '&:after':{
-        content:"f077",
-        height: '30px',
-        width: '30px',
-        
-      }
+      marginRight: '10px'
     },
     categoriesMenu:{
       marginLeft: '50px',
@@ -150,11 +145,15 @@ let ProductsFilterStyle = {
       fontSize: "16px",
       color:" #000000",
       marginLeft: '25px',
+      padding: '0',
+      marginRight: '10px',
     },
     sectionItem:{
       color:" #000000",
     },
-    
+    mobileColor:{
+      display: 'flex'
+    }
     
   }
 

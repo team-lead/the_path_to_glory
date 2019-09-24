@@ -4,7 +4,7 @@ export function getGoods(category) {
     console.log(category);
     
     return async (dispatch) => {
-        await fetch(`http://localhost:8080/product-list/${category}`)
+        await fetch(`http://localhost:8080/product-list?collection=${category}`)
             .then(response => {
                 if(!response.ok) {
                     throw new Error(response.statusText)
