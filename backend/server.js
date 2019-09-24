@@ -31,7 +31,6 @@ app.use(bodyParser.json());
 app.use("/api", authUser);
 app.use("/api", checkAuthUser);
 app.use("/api", history);
-
 app.use('/detail', detailPage);
 app.use('/product-list', goods);
 
