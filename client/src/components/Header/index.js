@@ -55,7 +55,6 @@ class Header extends Component {
       resultCount
     } = classes;
 
-    // console.log(searchResults);
     const searchResultsView = this.state.searchText ? (
       <div>
         {searchResults.length ? (
