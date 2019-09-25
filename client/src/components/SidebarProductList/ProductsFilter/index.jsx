@@ -2,14 +2,15 @@ import React, {Component} from 'react';
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import RangeSlider from '../RangeSlider'
+import RangeSlider from '../RangeSlider/index'
 import { classes } from "./style";
 
 import {
         getGoodsCategories,
         SHOW_CATEGORU_MENU,
         SHOW_COLOR_MENU,
-        WINDOW_DESCTOP
+        WINDOW_DESCTOP,
+        SHOW_PRICE_MENU
     } from "../../../actions/getGoodsCategoryAction";
 
 
@@ -108,26 +109,32 @@ class ProductsFilter extends Component {
                     <p className={`${sectionTitle} ${colorSectionTitle}`} onClick ={()=>this.props.showColor()}>colors</p>
                     {this.props.showColorMenu?<i class="fas fa-angle-up"></i>:<i class="fas fa-angle-down"></i>}
                 </div>
-                <ul>{this.getColorsItems()}</ul>
+                {this.props.showColorMenu?<ul>{this.getColorsItems()}</ul>:''}
+                
             </div>
         
 
         const priceMenu = <div className={priceSection}>
-                            <p className={`${sectionTitle} ${priceSectionTitle}`}>price</p>
-                            <p className={priceDiapazon}>$25 - $930</p>
-                            <RangeSlider/>
+                        <div className = {mobileColor}>
+                            <p className={`${sectionTitle} ${priceSectionTitle}`} onClick={()=>this.props.showPrise()}>price</p>
+                            {this.props.showPriceMenu?<i class="fas fa-angle-up"></i>:<i class="fas fa-angle-down"></i>}
+                            {this.props.showPriceMenu?<RangeSlider/>:''}
+                        </div>
+                            
+                            
                         </div>
 
         window.addEventListener('resize',()=>{
             if(document.body.clientWidth === 768){
                 this.props.showDesctop()
-            }
+            } 
         })
         return(
-                        <div>
+                <div>
                 {categoiesMenu}
                 {colorMenu}
                 {priceMenu}
+                {/* <RangeSlider/> */}
             </div>
         )
     }   
@@ -135,6 +142,7 @@ class ProductsFilter extends Component {
 
 const mapStateToProps = state =>{
     return{
+        showPriceMenu:state.allCategories.isShowPriceMenu,
         showCategoriMenu:state.allCategories.isShowCategoriMenu,
         showColorMenu:state.allCategories.isShowColorMenu,
         categoriesList: state.allCategories.categoriesList,
@@ -148,7 +156,8 @@ const mapDispatchToProps = dispatch =>{
         getGoodsCategories: url => dispatch(getGoodsCategories(url)),
         showCategoru:()=>dispatch({type:SHOW_CATEGORU_MENU}),
         showDesctop:()=>dispatch({type:WINDOW_DESCTOP}),
-        showColor:()=>dispatch({type:SHOW_COLOR_MENU})
+        showColor:()=>dispatch({type:SHOW_COLOR_MENU}),
+        showPrise:()=>dispatch({type:SHOW_PRICE_MENU}),
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductsFilter);

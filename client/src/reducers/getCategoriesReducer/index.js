@@ -4,6 +4,7 @@ import {
     SHOW_CATEGORU_MENU,
     WINDOW_DESCTOP,
     SHOW_COLOR_MENU,
+    SHOW_PRICE_MENU
   } from '../../actions/getGoodsCategoryAction';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   isShowFilterMenu: false,
   isShowCategoriMenu:true,
   isShowColorMenu:true,
+  isShowPriceMenu:true,
 };
 
 export function allCategories(state = initialState, action) {
@@ -38,6 +40,12 @@ export function allCategories(state = initialState, action) {
             ...state,
             isShowCategoriMenu:!state.isShowCategoriMenu,
         }
+    }
+    case SHOW_PRICE_MENU:{
+      return{
+        ...state,
+        isShowPriceMenu:!state.isShowPriceMenu
+      }
     }
     case SHOW_COLOR_MENU:{
       return{

@@ -10,11 +10,37 @@ const useStyles = makeStyles({
     color: "#fff"
   },
   rail: {
-    color: "#847A7A"
-    // opacity: '1',
+    color: "#847A7A",
+    opacity: '1',
   },
   valueLabel: {
     color: "#fff"
+  },
+  priceDiapazon: {
+    color: '#fff',
+    fontWeight: 'normal',
+    fontSize: '18px',
+    fontFamily: 'Open Sans',
+    marginBottom: '45px'
+  },
+  '@media (max-width: 768px)':{
+    root:{
+      color:'black'
+    },
+    rail:{
+      color:'black'
+    },
+    valueLabel: {
+      color: "black"
+    },
+    priceDiapazon:{
+      color:'black',
+      fontSize: '16px',
+      marginLeft: '50px',
+      fontWeight:" normal",
+      marginTop: '20px',
+      marginBottom: '20px',
+    }
   }
 });
 
@@ -27,7 +53,7 @@ function valuetext(value) {
 }
 
 export default function RangeSlider() {
-  const {rail, root, track, valueLabel} = useStyles();
+  const {rail, root, track, valueLabel,priceDiapazon} = useStyles();
   const [value, setValue] = React.useState([20, 37]);
 
   const handleChange = (event, newValue) => {
@@ -36,6 +62,7 @@ export default function RangeSlider() {
 
   return (
     <div className={root}>
+      <p className={priceDiapazon}>{value}</p>
       <Slider className={`${rail} ${track} ${valueLabel}`}
 
         value={value}

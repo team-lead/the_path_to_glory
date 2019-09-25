@@ -107,13 +107,7 @@ let ProductsFilterStyle = {
     paddingBottom: '10px',
   },
 
-  priceDiapazon: {
-    color: '#fff',
-    fontWeight: 'normal',
-    fontSize: '18px',
-    fontFamily: 'Open Sans',
-    marginBottom: '45px'
-  },
+  
   mobileCategoiFilter:{
     display: 'none'
   },
@@ -156,7 +150,23 @@ let ProductsFilterStyle = {
     },
     colorCircle:{
       border: '1px solid black',
-    }
+    },
+    colorItem:{
+      marginLeft: '45px',
+    },
+    priceSection:{
+      marginTop: '17px'
+    },
+    priceSectionTitle:{
+      color: 'black',
+      fontFamily: 'Open Sans',
+      fontSize: '16px',
+      marginLeft: '25px',
+      marginRight: '10px',
+      fontWeight:" normal",
+      padding: '0'
+    },
+    
     
   }
 

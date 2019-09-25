@@ -3,6 +3,7 @@ export const SHOW_FILTER_MENU = "SHOW_FILTER_MENU"
 export const SHOW_CATEGORU_MENU = "SHOW_CATEGORU_MENU"
 export const WINDOW_DESCTOP = "WINDOW_DESCTOP"
 export const SHOW_COLOR_MENU = "SHOW_COLOR_MENU"
+export const SHOW_PRICE_MENU = "SHOW_PRICE_MENU"
 
 export function getGoodsCategories(category) {
     console.log(category);
