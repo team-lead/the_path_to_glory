@@ -4,9 +4,10 @@ import {
     SHOW_CATEGORU_MENU,
     WINDOW_DESCTOP,
     SHOW_COLOR_MENU,
- } from '../../actions/getGoodsCategoryAction';
+  } from '../../actions/getGoodsCategoryAction';
 
 const initialState = {
+  colorsList: [],
   categoriesList: [],
   categoryName: '',
   isShowFilterMenu: false,
@@ -20,7 +21,8 @@ export function allCategories(state = initialState, action) {
       return {
         ...state,
         categoriesList: action.payload,
-        categoryName: action.payload1
+        categoryName: action.payload1,
+        colorsList: action.payload2
       }
     }
       case SHOW_FILTER_MENU:{

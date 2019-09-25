@@ -75,22 +75,22 @@ let ProductsFilterStyle = {
     borderRadius: '50%',
     width: '21px',
     height: '21px',
-    '&.black': {
-      width: '20px',
-      height: '20px',
-      border: '1px solid #847A7A',
-      backgroundColor: '#0C0C0C',
+    border: '1px solid #847A7A',
+    // '&.black': {
+      // width: '20px',
+      // height: '20px',
+      // backgroundColor: '#0C0C0C',
     },
-    '&.brown': {
-      backgroundColor: '#8E521B',
-    },
-    '&.red': {
-      backgroundColor: '#F22121',
-    },
-    '&.white': {
-      backgroundColor: '#fff',
-    },
-  },
+    // '&.brown': {
+      // backgroundColor: '#8E521B',
+    // },
+    // '&.red': {
+      // backgroundColor: '#F22121',
+    // },
+    // '&.white': {
+      // backgroundColor: '#fff',
+    // },
+  // },
   
   colorItem: {
     display: 'flex',
@@ -153,6 +153,9 @@ let ProductsFilterStyle = {
     },
     mobileColor:{
       display: 'flex'
+    },
+    colorCircle:{
+      border: '1px solid black',
     }
     
   }

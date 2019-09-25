@@ -7,21 +7,20 @@ import ProductsFilter from '../ProductsFilter';
 import ProductList from '../../ProductList'
 import FilterHeader from '../FilterHeader/FilterHeader'
 
-const colors = ['black', 'brown', 'red', 'white']
 
 class ProductContent extends Component{
 render(){
     const desctopView = <div className={classes.main}>
                 <div className={classes.leftMenu}>
                     <FilterPath />
-                    <ProductsFilter colors={colors}/>
+                    <ProductsFilter/>
                 </div>
                 <ProductList/>
             </div>
 
     const mobileView = <div>
         <FilterHeader/>
-        <ProductsFilter colors={colors}/>
+        <ProductsFilter/>
         </div>
 
     const showMenu = this.props.showFilterMenu ? mobileView : desctopView

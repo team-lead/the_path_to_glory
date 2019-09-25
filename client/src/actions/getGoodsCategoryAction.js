@@ -35,10 +35,24 @@ export function getGoodsCategories(category) {
                 } else if (window.location.pathname === "/product-list/accessories") {
                     categoryName = "accessories";
                 }
+
+                let categoriesColors = new Set();
+                goodsArr = goods.womens || goods.mens
+                for(let key in goodsArr) {
+                    let categoriesItems = goodsArr[key].color
+                    categoriesItems.forEach(element => {
+                        categoriesColors.add(element)
+                    });
+                }
+                let colorsList = [];
+                for(let key of categoriesColors) {
+                    colorsList.push(key)
+                }
                 dispatch({
                     type: GET_GOODS_CATEGORIES,
                     payload: categoriesList,
-                    payload1: categoryName
+                    payload1: categoryName,
+                    payload2: colorsList
                 })
             })
             .catch(err => {
