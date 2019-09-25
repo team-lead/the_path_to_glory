@@ -6,7 +6,7 @@ import ProductContent from '../../components/SidebarProductList/ProductContent';
 const ProductsPage = () => {
     return(
         <Fragment>
-            {/* <Header /> */}
+            <Header />
             <ProductContent />
         </Fragment>
     )
