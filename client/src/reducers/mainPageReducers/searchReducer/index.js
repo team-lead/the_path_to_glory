@@ -1,13 +1,21 @@
-import { SHOW_MODAL_WINDOW } from "../../../actions/searchActions";
+import {
+  SHOW_MODAL_WINDOW,
+  SEARCH_ACTION
+} from "../../../actions/searchActions";
 
 const initalState = {
-  showSearchModal: false
+  showSearchModal: false,
+  searchResults: []
 };
 
 function searchReducer(state = initalState, action) {
   switch (action.type) {
     case SHOW_MODAL_WINDOW: {
       return { ...state, showSearchModal: !state.showSearchModal };
+    }
+    case SEARCH_ACTION: {
+      // console.log(action.payload, "----------------------------");
+      return { ...state, searchResults: action.payload };
     }
     default: {
       return { ...state };
