@@ -75,10 +75,6 @@ class AuthProviderList extends Component {
       <React.Fragment>
         <Hidden only="xs">
           <DialogActions className={classes.dialogActions}>
-            <Button className={classes.facebook} disabled={isPerformingAuthAction} variant="contained" onClick={() => onAuthProviderClick(new firebase.auth.FacebookAuthProvider())}>
-              <FacebookBoxIcon className={classes.icon} />
-              Facebook
-            </Button>
 
             <Button className={classes.google} disabled={isPerformingAuthAction} variant="contained" onClick={() => onAuthProviderClick(new firebase.auth.GoogleAuthProvider())}>
               <GoogleIcon className={classes.icon} />
@@ -90,10 +86,6 @@ class AuthProviderList extends Component {
               GitHub
             </Button>
 
-            <Button className={classes.twitter} disabled={isPerformingAuthAction} variant="contained" onClick={() => onAuthProviderClick(new firebase.auth.TwitterAuthProvider())}>
-              <TwitterIcon className={classes.icon} />
-              Twitter
-            </Button>
           </DialogActions>
         </Hidden>
 

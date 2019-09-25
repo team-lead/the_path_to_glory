@@ -18,6 +18,7 @@ import constraints from '../../constraints';
 import AuthProviderList from '../../layout/AuthProviderList/AuthProviderList';
 
 const initialState = {
+  firstName: "",
   emailAddress: '',
   password: '',
   passwordConfirmation: '',
@@ -33,13 +34,15 @@ class SignUpDialog extends Component {
   }
 
   signUp = () => {
-    const { emailAddress, password, passwordConfirmation } = this.state;
+    const { firstName, emailAddress, password, passwordConfirmation } = this.state;
     
     const errors = validate({
+      firstName: firstName,
       emailAddress: emailAddress,
       password: password,
       passwordConfirmation: passwordConfirmation
     }, {
+      firstName: constraints.firstName,
       emailAddress: constraints.emailAddress,
       password: constraints.password,
       passwordConfirmation: constraints.passwordConfirmation
@@ -51,7 +54,7 @@ class SignUpDialog extends Component {
       this.setState({
         errors: null
       }, () => {
-        this.props.signUp(emailAddress, password, passwordConfirmation);
+        this.props.signUp(firstName, emailAddress, password, passwordConfirmation);
       });
     }
   };
@@ -70,6 +73,13 @@ class SignUpDialog extends Component {
     if (key === 'Enter') {
       this.signUp();
     }
+  };
+
+  
+  handleFirstNameChange = (event) => {
+    const firstName = event.target.value;
+
+    this.setState({ firstName });
   };
 
   handleEmailAddressChange = (event) => {
@@ -101,7 +111,7 @@ class SignUpDialog extends Component {
     // Events
     const { onClose, onAuthProviderClick } = this.props;
 
-    const { emailAddress, password, passwordConfirmation, errors } = this.state;
+    const { firstName, emailAddress, password, passwordConfirmation, errors } = this.state;
 
     return (
       <Dialog fullScreen={fullScreen} open={open} onClose={onClose} onExited={this.handleExited} onKeyPress={this.handleKeyPress}>
@@ -113,6 +123,15 @@ class SignUpDialog extends Component {
 
 
           <form>
+          <TextField
+              fullWidth
+              label="First Name"
+              margin="normal"
+              onChange={this.handleFirstNameChange}
+              required
+              type="text"
+              value={firstName}
+            />
             <TextField
               autoComplete="email"
               error={!!(errors && errors.emailAddress)}
@@ -125,7 +144,6 @@ class SignUpDialog extends Component {
               type="email"
               value={emailAddress}
             />
-
             <TextField
               autoComplete="new-password"
               error={!!(errors && errors.password)}

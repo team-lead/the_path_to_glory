@@ -92,7 +92,7 @@ class SignInDialog extends Component {
     // Events
 
     // Events
-    const { onClose, onAuthProviderClick, onResetPasswordClick, onSignUpClick} = this.props;
+    const { onClose, onAuthProviderClick, onResetPasswordClick, onSignUpClick } = this.props;
 
     const { emailAddress, password, errors } = this.state;
 
@@ -104,8 +104,8 @@ class SignInDialog extends Component {
           onClose={onClose}
           onExited={this.handleExited}
           onKeyPress={this.handleKeyPress}
-          >
-          <DialogTitle>
+        >
+        <DialogTitle>
             Sign in
         </DialogTitle>
 
@@ -123,7 +123,7 @@ class SignInDialog extends Component {
                 required
                 type="email"
                 value={emailAddress}
-                autoComplete = 'off'
+                autoComplete='off'
               />
 
               <TextField
@@ -137,7 +137,7 @@ class SignInDialog extends Component {
                 required
                 type="password"
                 value={password}
-                autoComplete = "off"
+                autoComplete="off"
               />
             </form>
 
