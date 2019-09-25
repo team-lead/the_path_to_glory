@@ -6,6 +6,7 @@ import CartProduct from '../../components/Cart/CartProduct';
 import Container from '../../components/Container';
 import Button from '../../components/Button';
 import { connect } from 'react-redux';
+import { updateCart } from '../../actions/detailGoodsAction';
 
 const Cart = ({ productsInCart }) => {
   const {
@@ -15,7 +16,9 @@ const Cart = ({ productsInCart }) => {
     summarySettings,
     emptyCartMsg,
     emptyCartMsgIcon,
-    emptyCartMsgText
+    emptyCartMsgText,
+    keepShoppingBtn,
+    cartHeading
   } = classes;
 
   const emptyCartMessage = (
@@ -25,19 +28,27 @@ const Cart = ({ productsInCart }) => {
     </div>
   );
 
-  const cartProductsData = productsInCart.length
-    ? productsInCart.map(product => (
-        <CartProduct key={product.id} {...product} />
-      ))
-    : emptyCartMessage;
+  const createCartProducts = cart => {
+    return cart.length
+      ? cart.map(product => <CartProduct key={product.id} {...product} />)
+      : emptyCartMessage;
+  };
+
+  const cartProductsData = createCartProducts(productsInCart);
 
   return (
     <Fragment>
       <Header />
       <main className={mainContent}>
         <Container>
-          <Button name='KEEP SHOPING' href='/product-list' black />
+          <Button
+            btnSettings={keepShoppingBtn}
+            name='KEEP SHOPING'
+            href='/product-list'
+            black
+          />
           <div className={mainContentWrapper}>
+            <h1 className={cartHeading}>Shopping bag</h1>
             <section className={products}>{cartProductsData}</section>
             <CartSummary settings={summarySettings} />
           </div>
@@ -50,6 +61,12 @@ const Cart = ({ productsInCart }) => {
 const mapStateToProps = state => {
   return {
     productsInCart: state.active.cart
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCart: newCart => dispatch(updateCart(newCart))
   };
 };
 

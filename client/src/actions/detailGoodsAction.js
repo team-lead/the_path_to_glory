@@ -3,6 +3,8 @@ export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
 export const SET_CHECKOUT_TOTAL = 'SET_CHECKOUT_TOTAL';
 export const DEC_CART_PRODUCT_QUANTITY = 'INC_CART_PRODUCT_QUANTITY';
 export const INC_CART_PRODUCT_QUANTITY = 'DEC_CART_PRODUCT_QUANTITY';
+export const SAVE_USER_CART = 'SAVE_USER_CART';
+export const UPDATE_CART = 'UPDATE_CART';
 
 export function getGoodsDetailID(id) {
   return dispatch => {
@@ -45,4 +47,12 @@ export function incCartProductQuantity(productId) {
 
 export function decCartProductQuantity(productId) {
   return { type: DEC_CART_PRODUCT_QUANTITY, payload: productId };
+}
+
+export function saveUserCart() {
+  return { type: SAVE_USER_CART };
+}
+
+export function updateCart(newCart) {
+  return { type: UPDATE_CART, payload: newCart };
 }
