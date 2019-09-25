@@ -11,6 +11,7 @@ import {
 const initialState = {
   objectId: [],
   checkoutTotal: 0,
+  prevPage: '',
   cart: localStorage.getItem('cart')
     ? JSON.parse(localStorage.getItem('cart'))
     : []
