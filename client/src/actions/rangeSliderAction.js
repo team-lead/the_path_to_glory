@@ -16,7 +16,7 @@ export function filterGoodsByPrice() {
         type: GOODS_PRICE,
         min: minPrice,
         max: maxPrice
-      })
+      });
       filterPriceByCategory(womens, minPrice, maxPrice, dispatch);
     } else if (window.location.pathname.split("/").includes("mens")) {
       const price = [];

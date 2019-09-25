@@ -24,13 +24,13 @@ function valuetext(value) {
 
 export default function RangeSlider(props) {
   const { rail, root, track, valueLabel } = useStyles();
-  const [value, setValue] = React.useState([20, 37]);
+  const [value, setValue] = React.useState([props.min, props.max]);
   console.log(value);
   const handleChange = (event, newValue) => {
     setValue(newValue);
     props.filter();
   };
-
+  console.log(value);
   return (
     <div className={root}>
       <Slider
@@ -40,6 +40,8 @@ export default function RangeSlider(props) {
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
         getAriaValueText={valuetext}
+        min={props.min}
+        max={props.max}
       />
     </div>
   );

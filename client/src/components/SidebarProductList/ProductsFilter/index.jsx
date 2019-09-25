@@ -7,6 +7,9 @@ import { filterGoodsByPrice } from "../../../actions/rangeSliderAction";
 import { getGoods } from "../../../actions/getGoodsAction";
 
 class ProductsFilter extends Component {
+  componentDidMount() {
+    this.props.filterByPrice();
+  }
   render() {
     const {
       categorySection,
@@ -73,13 +76,27 @@ class ProductsFilter extends Component {
         {hideProductsFilter}
         <div className={priceSection}>
           <p className={`${sectionTitle} ${priceSectionTitle}`}>price</p>
-          <p className={priceDiapazon}>$25 - $930</p>
-          <RangeSlider filter={this.props.filterByPrice} />
+          <p
+            className={
+              priceDiapazon
+            }>{`$${this.props.minPrice} - $${this.props.maxPrice}`}</p>
+          <RangeSlider
+            filter={this.props.filterByPrice}
+            max={this.props.maxPrice}
+            min={this.props.minPrice}
+          />
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    minPrice: state.rangeSlider.min,
+    maxPrice: state.rangeSlider.max
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -89,6 +106,6 @@ const mapDispatchToProps = dispatch => {
   };
 };
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(ProductsFilter);
