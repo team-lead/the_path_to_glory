@@ -38,12 +38,9 @@ const productListStyle ={
         textTransform: 'uppercase',
         fontSize: '18px',
         marginTop: '20px',
-<<<<<<< HEAD
         fontWeight: '700',
         color: '#000',
-=======
-        color: '#000000',
->>>>>>> develop
+        color: '#000000'
     },
     goodsPrise:{
         marginTop: '15px',

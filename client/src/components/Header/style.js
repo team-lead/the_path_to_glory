@@ -5,16 +5,6 @@ jss.setup(preset());
 
 let headerStyle = {
   header: {
-<<<<<<< HEAD
-    userSelect: "none",
-    background: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    height: "95px",
-    },
-=======
     userSelect: 'none',
     background: '#000',
     display: 'flex',
@@ -23,7 +13,6 @@ let headerStyle = {
     width: '100%',
     height: '11vh'
   },
->>>>>>> develop
   navbarMenu: {
     display: 'flex',
     justifyContent: 'space-evenly',
