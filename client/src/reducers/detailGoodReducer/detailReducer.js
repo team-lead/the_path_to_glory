@@ -58,6 +58,13 @@ export const activeGoodsReducer = (state = initialState, action) => {
     case UPDATE_CART: {
       return { ...state, shoppingBag: action.payload };
     }
+    case SAVE_USER_CART: {
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+      return { ...state };
+    }
+    case UPDATE_CART: {
+      return { ...state, cart: action.payload };
+    }
     default:
       return { ...state };
   }
