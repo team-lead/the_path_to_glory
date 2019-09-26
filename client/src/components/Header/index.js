@@ -1,20 +1,22 @@
 /* eslint-disable */
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { classes } from "./style";
-import { SHOW_MODAL_WINDOW, searchGoods } from "../../actions/searchActions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
+import { classes } from './style';
+import { SHOW_MODAL_WINDOW, searchGoods } from '../../actions/searchActions';
+import { setPrevPagePath } from '../../actions/detailGoodsAction';
 import {
   SHOW_DROPDOWN_MENU,
   HIDE_DROPDOWN_MENU
-} from "../../actions/dropDownMenuAction";
-import DropdownHeaderMenu from "../DropdownHeaderMenu";
-import ProductItemSearch from "../ProductItemSearch";
+} from '../../actions/dropDownMenuAction';
+import DropdownHeaderMenu from '../DropdownHeaderMenu';
+import ProductItemSearch from '../ProductItemSearch';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchText: "" };
+    this.state = { searchText: '' };
     this.handleChange = this.handleChange.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
   }
@@ -24,7 +26,7 @@ class Header extends Component {
     this.setState({ searchText: target.value });
   }
   clearSearch() {
-    this.setState({ searchText: "" });
+    this.setState({ searchText: '' });
   }
   render() {
     const {
@@ -33,7 +35,8 @@ class Header extends Component {
       showDropdownMenu,
       activeDropdownMenu,
       hideDropdownMenu,
-      searchResults
+      searchResults,
+      setPrevPagePath
     } = this.props;
 
     const {
@@ -73,8 +76,8 @@ class Header extends Component {
       <div className={search} onMouseLeave={searchModal}>
         <div className={searchBlock}>
           <input
-            type="text"
-            placeholder="Search for item"
+            type='text'
+            placeholder='Search for item'
             className={searchInput}
             value={this.state.searchText}
             onChange={this.handleChange}
@@ -85,14 +88,10 @@ class Header extends Component {
           />
         </div>
         {searchResultsView}
-        {/* <a href="#" className={searchBtn}>
-          Search
-        </a> */}
       </div>
     ) : null;
 
     const logoLink = window.location.pathname === '/' ? '#' : '/';
-    console.log('----', typeof activeDropdownMenu);
 
     let showDropdownMenuItem = null;
 
@@ -100,34 +99,34 @@ class Header extends Component {
       case 0: {
         showDropdownMenuItem = (
           <DropdownHeaderMenu
-            title={"CATEGORIES"}
+            title={'CATEGORIES'}
             onMouseOver={() => showDropdownMenu(0)}
             onMouseLeave={hideDropdownMenu}>
             <div>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 New arrivals
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Shirts
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Coats
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Jackets
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Sweaters
               </a>
             </div>
             <div>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Polos & Tees
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Jeans & Pants
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Outerwear
               </a>
             </div>
@@ -182,7 +181,7 @@ class Header extends Component {
       case 2: {
         showDropdownMenuItem = (
           <DropdownHeaderMenu
-            title={"CATEGORIES"}
+            title={'CATEGORIES'}
             onMouseOver={() => showDropdownMenu(2)}
             onMouseLeave={hideDropdownMenu}>
             <div>
@@ -216,7 +215,7 @@ class Header extends Component {
               <a className={dropdownMenuItem} href='#'>
                 Bags
               </a>
-              <a className={dropdownMenuItem} href="#">
+              <a className={dropdownMenuItem} href='#'>
                 Waletts, Card Cases
               </a>
               <a className={dropdownMenuItem} href='#'>
@@ -241,33 +240,33 @@ class Header extends Component {
       <>
         <header className={header}>
           <nav className={navbarMenu}>
-            <a
-              href='/product-list/mens'
+            <Link
+              to='/product-list/mens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
-            </a>
-            <a
-              href='/product-list/womens'
+            </Link>
+            <Link
+              to='/product-list/womens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
-            </a>
-            <a
+            </Link>
+            <Link
               href='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
-            </a>
+            </Link>
           </nav>
           <div onMouseOver={hideDropdownMenu}>
-            <a href={logoLink} className={logoItem}>
+            <a to={logoLink} className={logoItem}>
               Originalité
             </a>
           </div>
           <div className={headerActions}>
             <NavLink
-              href="#"
+              href='#'
               onClick={searchModal}
               onMouseOver={hideDropdownMenu}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
@@ -277,12 +276,17 @@ class Header extends Component {
               <i className={`far fa-user ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>My account</p>
             </NavLink>
-            <a href='#' className={classes.headerActionsItem}>
+            <Link
+              to='/cart'
+              onClick={() => {
+                setPrevPagePath(document.location.pathname);
+              }}
+              className={classes.headerActionsItem}>
               <i
                 className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}
               />
               <p className={classes.headerActionsItemText}>Shopping Bag</p>
-            </a>
+            </Link>
           </div>
         </header>
         {searchModalItem}
@@ -306,7 +310,8 @@ const mapDispatchToProps = dispatch => {
     searchModal: () => dispatch({ type: SHOW_MODAL_WINDOW }),
     showDropdownMenu: id => dispatch({ type: SHOW_DROPDOWN_MENU, payload: id }),
     hideDropdownMenu: () => dispatch({ type: HIDE_DROPDOWN_MENU }),
-    searchAction: searchKeywords => dispatch(searchGoods(searchKeywords))
+    searchAction: searchKeywords => dispatch(searchGoods(searchKeywords)),
+    setPrevPagePath: path => dispatch(setPrevPagePath(path))
   };
 };
 
