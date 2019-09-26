@@ -5,12 +5,14 @@ import {
   DEC_CART_PRODUCT_QUANTITY,
   INC_CART_PRODUCT_QUANTITY,
   SAVE_USER_CART,
-  UPDATE_CART
+  UPDATE_CART,
+  SET_PREV_PAGE_PATH
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
   objectId: [],
   checkoutTotal: 0,
+  prevPagePath: '',
   purchaseHistory: [],
   shoppingBag: localStorage.getItem('shoppingBag')
     ? JSON.parse(localStorage.getItem('shoppingBag'))
@@ -64,6 +66,10 @@ export const activeGoodsReducer = (state = initialState, action) => {
     }
     case UPDATE_CART: {
       return { ...state, cart: action.payload };
+    }
+    case SET_PREV_PAGE_PATH: {
+      const prevPagePath = action.payload;
+      return { ...state, prevPagePath };
     }
     default:
       return { ...state };

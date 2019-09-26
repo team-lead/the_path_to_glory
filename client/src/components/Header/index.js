@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { classes } from './style';
 import { SHOW_MODAL_WINDOW, searchGoods } from '../../actions/searchActions';
+import { setPrevPagePath } from '../../actions/detailGoodsAction';
 import {
   SHOW_DROPDOWN_MENU,
   HIDE_DROPDOWN_MENU
 } from '../../actions/dropDownMenuAction';
 import DropdownHeaderMenu from '../DropdownHeaderMenu';
 import ProductItemSearch from '../ProductItemSearch';
+import { Link } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -27,14 +29,14 @@ class Header extends Component {
     this.setState({ searchText: '' });
   }
   render() {
-    console.log('historyyyyyyyy', this.props.history);
     const {
       searchModal,
       showSearchModal,
       showDropdownMenu,
       activeDropdownMenu,
       hideDropdownMenu,
-      searchResults
+      searchResults,
+      setPrevPagePath
     } = this.props;
 
     const {
@@ -86,9 +88,6 @@ class Header extends Component {
           />
         </div>
         {searchResultsView}
-        {/* <a href="#" className={searchBtn}>
-          Search
-        </a> */}
       </div>
     ) : null;
 
@@ -241,27 +240,27 @@ class Header extends Component {
       <>
         <header className={header}>
           <nav className={navbarMenu}>
-            <a
-              href='/product-list/mens'
+            <Link
+              to='/product-list/mens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
-            </a>
-            <a
-              href='/product-list/womens'
+            </Link>
+            <Link
+              to='/product-list/womens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
-            </a>
-            <a
+            </Link>
+            <Link
               href='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
-            </a>
+            </Link>
           </nav>
           <div onMouseOver={hideDropdownMenu}>
-            <a href={logoLink} className={logoItem}>
+            <a to={logoLink} className={logoItem}>
               Originalité
             </a>
           </div>
@@ -277,12 +276,17 @@ class Header extends Component {
               <i className={`far fa-user ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>My account</p>
             </NavLink>
-            <a href='#' className={classes.headerActionsItem}>
+            <Link
+              to='/cart'
+              onClick={() => {
+                setPrevPagePath(document.location.pathname);
+              }}
+              className={classes.headerActionsItem}>
               <i
                 className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}
               />
               <p className={classes.headerActionsItemText}>Shopping Bag</p>
-            </a>
+            </Link>
           </div>
         </header>
         {searchModalItem}
@@ -306,7 +310,8 @@ const mapDispatchToProps = dispatch => {
     searchModal: () => dispatch({ type: SHOW_MODAL_WINDOW }),
     showDropdownMenu: id => dispatch({ type: SHOW_DROPDOWN_MENU, payload: id }),
     hideDropdownMenu: () => dispatch({ type: HIDE_DROPDOWN_MENU }),
-    searchAction: searchKeywords => dispatch(searchGoods(searchKeywords))
+    searchAction: searchKeywords => dispatch(searchGoods(searchKeywords)),
+    setPrevPagePath: path => dispatch(setPrevPagePath(path))
   };
 };
 
