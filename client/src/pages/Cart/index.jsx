@@ -28,9 +28,9 @@ const Cart = ({ productsInCart }) => {
     </div>
   );
 
-  const createCartProducts = cart => {
-    return cart.length
-      ? cart.map(product => <CartProduct key={product.id} {...product} />)
+  const createCartProducts = products => {
+    return products.length
+      ? products.map(product => <CartProduct key={product.id} {...product} />)
       : emptyCartMessage;
   };
 
@@ -60,7 +60,7 @@ const Cart = ({ productsInCart }) => {
 
 const mapStateToProps = state => {
   return {
-    productsInCart: state.active.cart
+    productsInCart: state.active.shoppingBag
   };
 };
 

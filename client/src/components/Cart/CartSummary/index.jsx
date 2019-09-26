@@ -66,7 +66,7 @@ const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
 
 const mapStateToProps = state => {
   return {
-    productsInCart: state.active.cart
+    productsInCart: state.active.shoppingBag
   };
 };
 
