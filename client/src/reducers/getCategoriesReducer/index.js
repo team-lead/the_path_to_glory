@@ -4,7 +4,8 @@ import {
     SHOW_CATEGORU_MENU,
     WINDOW_DESCTOP,
     SHOW_COLOR_MENU,
-    SHOW_PRICE_MENU
+    SHOW_PRICE_MENU,
+    HANDL_SHENGE_PRICE
   } from '../../actions/getGoodsCategoryAction';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
   isShowCategoriMenu:true,
   isShowColorMenu:true,
   isShowPriceMenu:true,
+  priceValue: {min:50,max:300}
 };
 
 export function allCategories(state = initialState, action) {
@@ -33,6 +35,7 @@ export function allCategories(state = initialState, action) {
             isShowFilterMenu:!state.isShowFilterMenu,
             isShowCategoriMenu:false,
             isShowColorMenu:false,
+            isShowPriceMenu:false,
         }
     }
     case SHOW_CATEGORU_MENU:{
@@ -57,8 +60,20 @@ export function allCategories(state = initialState, action) {
         return{
             ...state,
             isShowFilterMenu:false,
-            isShowCategoriMenu:true
+            isShowCategoriMenu:true,
+            isShowPriceMenu:true,
+            isShowColorMenu:true,
+
+
         }
+    }
+    case HANDL_SHENGE_PRICE:{
+      console.log(action.payload)
+      return{
+        ...state,
+        priceValue:action.payload
+        
+      }
     }
     default:
       return state;
