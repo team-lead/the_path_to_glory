@@ -7,8 +7,9 @@ import Container from '../../components/Container';
 import Button from '../../components/Button';
 import { connect } from 'react-redux';
 import { updateCart } from '../../actions/detailGoodsAction';
+import { Link } from 'react-router-dom';
 
-const Cart = ({ productsInCart }) => {
+const Cart = ({ productsInCart, prevPagePath }) => {
   const {
     products,
     mainContent,
@@ -28,9 +29,9 @@ const Cart = ({ productsInCart }) => {
     </div>
   );
 
-  const createCartProducts = cart => {
-    return cart.length
-      ? cart.map(product => <CartProduct key={product.id} {...product} />)
+  const createCartProducts = products => {
+    return products.length
+      ? products.map(product => <CartProduct key={product.id} {...product} />)
       : emptyCartMessage;
   };
 
@@ -41,12 +42,14 @@ const Cart = ({ productsInCart }) => {
       <Header />
       <main className={mainContent}>
         <Container>
-          <Button
-            btnSettings={keepShoppingBtn}
-            name='KEEP SHOPING'
-            href='/product-list'
-            black
-          />
+          <Link to={prevPagePath}>
+            <Button
+              btnSettings={keepShoppingBtn}
+              name='KEEP SHOPING'
+              href='/product-list'
+              black
+            />
+          </Link>
           <div className={mainContentWrapper}>
             <h1 className={cartHeading}>Shopping bag</h1>
             <section className={products}>{cartProductsData}</section>
@@ -60,7 +63,8 @@ const Cart = ({ productsInCart }) => {
 
 const mapStateToProps = state => {
   return {
-    productsInCart: state.active.cart
+    productsInCart: state.active.shoppingBag,
+    prevPagePath: state.active.prevPagePath
   };
 };
 
