@@ -8,9 +8,11 @@ import { setPrevPagePath } from '../../actions/detailGoodsAction';
 import {
   SHOW_DROPDOWN_MENU,
   HIDE_DROPDOWN_MENU
-} from '../../actions/dropDownMenuAction';
-import DropdownHeaderMenu from '../DropdownHeaderMenu';
-import ProductItemSearch from '../ProductItemSearch';
+} from "../../actions/dropDownMenuAction";
+import DropdownHeaderMenu from "../DropdownHeaderMenu";
+import ProductItemSearch from "../ProductItemSearch";
+import Login from "../User/Login";
+
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
@@ -266,16 +268,12 @@ class Header extends Component {
           </div>
           <div className={headerActions}>
             <NavLink
-              href='#'
               onClick={searchModal}
               onMouseOver={hideDropdownMenu}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>Search</p>
             </NavLink>
-            <NavLink to='/myaccount/main' className={classes.headerActionsItem}>
-              <i className={`far fa-user ${headerActionsItemImg}`} />
-              <p className={classes.headerActionsItemText}>My account</p>
-            </NavLink>
+          <Login />        
             <Link
               to='/cart'
               onClick={() => {

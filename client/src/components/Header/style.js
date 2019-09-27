@@ -129,7 +129,7 @@ let headerStyle = {
     }
   },
   resultCount: {
-    fontSize: '20px',
+    fontSize: '20px', 
     fontFamily: 'Open Sans',
     marginBottom: '25px'
   }

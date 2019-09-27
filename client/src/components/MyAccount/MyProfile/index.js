@@ -2,38 +2,49 @@ import React, { Component } from "react";
 import { classes } from "./style";
 import MyAccountMenu from "../MyAccountMenu";
 
-
 class MyProfile extends Component {
-  
+
   state = {
-      user: null,
-      id: '5d777dbc30ebd8186804e67e'
-    }
-  
+    userProfile: {},
+
+  }
+
   componentDidMount() {
-    
-    fetch('http://localhost:8080/users/'+this.state.id)
+
+    const urlBack = "http://localhost:8080";
+    const pathProfile = "/api/profile";
+    const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+
+    const url = urlBack + pathProfile
+
+    userAuth && fetch(url, {
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + userAuth.token
+      }
+    })
       .then(response => response.json())
       .then(json => {
-        this.setState({ user: json });
-      });
+        console.log("json", json)
+        const userProfile = json
+        this.setState({ "userProfile": userProfile });
+      })
+      .catch(error => console.error('Ошибка:', error));
   }
 
   render() {
 
-    let user = this.state.user;
+    let user = this.state.userProfile;
 
-    if (!user) {
-      user = {};
-      user.email = "No email";
-      user.firstName = "No firstName";
-      user.secondName = "No secondName";
-      user.phone = "No mobile phone";
-      user.gender = "No gender"
-      user.birthday = "No birthday";
-    }
 
-    let { email, firstName, secondName, phone, gender, birthday } = user;
+    let {
+      email = "No email",
+      firstName = "No First Name",
+      lastName = "No Last Name",
+      phone = "No mobile phone",
+      sex = "No sex",
+      birthday ="No birthday"
+    } = user;
 
     return (
       <>
@@ -46,11 +57,11 @@ class MyProfile extends Component {
               <h4 className={classes.myProfileTitle} >first Name</h4>
               <p className={classes.myProfileText}> {firstName} </p>
               <h4 className={classes.myProfileTitle}>second Name</h4>
-              <p className={classes.myProfileText} > {secondName}</p>
+              <p className={classes.myProfileText} > {lastName}</p>
               <h4 className={classes.myProfileTitle}>mobile phone</h4>
               <p className={classes.myProfileText} > {phone}</p>
-              <h4 className={classes.myProfileTitle}>gender</h4>
-              <p className={classes.myProfileText} > {gender}</p>
+              <h4 className={classes.myProfileTitle}>sex</h4>
+              <p className={classes.myProfileText} > {sex}</p>
               <h4 className={classes.myProfileTitle} >birthday</h4>
               <p className={classes.myProfileText} > {birthday}</p>
             </div>
