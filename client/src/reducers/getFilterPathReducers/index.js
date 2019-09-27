@@ -1,7 +1,7 @@
 import {GET_FIRST_FILTER_PATH} from '../../actions/getFilterPathAction';
 
 const initialState = {
-  firstFilterPath: 'asasa',
+  firstFilterPath: '',
 };
 
 export function getFilterPath(state = initialState, action) {

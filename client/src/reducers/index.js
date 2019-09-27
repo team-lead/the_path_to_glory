@@ -6,6 +6,7 @@ import addToCartReducer from "./cartReducers/addToCart";
 import showDropdownMenuReducer from "./mainPageReducers/dropDownMenuReducer";
 import { allCategories } from "./getCategoriesReducer/index";
 import rangeSliderReducer from "./rangeSliderReducer";
+import { getFilterPath } from "./getFilterPathReducers"
 
 const rootReducer = combineReducers({
   active: activeGoodsReducer,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   dropdownMenu: showDropdownMenuReducer,
   allGoods: allGoods,
   rangeSlider: rangeSliderReducer,
-  allCategories
+  allCategories,
+  getFilterPath
 });
 
 export default rootReducer;
