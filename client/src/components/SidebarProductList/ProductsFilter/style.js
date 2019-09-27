@@ -5,41 +5,43 @@ jss.setup(preset());
 
 let ProductsFilterStyle = {
   categorySection: {
-    marginTop: '16px',
-    marginBottom: '18px',
+    marginTop: "16px",
+    marginBottom: "18px"
   },
 
   sectionTitle: {
-    fontFamily: 'Josefin Sans',
-    fontWeight: 'bold',
-    fontSize: '18px',
-    textTransform: 'uppercase',
-    color: '#fff'
+    fontFamily: "Josefin Sans",
+    fontWeight: "bold",
+    fontSize: "18px",
+    textTransform: "uppercase",
+    color: "#fff"
   },
 
   categorySectionTitle: {
-    paddingTop: '14px',
-    paddingBottom: '14px',
+    paddingTop: "14px",
+    paddingBottom: "14px"
   },
 
   sectionItem: {
-    color: '#fff',
-    textDecoration: 'none',
-    display: 'inline-block',
-    paddingTop: '2px',
-    paddingBottom: '2px',
-    fontFamily: 'Open Sans',
-    fontSize: '16px',
-    fontWeight: 'normal',
+    color: "#fff",
+    textDecoration: "none",
+    cursor: "pointer",
+    display: "inline-block",
+    paddingTop: "2px",
+    paddingBottom: "2px",
+    fontFamily: "Open Sans",
+    fontSize: "16px",
+    fontWeight: "normal"
   },
-  
+
   categorySectionItem: {
-    borderBottom: '1px solid transparent',
-    marginTop: '19px',
-    marginBottom: '19px',
-    '&:hover':{
-      borderBottom: '1px solid #fff',
-    },
+    borderBottom: "1px solid transparent",
+    marginTop: "19px",
+    marginBottom: "19px",
+    cursor: "pointer",
+    "&:hover": {
+      borderBottom: "1px solid #fff"
+    }
   },
   categorySectionlinck: {
     borderBottom: '1px solid transparent',
@@ -51,22 +53,22 @@ let ProductsFilterStyle = {
   },
 
   colorSection: {
-    marginTop: '18px',
-  } ,
+    marginTop: "18px"
+  },
 
   colorSectionTitle: {
-    paddingTop: '15px',
-    paddingBottom: '15px',
+    paddingTop: "15px",
+    paddingBottom: "15px"
   },
 
   colorSectionItem: {
-    marginLeft: '29px',
-    borderBottom: '1px solid transparent',
-    marginTop: '15px',
-    marginBottom: '15px',
-    '&:hover':{
-      borderBottom: '1px solid #fff',
-    },
+    marginLeft: "29px",
+    borderBottom: "1px solid transparent",
+    marginTop: "15px",
+    marginBottom: "15px",
+    "&:hover": {
+      borderBottom: "1px solid #fff"
+    }
   },
   
 
@@ -77,20 +79,19 @@ let ProductsFilterStyle = {
     height: '21px',
     border: '1px solid #847A7A',
   },
-  
+
   colorItem: {
-    display: 'flex',
-    alignItems: 'center'
+    display: "flex",
+    alignItems: "center"
   },
 
   priceSection: {
-    marginTop: '68px',
-    
+    marginTop: "68px"
   },
 
   priceSectionTitle: {
-    paddingTop: '10px',
-    paddingBottom: '10px',
+    paddingTop: "10px",
+    paddingBottom: "10px"
   },
 
   
