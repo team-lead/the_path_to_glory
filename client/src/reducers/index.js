@@ -5,6 +5,7 @@ import searchReducer from "./mainPageReducers/searchReducer";
 import addToCartReducer from "./cartReducers/addToCart";
 import showDropdownMenuReducer from "./mainPageReducers/dropDownMenuReducer";
 import { allCategories } from "./getCategoriesReducer/index";
+import { getFilterPath } from "./getFilterPathReducers/index"
 
 const rootReducer = combineReducers({
   active: activeGoodsReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   dropdownMenu: showDropdownMenuReducer,
   allGoods: allGoods,
   allCategories,
+  getFilterPath,
 });
 
 export default rootReducer;

@@ -253,7 +253,7 @@ class Header extends Component {
               woman
             </Link>
             <Link
-              href='/product-list/accessories'
+              to='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
