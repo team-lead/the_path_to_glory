@@ -6,6 +6,7 @@ export const INC_CART_PRODUCT_QUANTITY = 'DEC_CART_PRODUCT_QUANTITY';
 export const SAVE_USER_CART = 'SAVE_USER_CART';
 export const UPDATE_CART = 'UPDATE_CART';
 export const SET_PREV_PAGE_PATH = 'SET_PREV_PAGE_PATH';
+export const UPDATE_PURCHASE_HISTORY = 'UPDATE_PURCHASE_HISTORY';
 
 export function getGoodsDetailID(id) {
   return dispatch => {
@@ -60,4 +61,8 @@ export function updateCart(newCart) {
 
 export function setPrevPagePath(path) {
   return { type: SET_PREV_PAGE_PATH, payload: path };
+}
+
+export function updatePurchaseHistory() {
+  return { type: UPDATE_PURCHASE_HISTORY };
 }
