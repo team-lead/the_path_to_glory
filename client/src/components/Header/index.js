@@ -93,7 +93,7 @@ class Header extends Component {
 
     const logoLink = window.location.pathname === '/' ? '#' : '/';
 
-    let showDropdownMenuItem = null;
+    let showDropdownMenuItem = null; 
 
     switch (activeDropdownMenu) {
       case 0: {
@@ -241,19 +241,19 @@ class Header extends Component {
         <header className={header}>
           <nav className={navbarMenu}>
             <a
-              href = '/product-list/mens'
+            href='/product-list/mens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
             </a>
             <a
-              href = '/product-list/womens'
+              href='/product-list/womens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
             </a>
             <a
-            href='/product-list/accessories'
+              href='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
