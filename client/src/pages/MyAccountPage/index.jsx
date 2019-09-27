@@ -9,22 +9,37 @@ import MyWishlist from '../../components/MyAccount/MyWishlist'
 import PurchaseHistory from '../../components/MyAccount/PurchaseHistory'
 import AddressBook from '../../components/MyAccount/AddressBook'
 import MyAccountError from '../../components/MyAccount/Error'
+import MainPage from '../MainPage';
 
 const MyAccountPage = () => {
+
+    const userAuth = JSON.parse(localStorage.getItem("userAuth"));
+
     return (
-        <BrowserRouter>
+
+        <>
+            <div>
+                {!userAuth &&
+                    <>
+                        <MainPage />
+
+                    </>
+                }
+            </div>
+
             <MyAccountApp >
                 <Switch>
                     <Route exact path='/myaccount/main' component={WelcomePage} />
                     <Route exact path='/myaccount/myprofile' component={MyProfile} />
                     <Route exact path='/myaccount/wishlist' component={MyWishlist} />
-                    <Route exact path='/myaccount/history' component={PurchaseHistory} /> 
+                    <Route exact path='/myaccount/history' component={PurchaseHistory} />
                     <Route exact path='/myaccount/addressbook' component={AddressBook} />
                     <Route exact path='/myaccount/*' component={MyAccountError} />
-                    
+
                 </Switch>
             </MyAccountApp>
-        </BrowserRouter>
+        </>
+
     )
 };
 

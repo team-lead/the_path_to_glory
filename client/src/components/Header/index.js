@@ -95,7 +95,7 @@ class Header extends Component {
     ) : null;
 
     const logoLink = window.location.pathname === '/' ? '#' : '/';
-    console.log('----', typeof activeDropdownMenu);
+    // console.log('----', typeof activeDropdownMenu);
 
     let showDropdownMenuItem = null;
 
@@ -269,13 +269,13 @@ class Header extends Component {
             </a>
           </div>
           <div className={headerActions}>
-            <NavLink
+            <a
               href="#"
               onClick={searchModal}
               onMouseOver={hideDropdownMenu}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>Search</p>
-            </NavLink>
+            </a>
 
           <Login />
             {/* <NavLink to='/myaccount/main' className={classes.headerActionsItem}>

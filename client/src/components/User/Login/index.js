@@ -1,5 +1,6 @@
 // React
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 
 // validate.js
 import validate from 'validate.js';
@@ -30,6 +31,8 @@ import Bar from '../layout/Bar/Bar';
 import HomeContent from '../content/HomeContent/HomeContent';
 import NotFoundContent from '../content/NotFoundContent/NotFoundContent';
 
+import MyAccount from "../../MyAccount"
+
 import SignUpDialog from '../dialogs/SignUpDialog/SignUpDialog';
 import SignInDialog from '../dialogs/SignInDialog/SignInDialog';
 import ResetPasswordDialog from '../dialogs/ResetPasswordDialog/ResetPasswordDialog';
@@ -38,6 +41,7 @@ import SettingsDialog from '../dialogs/SettingsDialog/SettingsDialog';
 import InputDialog from '../dialogs/InputDialog/InputDialog';
 import ConfirmationDialog from '../dialogs/ConfirmationDialog/ConfirmationDialog';
 import JosefinSansFont from "../fonts/JosefinSans-Regular.ttf"
+import MyAccountPage from '../../../pages/MyAccountPage';
 
 
 const josefinSans = {
@@ -52,6 +56,39 @@ const josefinSans = {
   `,
   unicodeRange: 'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF',
 };
+
+async function postReq(url, data) {
+  let response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+  return await response.json();
+};
+
+const signInDB = (emailAddress, password, state) => {
+
+  let { urlBack, pathSignIn } = state
+  const url = urlBack + pathSignIn
+  const data = { email: emailAddress, password: password };
+
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then(json => {
+      const userAuth = json
+      console.log("SignIn: userAuth = ", userAuth)
+      localStorage.setItem('userAuth', JSON.stringify(userAuth));
+    })
+    .catch(error => console.error('Ошибка:', error));
+}
 
 firebase.initializeApp(settings.credentials.firebase);
 
@@ -80,13 +117,13 @@ let theme = createMuiTheme({
 });
 
 
+
+
 class Login extends Component {
   _isMounted = false;
 
   constructor(props) {
     super(props);
-
-
 
     this.state = {
 
@@ -96,6 +133,9 @@ class Login extends Component {
       urlBack: "http://localhost:8080",
       pathSignIn: "/api/signin",
       pathSignUp: "/api/signup",
+
+      isUserAuth: false,
+      userAuth: {},
 
       primaryColor: settings.theme.primaryColor.name,
       secondaryColor: settings.theme.secondaryColor.name,
@@ -110,6 +150,8 @@ class Login extends Component {
       avatar: '',
       displayName: '',
       emailAddress: '',
+
+
 
       signUpDialog: {
         open: false
@@ -177,6 +219,7 @@ class Login extends Component {
 
 
 
+
   signUp = (firstName, emailAddress, password, passwordConfirmation) => {
     if (this.state.isSignedIn) {
       return;
@@ -206,27 +249,45 @@ class Login extends Component {
       auth.createUserWithEmailAndPassword(emailAddress, password).then((value) => {
         this.closeSignUpDialog(() => {
 
-          let { urlBack, pathSignUp, user } = this.state
+          let { urlBack, pathSignUp } = this.state
 
-          const url = urlBack + pathSignUp
-          const data = { firstName: firstName, email: emailAddress, password: password };
+          let url = urlBack + pathSignUp
+          let data = { firstName: firstName, email: emailAddress, password: password };
 
-          fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-            .then(response => response.json())
-            .then(json => {
-              // console.log("json", json)
-              const userAuth = json
-              this.setState({ userAuth });
+          (async () => {
+            let response = await fetch(url, {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers: {
+                'Content-Type': 'application/json'
+              }
             })
-            .catch(error => console.error('Ошибка:', error));
 
-          console.log(this.state.userAuth);
+            let userAuth = await response.json();
+
+            console.log("SignUp by user: userAuth = ", userAuth)
+
+            let { urlBack,pathSignIn } = this.state
+
+            url = urlBack + pathSignIn
+            data = { email: emailAddress, password: password };
+
+            (async () => {
+              let response = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              })
+
+              userAuth = await response.json();
+              console.log(`SignIn user post SingUp : userAuth = `, userAuth)
+              localStorage.setItem('userAuth', JSON.stringify(userAuth));
+              this.setState({ userAuth: userAuth });
+
+            })();
+          })();
 
 
           this.openWelcomeDialog();
@@ -293,26 +354,22 @@ class Login extends Component {
           const url = urlBack + pathSignIn
           const data = { email: emailAddress, password: password };
 
-          fetch(url, {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          })
-            .then(response => response.json())
-            .then(json => {
-              // console.log("json", json)
-              const userAuth = json
-              localStorage.setItem('userAuth',JSON.stringify(userAuth));
-              this.setState({ userAuth });
+          (async () => {
+            let response = await fetch(url, {
+              method: 'POST',
+              body: JSON.stringify(data),
+              headers: {
+                'Content-Type': 'application/json'
+              }
             })
-            
-            .catch(error => console.error('Ошибка:', error));
 
-          console.log( this.state.userAuth, "+++++++++++++++++");
-           
-            console.log(localStorage.getItem("token"), "=================")
+            const userAuth = await response.json();
+            console.log(`SignIn by user: userAuth = `, userAuth)
+            localStorage.setItem('userAuth', JSON.stringify(userAuth));
+            this.setState({ userAuth: userAuth });
+
+          })();
+
           this.openSnackbar(`Signed in as ${displayName || emailAddress}`);
         });
       }).catch((reason) => {
@@ -362,62 +419,75 @@ class Login extends Component {
             const emailAddress = user.email;
 
             const firstName = user.displayName;
+            const email = provider.providerId + "-" + emailAddress;
 
-            const password = "password";
+            const crypto = require("crypto");
+            const sha256 = crypto.createHash("sha256");
+            sha256.update(email, "utf8");//utf8 here
+            const password = sha256.digest("base64");
 
+            console.log("provider = ", provider, "password = ", password, "email = ", email)
 
             let { urlBack, pathSignIn } = this.state
             const url = urlBack + pathSignIn
-            const data = { email: emailAddress, password: password };
+            const data = { email: email, password: password };
 
-            fetch(url, {
-              method: 'POST',
-              body: JSON.stringify(data),
-              headers: {
-                'Content-Type': 'application/json'
-              }
-            })
-              .then(response => response.json())
-              .then(json => {
+            (async () => {
+              let response = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                  'Content-Type': 'application/json'
+                }
+              })
 
-                if (!json) {
+              let userAuth = await response.json();
+              console.log(`SignIn by ${provider.providerId}: userAuth = `, userAuth)
+              localStorage.setItem('userAuth', JSON.stringify(userAuth));
+              this.setState({ userAuth: userAuth });
 
-                  let { urlBack, pathSignUp } = this.state
-                  const url = urlBack + pathSignUp
+              if (userAuth.err) {
 
-                  const data = { firstName: firstName, email: emailAddress, password: password };
+                let { urlBack, pathSignUp } = this.state
+                let url = urlBack + pathSignUp
 
-                  fetch(url, {
+                let data = { firstName: firstName, email: email, password: password };
+
+                (async () => {
+                  let response = await fetch(url, {
                     method: 'POST',
                     body: JSON.stringify(data),
                     headers: {
                       'Content-Type': 'application/json'
                     }
                   })
-                    .then(response => response.json())
-                    .then(json => {
-                      const userAuth = json
-                      this.setState({ userAuth });
+
+                  let userAuth = await response.json();
+
+                  url = urlBack + pathSignIn
+                  data = { email: email, password: password };
+
+                  (async () => {
+                    let response = await fetch(url, {
+                      method: 'POST',
+                      body: JSON.stringify(data),
+                      headers: {
+                        'Content-Type': 'application/json'
+                      }
                     })
-                    .catch(error => console.error('Ошибка:', error));
-                }
-                else {
-                  const userAuth = json
 
-                  console.log("userAuth ----", userAuth)
-                  localStorage.setItem('userAuth',JSON.stringify(userAuth));
-                  this.setState({ userAuth });
-                  
-                }
+                    userAuth = await response.json();
+                    console.log(`SignIn post SingUp by ${provider.providerId}: userAuth = `, userAuth)
+                    localStorage.setItem('userAuth', JSON.stringify(userAuth));
+                    this.setState({ userAuth: userAuth });
 
-              })
+                  })();
+                })();
+              }
+            })();
 
-              .catch(error => console.error('Ошибка:', error));
-              
-              console.log(this.state.userAuth);
-            
             this.openSnackbar(`Signed in as ${displayName || emailAddress}`);
-            console.log("userAuth = ",  this.state.userAuth);
+            console.log("userAuth = ", this.state.userAuth);
           });
         });
       }).catch((reason) => {
@@ -818,6 +888,7 @@ class Login extends Component {
     }
 
     this.setState({
+
       isPerformingAuthAction: true
     }, () => {
       auth.signOut().then(() => {
@@ -838,7 +909,8 @@ class Login extends Component {
         }
       }).finally(() => {
         this.setState({
-          isPerformingAuthAction: false
+          isPerformingAuthAction: false,
+          userAuth: {}
         });
       });
     });
@@ -1212,9 +1284,6 @@ class Login extends Component {
       changeDisplayNameDialog,
       addEmailAddressDialog,
       signOutDialog,
-
-
-
     } = this.state;
 
     const { snackbar } = this.state;
@@ -1246,10 +1315,11 @@ class Login extends Component {
 
               />
 
-              {/* <Switch>
-                  <Route path="/" exact render={() => (<HomeContent isSignedIn={isSignedIn} title={settings.title} />)} />
-                  <Route component={NotFoundContent} />
-                </Switch> */}
+              {/* <Switch> */}
+              {/* <Route path="/" exact render={() => (<HomeContent isSignedIn={isSignedIn} title={settings.title} />)} />  */}
+              {/* <Route path='/myaccount/:id' exact render={() => (<MyAccountPage isSignedIn={isSignedIn} />)} /> */}
+              {/* { <Route component={NotFoundContent} /> */}
+              {/* </Switch> */}
 
               {isSignedIn &&
                 <React.Fragment>
@@ -1822,18 +1892,5 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-   
-   
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    
-   
-  };
-};
 
 export default Login;

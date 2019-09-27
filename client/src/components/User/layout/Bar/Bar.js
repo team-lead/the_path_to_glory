@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-
+import { NavLink } from "react-router-dom";
 import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
+
+import Myaccount from "../../../MyAccount"
 
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
@@ -13,6 +15,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import PermIdentity from '@material-ui/icons/PermIdentity';
 
 import PersonIcon from '@material-ui/icons/Person';
+import MyAccountPage from '../../../../pages/MyAccountPage';
 
 const styles = (theme) => ({
   signUpButton: {
@@ -31,8 +34,6 @@ class Bar extends Component {
       }
     };
   }
-
-
 
   openMenu = (event) => {
     const anchorEl = event.currentTarget;
@@ -54,18 +55,16 @@ class Bar extends Component {
 
   handleSettingsClick = () => {
     this.closeMenu();
-    this.props.onSettingsClick();
+    // this.props.onSettingsClick();
+
   };
 
   handleSignOutClick = () => {
+    localStorage.removeItem("userAuth")
     this.closeMenu();
     this.props.onSignOutClick();
+    
   };
-
-
-
-
-
 
   render() {
     // Styling
@@ -84,11 +83,17 @@ class Bar extends Component {
         {isSignedIn &&
           <React.Fragment>
             <IconButton color="inherit" disabled={isPerformingAuthAction} onClick={this.openMenu}>
-              {user.photoURL ? <Avatar alt="Avatar" src={user.photoURL} /> : <PersonIcon />}
+              {user.photoURL ? <Avatar alt="Avatar" src={user.photoURL} /> : <PersonIcon style={{ color: "white", marginTop: "5px" }} />}
             </IconButton>
 
             <Menu anchorEl={menu.anchorEl} open={Boolean(menu.anchorEl)} onClose={this.closeMenu}>
-              <MenuItem disabled={isPerformingAuthAction} onClick={this.handleSettingsClick}>Settings</MenuItem>
+            
+              <MenuItem disabled={isPerformingAuthAction} onClick={this.closeMenuhandleSettingsClick}>
+
+                <NavLink to='/myaccount/main' style = {{textDecoration: "none", color: "white"}}>My account</NavLink>
+              
+              
+              </MenuItem>
               <MenuItem disabled={isPerformingAuthAction} onClick={this.handleSignOutClick}>Sign out</MenuItem>
             </Menu>
           </React.Fragment>
@@ -102,9 +107,9 @@ class Bar extends Component {
               // className={classes.button}
               aria-label="upload picture"
               // component="span"
-              disabled={isPerformingAuthAction} 
+              disabled={isPerformingAuthAction}
               onClick={onSignInClick}
-              style = {{fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans"}}
+              style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}
             >
               <PermIdentity />
               SignIn
@@ -112,9 +117,9 @@ class Bar extends Component {
 
             <IconButton
               aria-label="upload picture"
-              disabled={isPerformingAuthAction} 
+              disabled={isPerformingAuthAction}
               onClick={onSignUpClick}
-              style = {{fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans"}}
+              style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}
             >
               <PersonIcon />
               SignUp
