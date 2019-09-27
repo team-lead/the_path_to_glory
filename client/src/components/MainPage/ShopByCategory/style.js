@@ -6,7 +6,7 @@ jss.setup(preset());
 let newCollectionsStyle = {
   collectionsContainer: {
     color: "#fff",
-    padding: "40px",
+    padding: "20px",
     marginTop: "70px"
   },
   collectionsTitle: {
@@ -28,12 +28,21 @@ let newCollectionsStyle = {
   mainCollectionImg: {
     display: "block",
     width: "100%",
-    height: "49vh"
+    height: "65%",
+    minHeight: "123px",
+    maxHeight: "464px",
+    objectFit: "cover",
+    padding: "10px",
+    boxSizing: "border-box",
+    marginTop: "10px"
   },
   сollectionImg: {
     display: "block",
     width: "30vw",
-    height: "49vh"
+    height:"49vh",
+    padding: "10px",
+    objectFit: "cover",
+    boxSizing: "border-box"
   },
   collectionItemImg: {
     position: "relative"
@@ -41,11 +50,11 @@ let newCollectionsStyle = {
   сollectionImgDescription: {
     fontFamily: "Open Sans",
     backgroundColor: "rgba(5,5,5,0.8)",
-    padding: "23px 60px",
+    left: "0.5em",
+    bottom: "0.5em",
+    padding: "1em 1.7em",
     display: "inline-block",
     position: "absolute",
-    bottom: "0",
-    left: "0",
     fontWeight: "bold"
   }
 };
