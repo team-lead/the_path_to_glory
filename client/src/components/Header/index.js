@@ -257,12 +257,12 @@ class Header extends Component {
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
-            </Link>
+            </a>
           </nav>
           <div onMouseOver={hideDropdownMenu}>
             <a to={logoLink} className={logoItem}>
               Originalité
-            </Link>
+            </a>
           </div>
           <div className={headerActions}>
             <NavLink
