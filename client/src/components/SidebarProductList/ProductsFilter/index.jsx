@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PriseSlider from "../RangeSlider/PriceSlider";
 import { classes } from "./style";
-import { filterGoodsByCategory } from "../../../actions/filterGoodsByCategory";
-import { filterGoodsByColor } from "../../../actions/filterGoodsByColor";
+import {
+  filterGoodsByCategory,
+  filterGoodsByColor
+} from "../../../actions/filterGoods";
 import { getGoods } from "../../../actions/getGoodsAction";
 
 import {
