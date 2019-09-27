@@ -6,8 +6,10 @@ import CartProduct from '../../components/Cart/CartProduct';
 import Container from '../../components/Container';
 import Button from '../../components/Button';
 import { connect } from 'react-redux';
+import { updateCart } from '../../actions/detailGoodsAction';
+import { Link } from 'react-router-dom';
 
-const Cart = ({ productsInCart }) => {
+const Cart = ({ productsInCart, prevPagePath }) => {
   const {
     products,
     mainContent,
@@ -15,7 +17,9 @@ const Cart = ({ productsInCart }) => {
     summarySettings,
     emptyCartMsg,
     emptyCartMsgIcon,
-    emptyCartMsgText
+    emptyCartMsgText,
+    keepShoppingBtn,
+    cartHeading
   } = classes;
 
   const emptyCartMessage = (
@@ -25,19 +29,29 @@ const Cart = ({ productsInCart }) => {
     </div>
   );
 
-  const cartProductsData = productsInCart.length
-    ? productsInCart.map(product => (
-        <CartProduct key={product.id} {...product} />
-      ))
-    : emptyCartMessage;
+  const createCartProducts = products => {
+    return products.length
+      ? products.map(product => <CartProduct key={product.id} {...product} />)
+      : emptyCartMessage;
+  };
+
+  const cartProductsData = createCartProducts(productsInCart);
 
   return (
     <Fragment>
       <Header />
       <main className={mainContent}>
         <Container>
-          <Button name='KEEP SHOPING' href='/product-list' black />
+          <Link to={prevPagePath}>
+            <Button
+              btnSettings={keepShoppingBtn}
+              name='KEEP SHOPING'
+              href='/product-list'
+              black
+            />
+          </Link>
           <div className={mainContentWrapper}>
+            <h1 className={cartHeading}>Shopping bag</h1>
             <section className={products}>{cartProductsData}</section>
             <CartSummary settings={summarySettings} />
           </div>
@@ -49,7 +63,14 @@ const Cart = ({ productsInCart }) => {
 
 const mapStateToProps = state => {
   return {
-    productsInCart: state.active.cart
+    productsInCart: state.active.shoppingBag,
+    prevPagePath: state.active.prevPagePath
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateCart: newCart => dispatch(updateCart(newCart))
   };
 };
 

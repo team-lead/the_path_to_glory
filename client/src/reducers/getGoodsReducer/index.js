@@ -11,7 +11,7 @@ export function allGoods(state = initialState, action) {
             return {
                 ...state, goodsList: action.payload
             }
-        case GET_GOODS_BY_CATEGORY: 
+        case GET_GOODS_BY_CATEGORY:
             return {
                 ...state, goodsList: action.payload
             }

@@ -32,7 +32,7 @@ export function filterGoodsByCategory(category) {
   }
 
 
-  async function getGoodsByCategory(collection) {
+export async function getGoodsByCategory(collection) {
     let goodsList = [];
     await fetch(`http://localhost:8080/product-list?collection=${collection}`)
       .then(response => {

@@ -3,44 +3,20 @@ import {
   REMOVE_PRODUCT_FROM_CART,
   SET_CHECKOUT_TOTAL,
   DEC_CART_PRODUCT_QUANTITY,
-  INC_CART_PRODUCT_QUANTITY
+  INC_CART_PRODUCT_QUANTITY,
+  SAVE_USER_CART,
+  UPDATE_CART,
+  SET_PREV_PAGE_PATH
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
   objectId: [],
   checkoutTotal: 0,
-  cart: [
-    {
-      id: 126,
-      images: [],
-      name: 'Gold Dress',
-      reference: '3294786 - 01',
-      price: 420,
-      quantity: 1,
-      color: 'gold',
-      size: 8
-    },
-    {
-      id: 121,
-      images: [],
-      name: 'Gold Dress',
-      reference: '3294786 - 01',
-      price: 420,
-      quantity: 1,
-      color: 'gold',
-      size: 8
-    },
-    {
-      id: 124,
-      images: [],
-      name: 'Gold Dress',
-      reference: '3294786 - 01',
-      price: 420,
-      quantity: 1,
-      color: 'gold',
-      size: 8
-    }
-  ]
+  prevPagePath: '',
+  purchaseHistory: [],
+  shoppingBag: localStorage.getItem('shoppingBag')
+    ? JSON.parse(localStorage.getItem('shoppingBag'))
+    : []
 };
 
 export const activeGoodsReducer = (state = initialState, action) => {
@@ -52,28 +28,48 @@ export const activeGoodsReducer = (state = initialState, action) => {
       };
     }
     case REMOVE_PRODUCT_FROM_CART: {
-      const cart = state.cart.filter(product => product.id !== action.payload);
-      return { ...state, cart };
+      const shoppingBag = state.shoppingBag.filter(
+        product => product.id !== action.payload
+      );
+      return { ...state, shoppingBag };
     }
     case SET_CHECKOUT_TOTAL: {
       const checkoutTotal = action.payload;
       return { ...state, checkoutTotal };
     }
     case INC_CART_PRODUCT_QUANTITY: {
-      const cart = state.cart.map(product => {
+      const shoppingBag = state.shoppingBag.map(product => {
         return product.id === action.payload
           ? { ...product, quantity: product.quantity + 1 }
           : { ...product };
       });
-      return { ...state, cart };
+      return { ...state, shoppingBag };
     }
     case DEC_CART_PRODUCT_QUANTITY: {
-      const cart = state.cart.map(product => {
+      const shoppingBag = state.shoppingBag.map(product => {
         return product.id === action.payload && product.quantity > 1
           ? { ...product, quantity: product.quantity - 1 }
           : { ...product };
       });
-      return { ...state, cart };
+      return { ...state, shoppingBag };
+    }
+    case SAVE_USER_CART: {
+      localStorage.setItem('shoppingBag', JSON.stringify(state.shoppingBag));
+      return { ...state };
+    }
+    case UPDATE_CART: {
+      return { ...state, shoppingBag: action.payload };
+    }
+    case SAVE_USER_CART: {
+      localStorage.setItem('cart', JSON.stringify(state.cart));
+      return { ...state };
+    }
+    case UPDATE_CART: {
+      return { ...state, cart: action.payload };
+    }
+    case SET_PREV_PAGE_PATH: {
+      const prevPagePath = action.payload;
+      return { ...state, prevPagePath };
     }
     default:
       return { ...state };

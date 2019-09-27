@@ -8,11 +8,11 @@ export default function Button(props) {
   if (props.white) colorBtn = classes.white;
   if (props.btnSettings) btnSettings = props.btnSettings;
   return (
-    <a
+    <div
       className={`${classes.btn} ${colorBtn} ${btnSettings} `}
       href={props.href}
       onClick={props.clickHandler}>
       {props.name}
-    </a>
+    </div>
   );
 }

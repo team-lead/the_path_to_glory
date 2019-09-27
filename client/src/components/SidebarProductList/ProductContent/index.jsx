@@ -1,24 +1,41 @@
-import React from 'react';
-
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
 import { classes } from "./style";
 
 import FilterPath from '../FilterPath'
 import ProductsFilter from '../ProductsFilter';
 import ProductList from '../../ProductList'
+import FilterHeader from '../FilterHeader/FilterHeader'
 
-const categories = ['Jackets', 'New', 'Shirts', 'Coats', 'Sweaters', 'Outerwear', 'Polos', 'Jeans'];
-const colors = ['black', 'brown', 'red', 'white']
 
-const ProductContent = () => {
-    return(
-        <div className={classes.main}>
-            <div className={classes.leftMenu}>
-                <FilterPath />
-                <ProductsFilter categories={categories} colors={colors}/>
+class ProductContent extends Component{
+render(){
+    const desctopView = <div className={classes.main}>
+                <div className={classes.leftMenu}>
+                    <FilterPath />
+                    <ProductsFilter/>
+                </div>
+                <ProductList/>
             </div>
-            <ProductList/>
+
+    const mobileView = <div>
+        <FilterHeader/>
+        <ProductsFilter/>
         </div>
-    )
+
+    const showMenu = this.props.showFilterMenu ? mobileView : desctopView
+
+    return(
+                <>
+                    {showMenu}
+                </>
+            )
+        }
+    };
+const mapStateToProps=(state)=>{
+    return {
+        showFilterMenu:state.allCategories.isShowFilterMenu
+    };
 }
 
-export default ProductContent;
+export default connect(mapStateToProps)(ProductContent);
