@@ -280,7 +280,6 @@ class Login extends Component {
                   'Content-Type': 'application/json'
                 }
               })
-
               userAuth = await response.json();
               console.log(`SignIn user post SingUp : userAuth = `, userAuth)
               localStorage.setItem('userAuth', JSON.stringify(userAuth));
