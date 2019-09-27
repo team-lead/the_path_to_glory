@@ -6,7 +6,7 @@ import FilterPath from '../FilterPath'
 import ProductsFilter from '../ProductsFilter';
 import ProductList from '../../ProductList'
 
-const categories = ['Jackets', 'New arrivals', 'Shirts', 'Coats', 'Sweaters', 'Outerwear', 'Polos & Tees', 'Jeans & Pants'];
+const categories = ['Jackets', 'New', 'Shirts', 'Coats', 'Sweaters', 'Outerwear', 'Polos', 'Jeans'];
 const colors = ['black', 'brown', 'red', 'white']
 
 const ProductContent = () => {

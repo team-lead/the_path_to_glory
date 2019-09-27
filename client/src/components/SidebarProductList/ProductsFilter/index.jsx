@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
-
+import { connect } from "react-redux";
 
 import { classes } from "./style";
 
 import RangeSlider from '../RangeSlider'
+import {filterGoodsByCategory} from "../../../actions/filterGoodsByCategory"
 
 
 
-export default class ProductsFilter extends Component {
+class ProductsFilter extends Component {
 
     render() {
         const {
@@ -27,7 +28,13 @@ export default class ProductsFilter extends Component {
         } = classes;
 
         const categories = this.props.categories;
-        const items = categories.map((category) => <li key={category}><a href='#' className={`${categorySectionItem} ${sectionItem}`}>{category}</a></li>);
+        console.log(categories)
+        
+        const items = categories.map((category) => 
+            <li 
+                key={category}
+                onClick={() => this.props.filterGoodsByCategory(category)}>
+            <a href='#' className={`${categorySectionItem} ${sectionItem}`}>{category}</a></li>);
         const colors = this.props.colors;
         const colorItems = colors.map((color) => <li key={color} className={colorItem}><div className={`${colorCircle} ${color}`}></div><a href='#' className={`${sectionItem} ${colorSectionItem}`}>{color}</a></li>);
 
@@ -51,3 +58,14 @@ export default class ProductsFilter extends Component {
         )
     }
     }
+
+const mapDispatchToProps = dispatch => {
+    return {
+        filterGoodsByCategory: category => dispatch(filterGoodsByCategory(category)),
+    }
+}
+
+    export default connect(
+        null,
+        mapDispatchToProps
+      )(ProductsFilter);

@@ -89,22 +89,13 @@ let detailPageStyle = {
             borderRadius: '50%',
 
             '&:first-child': {
-                background: '#000',
-                marginRight: '54px'
-            },
-
-            '&:last-child': {
-                background: '#8E521B',
-
-                '& span': {
-                    right: '4px'
-                }
+                marginRight: '54px',
             },
 
             '& > span': {
                 position: 'relative',
                 top: '40px',
-                fontSize: '14px'
+                fontSize: '14px',
             }
         }
     },

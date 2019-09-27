@@ -1,10 +1,10 @@
 export const GET_GOODS_SUCCESS = "GET_GOODS_SUCCESS"
 
-export function getGoods(category) {
-    console.log(category);
-    
+export function getGoods(collection) {
+    console.log(collection);
+    let goodsList = []
     return async (dispatch) => {
-        await fetch(`http://localhost:8080/product-list?collection=${category}`)
+        await fetch(`http://localhost:8080/product-list?collection=${collection}`)
             .then(response => {
                 if(!response.ok) {
                     throw new Error(response.statusText)
@@ -13,7 +13,6 @@ export function getGoods(category) {
             })
             .then(response => response.json())
             .then(goods => {
-                let goodsList = []
                 let goodsArr = goods.mens || goods.womens || goods.acs
                 for(let key in goodsArr) {
                     let goodItems = {
@@ -23,9 +22,10 @@ export function getGoods(category) {
                         description: goodsArr[key].description,
                         price: goodsArr[key].price,
                         ref: goodsArr[key].ref,
+                        category: goodsArr[key].category,
                         new: goodsArr[key].new,
                         color: goodsArr[key].color,
-                        images: goodsArr[key].images
+                        images: goodsArr[key].images,
                     }
                     goodsList.push(goodItems)
                 }
@@ -37,5 +37,6 @@ export function getGoods(category) {
             .catch(err => {
                 return new Error(err);
             })
+            return goodsList;
         }
     }

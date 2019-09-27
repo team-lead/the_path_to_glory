@@ -18,7 +18,7 @@ const App = () => {
         <Route exact path='/cart' component={Cart} />
         <Route exact path='/' component={MainPage} />
         <Route exact path='/cart/checkout' component={Checkout} />
-        <Route exact path='/product-list/:category' component={ProductsPage} />
+        <Route exact path='/product-list/:collection' component={ProductsPage} />
         <Route exact path='/detail/:id' component={DetailPage} />
       </Switch>
     </BrowserRouter>

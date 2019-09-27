@@ -21,7 +21,9 @@ export function getGoodsDetailID(id) {
             ref: generalArr[key].ref,
             new: generalArr[key].new,
             color: generalArr[key].color,
-            images: generalArr[key].images
+            images: generalArr[key].images,
+            subCategory: generalArr[key].subCategory,
+            category: generalArr[key].category
           };
           itemArr.push(items);
         }

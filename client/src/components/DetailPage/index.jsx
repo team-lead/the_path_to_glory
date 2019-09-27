@@ -20,14 +20,16 @@ class DetailPageComponent extends Component  {
     handlerItem = () => {
         return (
             this.props.goodsItemDetails.map(item => {
+                console.log(item);
+                const showColors = () => {
+                        if (item.color !== undefined) {
+                            return <Colors colors = {item.color}/>
+                        } else return null
+                }
                 return (
                     <Fragment key = {item.id}>
                     <Header/>
                     <div className = {classes.container}>
-                        <div className = {classes.linksNavs}>
-                            <a href="/product-list">Back</a>
-                            <a href="/main">Next</a>  
-                        </div>
                     <li className = {classes.liStyle}>
                         <div className = {classes.imageParams}>
                             <img src = {item.image[0]} alt= "dsa"/>
@@ -40,8 +42,8 @@ class DetailPageComponent extends Component  {
                                 <h2>{item.price} $</h2>
                             </div>
                             <p className = {classes.refStyle}>REF: {item.ref}</p>
-        
-                        <Colors/>
+                        
+                        {showColors()}
                         <Sizes/>
         
                         <div className = {classes.sizeGuide}>
@@ -57,7 +59,6 @@ class DetailPageComponent extends Component  {
         
                         <Button btnSettings = {classes.btnSettings} black name = "add to bascket"/>
                         </div>
-                        
                     </li>
                 </div>
                 </Fragment>  

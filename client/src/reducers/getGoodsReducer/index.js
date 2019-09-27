@@ -1,4 +1,5 @@
 import { GET_GOODS_SUCCESS } from "../../actions/getGoodsAction"
+import { GET_GOODS_BY_CATEGORY } from "../../actions/filterGoodsByCategory"
 
 const initialState = {
     goodsList: []
@@ -10,7 +11,11 @@ export function allGoods(state = initialState, action) {
             return {
                 ...state, goodsList: action.payload
             }
-        default:
+        case GET_GOODS_BY_CATEGORY: 
+            return {
+                ...state, goodsList: action.payload
+            }
+        default: 
             return state
     }
 }

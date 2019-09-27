@@ -3,10 +3,10 @@ const router = express.Router();
 const Man = require("../../models/Man");
 const Accessories = require("../../models/Accessories");
 const Woman = require("../../models/Woman");
+const { getCategory, sortByNewCollections } = require("../../controllers/category");
 
 router.get("/", async (req, res) => {
     const { collection } = req.query;
-    console.log(req);
     try {
         if(collection === "mens") {
             let menGoods = await Man.find();
@@ -21,11 +21,11 @@ router.get("/", async (req, res) => {
             return res.send("Wrong url")
         }
     } catch (error) {
-        res.send(500).json("Error server")
+        return res.status(500).json({error: "Server Error"});
     }
-    
 });
 
+router.get("/category", getCategory);
+router.get("/new-collections", sortByNewCollections);
 
-  
-  module.exports = router;
+module.exports = router;

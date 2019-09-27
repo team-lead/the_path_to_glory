@@ -11,8 +11,8 @@ let headerStyle = {
     justifyContent: "space-between",
     alignItems: "center",
     width: "100%",
-    height: "11vh",
-    },
+    height: "11vh"
+  },
   navbarMenu: {
     display: "flex",
     justifyContent: "space-evenly",
@@ -72,7 +72,7 @@ let headerStyle = {
   },
   searchInput: {
     border: "none",
-    display: "block",
+    display: "inline-block",
     borderBottom: "2px solid #111",
     outline: "none",
     width: "50%",
@@ -99,6 +99,40 @@ let headerStyle = {
   },
   dropdownMenuItemGender: {
     textDecoration: "underline"
+  },
+  clearSearchBtn: {
+    fontSize: "20px",
+    display: "inline-block",
+    position: "relative",
+    bottom: "31px",
+    right: "17px"
+  },
+  searchBlock: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    cursor: "pointer"
+  },
+  productItemSearch: {
+    height: "200px",
+    overflowY: "auto",
+    overflow: "hidden",
+    "&::-webkit-scrollbar": {
+      width: 13,
+      background: "white"
+    },
+
+    "&::-webkit-scrollbar-thumb": {
+      borderRadius: 15,
+      width: 13,
+      background: "black"
+    }
+  },
+  resultCount: {
+    fontSize: "20px",
+    fontFamily: "Open Sans",
+    marginBottom: "25px"
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
