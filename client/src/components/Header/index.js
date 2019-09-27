@@ -241,19 +241,19 @@ class Header extends Component {
         <header className={header}>
           <nav className={navbarMenu}>
             <Link
-              to='/product-list/mens'
+              to = {'/product-list/mens'}
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
             </Link>
             <Link
-              to='/product-list/womens'
+              to = {'/product-list/womens'}
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
             </Link>
             <Link
-              to='/product-list/accessories'
+              to = {'/product-list/accessories'}
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
@@ -266,7 +266,7 @@ class Header extends Component {
           </div>
           <div className={headerActions}>
             <NavLink
-              href='#'
+              to='#'
               onClick={searchModal}
               onMouseOver={hideDropdownMenu}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />

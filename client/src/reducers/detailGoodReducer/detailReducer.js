@@ -6,7 +6,8 @@ import {
   INC_CART_PRODUCT_QUANTITY,
   SAVE_USER_CART,
   UPDATE_CART,
-  SET_PREV_PAGE_PATH
+  SET_PREV_PAGE_PATH,
+  UPDATE_PURCHASE_HISTORY
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
@@ -16,7 +17,44 @@ const initialState = {
   purchaseHistory: [],
   shoppingBag: localStorage.getItem('shoppingBag')
     ? JSON.parse(localStorage.getItem('shoppingBag'))
-    : []
+    : [
+        {
+          id: 1,
+          category: 'women',
+          images: [],
+          name: 'Golden Dress',
+          subCategory: 'dresses',
+          reference: '3294786 - 01',
+          description: [],
+          new: true,
+          price: 430,
+          quantity: 1
+        },
+        {
+          id: 1,
+          category: 'women',
+          images: [],
+          name: 'Golden Dress',
+          subCategory: 'dresses',
+          reference: '3294786 - 01',
+          description: [],
+          new: true,
+          price: 430,
+          quantity: 1
+        },
+        {
+          id: 1,
+          category: 'women',
+          images: [],
+          name: 'Golden Dress',
+          subCategory: 'dresses',
+          reference: '3294786 - 01',
+          description: [],
+          new: true,
+          price: 430,
+          quantity: 1
+        }
+      ]
 };
 
 export const activeGoodsReducer = (state = initialState, action) => {
@@ -70,6 +108,13 @@ export const activeGoodsReducer = (state = initialState, action) => {
     case SET_PREV_PAGE_PATH: {
       const prevPagePath = action.payload;
       return { ...state, prevPagePath };
+    }
+    case UPDATE_PURCHASE_HISTORY: {
+      console.log('sdflksjflsjsfksdsj');
+      const purchaseHistory = [...state.purchaseHistory, ...state.shoppingBag];
+      const shoppingBag = [];
+      localStorage.removeItem('shoppingBag');
+      return { ...state, purchaseHistory, shoppingBag };
     }
     default:
       return { ...state };

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PriseSlider from '../RangeSlider/PriceSlider'
 import { classes } from "./style";
+import {filterGoodsByCategory} from '../../../actions/filterGoodsByCategory'
 
 import {
         getGoodsCategories,
@@ -39,7 +40,7 @@ class ProductsFilter extends Component {
         return (
             this.props.categoriesList.map((category) => {
                 return (
-                    <li key={category}><Link to={`${this.getPath()}/${category}`} className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category}</Link></li>
+                    <li key={category} onClick = {() => this.props.filterGoodsByCategory(category)}><Link className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category}</Link></li>
                 )
             })
         )
@@ -116,6 +117,7 @@ const mapDispatchToProps = dispatch =>{
         showDesctop:()=>dispatch({type:WINDOW_DESCTOP}),
         showColor:()=>dispatch({type:SHOW_COLOR_MENU}),
         showPrise:()=>dispatch({type:SHOW_PRICE_MENU}),
+        filterGoodsByCategory: category => dispatch(filterGoodsByCategory(category))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductsFilter);

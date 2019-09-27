@@ -8,6 +8,7 @@ import Button from '../../components/Button';
 import { connect } from 'react-redux';
 import { updateCart } from '../../actions/detailGoodsAction';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Cart = ({ productsInCart, prevPagePath }) => {
   const {
@@ -39,6 +40,9 @@ const Cart = ({ productsInCart, prevPagePath }) => {
 
   return (
     <Fragment>
+      <Helmet>
+        <title>Shopping Bag</title>
+      </Helmet>
       <Header />
       <main className={mainContent}>
         <Container>
