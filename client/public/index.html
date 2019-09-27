@@ -24,6 +24,63 @@
       width: 13px;
       background: white;
     }
+
+    .input-range {
+      height: 2px;
+      width: 200px;
+      position: relative;
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+
+    .input-range__track {
+      cursor: pointer;
+      display: block;
+      height: 2px;
+      position: relative;
+      background: #b9bbc4;
+    }
+
+    .input-range__track--active {
+      background: white;
+      height: 3px;
+    }
+
+    .input-range__label--value {
+      position: absolute;
+      top: -1.8rem;
+    }
+    .input-range__label-container {
+      display: none;
+    }
+    .input-range__label--min {
+      display: none;
+    }
+
+    .input-range__slider {
+      appearance: none;
+      background: white;
+      cursor: pointer;
+      display: block;
+      height: 17px;
+      margin-top: -10px;
+      outline: none;
+      position: absolute;
+      top: 50%;
+      width: 4px;
+    }
+    @media (max-width: 768px){
+      .input-range__track{
+        background-color: rgb(78, 75, 75);
+      }
+      .input-range__track--active{
+        background-color: rgb(22, 20, 20);
+      }
+      .input-range__slider{
+        background-color: rgb(22, 20, 20);
+
+      }
+    }
   </style>
 </head>
 
@@ -31,6 +88,5 @@
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
 </body>
-
 
 </html>

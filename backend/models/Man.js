@@ -6,6 +6,7 @@ const Man = mongoose.model("Man", {
   category: String,
   image: Array,
   ref: String,
+  color: Array,
   new: Boolean,
 });
 

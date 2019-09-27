@@ -1,11 +1,12 @@
 import React from 'react';
 import { classes } from './style';
-import productImg from './img/lady.jpg';
+import image from './img/lady.jpg';
 import { connect } from 'react-redux';
 import {
   removeProductFromCart,
   decCartProductQuantity,
-  incCartProductQuantity
+  incCartProductQuantity,
+  saveUserCart
 } from '../../../actions/detailGoodsAction';
 
 const CartProduct = ({
@@ -19,13 +20,14 @@ const CartProduct = ({
   size,
   removeProductFromCart,
   incCartProductQuantity,
-  decCartProductQuantity
+  decCartProductQuantity,
+  saveUserCart
 }) => {
   const totalPrice = price * quantity;
 
   return (
     <div className={classes.cartProduct}>
-      <img src={productImg} alt='product name' />
+      <img src={image} alt='product name' className={classes.productImg} />
       <div className={classes.productDetails}>
         <h3 className={classes.productName}>{name}</h3>
         <p className={classes.ref}>REF: {reference}</p>
@@ -42,13 +44,19 @@ const CartProduct = ({
           <span className={classes.productQuantSelectWrapper}>
             <button
               className={classes.productQuantSelectBtn}
-              onClick={() => decCartProductQuantity(id)}>
+              onClick={() => {
+                decCartProductQuantity(id);
+                saveUserCart();
+              }}>
               -
             </button>
             {quantity}
             <button
               className={classes.productQuantSelectBtn}
-              onClick={() => incCartProductQuantity(id)}>
+              onClick={() => {
+                incCartProductQuantity(id);
+                saveUserCart();
+              }}>
               +
             </button>
           </span>
@@ -63,9 +71,20 @@ const CartProduct = ({
         </p>
       </div>
       <a
-        className={classes.removeProduct}
-        onClick={() => removeProductFromCart(id)}>
+        className={classes.removeProductBig}
+        onClick={() => {
+          removeProductFromCart(id);
+          saveUserCart();
+        }}>
         Remove from basket
+      </a>
+      <a
+        className={classes.removeProductSmall}
+        onClick={() => {
+          removeProductFromCart(id);
+          saveUserCart();
+        }}>
+        <i className='fas fa-times'></i>
       </a>
     </div>
   );
@@ -78,7 +97,8 @@ const mapDispatchToProps = dispatch => {
     decCartProductQuantity: productId =>
       dispatch(decCartProductQuantity(productId)),
     incCartProductQuantity: productId =>
-      dispatch(incCartProductQuantity(productId))
+      dispatch(incCartProductQuantity(productId)),
+    saveUserCart: () => dispatch(saveUserCart())
   };
 };
 
