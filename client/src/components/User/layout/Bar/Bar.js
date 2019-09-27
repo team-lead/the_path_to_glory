@@ -60,10 +60,9 @@ class Bar extends Component {
   };
 
   handleSignOutClick = () => {
-    localStorage.removeItem("userAuth")
+    localStorage.removeItem("userAuth");
     this.closeMenu();
     this.props.onSignOutClick();
-    
   };
 
   render() {
@@ -87,14 +86,11 @@ class Bar extends Component {
             </IconButton>
 
             <Menu anchorEl={menu.anchorEl} open={Boolean(menu.anchorEl)} onClose={this.closeMenu}>
-            
-              <MenuItem disabled={isPerformingAuthAction} onClick={this.closeMenuhandleSettingsClick}>
 
-                <NavLink to='/myaccount/main' style = {{textDecoration: "none", color: "white"}}>My account</NavLink>
-              
-              
+              <MenuItem disabled={isPerformingAuthAction} onClick={this.closeMenuhandleSettingsClick}>
+                <NavLink to='/myaccount/main' style={{ textDecoration: "none", color: "white" }}>My account</NavLink>
               </MenuItem>
-              <MenuItem disabled={isPerformingAuthAction} onClick={this.handleSignOutClick}>Sign out</MenuItem>
+              <MenuItem disabled={isPerformingAuthAction} onClick={this.handleSignOutClick}> Sign out </MenuItem>
             </Menu>
           </React.Fragment>
         }
@@ -103,10 +99,7 @@ class Bar extends Component {
           <React.Fragment>
 
             <IconButton
-              // color="primary"
-              // className={classes.button}
               aria-label="upload picture"
-              // component="span"
               disabled={isPerformingAuthAction}
               onClick={onSignInClick}
               style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}

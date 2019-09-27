@@ -91,10 +91,6 @@ class AuthProviderList extends Component {
 
         <Hidden only={['sm', 'md', 'lg', 'xl']}>
           <DialogActions className={classes.dialogActionsMobile} disableSpacing>
-            <Button className={`${classes.facebook} ${classes.buttonMobile}`} disabled={isPerformingAuthAction} variant="contained" onClick={() => onAuthProviderClick(new firebase.auth.FacebookAuthProvider())}>
-              <FacebookBoxIcon className={classes.icon} />
-              Facebook
-            </Button>
 
             <Button className={`${classes.google} ${classes.buttonMobile}`} disabled={isPerformingAuthAction} variant="contained" onClick={() => onAuthProviderClick(new firebase.auth.GoogleAuthProvider())}>
               <GoogleIcon className={classes.icon} />
@@ -106,10 +102,6 @@ class AuthProviderList extends Component {
               GitHub
             </Button>
 
-            <Button className={`${classes.twitter} ${classes.buttonMobile}`} disabled={isPerformingAuthAction} variant="contained" onClick={() => onAuthProviderClick(new firebase.auth.TwitterAuthProvider())}>
-              <TwitterIcon className={classes.icon} />
-              Twitter
-            </Button>
           </DialogActions>
         </Hidden>
       </React.Fragment>
