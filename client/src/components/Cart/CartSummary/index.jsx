@@ -34,8 +34,6 @@ const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
       <form className={cartSummary}>
         <header className={header}>
           <h2 className={headerHeading}>SHOPPING BAG TOTAL</h2>
-          <p className={discountText}>ADD DISCOUNT CODE</p>
-          <input className={discountField} type='text' />
         </header>
         <section className={orderDetails}>
           <span className={orderDetailsItem}>
@@ -66,7 +64,7 @@ const CartSummary = ({ settings, productsInCart, setCheckoutTotal }) => {
 
 const mapStateToProps = state => {
   return {
-    productsInCart: state.active.cart
+    productsInCart: state.active.shoppingBag
   };
 };
 

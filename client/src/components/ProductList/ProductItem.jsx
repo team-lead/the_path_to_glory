@@ -1,22 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { getGoodsDetailID } from "../../actions/detailGoodsAction";
+import InfiniteScroll from "react-infinite-scroller";
 import { getGoods } from "../../actions/getGoodsAction";
 import { classes } from "./style";
 
 class ProductItem extends Component {
   componentDidMount() {
-    if (window.location.pathname === "/product-list/mens") {
-      return this.props.getGoods("mens");
-    } else if (window.location.pathname === "/product-list/womens") {
-      return this.props.getGoods("womens");
-    } else if (window.location.pathname === "/product-list/accessories") {
-      return this.props.getGoods("accessories");
-    }
+    let arrUrl = window.location.pathname.split("/");
+    let collection = `${arrUrl[2]}`;
+    this.props.getGoods(collection);
   }
 
-  getGoodsItems = () => {
+  getGoodsByCollections = () => {
     return this.props.goodsList.map(goods => {
       return (
         <Link
@@ -30,7 +26,7 @@ class ProductItem extends Component {
               alt={goods.image}
             />
             <p className={classes.goodsTitle}>{goods.name}</p>
-            <p className={classes.goodsPrise}>{goods.price}</p>
+            <p className={classes.goodsPrise}>{goods.price} $</p>
           </li>
         </Link>
       );
@@ -38,10 +34,9 @@ class ProductItem extends Component {
   };
 
   render() {
-    return <Fragment>{this.getGoodsItems()}</Fragment>;
+    return <Fragment>{this.getGoodsByCollections()}</Fragment>;
   }
 }
-
 const mapStateToProps = state => {
   return {
     goodsList: state.allGoods.goodsList
