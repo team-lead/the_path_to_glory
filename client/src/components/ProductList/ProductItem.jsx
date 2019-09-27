@@ -1,28 +1,21 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
-import { getGoodsDetailID } from "../../actions/detailGoodsAction"
 import InfiniteScroll from 'react-infinite-scroller'
 import { getGoods } from "../../actions/getGoodsAction"
 import { classes } from './style'
 
 class ProductItem extends Component {
-    
     componentDidMount () {
-        if (window.location.pathname === "/product-list/mens"){
-            return this.props.getGoods("mens")
-        } else if (window.location.pathname === "/product-list/womens") {
-            return this.props.getGoods("womens")
-        } else if (window.location.pathname === "/product-list/accessories") {
-            return this.props.getGoods("accessories")
-        }
+        let arrUrl = window.location.pathname.split("/")
+        let collection = `${arrUrl[2]}`;
+        this.props.getGoods(collection)
     }
     
-    getGoodsItems = () => {
+    getGoodsByCollections = () => {
+
         return (
-            
             this.props.goodsList.map((goods) => {
-                
                 return (
                     <Link className = {classes.linkItem} key = {goods.id} to = {`/detail/${goods.id}`}>
                         <li className = {classes.productItem}>
@@ -31,8 +24,7 @@ class ProductItem extends Component {
                             <p className={classes.goodsPrise}>{goods.price} $</p>
                         </li>
                     </Link>
-                )
-                
+                ) 
             })
         )
     }
@@ -40,7 +32,7 @@ class ProductItem extends Component {
     render() {
         return (
             <Fragment>
-            {this.getGoodsItems()}
+              {this.getGoodsByCollections()}
             </Fragment>
         )
     }
@@ -48,7 +40,7 @@ class ProductItem extends Component {
 
 const mapStateToProps = state => {
     return {
-        goodsList: state.allGoods.goodsList
+        goodsList: state.allGoods.goodsList,
     }
 }
 

@@ -6,6 +6,7 @@ const Woman = mongoose.model("Woman", {
   category: String,
   image: Array,
   ref: String,
+  color: Array,
   new: Boolean,
 });
 

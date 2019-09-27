@@ -23,7 +23,11 @@ export function getGoodsDetailID(id) {
             description: generalArr[key].description,
             price: generalArr[key].price,
             ref: generalArr[key].ref,
-            new: generalArr[key].new
+            new: generalArr[key].new,
+            color: generalArr[key].color,
+            images: generalArr[key].images,
+            subCategory: generalArr[key].subCategory,
+            category: generalArr[key].category
           };
           itemArr.push(items);
         }
