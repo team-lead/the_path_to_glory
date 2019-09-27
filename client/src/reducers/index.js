@@ -1,11 +1,11 @@
-import { combineReducers } from 'redux';
-import { activeGoodsReducer } from "./detailGoodReducer/detailReducer"
-import { allGoods } from "./getGoodsReducer/index"
+import { combineReducers } from "redux";
+import { activeGoodsReducer } from "./detailGoodReducer/detailReducer";
+import { allGoods } from "./getGoodsReducer/index";
 import searchReducer from "./mainPageReducers/searchReducer";
 import addToCartReducer from "./cartReducers/addToCart";
 import showDropdownMenuReducer from "./mainPageReducers/dropDownMenuReducer";
 import { allCategories } from "./getCategoriesReducer/index";
-import { getFilterPath } from "./getFilterPathReducers/index"
+import rangeSliderReducer from "./rangeSliderReducer";
 
 const rootReducer = combineReducers({
   active: activeGoodsReducer,
@@ -13,8 +13,8 @@ const rootReducer = combineReducers({
   add: addToCartReducer,
   dropdownMenu: showDropdownMenuReducer,
   allGoods: allGoods,
-  allCategories,
-  getFilterPath,
+  rangeSlider: rangeSliderReducer,
+  allCategories
 });
 
 export default rootReducer;
