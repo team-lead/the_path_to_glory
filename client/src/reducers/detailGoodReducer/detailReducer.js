@@ -7,7 +7,8 @@ import {
   SAVE_USER_CART,
   UPDATE_CART,
   SET_PREV_PAGE_PATH,
-  UPDATE_PURCHASE_HISTORY
+  UPDATE_PURCHASE_HISTORY,
+  ADD_TO_CART
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
@@ -17,44 +18,7 @@ const initialState = {
   purchaseHistory: [],
   shoppingBag: localStorage.getItem('shoppingBag')
     ? JSON.parse(localStorage.getItem('shoppingBag'))
-    : [
-        {
-          id: 1,
-          category: 'women',
-          images: [],
-          name: 'Golden Dress',
-          subCategory: 'dresses',
-          reference: '3294786 - 01',
-          description: [],
-          new: true,
-          price: 430,
-          quantity: 1
-        },
-        {
-          id: 1,
-          category: 'women',
-          images: [],
-          name: 'Golden Dress',
-          subCategory: 'dresses',
-          reference: '3294786 - 01',
-          description: [],
-          new: true,
-          price: 430,
-          quantity: 1
-        },
-        {
-          id: 1,
-          category: 'women',
-          images: [],
-          name: 'Golden Dress',
-          subCategory: 'dresses',
-          reference: '3294786 - 01',
-          description: [],
-          new: true,
-          price: 430,
-          quantity: 1
-        }
-      ]
+    : []
 };
 
 export const activeGoodsReducer = (state = initialState, action) => {
@@ -110,11 +74,25 @@ export const activeGoodsReducer = (state = initialState, action) => {
       return { ...state, prevPagePath };
     }
     case UPDATE_PURCHASE_HISTORY: {
-      console.log('sdflksjflsjsfksdsj');
       const purchaseHistory = [...state.purchaseHistory, ...state.shoppingBag];
       const shoppingBag = [];
       localStorage.removeItem('shoppingBag');
       return { ...state, purchaseHistory, shoppingBag };
+    }
+    case ADD_TO_CART: {
+      console.log(action.payload);
+      const product = {
+        id: action.payload.id, // работает, не лезть
+        category: action.payload.category, // работает, не лезть
+        name: action.payload.name, // работает, не лезть
+        price: +action.payload.price, // работает, не лезть
+        color: action.payload.color[0], // работает, не лезть
+        quantity: 1, // хардкод, нужно поменять
+        reference: action.payload.ref, // работает, не лезть
+        size: 6, // хардкод, нужно поменять
+        image: action.payload.image[0] // работает, не лезть
+      };
+      return { ...state, shoppingBag: [...state.shoppingBag, product] };
     }
     default:
       return { ...state };

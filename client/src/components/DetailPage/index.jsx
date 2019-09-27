@@ -5,7 +5,11 @@ import Sizes from './ClothesSizes';
 import Colors from './ClothesColors';
 import Button from '../Button/index';
 import Header from '../Header';
-import { getGoodsDetailID } from '../../actions/detailGoodsAction';
+import {
+  getGoodsDetailID,
+  addToCart,
+  saveUserCart
+} from '../../actions/detailGoodsAction';
 
 class DetailPageComponent extends Component {
   componentDidMount() {
@@ -52,6 +56,11 @@ class DetailPageComponent extends Component {
                 </div>
 
                 <Button
+                  clickHandler={() => {
+                    console.log('sfskfjskfshfkkfh');
+                    this.props.addToCart(item);
+                    this.props.saveUserCart();
+                  }}
                   btnSettings={classes.btnSettings}
                   black
                   name='add to bascket'
@@ -77,7 +86,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDataID: id => dispatch(getGoodsDetailID(id))
+    getDataID: id => dispatch(getGoodsDetailID(id)),
+    addToCart: product => dispatch(addToCart(product)),
+    saveUserCart: () => dispatch(saveUserCart())
   };
 };
 

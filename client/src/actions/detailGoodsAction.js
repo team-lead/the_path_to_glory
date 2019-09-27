@@ -7,6 +7,7 @@ export const SAVE_USER_CART = 'SAVE_USER_CART';
 export const UPDATE_CART = 'UPDATE_CART';
 export const SET_PREV_PAGE_PATH = 'SET_PREV_PAGE_PATH';
 export const UPDATE_PURCHASE_HISTORY = 'UPDATE_PURCHASE_HISTORY';
+export const ADD_TO_CART = 'ADD_TO_CART';
 
 export function getGoodsDetailID(id) {
   return dispatch => {
@@ -23,7 +24,8 @@ export function getGoodsDetailID(id) {
             description: generalArr[key].description,
             price: generalArr[key].price,
             ref: generalArr[key].ref,
-            new: generalArr[key].new
+            new: generalArr[key].new,
+            color: generalArr[key].color
           };
           itemArr.push(items);
         }
@@ -65,4 +67,8 @@ export function setPrevPagePath(path) {
 
 export function updatePurchaseHistory() {
   return { type: UPDATE_PURCHASE_HISTORY };
+}
+
+export function addToCart(product) {
+  return { type: ADD_TO_CART, payload: product };
 }
