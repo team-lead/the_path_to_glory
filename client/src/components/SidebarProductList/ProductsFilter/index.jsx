@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import RangeSlider from '../RangeSlider/index'
+import PriseSlider from '../RangeSlider/PriceSlider'
 import { classes } from "./style";
+import {filterGoodsByCategory} from '../../../actions/filterGoodsByCategory'
 
 import {
         getGoodsCategories,
@@ -42,7 +43,7 @@ class ProductsFilter extends Component {
             this.props.categoriesList.map((category) => {
                 
                 return (
-                    <li key={category}><Link to={`${path}/${category}`} className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category}</Link></li>
+                    <li key={category} onClick = {() => this.props.filterGoodsByCategory(category)}><Link className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category}</Link></li>
                 )
                 
             })
@@ -97,7 +98,8 @@ class ProductsFilter extends Component {
 
         const categoiesMenu =<div className={categorySection}>
                                 <p className={`${categorySectionTitle} ${sectionTitle}`}>{this.props.categoryName}</p>
-                                <Link to={`${this.getPath()}`} className={`${categorySectionItem} ${sectionItem}`}>View All</Link>                                <div>
+                                <Link to={`${this.getPath()}`} className={`${categorySectionItem} ${sectionItem}`}>View All</Link>
+                                <div>
                                     <p className={mobileCategoiFilter} onClick={()=>this.props.showCategoru()}>Categories</p>
                                     {this.props.showCategoriMenu?<i class="fas fa-angle-up"></i>:<i class="fas fa-angle-down"></i>}
                                 </div>
@@ -115,17 +117,15 @@ class ProductsFilter extends Component {
         
 
         const priceMenu = <div className={priceSection}>
-                        <div className = {mobileColor}>
-                            <p className={`${sectionTitle} ${priceSectionTitle}`} onClick={()=>this.props.showPrise()}>price</p>
-                            {this.props.showPriceMenu?<i class="fas fa-angle-up"></i>:<i class="fas fa-angle-down"></i>}
-                            {this.props.showPriceMenu?<RangeSlider/>:''}
-                        </div>
-                            
-                            
+                            <div className = {mobileColor} >
+                                <p className={`${sectionTitle} ${priceSectionTitle}`} onClick={()=>this.props.showPrise()}>price</p>
+                                {this.props.showPriceMenu?<i class="fas fa-angle-up"></i>:<i class="fas fa-angle-down"></i>}
+                            </div>
+                                {this.props.showPriceMenu?<PriseSlider />:''}
                         </div>
 
         window.addEventListener('resize',()=>{
-            if(document.body.clientWidth === 768){
+            if(document.body.clientWidth > 768){
                 this.props.showDesctop()
             } 
         })
@@ -134,7 +134,6 @@ class ProductsFilter extends Component {
                 {categoiesMenu}
                 {colorMenu}
                 {priceMenu}
-                {/* <RangeSlider/> */}
             </div>
         )
     }   
@@ -158,6 +157,7 @@ const mapDispatchToProps = dispatch =>{
         showDesctop:()=>dispatch({type:WINDOW_DESCTOP}),
         showColor:()=>dispatch({type:SHOW_COLOR_MENU}),
         showPrise:()=>dispatch({type:SHOW_PRICE_MENU}),
+        filterGoodsByCategory: category => dispatch(filterGoodsByCategory(category))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(ProductsFilter);
