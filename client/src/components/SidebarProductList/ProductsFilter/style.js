@@ -76,21 +76,7 @@ let ProductsFilterStyle = {
     width: '21px',
     height: '21px',
     border: '1px solid #847A7A',
-    // '&.black': {
-      // width: '20px',
-      // height: '20px',
-      // backgroundColor: '#0C0C0C',
-    },
-    // '&.brown': {
-      // backgroundColor: '#8E521B',
-    // },
-    // '&.red': {
-      // backgroundColor: '#F22121',
-    // },
-    // '&.white': {
-      // backgroundColor: '#fff',
-    // },
-  // },
+  },
   
   colorItem: {
     display: 'flex',
