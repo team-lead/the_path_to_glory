@@ -18,7 +18,7 @@ router.get("/", async (req, res) => {
             let acsGoods = await Accessories.find();
             return res.status(200).json({acs: acsGoods});
         } else {
-            return res.send("err")
+            return res.send("Wrong url")
         }
     } catch (error) {
         return res.status(500).json({error: "Server Error"});

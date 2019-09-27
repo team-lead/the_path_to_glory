@@ -240,24 +240,24 @@ class Header extends Component {
       <>
         <header className={header}>
           <nav className={navbarMenu}>
-            <Link
-              to='/product-list/mens'
+            <a
+              href = '/product-list/mens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
-            </Link>
-            <Link
-              to='/product-list/womens'
+            </a>
+            <a
+              href = '/product-list/womens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
-            </Link>
-            <Link
-              href='/product-list/accessories'
+            </a>
+            <a
+            href='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
-            </Link>
+            </a>
           </nav>
           <div onMouseOver={hideDropdownMenu}>
             <a to={logoLink} className={logoItem}>
