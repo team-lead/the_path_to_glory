@@ -19,7 +19,7 @@ class Header extends Component {
   }
 
   handleChange({ target }) {
-    this.props.searchAction(target.value);
+    setTimeout(() => this.props.searchAction(target.value), 500)
     this.setState({ searchText: target.value });
   }
   clearSearch() {
