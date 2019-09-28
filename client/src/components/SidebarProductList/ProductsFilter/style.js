@@ -41,6 +41,16 @@ let ProductsFilterStyle = {
       borderBottom: '1px solid #fff',
     },
   },
+  sybCategoryLink: {
+    borderBottom: '1px solid transparent',
+    marginTop: '19px',
+    marginBottom: '19px',
+    marginLeft: '15px',
+    '&:hover':{
+      borderBottom: '1px solid #fff',
+    },
+  },
+
   categorySectionlinck: {
     borderBottom: '1px solid transparent',
     marginTop: '19px',

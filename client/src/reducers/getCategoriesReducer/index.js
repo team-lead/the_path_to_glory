@@ -11,6 +11,7 @@ import {
 const initialState = {
   colorsList: [],
   categoriesList: [],
+  subCategoryList: [],
   categoryName: '',
   isShowFilterMenu: false,
   isShowCategoriMenu:true,
@@ -26,7 +27,9 @@ export function allCategories(state = initialState, action) {
         ...state,
         categoriesList: action.payload,
         categoryName: action.payload1,
-        colorsList: action.payload2
+        colorsList: action.payload2,
+        subCategoryList: action.payload3,
+
       }
     }
       case SHOW_FILTER_MENU:{

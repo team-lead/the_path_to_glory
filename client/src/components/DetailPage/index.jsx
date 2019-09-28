@@ -20,10 +20,10 @@ class DetailPageComponent extends Component  {
     handlerItem = () => {
         return (
             this.props.goodsItemDetails.map(item => {
-                console.log(item);
+
                 const showColors = () => {
-                        if (item.color !== undefined) {
-                            return <Colors colors = {item.color}/>
+                        if (item.color) {
+                            return <Colors colors = {item.color}/> && <Sizes sizes = {item.size}/>
                         } else return null
                 }
                 return (
@@ -44,7 +44,6 @@ class DetailPageComponent extends Component  {
                             <p className = {classes.refStyle}>REF: {item.ref}</p>
                         
                         {showColors()}
-                        <Sizes/>
         
                         <div className = {classes.sizeGuide}>
                             <a href="/">Size guide</a>
