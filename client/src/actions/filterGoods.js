@@ -59,20 +59,20 @@ export function filterGoodsByPrice(priceRange) {
   };
 }
 
-// export function getPriceRange() {
-//   return async dispatch => {
-//     let mens = await getGoodsByCategory("mens");
-//     let womens = await getGoodsByCategory("womens");
-//     let accessories = await getGoodsByCategory("accessories");
-//     if (window.location.pathname.split("/").includes("womens")) {
-//       getPriceRangeByCategory(womens, dispatch);
-//     } else if (window.location.pathname.split("/").includes("mens")) {
-//       getPriceRangeByCategory(mens, dispatch);
-//     } else if (window.location.pathname.split("/").includes("accessories")) {
-//       getPriceRangeByCategory(accessories, dispatch);
-//     }
-//   };
-// }
+export function getPriceRange() {
+  return async dispatch => {
+    let mens = await getGoodsByCategory("mens");
+    let womens = await getGoodsByCategory("womens");
+    let accessories = await getGoodsByCategory("accessories");
+    if (window.location.pathname.split("/").includes("womens")) {
+      return getPriceRangeByCategory(womens, dispatch);
+    } else if (window.location.pathname.split("/").includes("mens")) {
+      return getPriceRangeByCategory(mens, dispatch);
+    } else if (window.location.pathname.split("/").includes("accessories")) {
+      return getPriceRangeByCategory(accessories, dispatch);
+    }
+  };
+}
 
 async function getGoodsByCategory(category) {
   let goodsList = [];
@@ -129,6 +129,14 @@ function filterColorByPrice(category, priceRange, dispatch) {
       return true;
     }
   });
+
+  dispatch({
+    type: FILTER_GOODS_BY_PRICE,
+    payload: category
+  });
+}
+
+function getPriceRangeByCategory(category, dispatch) {
   const price = [];
   category.forEach(item => {
     price.push(+item.price);
@@ -139,24 +147,7 @@ function filterColorByPrice(category, priceRange, dispatch) {
     max: Math.max(...price)
   };
   dispatch({
-    type: FILTER_GOODS_BY_PRICE,
-    payload: category,
-    priceValue
+    type: GET_PRICE_RANGE,
+    payload: priceValue
   });
 }
-
-// function getPriceRangeByCategory(category, dispatch) {
-//   const price = [];
-//   category.forEach(item => {
-//     price.push(+item.price);
-//   });
-
-//   const priceValue = {
-//     min: Math.min(...price),
-//     max: Math.max(...price)
-//   };
-//   dispatch({
-//     type: GET_PRICE_RANGE,
-//     payload: priceValue
-//   });
-// }
