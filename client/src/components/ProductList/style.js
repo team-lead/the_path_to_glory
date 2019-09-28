@@ -37,7 +37,9 @@ const productListStyle ={
         fontFamily: "Open Sans",
         cursor: 'pointer',
         transition: '0.5s',
-
+        width: "416px",
+        marginBottom: "30px",
+        
         '& > p': {
             transition: '0.5s',
         },
