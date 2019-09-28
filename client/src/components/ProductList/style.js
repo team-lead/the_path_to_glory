@@ -25,10 +25,29 @@ const productListStyle ={
     },
     linkItem:{
         textDecoration: 'none',
-        width: '30%',
+        transition: '0.5s',
+        color: '#000',
+
+        '&:hover': {
+            transform: 'scale(1.01)',
+        }
+    },
+
+    productItem:{
         fontFamily: "Open Sans",
         cursor: 'pointer',
-        marginTop: '15vh'
+        transition: '0.5s',
+        width: "416px",
+        marginBottom: "30px",
+        
+        '& > p': {
+            transition: '0.5s',
+        },
+
+
+        '&:hover > p': {
+            marginLeft: '1.5px',
+        }
     },
     itemImg:{
         width: '100%',
@@ -38,10 +57,12 @@ const productListStyle ={
         textTransform: 'uppercase',
         fontSize: '18px',
         marginTop: '20px',
-        color: '#000000',
+        fontWeight: '700',
+        color: '#000',
+        color: '#000000'
     },
     goodsPrise:{
-        marginTop: '15px',
+        marginTop: '14px',
         color: 'rgba(132, 122, 122, 1)'
     },
 

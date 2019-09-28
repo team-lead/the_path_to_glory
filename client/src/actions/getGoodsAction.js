@@ -1,10 +1,8 @@
 export const GET_GOODS_SUCCESS = 'GET_GOODS_SUCCESS';
 
-export function getGoods(category) {
-  // console.log(category);
-
+export function getGoods(collection) {
   return async dispatch => {
-    await fetch(`http://localhost:8080/product-list?collection=${category}`)
+    await fetch(`http://localhost:8080/product-list?collection=${collection}`)
       .then(response => {
         if (!response.ok) {
           throw new Error(response.statusText);

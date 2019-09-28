@@ -32,20 +32,7 @@ class CheckoutForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.updatePurchaseHistory();
-    this.props.showCheckoutModal()
-    
-    // alert(
-    //   'A form was submitted: ' +
-    //     this.state.cardNumber +
-    //     ' // ' +
-    //     this.state.cardName +
-    //     ' // ' +
-    //     this.state.expiryMonth +
-    //     ' // ' +
-    //     this.state.expiryYear +
-    //     ' // ' +
-    //     this.state.cardCCV
-    // );
+    this.props.showCheckoutModal();
   }
 
   render() {

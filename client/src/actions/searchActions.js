@@ -2,12 +2,10 @@ export const SHOW_MODAL_WINDOW = "SHOW_MODAL_WINDOW";
 export const SEARCH_ACTION = "SEARCH_ACTION";
 
 export function searchGoods(searchKeywords) {
-  //   console.log(searchKeywords);
   return async dispatch => {
     let mens = await searchInProductListDb("mens");
     let womens = await searchInProductListDb("womens");
     let accessories = await searchInProductListDb("accessories");
-    console.log(mens, womens, accessories, "---------------ccc--------------");
     let allGoods = [...mens, ...womens, ...accessories];
     let findedGoods = [];
 

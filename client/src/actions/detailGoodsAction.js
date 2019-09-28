@@ -27,7 +27,10 @@ export function getGoodsDetailID(id) {
             price: generalArr[key].price,
             ref: generalArr[key].ref,
             new: generalArr[key].new,
-            color: generalArr[key].color
+            color: generalArr[key].color,
+            images: generalArr[key].images,
+            subCategory: generalArr[key].subCategory,
+            category: generalArr[key].category
           };
           itemArr.push(items);
         }
