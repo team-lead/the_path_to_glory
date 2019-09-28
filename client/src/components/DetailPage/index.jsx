@@ -5,9 +5,12 @@ import Sizes from './ClothesSizes';
 import Colors from './ClothesColors';
 import Button from '../Button/index';
 import Header from '../Header';
-import { getGoodsDetailID } from "../../actions/detailGoodsAction"
+import {
+  getGoodsDetailID,
+  addToCart,
+  saveUserCart
+} from '../../actions/detailGoodsAction';
 import GoodsSlider from './GoodsSlider';
-
 
 class DetailPageComponent extends Component  {
     
@@ -57,7 +60,17 @@ class DetailPageComponent extends Component  {
                             <p>{item.description[2]}</p>
                         </div>
         
-                        <Button btnSettings = {classes.btnSettings} black name = "add to bascket"/>
+                        <Button
+                  clickHandler={() => {
+                    if (!this.props.shoppingBag.some(product => product.id === item.id)) {
+                      this.props.addToCart(item);
+                      this.props.saveUserCart();
+                    }
+                  }}
+                  btnSettings={classes.btnSettings}
+                  black
+                  name='add to bascket'
+                />
                         </div>
                     </li>
                 </div>
@@ -76,17 +89,19 @@ class DetailPageComponent extends Component  {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        goodsItemDetails: state.active.objectId
-    }
-    
-}
+const mapStateToProps = state => {
+  return {
+    goodsItemDetails: state.active.objectId,
+    shoppingBag: state.active.shoppingBag
+  };
+};
 
 const mapDispatchToProps = dispatch => {
-    return {
-        getDataID: id => dispatch(getGoodsDetailID(id))
-    }
-}
+  return {
+    getDataID: id => dispatch(getGoodsDetailID(id)),
+    addToCart: product => dispatch(addToCart(product)),
+    saveUserCart: () => dispatch(saveUserCart())
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPageComponent)
