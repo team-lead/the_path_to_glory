@@ -3,7 +3,8 @@ import {
   GET_GOODS_BY_CATEGORY,
   FILTER_GOODS_BY_COLOR,
   FILTER_GOODS_BY_PRICE,
-  GET_PRICE_RANGE
+  GET_PRICE_RANGE,
+  FILTER_GOODS_BY_SUBCATEGORY
 } from "../../actions/filterGoods";
 
 const initialState = {
@@ -29,6 +30,11 @@ export function allGoods(state = initialState, action) {
         goodsList: action.payload
       };
     case FILTER_GOODS_BY_PRICE:
+      return {
+        ...state,
+        goodsList: action.payload
+      };
+    case FILTER_GOODS_BY_SUBCATEGORY:
       return {
         ...state,
         goodsList: action.payload

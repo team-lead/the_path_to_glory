@@ -7,54 +7,21 @@ import {
   SAVE_USER_CART,
   UPDATE_CART,
   SET_PREV_PAGE_PATH,
-  UPDATE_PURCHASE_HISTORY
+  UPDATE_PURCHASE_HISTORY,
+  ADD_TO_CART,
+  SHOW_CHECKOUT_MODAL,
+  HIDE_CHECKOUT_MODAL
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
   objectId: [],
   checkoutTotal: 0,
+  checkoutModalActive: false,
   prevPagePath: '',
   purchaseHistory: [],
   shoppingBag: localStorage.getItem('shoppingBag')
     ? JSON.parse(localStorage.getItem('shoppingBag'))
-    : [
-        {
-          id: 1,
-          category: 'women',
-          images: [],
-          name: 'Golden Dress',
-          subCategory: 'dresses',
-          reference: '3294786 - 01',
-          description: [],
-          new: true,
-          price: 430,
-          quantity: 1
-        },
-        {
-          id: 1,
-          category: 'women',
-          images: [],
-          name: 'Golden Dress',
-          subCategory: 'dresses',
-          reference: '3294786 - 01',
-          description: [],
-          new: true,
-          price: 430,
-          quantity: 1
-        },
-        {
-          id: 1,
-          category: 'women',
-          images: [],
-          name: 'Golden Dress',
-          subCategory: 'dresses',
-          reference: '3294786 - 01',
-          description: [],
-          new: true,
-          price: 430,
-          quantity: 1
-        }
-      ]
+    : []
 };
 
 export const activeGoodsReducer = (state = initialState, action) => {
@@ -110,11 +77,33 @@ export const activeGoodsReducer = (state = initialState, action) => {
       return { ...state, prevPagePath };
     }
     case UPDATE_PURCHASE_HISTORY: {
-      console.log('sdflksjflsjsfksdsj');
       const purchaseHistory = [...state.purchaseHistory, ...state.shoppingBag];
       const shoppingBag = [];
       localStorage.removeItem('shoppingBag');
       return { ...state, purchaseHistory, shoppingBag };
+    }
+    case ADD_TO_CART: {
+      const date = new Date();
+      const curentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+      const product = {
+        id: action.payload.id,
+        category: action.payload.category,
+        name: action.payload.name,
+        price: +action.payload.price,
+        color: action.payload.color[0], // сюда нужно подставлять выбранный цвет
+        quantity: 1, // хардкод, нужно поменять
+        reference: action.payload.ref,
+        size: 6, // хардкод, нужно поменять
+        image: action.payload.image[0],
+        date: curentDate
+      };
+      return { ...state, shoppingBag: [...state.shoppingBag, product] };
+    }
+    case SHOW_CHECKOUT_MODAL: {
+      return { ...state, checkoutModalActive: true };
+    }
+    case HIDE_CHECKOUT_MODAL: {
+      return { ...state, checkoutModalActive: false };
     }
     default:
       return { ...state };

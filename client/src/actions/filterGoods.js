@@ -2,6 +2,7 @@ export const FILTER_GOODS_BY_COLOR = "FILTER_GOODS_BY_COLOR";
 export const GET_GOODS_BY_CATEGORY = "GET_GOODS_BY_CATEGORY";
 export const FILTER_GOODS_BY_PRICE = "FILTER_GOODS_BY_PRICE";
 export const GET_PRICE_RANGE = "GET_PRICE_RANGE";
+export const FILTER_GOODS_BY_SUBCATEGORY = "FILTER_GOODS_BY_SUBCATEGORY";
 
 export function filterGoodsByCategory(category) {
   return async dispatch => {
@@ -58,6 +59,14 @@ export function filterGoodsByPrice(priceRange) {
     }
   };
 }
+export function filterGoodsBySubcategory(category, subcategory) {
+  return async dispatch => {
+    let accessories = await getGoodsByCategory("accessories");
+    if (window.location.pathname.split("/").includes("accessories")) {
+      filterBySubcategory(accessories, category, subcategory, dispatch);
+    }
+  };
+}
 
 export function getPriceRange() {
   return async dispatch => {
@@ -96,7 +105,8 @@ async function getGoodsByCategory(category) {
           ref: goodsArr[key].ref,
           new: goodsArr[key].new,
           color: goodsArr[key].color,
-          category: goodsArr[key].category
+          category: goodsArr[key].category,
+          subCategory: goodsArr[key].subCategory
         };
         goodsList.push(goodItems);
       }
@@ -116,6 +126,27 @@ function filterColorByCategory(category, color, dispatch) {
   dispatch({
     type: FILTER_GOODS_BY_COLOR,
     payload: category
+  });
+}
+
+function filterBySubcategory(
+  categoryGoods,
+  categoryGender,
+  subCategory,
+  dispatch
+) {
+  categoryGoods = categoryGoods.filter(item => {
+    if (
+      item.subCategory &&
+      item.subCategory.toLowerCase() === subCategory.toLowerCase() &&
+      item.category.toLowerCase() === categoryGender.toLowerCase()
+    ) {
+      return true;
+    }
+  });
+  dispatch({
+    type: FILTER_GOODS_BY_SUBCATEGORY,
+    payload: categoryGoods
   });
 }
 

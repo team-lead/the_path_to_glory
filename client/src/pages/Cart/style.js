@@ -56,9 +56,18 @@ const CartPageStyles = {
   emptyCartMsgText: {
     fontFamily: 'Josefin Sans, sans-serif',
     textTransform: 'uppercase',
-    marginTop: '8 px',
+    marginTop: '8px',
     marginLeft: '13px',
-    fontSize: '25px'
+    fontSize: '25px',
+    '@media screen and (max-width: 790px)': {
+      marginBottom: '20px'
+    },
+    '@media screen and (max-width: 500px)': {
+      fontSize: '20px'
+    },
+    '@media screen and (max-width: 400px)': {
+      fontSize: '18px'
+    },
   },
   cartHeading: {
     display: 'none',
