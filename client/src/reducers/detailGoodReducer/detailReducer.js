@@ -86,15 +86,15 @@ export const activeGoodsReducer = (state = initialState, action) => {
       const date = new Date();
       const curentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
       const product = {
-        id: action.payload.id, // работает, не лезть
-        category: action.payload.category, // работает, не лезть
-        name: action.payload.name, // работает, не лезть
-        price: +action.payload.price, // работает, не лезть
-        color: action.payload.color[0], // работает, не лезть
+        id: action.payload.id,
+        category: action.payload.category,
+        name: action.payload.name,
+        price: +action.payload.price,
+        color: action.payload.color[0], // сюда нужно подставлять выбранный цвет
         quantity: 1, // хардкод, нужно поменять
-        reference: action.payload.ref, // работает, не лезть
+        reference: action.payload.ref,
         size: 6, // хардкод, нужно поменять
-        image: action.payload.image[0], // работает, не лезть
+        image: action.payload.image[0],
         date: curentDate
       };
       return { ...state, shoppingBag: [...state.shoppingBag, product] };
