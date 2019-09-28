@@ -102,7 +102,8 @@ class ProductsFilter extends Component {
       priceDiapazon,
       categoriesMenu,
       mobileCategoiFilter,
-      mobileColor
+      mobileColor,
+      resetfilterBtn
     } = classes;
 
     const whatProductsFilterReset = window.location.pathname
@@ -110,6 +111,8 @@ class ProductsFilter extends Component {
       .includes("mens")
       ? () => this.props.getGoods("mens")
       : () => this.props.getGoods("womens");
+
+    const resetAccessoryFilters = () => this.props.getGoods("accessories");
 
     const categoiesMenu = (
       <div className={categorySection}>
@@ -141,7 +144,13 @@ class ProductsFilter extends Component {
     const whatProductsFilterColor = window.location.pathname
       .split("/")
       .includes("accessories")
-      ? () => null
+      ? () => (
+          <span
+            className={`${categorySectionItem} ${sectionItem} ${resetfilterBtn}`}
+            onClick={resetAccessoryFilters}>
+            Reset All
+          </span>
+        )
       : () => (
           <div className={colorSection}>
             <div className={mobileColor}>
