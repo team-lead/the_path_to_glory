@@ -30,15 +30,6 @@ class ProductsFilter extends Component {
   }
 
   getGoodsCategoryItems = () => {
-    let path = null;
-    if (window.location.pathname === "/product-list/mens") {
-      path = "/product-list/mens";
-    } else if (window.location.pathname === "/product-list/womens") {
-      path = "/product-list/womens";
-    } else if (window.location.pathname === "/product-list/accessories") {
-      path = "/product-list/accessories";
-    }
-
     return this.props.categoriesList.map(category => {
       return (
         <li
@@ -85,25 +76,6 @@ class ProductsFilter extends Component {
   };
 
   render() {
-    const {
-      categorySection,
-      sectionTitle,
-      categorySectionTitle,
-      categorySectionItem,
-      categorySectionlinck,
-      sectionItem,
-      colorSection,
-      colorSectionTitle,
-      colorSectionItem,
-      colorCircle,
-      colorItem,
-      priceSection,
-      priceSectionTitle,
-      priceDiapazon,
-      categoriesMenu,
-      mobileCategoiFilter,
-      mobileColor
-    } = classes;
 
     const whatProductsFilterReset = window.location.pathname
       .split("/")
@@ -112,18 +84,18 @@ class ProductsFilter extends Component {
       : () => this.props.getGoods("womens");
 
     const categoiesMenu = (
-      <div className={categorySection}>
-        <p className={`${categorySectionTitle} ${sectionTitle}`}>
+      <div className={classes.categorySection}>
+        <p className={`${classes.categorySectionTitle} ${classes.sectionTitle}`}>
           {this.props.categoryName}
         </p>
         <Link
           to={`${this.getPath()}`}
-          className={`${categorySectionItem} ${sectionItem}`}>
+          className={`${classes.categorySectionItem} ${classes.sectionItem}`}>
           View All
         </Link>
         <div>
           <p
-            className={mobileCategoiFilter}
+            className={classes.mobileCategoiFilter}
             onClick={() => this.props.showCategoru()}>
             Categories
           </p>
@@ -134,7 +106,7 @@ class ProductsFilter extends Component {
           )}
         </div>
         {this.props.showCategoriMenu ? (
-          <ul className={categoriesMenu}>{this.getGoodsCategoryItems()}</ul>
+          <ul className={classes.categoriesMenu}>{this.getGoodsCategoryItems()}</ul>
         ) : null}
       </div>
     );
@@ -143,10 +115,10 @@ class ProductsFilter extends Component {
       .includes("accessories")
       ? () => null
       : () => (
-          <div className={colorSection}>
-            <div className={mobileColor}>
+          <div className={classes.colorSection}>
+            <div className={classes.mobileColor}>
               <p
-                className={`${sectionTitle} ${colorSectionTitle}`}
+                className={`${classes.sectionTitle} ${classes.colorSectionTitle}`}
                 onClick={() => this.props.showColor()}>
                 colors
               </p>
@@ -158,7 +130,7 @@ class ProductsFilter extends Component {
             </div>
             {this.props.showColorMenu ? <ul>{this.getColorsItems()}</ul> : ""}
             <span
-              className={`${categorySectionItem} ${sectionItem}`}
+              className={`${classes.categorySectionItem} ${classes.sectionItem}`}
               onClick={whatProductsFilterReset}>
               Reset All
             </span>
@@ -166,10 +138,10 @@ class ProductsFilter extends Component {
         );
 
     const priceMenu = (
-      <div className={priceSection}>
-        <div className={mobileColor}>
+      <div className={classes.priceSection}>
+        <div className={classes.mobileColor}>
           <p
-            className={`${sectionTitle} ${priceSectionTitle}`}
+            className={`${classes.sectionTitle} ${classes.priceSectionTitle}`}
             onClick={() => this.props.showPrise()}>
             price
           </p>

@@ -8,9 +8,11 @@ import { setPrevPagePath } from '../../actions/detailGoodsAction';
 import {
   SHOW_DROPDOWN_MENU,
   HIDE_DROPDOWN_MENU
-} from '../../actions/dropDownMenuAction';
-import DropdownHeaderMenu from '../DropdownHeaderMenu';
-import ProductItemSearch from '../ProductItemSearch';
+} from "../../actions/dropDownMenuAction";
+import DropdownHeaderMenu from "../DropdownHeaderMenu";
+import ProductItemSearch from "../ProductItemSearch";
+import Login from "../User/Login";
+
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
@@ -93,7 +95,7 @@ class Header extends Component {
 
     const logoLink = window.location.pathname === '/' ? '#' : '/';
 
-    let showDropdownMenuItem = null;
+    let showDropdownMenuItem = null; 
 
     switch (activeDropdownMenu) {
       case 0: {
@@ -241,19 +243,19 @@ class Header extends Component {
         <header className={header}>
           <nav className={navbarMenu}>
             <a
-              href = '/product-list/mens'
+            href='/product-list/mens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(0)}>
               man
             </a>
             <a
-              href = '/product-list/womens'
+              href='/product-list/womens'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(1)}>
               woman
             </a>
             <a
-            href='/product-list/accessories'
+              href='/product-list/accessories'
               className={navbarMenuItem}
               onMouseOver={() => showDropdownMenu(2)}>
               accessory
@@ -266,16 +268,12 @@ class Header extends Component {
           </div>
           <div className={headerActions}>
             <NavLink
-              href='#'
               onClick={searchModal}
               onMouseOver={hideDropdownMenu}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={classes.headerActionsItemText}>Search</p>
             </NavLink>
-            <NavLink to='/myaccount/main' className={classes.headerActionsItem}>
-              <i className={`far fa-user ${headerActionsItemImg}`} />
-              <p className={classes.headerActionsItemText}>My account</p>
-            </NavLink>
+          <Login />        
             <Link
               to='/cart'
               onClick={() => {
