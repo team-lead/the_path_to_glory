@@ -83,7 +83,8 @@ export const activeGoodsReducer = (state = initialState, action) => {
       return { ...state, purchaseHistory, shoppingBag };
     }
     case ADD_TO_CART: {
-      console.log(action.payload);
+      const date = new Date();
+      const curentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
       const product = {
         id: action.payload.id, // работает, не лезть
         category: action.payload.category, // работает, не лезть
@@ -93,7 +94,8 @@ export const activeGoodsReducer = (state = initialState, action) => {
         quantity: 1, // хардкод, нужно поменять
         reference: action.payload.ref, // работает, не лезть
         size: 6, // хардкод, нужно поменять
-        image: action.payload.image[0] // работает, не лезть
+        image: action.payload.image[0], // работает, не лезть
+        date: curentDate
       };
       return { ...state, shoppingBag: [...state.shoppingBag, product] };
     }
