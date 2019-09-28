@@ -13,8 +13,9 @@ let sliderStyle = {
     }
   },
   slide: {
-    height: "89vh",
-    width: "100%"
+    height: "calc(100vh - 95px)",
+    width: "100%",
+    objectFit: "cover",
   },
   dotItem: {
     border: "2px #fff solid",

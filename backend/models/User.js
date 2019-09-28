@@ -7,10 +7,9 @@ const UserSchema = new Schema({
     firstName: {
         type: String,
         trim: true,
-        required: true,
         maxlength: 32
     },
-    secondName: {
+    lastName: {
         type: String,
         trim: true,
         maxlength: 32
@@ -24,12 +23,11 @@ const UserSchema = new Schema({
     },
     phone: {
         type: Number,
-        default: 0
+        
     },
-    gender: {
+    sex: {
         type: String,
         trim: true,
-        unique: true,
         maxlength: 32
     },
     birthday: {
