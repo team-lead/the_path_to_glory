@@ -26,32 +26,55 @@ class ProductsFilter extends Component {
     } else if (window.location.pathname === "/product-list/accessories") {
       return this.props.getGoodsCategories("accessories");
     }
-    this.props.getGoodsCategories();
   }
 
-  getGoodsCategoryItems = () => {
-    let path = null;
-    if (window.location.pathname === "/product-list/mens") {
-      path = "/product-list/mens";
-    } else if (window.location.pathname === "/product-list/womens") {
-      path = "/product-list/womens";
-    } else if (window.location.pathname === "/product-list/accessories") {
-      path = "/product-list/accessories";
+    getGoodsSubCategoryItems = () => {
+        let path = null;
+        if (window.location.pathname === "/product-list/mens"){
+            path = "/product-list/mens";
+        } else if (window.location.pathname === "/product-list/womens") {
+            path = "/product-list/womens";
+        } else if (window.location.pathname === "/product-list/accessories") {
+            path = "/product-list/accessories";
+        }
+        return (
+            
+            this.props.subCategoryList.map((subSategory) => {
+                console.log(subSategory);
+                return (
+                    <li key={subSategory} onClick = {() => this.props.filterGoodsByCategory(subSategory)}><Link className={`${classes.sybCategoryLink} ${classes.sectionItem}`}> - {subSategory}</Link></li>
+                )
+                
+            })
+        )
     }
-
-    return this.props.categoriesList.map(category => {
-      return (
-        <li
-          key={category}
-          onClick={() => this.props.filterGoodsByCategory(category)}>
-          <Link
-            className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>
-            {category}
-          </Link>
-        </li>
-      );
-    });
-  };
+    
+    getGoodsCategoryItems = () => {
+        let path = null;
+        if (window.location.pathname === "/product-list/mens"){
+            path = "/product-list/mens";
+        } else if (window.location.pathname === "/product-list/womens") {
+            path = "/product-list/womens";
+        } else if (window.location.pathname === "/product-list/accessories") {
+            path = "/product-list/accessories";
+        }
+        return (
+            
+            this.props.categoriesList.map((category) => {
+                console.log(category);
+                if (window.location.pathname.split('/').includes('accessories')) {
+                    return (
+                        <li key={category} onClick = {() => this.props.filterGoodsByCategory(category)}><Link className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category} {this.getGoodsSubCategoryItems()}</Link></li>
+                    )
+                } else {
+                    return (
+                        <li key={category} onClick = {() => this.props.filterGoodsByCategory(category)}><Link className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category}</Link></li>
+                    )
+                }
+            })
+        )
+    }
+    
 
   getPath = () => {
     let path = null;
@@ -214,7 +237,8 @@ const mapStateToProps = state => {
     showColorMenu: state.allCategories.isShowColorMenu,
     categoriesList: state.allCategories.categoriesList,
     categoryName: state.allCategories.categoryName,
-    colorsList: state.allCategories.colorsList
+    colorsList: state.allCategories.colorsList,
+    subCategoryList: state.allCategories.subCategoryList
   };
 };
 
