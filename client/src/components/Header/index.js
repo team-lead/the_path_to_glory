@@ -6,6 +6,9 @@ import { classes } from "./style";
 import { SHOW_MODAL_WINDOW, searchGoods } from "../../actions/searchActions";
 import { setPrevPagePath } from "../../actions/detailGoodsAction";
 import ProductItemSearch from "../ProductItemSearch";
+import Login from "../User/Login";
+
+import { Link } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
@@ -84,15 +87,15 @@ class Header extends Component {
       <>
         <header className={header}>
           <nav className={navbarMenu}>
-            <NavLink to="/product-list/mens" className={navbarMenuItem}>
+            <a href="/product-list/mens" className={navbarMenuItem}>
               man
-            </NavLink>
-            <NavLink to="/product-list/womens" className={navbarMenuItem}>
+            </a>
+            <a href="/product-list/womens" className={navbarMenuItem}>
               woman
-            </NavLink>
-            <NavLink to="/product-list/accessories" className={navbarMenuItem}>
+            </a>
+            <a href="/product-list/accessories" className={navbarMenuItem}>
               accessory
-            </NavLink>
+            </a>
           </nav>
           <div>
             <NavLink to="/" className={logoItem}>
@@ -104,11 +107,8 @@ class Header extends Component {
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={headerActionsItemText}>Search</p>
             </NavLink>
-            <NavLink to="/myaccount/main" className={headerActionsItem}>
-              <i className={`far fa-user ${headerActionsItemImg}`} />
-              <p className={headerActionsItemText}>My account</p>
-            </NavLink>
-            <NavLink
+            <Login />
+            <Link
               to="/cart"
               onClick={() => {
                 setPrevPagePath(document.location.pathname);
@@ -116,7 +116,7 @@ class Header extends Component {
               className={headerActionsItem}>
               <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
               <p className={headerActionsItemText}>Shopping Bag</p>
-            </NavLink>
+            </Link>
           </div>
         </header>
         {searchModalItem}

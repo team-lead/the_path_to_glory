@@ -155,5 +155,6 @@ let ProductsFilterStyle = {
       padding: "0"
     }
   }
-};
+
+}
 export const { classes } = jss.createStyleSheet(ProductsFilterStyle).attach();

@@ -108,9 +108,9 @@ let headerStyle = {
     }
   },
   resultCount: {
-    fontSize: "20px",
-    fontFamily: "Open Sans",
-    marginBottom: "25px"
+    fontSize: '20px', 
+    fontFamily: 'Open Sans',
+    marginBottom: '25px'
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
