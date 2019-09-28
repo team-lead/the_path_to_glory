@@ -11,7 +11,7 @@ let headerStyle = {
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: '11vh'
+    height: '95px'
   },
   navbarMenu: {
     display: 'flex',
@@ -41,7 +41,8 @@ let headerStyle = {
   headerActions: {
     display: 'flex',
     justifyContent: 'space-around',
-    width: '33%'
+    width: '33%',
+    alignItems: "center"
   },
   headerActionsItemText: {
     fontFamily: 'Josefin Sans',
