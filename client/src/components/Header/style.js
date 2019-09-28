@@ -5,13 +5,13 @@ jss.setup(preset());
 
 let headerStyle = {
   header: {
-    userSelect: "none",
-    background: "#000",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    width: "100%",
-    height: "11vh"
+    userSelect: 'none',
+    background: '#000',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '100%',
+    height: '95px'
   },
   navbarMenu: {
     display: "flex",
@@ -39,9 +39,10 @@ let headerStyle = {
     lineHeight: 1.5
   },
   headerActions: {
-    display: "flex",
-    justifyContent: "space-around",
-    width: "33%"
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    width: '33%'
   },
   headerActionsItemText: {
     fontFamily: "Josefin Sans",

@@ -1,6 +1,6 @@
 import React from 'react';
 import { classes } from './style';
-import image from './img/lady.jpg';
+// import image from './img/lady.jpg';
 import { connect } from 'react-redux';
 import {
   removeProductFromCart,
@@ -11,7 +11,7 @@ import {
 
 const CartProduct = ({
   id,
-  images,
+  image,
   name,
   reference,
   price,
@@ -23,8 +23,8 @@ const CartProduct = ({
   decCartProductQuantity,
   saveUserCart
 }) => {
+  console.log(image);
   const totalPrice = price * quantity;
-
   return (
     <div className={classes.cartProduct}>
       <img src={image} alt='product name' className={classes.productImg} />

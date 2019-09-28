@@ -15,7 +15,8 @@ let button = {
     boxSizing: 'border-box',
     textAlign: 'center',
     padding: '16px 0',
-    transition: '0.3s'
+    transition: '0.3s',
+    cursor: 'pointer'
   },
   black: {
     background: '#000',

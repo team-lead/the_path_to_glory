@@ -1,6 +1,6 @@
 import React from 'react';
 import { classes } from '../style';
-import { updatePurchaseHistory } from '../../../actions/detailGoodsAction';
+import { updatePurchaseHistory, showCheckoutModal } from '../../../actions/detailGoodsAction';
 import { connect } from 'react-redux';
 
 class CheckoutForm extends React.Component {
@@ -32,19 +32,7 @@ class CheckoutForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.updatePurchaseHistory();
-    console.log('HandleSubmit');
-    alert(
-      'A form was submitted: ' +
-        this.state.cardNumber +
-        ' // ' +
-        this.state.cardName +
-        ' // ' +
-        this.state.expiryMonth +
-        ' // ' +
-        this.state.expiryYear +
-        ' // ' +
-        this.state.cardCCV
-    );
+    this.props.showCheckoutModal();
   }
 
   render() {
@@ -151,8 +139,8 @@ const mapDispatchToProps = dispatch => {
   return {
     updatePurchaseHistory: () => {
       dispatch(updatePurchaseHistory());
-      console.log('updatePurchaseHistory');
-    }
+    },
+    showCheckoutModal: () => dispatch(showCheckoutModal())
   };
 };
 
