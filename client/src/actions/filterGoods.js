@@ -1,5 +1,7 @@
 export const FILTER_GOODS_BY_COLOR = "FILTER_GOODS_BY_COLOR";
 export const GET_GOODS_BY_CATEGORY = "GET_GOODS_BY_CATEGORY";
+export const FILTER_GOODS_BY_PRICE = "FILTER_GOODS_BY_PRICE";
+export const GET_PRICE_RANGE = "GET_PRICE_RANGE";
 
 export function filterGoodsByCategory(category) {
   return async dispatch => {
@@ -42,6 +44,35 @@ export function filterGoodsByColor(color) {
     }
   };
 }
+export function filterGoodsByPrice(priceRange) {
+  return async dispatch => {
+    let mens = await getGoodsByCategory("mens");
+    let womens = await getGoodsByCategory("womens");
+    let accessories = await getGoodsByCategory("accessories");
+    if (window.location.pathname.split("/").includes("womens")) {
+      filterColorByPrice(womens, priceRange, dispatch);
+    } else if (window.location.pathname.split("/").includes("mens")) {
+      filterColorByPrice(mens, priceRange, dispatch);
+    } else if (window.location.pathname.split("/").includes("accessories")) {
+      filterColorByPrice(accessories, priceRange, dispatch);
+    }
+  };
+}
+
+// export function getPriceRange() {
+//   return async dispatch => {
+//     let mens = await getGoodsByCategory("mens");
+//     let womens = await getGoodsByCategory("womens");
+//     let accessories = await getGoodsByCategory("accessories");
+//     if (window.location.pathname.split("/").includes("womens")) {
+//       getPriceRangeByCategory(womens, dispatch);
+//     } else if (window.location.pathname.split("/").includes("mens")) {
+//       getPriceRangeByCategory(mens, dispatch);
+//     } else if (window.location.pathname.split("/").includes("accessories")) {
+//       getPriceRangeByCategory(accessories, dispatch);
+//     }
+//   };
+// }
 
 async function getGoodsByCategory(category) {
   let goodsList = [];
@@ -87,3 +118,45 @@ function filterColorByCategory(category, color, dispatch) {
     payload: category
   });
 }
+
+function filterColorByPrice(category, priceRange, dispatch) {
+  category = category.filter(item => {
+    if (
+      item.price &&
+      item.price >= priceRange.min &&
+      item.price <= priceRange.max
+    ) {
+      return true;
+    }
+  });
+  const price = [];
+  category.forEach(item => {
+    price.push(+item.price);
+  });
+
+  const priceValue = {
+    min: Math.min(...price),
+    max: Math.max(...price)
+  };
+  dispatch({
+    type: FILTER_GOODS_BY_PRICE,
+    payload: category,
+    priceValue
+  });
+}
+
+// function getPriceRangeByCategory(category, dispatch) {
+//   const price = [];
+//   category.forEach(item => {
+//     price.push(+item.price);
+//   });
+
+//   const priceValue = {
+//     min: Math.min(...price),
+//     max: Math.max(...price)
+//   };
+//   dispatch({
+//     type: GET_PRICE_RANGE,
+//     payload: priceValue
+//   });
+// }
