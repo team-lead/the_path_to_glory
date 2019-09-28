@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom"
 import InfiniteScroll from 'react-infinite-scroller'
@@ -45,9 +45,12 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
-    return {
-        getGoods: url => dispatch(getGoods(url)),
-    }
-}
+  return {
+    getGoods: url => dispatch(getGoods(url))
+  };
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductItem)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductItem);

@@ -6,6 +6,10 @@ export const INC_CART_PRODUCT_QUANTITY = 'DEC_CART_PRODUCT_QUANTITY';
 export const SAVE_USER_CART = 'SAVE_USER_CART';
 export const UPDATE_CART = 'UPDATE_CART';
 export const SET_PREV_PAGE_PATH = 'SET_PREV_PAGE_PATH';
+export const UPDATE_PURCHASE_HISTORY = 'UPDATE_PURCHASE_HISTORY';
+export const ADD_TO_CART = 'ADD_TO_CART';
+export const SHOW_CHECKOUT_MODAL = 'SHOW_CHECKOUT_MODAL';
+export const HIDE_CHECKOUT_MODAL = 'HIDE_CHECKOUT_MODAL';
 
 export function getGoodsDetailID(id) {
   return dispatch => {
@@ -65,4 +69,20 @@ export function updateCart(newCart) {
 
 export function setPrevPagePath(path) {
   return { type: SET_PREV_PAGE_PATH, payload: path };
+}
+
+export function updatePurchaseHistory() {
+  return { type: UPDATE_PURCHASE_HISTORY };
+}
+
+export function addToCart(product) {
+  return { type: ADD_TO_CART, payload: product };
+}
+
+export function showCheckoutModal() {
+  return { type: SHOW_CHECKOUT_MODAL };
+}
+
+export function hideCheckoutModal() {
+  return { type: HIDE_CHECKOUT_MODAL };
 }

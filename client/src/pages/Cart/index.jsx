@@ -8,6 +8,7 @@ import Button from '../../components/Button';
 import { connect } from 'react-redux';
 import { updateCart } from '../../actions/detailGoodsAction';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const Cart = ({ productsInCart, prevPagePath }) => {
   const {
@@ -25,7 +26,7 @@ const Cart = ({ productsInCart, prevPagePath }) => {
   const emptyCartMessage = (
     <div className={emptyCartMsg}>
       <i className={`fas fa-shopping-bag ${emptyCartMsgIcon}`}></i>
-      <p className={emptyCartMsgText}>You shopping bag is empty!</p>
+      <p className={emptyCartMsgText}>Your shopping bag is empty!</p>
     </div>
   );
 
@@ -36,9 +37,13 @@ const Cart = ({ productsInCart, prevPagePath }) => {
   };
 
   const cartProductsData = createCartProducts(productsInCart);
+  const summary = productsInCart.length ? <CartSummary settings={summarySettings} /> : null;
 
   return (
     <Fragment>
+      <Helmet>
+        <title>Shopping Bag</title>
+      </Helmet>
       <Header />
       <main className={mainContent}>
         <Container>
@@ -53,7 +58,7 @@ const Cart = ({ productsInCart, prevPagePath }) => {
           <div className={mainContentWrapper}>
             <h1 className={cartHeading}>Shopping bag</h1>
             <section className={products}>{cartProductsData}</section>
-            <CartSummary settings={summarySettings} />
+            {summary}
           </div>
         </Container>
       </main>

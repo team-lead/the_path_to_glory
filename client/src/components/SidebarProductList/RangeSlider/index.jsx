@@ -1,0 +1,48 @@
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Slider from "@material-ui/core/Slider";
+import { red } from "@material-ui/core/colors";
+
+const useStyles = makeStyles({
+  root: {
+    width: 250,
+    color: "#fff"
+  },
+  rail: {
+    color: "#847A7A"
+    // opacity: '1',
+  },
+  valueLabel: {
+    color: "#fff"
+  }
+});
+
+function valuetext(value) {
+  return `${value}°C`;
+}
+
+export default function RangeSlider(props) {
+  const { rail, root, track, valueLabel } = useStyles();
+  const [value, setValue] = React.useState([props.min, props.max]);
+  console.log(value);
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+    props.filter();
+  };
+  console.log(value);
+  return (
+    <div className={root}>
+      <Slider
+        className={`${rail} ${track} ${valueLabel}`}
+        value={value}
+        onChange={handleChange}
+        valueLabelDisplay="auto"
+        aria-labelledby="range-slider"
+        getAriaValueText={valuetext}
+        min={props.min}
+        max={props.max}
+      />
+    </div>
+  );
+}

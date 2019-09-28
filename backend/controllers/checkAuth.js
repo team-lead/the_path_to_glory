@@ -45,7 +45,7 @@ exports.updateUser = (req, res) => {
   // find the user based on id
 
   const _id = decodedID(req, res);
-  let usser;
+  // let usser;
   User.findOne({ _id }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({

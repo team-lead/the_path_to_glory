@@ -7,11 +7,12 @@ export default function Button(props) {
   if (props.black) colorBtn = classes.black;
   if (props.white) colorBtn = classes.white;
   if (props.btnSettings) btnSettings = props.btnSettings;
+  const clickHandler = props.clickHandler ? props.clickHandler : () => {}; // это на случай, если на кнопке не нужен onClick
   return (
     <div
       className={`${classes.btn} ${colorBtn} ${btnSettings} `}
       href={props.href}
-      onClick={props.clickHandler}>
+      onClick={clickHandler}>
       {props.name}
     </div>
   );

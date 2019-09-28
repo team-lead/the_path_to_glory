@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 class CheckoutInfo extends React.Component {
   render() {
-    console.log(this.props.checkoutTotal);
     const { header, total, headerSection, cardIcons } = classes;
     return (
       <div className={headerSection}>
