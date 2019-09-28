@@ -26,7 +26,7 @@ const Cart = ({ productsInCart, prevPagePath }) => {
   const emptyCartMessage = (
     <div className={emptyCartMsg}>
       <i className={`fas fa-shopping-bag ${emptyCartMsgIcon}`}></i>
-      <p className={emptyCartMsgText}>You shopping bag is empty!</p>
+      <p className={emptyCartMsgText}>Your shopping bag is empty!</p>
     </div>
   );
 
@@ -37,6 +37,7 @@ const Cart = ({ productsInCart, prevPagePath }) => {
   };
 
   const cartProductsData = createCartProducts(productsInCart);
+  const summary = productsInCart.length ? <CartSummary settings={summarySettings} /> : null;
 
   return (
     <Fragment>
@@ -57,7 +58,7 @@ const Cart = ({ productsInCart, prevPagePath }) => {
           <div className={mainContentWrapper}>
             <h1 className={cartHeading}>Shopping bag</h1>
             <section className={products}>{cartProductsData}</section>
-            <CartSummary settings={summarySettings} />
+            {summary}
           </div>
         </Container>
       </main>

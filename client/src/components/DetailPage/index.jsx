@@ -57,9 +57,10 @@ class DetailPageComponent extends Component {
 
                 <Button
                   clickHandler={() => {
-                    console.log('sfskfjskfshfkkfh');
-                    this.props.addToCart(item);
-                    this.props.saveUserCart();
+                    if (!this.props.shoppingBag.some(product => product.id === item.id)) {
+                      this.props.addToCart(item);
+                      this.props.saveUserCart();
+                    }
                   }}
                   btnSettings={classes.btnSettings}
                   black
@@ -80,7 +81,8 @@ class DetailPageComponent extends Component {
 
 const mapStateToProps = state => {
   return {
-    goodsItemDetails: state.active.objectId
+    goodsItemDetails: state.active.objectId,
+    shoppingBag: state.active.shoppingBag
   };
 };
 

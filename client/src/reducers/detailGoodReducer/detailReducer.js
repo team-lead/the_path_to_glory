@@ -8,12 +8,15 @@ import {
   UPDATE_CART,
   SET_PREV_PAGE_PATH,
   UPDATE_PURCHASE_HISTORY,
-  ADD_TO_CART
+  ADD_TO_CART,
+  SHOW_CHECKOUT_MODAL,
+  HIDE_CHECKOUT_MODAL
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
   objectId: [],
   checkoutTotal: 0,
+  checkoutModalActive: false,
   prevPagePath: '',
   purchaseHistory: [],
   shoppingBag: localStorage.getItem('shoppingBag')
@@ -93,6 +96,12 @@ export const activeGoodsReducer = (state = initialState, action) => {
         image: action.payload.image[0] // работает, не лезть
       };
       return { ...state, shoppingBag: [...state.shoppingBag, product] };
+    }
+    case SHOW_CHECKOUT_MODAL: {
+      return { ...state, checkoutModalActive: true };
+    }
+    case HIDE_CHECKOUT_MODAL: {
+      return { ...state, checkoutModalActive: false };
     }
     default:
       return { ...state };
