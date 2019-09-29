@@ -14,6 +14,7 @@ const WelcomePage = () => {
         categoryTitle,
         categoryDescription,
         icon,
+        container,
     } = classes
 
     const userAuth = JSON.parse(localStorage.getItem("userAuth"));
@@ -21,12 +22,13 @@ const WelcomePage = () => {
 
     return (
 
-            <div>
+            <div className={container}>
                 {userAuth &&
                     <Fragment>
                         <h1 className={title}>Welkome, {userAuth.firstName} {userAuth.lastName}</h1>
                         <main className={categoryList}>
                             <Link to='/myaccount/myprofile' className={categoryItem} >
+                            <i className={`fas fa-user ${icon}`}></i>
                                 <h3 className={categoryTitle}>My profile</h3>
                                 <p className={categoryDescription}>Show and update your personal information</p>
                             </Link>
@@ -35,11 +37,11 @@ const WelcomePage = () => {
                                 <h3 className={categoryTitle}>Purchase History</h3>
                                 <p className={categoryDescription}>Check the status of your purchase history and returns</p>
                             </Link>
-                            <Link to='/myaccount/wishlist' className={categoryItem} >
+                            {/* <Link to='/myaccount/wishlist' className={categoryItem} >
                                 <i className={`fas fa-heart ${icon}`}></i>
                                 <h3 className={categoryTitle}>My wishlist</h3>
                                 <p className={categoryDescription}>Manage your wishlist</p>
-                            </Link>
+                            </Link> */}
                             <Link to='/myaccount/addressbook' className={categoryItem} >
                                 <i className={`far fa-file-alt ${icon}`}></i>
                                 <h3 className={categoryTitle}>Address book</h3>
