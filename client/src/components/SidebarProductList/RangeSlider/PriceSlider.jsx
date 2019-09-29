@@ -14,18 +14,23 @@ class PriceSlider extends Component {
   }
   render() {
     const { value, priceRange } = this.props;
+    console.log(value);
     return (
       <div className={classes.priceContainer}>
-        <p className={classes.priceNum}>{`$${value.min} - $${value.max}`}</p>
+        <p className={classes.priceNum}>
+          {value
+            ? `$${value.min} - $${value.max}`
+            : `$${priceRange.min} - $${priceRange.max}`}
+        </p>
         <InputRange
           maxValue={priceRange.max}
           minValue={priceRange.min}
-          value={value}
+          value={value ? value : priceRange}
           onChange={value => {
             this.props.handleChange(value);
-            setTimeout(() => {
+            // setTimeout(() => {
               this.props.filterGoodsByPrice(value);
-            }, 2000);
+            // }, 2000);
           }}
         />
       </div>
