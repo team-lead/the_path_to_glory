@@ -1,5 +1,5 @@
 /* eslint-disable */
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { classes } from "./style";
@@ -30,7 +30,8 @@ class Header extends Component {
       searchModal,
       showSearchModal,
       searchResults,
-      setPrevPagePath
+      setPrevPagePath,
+      cartProductsCount
     } = this.props;
 
     const {
@@ -47,7 +48,8 @@ class Header extends Component {
       searchBlock,
       productItemSearch,
       resultCount,
-      headerActionsItem
+      headerActionsItem,
+      badge
     } = classes;
 
     const searchResultsView = this.state.searchText ? (
@@ -63,6 +65,8 @@ class Header extends Component {
         </div>
       </div>
     ) : null;
+
+    const cartBadge = <div className={badge}><span>{cartProductsCount}</span></div>;
 
     const searchModalItem = showSearchModal ? (
       <div className={search} onMouseLeave={searchModal}>
@@ -84,7 +88,7 @@ class Header extends Component {
     ) : null;
 
     return (
-      <>
+      <Fragment>
         <header className={header}>
           <nav className={navbarMenu}>
             <a href="/product-list/mens" className={navbarMenuItem}>
@@ -116,11 +120,12 @@ class Header extends Component {
               className={headerActionsItem}>
               <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
               <p className={headerActionsItemText}>Shopping Bag</p>
+              {cartProductsCount > 0 && cartBadge}
             </Link>
           </div>
         </header>
         {searchModalItem}
-      </>
+      </Fragment>
     );
   }
 }
@@ -128,7 +133,8 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     showSearchModal: state.search.showSearchModal,
-    searchResults: state.search.searchResults
+    searchResults: state.search.searchResults,
+    cartProductsCount: state.active.shoppingBag.length
   };
 };
 
