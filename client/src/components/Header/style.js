@@ -123,16 +123,16 @@ let headerStyle = {
     alignItems: 'center',
     fontSize: '14px',
     fontFamily: 'Open sans, sans-serif',
-    backgroundColor: 'red',
-    width: '25px',
-    height: '25px',
+    background: 'CRIMSON',
+    width: '28px',
+    height: '28px',
     padding: '0 3px',
     borderRadius: '50%',
     color: 'white',
     position: 'absolute',
-    left: '-18px',
-    top: '-15px',
-    border: '1px solid white'
+    left: '-21px',
+    top: '-18px',
+    border: '2px solid black',
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
