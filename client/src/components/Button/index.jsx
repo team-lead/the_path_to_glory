@@ -8,6 +8,7 @@ class Button extends Component {
   }
 
   showFailMessage = (delay) => {
+    this.hideSuccessMessage()
     this.setState({ failMessageActive: true });
     setTimeout(this.hideFailMessage, delay);
   }
@@ -17,6 +18,7 @@ class Button extends Component {
   }
 
   showSuccessMessage = (delay) => {
+    this.hideFailMessage();
     this.setState({ successMessageActive: true });
     setTimeout(this.hideSuccessMessage, delay)
   }
