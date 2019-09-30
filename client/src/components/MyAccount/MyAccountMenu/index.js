@@ -27,7 +27,7 @@ class MyAccountMenu extends Component {
           <NavLink
             to="/myaccount/history"
             className={`${classes.navbarMenuItem} ${this.isActive("history")}`}>
-            Pyrchase history
+            Purchase history
           </NavLink>
           <NavLink
             to="/myaccount/addressbook"

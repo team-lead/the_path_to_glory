@@ -5,7 +5,8 @@ jss.setup(preset());
 
 const productListStyle = {
   productListContainer: {
-    width: "100%"
+    width: "100%",
+    maxWidth: "1226px"
   },
   filter: {
     display: "none"
@@ -14,7 +15,8 @@ const productListStyle = {
     display: "flex",
     flexWrap: "wrap",
     justifyContent: "space-around",
-    overflow: "hidden"
+    overflow: "hidden",
+    marginTop: "40px"
   },
   categoryName: {
     fontSize: "24px",
@@ -48,7 +50,8 @@ const productListStyle = {
   },
   itemImg: {
     width: "100%",
-    height: "auto"
+    height: "603px",
+    objectFit: "cover"
   },
   goodsTitle: {
     textTransform: "uppercase",
