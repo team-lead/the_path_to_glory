@@ -5,12 +5,16 @@ export const GET_PRICE_RANGE = "GET_PRICE_RANGE";
 export const FILTER_GOODS_BY_SUBCATEGORY = "FILTER_GOODS_BY_SUBCATEGORY";
 export const SHOW_PRELOADER = "SHOW_PRELOADER";
 
-export function filterGoodsByCategory(category) {
+export function filterGoodsByCategory(category, subCategory) {
+  console.log(subCategory);
+  console.log(category);
+  
   return async dispatch => {
     let mens = await getGoodsByCategory("mens");
     let womens = await getGoodsByCategory("womens");
+    let accessories = await getGoodsByCategory("accessories")
 
-    if (window.location.pathname.split("/").includes("mens" || "mens/new")) {
+    if (window.location.pathname.split("/").includes("mens")) {
       mens = mens.filter(item => {
         if (item.category.toLowerCase() === category.toLowerCase()) {
           return true;
@@ -25,14 +29,13 @@ export function filterGoodsByCategory(category) {
         if (item.category.toLowerCase() === category.toLowerCase()) {
           return true;
         }
-      });
-      console.log(womens);
+      })
       dispatch({
         type: GET_GOODS_BY_CATEGORY,
         payload: womens
       });
-    }
-  };
+    } 
+}
 }
 
 export function filterGoodsByColor(color) {
