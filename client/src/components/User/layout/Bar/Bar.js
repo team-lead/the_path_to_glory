@@ -112,15 +112,12 @@ class Bar extends Component {
         }
 
         {!isSignedIn &&
-
           <React.Fragment>
-            <Hidden only={['sm', 'md']}>
-
               <IconButton
                 aria-label="upload picture"
                 disabled={isPerformingAuthAction}
                 onClick={onSignInClick}
-                style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}
+                style={{ fontSize: "16px",  fontFamily: "Josefin Sans" }}
               >
                 <PermIdentity />
                 SignIn
@@ -130,32 +127,11 @@ class Bar extends Component {
                 aria-label="upload picture"
                 disabled={isPerformingAuthAction}
                 onClick={onSignUpClick}
-                style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}
+                style={{ fontSize: "16px",  fontFamily: "Josefin Sans" }}
               >
                 <PersonIcon />
                 SignUp
             </IconButton>
-
-              {/* <Button className={classes.signUpButton} disabled={isPerformingAuthAction} variant="contained" onClick={onSignUpClick}>Sign Up</Button> */}
-              {/* <Button color="primary" disabled={isPerformingAuthAction} variant="contained" onClick={onSignInClick}>Sign In</Button> */}
-            </Hidden>
-            <Hidden only={['lg','xl','xs']}>
-
-              <IconButton
-                aria-label="upload picture"
-                disabled={isPerformingAuthAction}
-                onClick={onSignInClick}
-                style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}
-              >
-                <PermIdentity />
-                SignIn
-              </IconButton>
-
-
-
-              {/* <Button className={classes.signUpButton} disabled={isPerformingAuthAction} variant="contained" onClick={onSignUpClick}>Sign Up</Button> */}
-              {/* <Button color="primary" disabled={isPerformingAuthAction} variant="contained" onClick={onSignInClick}>Sign In</Button> */}
-            </Hidden>
           </React.Fragment>
 
         }

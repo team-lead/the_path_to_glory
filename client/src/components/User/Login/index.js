@@ -1875,7 +1875,7 @@ class Login extends Component {
     }
 
     this.removeAuthObserver = firebase.auth().onAuthStateChanged((user) => {
-      const userDB = JSON.parse(localStorage.getItem('userAuth')).firstName
+      // const userDB = JSON.parse(localStorage.getItem('userAuth')).firstName
       if (this._isMounted) {
         this.setState({
           isAuthReady: true,
