@@ -26,6 +26,11 @@ export function allGoods(state = initialState, action) {
         ...state,
         goodsList: action.payload
       };
+    // case GET_GOODS_BY_SUBCATEGORY:
+    //   return {
+    //     ...state,
+    //     goodsList: action.payload
+    //   };
     case FILTER_GOODS_BY_COLOR:
       return {
         ...state,

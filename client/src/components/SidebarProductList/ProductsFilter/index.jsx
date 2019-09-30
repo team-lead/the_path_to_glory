@@ -153,6 +153,16 @@ class ProductsFilter extends Component {
 
     const resetAccessoryFilters = () => this.props.getGoods("accessories");
 
+    const mainReset = () => {
+      if(window.location.pathname.split("/").includes("mens")) {
+        return whatProductsFilterReset()
+      } else if (window.location.pathname.split("/").includes("womens")){
+        return whatProductsFilterReset()
+      } else {
+        return resetAccessoryFilters()
+      }
+    }
+
     const categoiesMenu = (
       <div className={categorySection}>
         <p className={`${categorySectionTitle} ${sectionTitle}`}>
@@ -160,6 +170,7 @@ class ProductsFilter extends Component {
         </p>
         <Link
           to={`${this.getPath()}`}
+          onClick = {() => {mainReset()}}
           className={`${categorySectionItem} ${sectionItem}`}>
           View All
         </Link>
@@ -265,8 +276,8 @@ const mapDispatchToProps = dispatch => {
     showDesctop: () => dispatch({ type: WINDOW_DESCTOP }),
     showColor: () => dispatch({ type: SHOW_COLOR_MENU }),
     showPrise: () => dispatch({ type: SHOW_PRICE_MENU }),
-    filterGoodsByCategory: category =>
-      dispatch(filterGoodsByCategory(category)),
+    filterGoodsByCategory: (category, subCategory) =>
+      dispatch(filterGoodsByCategory(category, subCategory)),
     filterGoodsByColor: color => dispatch(filterGoodsByColor(color)),
     filterGoodsBySubcategory: (category, subCategory) =>
       dispatch(filterGoodsBySubcategory(category, subCategory)),
