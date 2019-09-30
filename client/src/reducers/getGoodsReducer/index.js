@@ -3,13 +3,15 @@ import {
   GET_GOODS_BY_CATEGORY,
   FILTER_GOODS_BY_COLOR,
   FILTER_GOODS_BY_PRICE,
-  GET_GOODS_BY_SUBCATEGORY,
-//   GET_PRICE_RANGE
+  GET_PRICE_RANGE,
+  FILTER_GOODS_BY_SUBCATEGORY,
+  SHOW_PRELOADER
 } from "../../actions/filterGoods";
 
 const initialState = {
   goodsList: [],
-//   priceRange: {}
+  priceRange: {},
+  showPreloader: false
 };
 
 export function allGoods(state = initialState, action) {
@@ -24,11 +26,11 @@ export function allGoods(state = initialState, action) {
         ...state,
         goodsList: action.payload
       };
-    case GET_GOODS_BY_SUBCATEGORY:
-      return {
-        ...state,
-        goodsList: action.payload
-      }
+    // case GET_GOODS_BY_SUBCATEGORY:
+    //   return {
+    //     ...state,
+    //     goodsList: action.payload
+    //   };
     case FILTER_GOODS_BY_COLOR:
       return {
         ...state,
@@ -37,14 +39,23 @@ export function allGoods(state = initialState, action) {
     case FILTER_GOODS_BY_PRICE:
       return {
         ...state,
-        goodsList: action.payload,
-        priceRange: action.priceValue
+        goodsList: action.payload
       };
-    // case GET_PRICE_RANGE:
-    //   return {
-    //     ...state,
-    //     priceRange: action.payload
-    //   };
+    case FILTER_GOODS_BY_SUBCATEGORY:
+      return {
+        ...state,
+        goodsList: action.payload
+      };
+    case GET_PRICE_RANGE:
+      return {
+        ...state,
+        priceRange: action.payload
+      };
+    case SHOW_PRELOADER:
+      return {
+        ...state,
+        showPreloader: !state.showPreloader
+      };
     default:
       return state;
   }

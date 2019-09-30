@@ -93,12 +93,17 @@ class DetailPageComponent extends Component {
                                         <p>{item.description[2]}</p>
                                     </div>
 
-                                    <Button clickHandler={() => {
-                                        if (!this.props.shoppingBag.some(product => product.id === item.id)) {
-                                            this.props.addToCart(item);
-                                            this.props.saveUserCart();
-                                        }
-                                    }}
+                                    <Button
+                                        clickHandler={() => {
+                                            if (!this.props.shoppingBag.some(product => product.id === item.id)) {
+                                                this.props.addToCart(item);
+                                                this.props.saveUserCart();
+                                                return true;
+                                            }
+                                            return false;
+                                        }}
+                                        successMessage='Added Successfully!'
+                                        failMessage='Already in your Basket!'
                                         btnSettings={classes.btnSettings}
                                         black
                                         name='add to bascket'

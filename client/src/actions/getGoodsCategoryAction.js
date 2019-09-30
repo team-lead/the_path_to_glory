@@ -34,6 +34,7 @@ export function getGoodsCategories(category) {
                 for(let key of subCategories) {
                     subCategoryList.push(key)
                 }
+                console.log(subCategoryList);
                 
                 let categoryName = null;
                 if (window.location.pathname === "/product-list/mens"){
