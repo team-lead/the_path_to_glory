@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
-const History = Schema({
-    listHistory: Array,
-    author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-    }
+const HistorySchema = new mongoose.Schema({
+  userHistory: Array,
+  author: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  }
 });
-
+const History = mongoose.model("History", HistorySchema);
 module.exports = History;
-module.exports.CreatHistory = (listHistory, callback) => {
-    listHistory.save(callback);
-}
+module.exports.CreatHistory = (userHistory, callback) => {
+  userHistory.save(callback);
+};

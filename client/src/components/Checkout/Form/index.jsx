@@ -31,10 +31,10 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.updatePurchaseHistory();
-    this.props.showCheckoutModal();
+    this.props.updatePurchaseHistory(this.props.shoppingBag);
+		this.props.showCheckoutModal();
   }
-
+	
   render() {
     const {
       checkoutBtn,
@@ -135,16 +135,22 @@ class CheckoutForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+	return {
+		shoppingBag: state.active.shoppingBag
+	}
+};
 const mapDispatchToProps = dispatch => {
   return {
-    updatePurchaseHistory: () => {
-      dispatch(updatePurchaseHistory());
+    updatePurchaseHistory: shoppingBag => {
+      dispatch(updatePurchaseHistory(shoppingBag));
     },
     showCheckoutModal: () => dispatch(showCheckoutModal())
   };
 };
 
+
 export default connect(
-  null,
+	mapStateToProps,
   mapDispatchToProps
 )(CheckoutForm);

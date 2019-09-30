@@ -6,9 +6,7 @@ export const SHOW_COLOR_MENU = "SHOW_COLOR_MENU"
 export const SHOW_PRICE_MENU = "SHOW_PRICE_MENU"
 export const HANDL_SHENGE_PRICE = "HANDL_SHENGE_PRICE"
 
-export function getGoodsCategories(category) {
-    console.log(category);
-    
+export function getGoodsCategories(category) {    
     return async (dispatch) => {
         await fetch(`http://localhost:8080/product-list?collection=${category}`)
             .then(response => {

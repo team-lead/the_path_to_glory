@@ -15,7 +15,7 @@ const welcomPageStyle = {
   },
   categoryList: {
     display: "flex",
-    justifyContent: 'center',
+    justifyContent: "center",
     flexWrap: "wrap",
     margin: "139px 0 0 80px"
   },
@@ -25,7 +25,7 @@ const welcomPageStyle = {
     margin: "0 15px 15px 0",
     backgroundColor: "#000000",
     position: "relative",
-    textAlign: 'left'
+    textAlign: "left"
   },
   categoryTitle: {
     fontFamily: "Josefin Sans",

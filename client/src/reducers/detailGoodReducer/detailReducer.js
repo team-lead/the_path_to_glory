@@ -90,8 +90,8 @@ export const activeGoodsReducer = (state = initialState, action) => {
         category: action.payload.category,
         name: action.payload.name,
         price: +action.payload.price,
-        color: action.payload.color[0], // сюда нужно подставлять выбранный цвет
-        quantity: 1, // хардкод, нужно поменять
+        color: action.payload.color ? action.payload.color[0] : 'no color', // сюда нужно подставлять выбранный цвет
+        quantity: 1,
         reference: action.payload.ref,
         size: 6, // хардкод, нужно поменять
         image: action.payload.image[0],

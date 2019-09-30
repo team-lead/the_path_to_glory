@@ -15,7 +15,7 @@ const WelcomePage = () => {
         categoryDescription,
         icon,
         container,
-    } = classes
+    } = classes;
 
     const userAuth = JSON.parse(localStorage.getItem("userAuth"));
 
@@ -25,7 +25,7 @@ const WelcomePage = () => {
             <div className={container}>
                 {userAuth &&
                     <Fragment>
-                        <h1 className={title}>Welkome, {userAuth.firstName} {userAuth.lastName}</h1>
+                        <h1 className={title}>Welcome, {userAuth.firstName} {userAuth.lastName}</h1>
                         <main className={categoryList}>
                             <Link to='/myaccount/myprofile' className={categoryItem} >
                             <i className={`fas fa-user ${icon}`}></i>
