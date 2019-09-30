@@ -59,6 +59,9 @@ let headerStyle = {
     fontSize: "16px",
     paddingRight: "7px"
   },
+  headerActionsItem: {
+    position: 'relative'
+  },
   search: {
     width: "100%",
     height: "50%",
@@ -112,6 +115,24 @@ let headerStyle = {
     fontSize: '20px', 
     fontFamily: 'Open Sans',
     marginBottom: '25px'
+  },
+  badge: {
+    boxSizing: 'border-box',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '14px',
+    fontFamily: 'Open sans, sans-serif',
+    background: 'CRIMSON',
+    width: '28px',
+    height: '28px',
+    padding: '0 3px',
+    borderRadius: '50%',
+    color: 'white',
+    position: 'absolute',
+    left: '-21px',
+    top: '-18px',
+    border: '2px solid black',
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
