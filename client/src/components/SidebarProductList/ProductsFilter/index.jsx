@@ -29,22 +29,11 @@ class ProductsFilter extends Component {
   }
 
     getGoodsSubCategoryItems = () => {
-        let path = null;
-        if (window.location.pathname === "/product-list/mens"){
-            path = "/product-list/mens";
-        } else if (window.location.pathname === "/product-list/womens") {
-            path = "/product-list/womens";
-        } else if (window.location.pathname === "/product-list/accessories") {
-            path = "/product-list/accessories";
-        }
-        return (
-            
-            this.props.subCategoryList.map((subSategory) => {
-                console.log(subSategory);
+        return (        
+            this.props.subCategoryList.map((subCategory) => {
                 return (
-                    <li key={subSategory} onClick = {() => this.props.filterGoodsByCategory(subSategory)}><Link className={`${classes.sybCategoryLink} ${classes.sectionItem}`}> - {subSategory}</Link></li>
+                    <li key={subCategory} onClick = {() => this.props.filterGoodsByCategory(subCategory)}><Link className={`${classes.sybCategoryLink} ${classes.sectionItem}`}> - {subCategory} </Link></li>
                 )
-                
             })
         )
     }
@@ -61,10 +50,9 @@ class ProductsFilter extends Component {
         return (
             
             this.props.categoriesList.map((category) => {
-                console.log(category);
                 if (window.location.pathname.split('/').includes('accessories')) {
                     return (
-                        <li key={category} onClick = {() => this.props.filterGoodsByCategory(category)}><Link className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category} {this.getGoodsSubCategoryItems()}</Link></li>
+                        <li key={category}><Link className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>{category} {this.getGoodsSubCategoryItems()}</Link></li>
                     )
                 } else {
                     return (
@@ -137,6 +125,16 @@ class ProductsFilter extends Component {
 
     const resetAccessoryFilters = () => this.props.getGoods("accessories");
 
+    const mainReset = () => {
+      if(window.location.pathname.split("/").includes("mens")) {
+        return whatProductsFilterReset()
+      } else if (window.location.pathname.split("/").includes("womens")){
+        return whatProductsFilterReset()
+      } else {
+        return resetAccessoryFilters()
+      }
+    }
+
     const categoiesMenu = (
       <div className={categorySection}>
         <p className={`${categorySectionTitle} ${sectionTitle}`}>
@@ -144,6 +142,7 @@ class ProductsFilter extends Component {
         </p>
         <Link
           to={`${this.getPath()}`}
+          onClick = {() => {mainReset()}}
           className={`${categorySectionItem} ${sectionItem}`}>
           View All
         </Link>
@@ -249,8 +248,8 @@ const mapDispatchToProps = dispatch => {
     showDesctop: () => dispatch({ type: WINDOW_DESCTOP }),
     showColor: () => dispatch({ type: SHOW_COLOR_MENU }),
     showPrise: () => dispatch({ type: SHOW_PRICE_MENU }),
-    filterGoodsByCategory: category =>
-      dispatch(filterGoodsByCategory(category)),
+    filterGoodsByCategory: (category, subCategory) =>
+      dispatch(filterGoodsByCategory(category, subCategory)),
     filterGoodsByColor: color => dispatch(filterGoodsByColor(color)),
     getGoods: url => dispatch(getGoods(url))
   };

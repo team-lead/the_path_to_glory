@@ -29,7 +29,6 @@ export function allCategories(state = initialState, action) {
         categoryName: action.payload1,
         colorsList: action.payload2,
         subCategoryList: action.payload3,
-
       }
     }
       case SHOW_FILTER_MENU:{

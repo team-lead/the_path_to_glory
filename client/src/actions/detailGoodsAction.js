@@ -31,7 +31,7 @@ export function getGoodsDetailID(id) {
             images: generalArr[key].images,
             subCategory: generalArr[key].subCategory,
             category: generalArr[key].category,
-            size: generalArr[key].size
+            size: generalArr[key].size,
           };
           itemArr.push(items);
         }

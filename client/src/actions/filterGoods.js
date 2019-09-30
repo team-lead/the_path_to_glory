@@ -2,13 +2,18 @@ export const FILTER_GOODS_BY_COLOR = "FILTER_GOODS_BY_COLOR";
 export const GET_GOODS_BY_CATEGORY = "GET_GOODS_BY_CATEGORY";
 export const FILTER_GOODS_BY_PRICE = "FILTER_GOODS_BY_PRICE";
 export const GET_PRICE_RANGE = "GET_PRICE_RANGE";
+export const GET_GOODS_BY_SUBCATEGORY = "GET_GOODS_BY_SUBCATEGORY";
 
-export function filterGoodsByCategory(category) {
+export function filterGoodsByCategory(category, subCategory) {
+  console.log(subCategory);
+  console.log(category);
+  
   return async dispatch => {
     let mens = await getGoodsByCategory("mens");
     let womens = await getGoodsByCategory("womens");
+    let accessories = await getGoodsByCategory("accessories")
 
-    if (window.location.pathname.split("/").includes("mens" || "mens/new")) {
+    if (window.location.pathname.split("/").includes("mens")) {
       mens = mens.filter(item => {
         if (item.category.toLowerCase() === category.toLowerCase()) {
           return true;
@@ -23,14 +28,26 @@ export function filterGoodsByCategory(category) {
         if (item.category.toLowerCase() === category.toLowerCase()) {
           return true;
         }
-      });
-      console.log(womens);
+      })
       dispatch({
         type: GET_GOODS_BY_CATEGORY,
         payload: womens
       });
-    }
+    } else if (window.location.pathname.split("/").includes("accessories")) {
+      accessories = accessories.filter(item => {
+        console.log(subCategory);
+        console.log(item.category);
+        
+        if (item.subCategory.toLowerCase() === subCategory.toLowerCase()) {
+          return true;
+        }
+      })
+      dispatch({
+        type: GET_GOODS_BY_SUBCATEGORY,
+        payload: accessories
+      })
   };
+}
 }
 
 export function filterGoodsByColor(color) {
@@ -96,7 +113,8 @@ async function getGoodsByCategory(category) {
           ref: goodsArr[key].ref,
           new: goodsArr[key].new,
           color: goodsArr[key].color,
-          category: goodsArr[key].category
+          category: goodsArr[key].category,
+          subCategory: goodsArr[key].subCategory
         };
         goodsList.push(goodItems);
       }
