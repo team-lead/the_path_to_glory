@@ -1,44 +1,37 @@
 /* eslint-disable */
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { NavLink } from 'react-router-dom';
-import { classes } from './style';
-import { SHOW_MODAL_WINDOW, searchGoods } from '../../actions/searchActions';
-import { setPrevPagePath } from '../../actions/detailGoodsAction';
-import {
-  SHOW_DROPDOWN_MENU,
-  HIDE_DROPDOWN_MENU
-} from "../../actions/dropDownMenuAction";
-import DropdownHeaderMenu from "../DropdownHeaderMenu";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { NavLink } from "react-router-dom";
+import { classes } from "./style";
+import { SHOW_MODAL_WINDOW, searchGoods } from "../../actions/searchActions";
+import { setPrevPagePath } from "../../actions/detailGoodsAction";
 import ProductItemSearch from "../ProductItemSearch";
 import Login from "../User/Login";
 
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 class Header extends Component {
   constructor(props) {
     super(props);
-    this.state = { searchText: '' };
+    this.state = { searchText: "" };
     this.handleChange = this.handleChange.bind(this);
     this.clearSearch = this.clearSearch.bind(this);
   }
 
   handleChange({ target }) {
-    this.props.searchAction(target.value);
+    setTimeout(() => this.props.searchAction(target.value), 500)
     this.setState({ searchText: target.value });
   }
   clearSearch() {
-    this.setState({ searchText: '' });
+    this.setState({ searchText: "" });
   }
   render() {
     const {
       searchModal,
       showSearchModal,
-      showDropdownMenu,
-      activeDropdownMenu,
-      hideDropdownMenu,
       searchResults,
-      setPrevPagePath
+      setPrevPagePath,
+      cartProductsCount
     } = this.props;
 
     const {
@@ -47,17 +40,16 @@ class Header extends Component {
       navbarMenuItem,
       logoItem,
       headerActions,
-      headerActionsItemText,
       headerActionsItemImg,
       search,
       searchInput,
-      searchBtn,
-      dropdownMenuItem,
-      dropdownMenuItemGender,
       clearSearchBtn,
+      headerActionsItemText,
       searchBlock,
       productItemSearch,
-      resultCount
+      resultCount,
+      headerActionsItem,
+      badge
     } = classes;
 
     const searchResultsView = this.state.searchText ? (
@@ -74,12 +66,14 @@ class Header extends Component {
       </div>
     ) : null;
 
+    const cartBadge = <div className={badge}><span>{cartProductsCount}</span></div>;
+
     const searchModalItem = showSearchModal ? (
       <div className={search} onMouseLeave={searchModal}>
         <div className={searchBlock}>
           <input
-            type='text'
-            placeholder='Search for item'
+            type="text"
+            placeholder="Search for item"
             className={searchInput}
             value={this.state.searchText}
             onChange={this.handleChange}
@@ -93,203 +87,45 @@ class Header extends Component {
       </div>
     ) : null;
 
-    const logoLink = window.location.pathname === '/' ? '#' : '/';
-
-    let showDropdownMenuItem = null; 
-
-    switch (activeDropdownMenu) {
-      case 0: {
-        showDropdownMenuItem = (
-          <DropdownHeaderMenu
-            title={'CATEGORIES'}
-            onMouseOver={() => showDropdownMenu(0)}
-            onMouseLeave={hideDropdownMenu}>
-            <div>
-              <a className={dropdownMenuItem} href='#'>
-                New arrivals
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Shirts
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Coats
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Jackets
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Sweaters
-              </a>
-            </div>
-            <div>
-              <a className={dropdownMenuItem} href='#'>
-                Polos & Tees
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Jeans & Pants
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Outerwear
-              </a>
-            </div>
-          </DropdownHeaderMenu>
-        );
-        break;
-      }
-      case 1: {
-        showDropdownMenuItem = (
-          <DropdownHeaderMenu
-            title={'CATEGORIES'}
-            onMouseOver={() => showDropdownMenu(1)}
-            onMouseLeave={hideDropdownMenu}>
-            <div>
-              <a className={dropdownMenuItem} href='#'>
-                New arrivals
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Dresses
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Knitwear
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Coats
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Jackets
-              </a>
-            </div>
-            <div>
-              <a className={dropdownMenuItem} href='#'>
-                Suits & Combined
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                T-shirts
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Jeans
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Skirts
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Underwear
-              </a>
-            </div>
-          </DropdownHeaderMenu>
-        );
-        break;
-      }
-      case 2: {
-        showDropdownMenuItem = (
-          <DropdownHeaderMenu
-            title={'CATEGORIES'}
-            onMouseOver={() => showDropdownMenu(2)}
-            onMouseLeave={hideDropdownMenu}>
-            <div>
-              <a
-                className={`${dropdownMenuItem} ${dropdownMenuItemGender}`}
-                href='#'>
-                For Woman
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Bags
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Waletts
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Belts
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Scarves & hats
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Sunglasses
-              </a>
-            </div>
-            <div>
-              <a
-                className={`${dropdownMenuItem} ${dropdownMenuItemGender}`}
-                href='#'>
-                For Man
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Bags
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Waletts, Card Cases
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Belts
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Ties & Cummerbunds
-              </a>
-              <a className={dropdownMenuItem} href='#'>
-                Sunglasses
-              </a>
-            </div>
-          </DropdownHeaderMenu>
-        );
-        break;
-      }
-      default: {
-      }
-    }
-
     return (
-      <>
+      <Fragment>
         <header className={header}>
           <nav className={navbarMenu}>
-            <a
-            href='/product-list/mens'
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(0)}>
+            <a href="/product-list/mens" className={navbarMenuItem}>
               man
             </a>
-            <a
-              href='/product-list/womens'
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(1)}>
+            <a href="/product-list/womens" className={navbarMenuItem}>
               woman
             </a>
-            <a
-              href='/product-list/accessories'
-              className={navbarMenuItem}
-              onMouseOver={() => showDropdownMenu(2)}>
+            <a href="/product-list/accessories" className={navbarMenuItem}>
               accessory
             </a>
           </nav>
-          <div onMouseOver={hideDropdownMenu}>
-            <a to={logoLink} className={logoItem}>
+          <div>
+            <NavLink to="/" className={logoItem}>
               Originalité
-            </a>
+            </NavLink>
           </div>
           <div className={headerActions}>
-            <NavLink
-              onClick={searchModal}
-              onMouseOver={hideDropdownMenu}>
+            <NavLink onClick={searchModal}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
-              <p className={classes.headerActionsItemText}>Search</p>
+              <p className={headerActionsItemText}>Search</p>
             </NavLink>
-          <Login />        
+            <Login />
             <Link
-              to='/cart'
+              to="/cart"
               onClick={() => {
                 setPrevPagePath(document.location.pathname);
               }}
-              className={classes.headerActionsItem}>
-              <i
-                className={`fas fa-shopping-bag ${classes.headerActionsItemImg}`}
-              />
-              <p className={classes.headerActionsItemText}>Shopping Bag</p>
+              className={headerActionsItem}>
+              <i className={`fas fa-shopping-bag ${headerActionsItemImg}`} />
+              <p className={headerActionsItemText}>Shopping Bag</p>
+              {cartProductsCount > 0 && cartBadge}
             </Link>
           </div>
         </header>
         {searchModalItem}
-        {showDropdownMenuItem}
-      </>
+      </Fragment>
     );
   }
 }
@@ -297,17 +133,14 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     showSearchModal: state.search.showSearchModal,
-    activeDropdownMenu: state.dropdownMenu.activeDropdownMenuItem,
-    dropDownMenuActive: state.dropdownMenu.dropDownMenuActive,
-    searchResults: state.search.searchResults
+    searchResults: state.search.searchResults,
+    cartProductsCount: state.active.shoppingBag.length
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     searchModal: () => dispatch({ type: SHOW_MODAL_WINDOW }),
-    showDropdownMenu: id => dispatch({ type: SHOW_DROPDOWN_MENU, payload: id }),
-    hideDropdownMenu: () => dispatch({ type: HIDE_DROPDOWN_MENU }),
     searchAction: searchKeywords => dispatch(searchGoods(searchKeywords)),
     setPrevPagePath: path => dispatch(setPrevPagePath(path))
   };

@@ -7,7 +7,6 @@ let button = {
   btn: {
     fontFamily: 'Open sans, sans-serif',
     textDecoration: 'none',
-    textTransform: 'uppercase',
     display: 'inline-block',
     width: '269px',
     border: '1px solid',
@@ -15,7 +14,11 @@ let button = {
     boxSizing: 'border-box',
     textAlign: 'center',
     padding: '16px 0',
-    transition: '0.3s'
+    transition: ' all 0.3s',
+    cursor: 'pointer'
+  },
+  name: {
+    textTransform: 'uppercase',
   },
   black: {
     background: '#000',
@@ -36,6 +39,27 @@ let button = {
       color: '#fff',
       borderColor: '#000'
     }
+  },
+  disabled: {
+    pointerEvents: 'none',
+    backgroundColor: 'grey',
+    color: 'white',
+  },
+  successMsg: {
+    position: 'absolute',
+    display: 'block',
+    width: '100%',
+    bottom: '60px',
+    color: 'DARKCYAN',
+    textAlign: 'center',
+  },
+  failMsg: {
+    position: 'absolute',
+    display: 'block',
+    width: '100%',
+    bottom: '60px',
+    color: 'red',
+    textAlign: 'center',
   }
 };
 

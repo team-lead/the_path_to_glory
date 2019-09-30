@@ -4,6 +4,8 @@ import Slider from "react-slick";
 import { classes } from "./style"
 
 const GoodsSlider = (props) => {
+    console.log(props);
+    
     const {
         slider,
         imageSize
@@ -16,8 +18,10 @@ const GoodsSlider = (props) => {
         slidesToShow: 1,
       };
     
-      console.log(props);
+    console.log(props);
       
+
+    
 
     return (
         <Fragment>
@@ -35,8 +39,8 @@ const GoodsSlider = (props) => {
                 />
             </Helmet>
             <Slider {...settings} className = {slider}>
-                <img className = {imageSize} src= {props.images[0]} alt=""/>
                 <img className = {imageSize} src= {props.images[1]} alt=""/>
+                <img className = {imageSize} src= {props.images[2]} alt=""/>
                 <img className = {imageSize} src= {props.images[3]} alt=""/>
             </Slider>
         </Fragment>

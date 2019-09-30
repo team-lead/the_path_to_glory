@@ -5,7 +5,8 @@ import PriseSlider from "../RangeSlider/PriceSlider";
 import { classes } from "./style";
 import {
   filterGoodsByCategory,
-  filterGoodsByColor
+  filterGoodsByColor,
+  filterGoodsBySubcategory
 } from "../../../actions/filterGoods";
 import { getGoods } from "../../../actions/getGoodsAction";
 
@@ -26,21 +27,68 @@ class ProductsFilter extends Component {
     } else if (window.location.pathname === "/product-list/accessories") {
       return this.props.getGoodsCategories("accessories");
     }
-    this.props.getGoodsCategories();
   }
 
-  getGoodsCategoryItems = () => {
-    return this.props.categoriesList.map(category => {
+  getGoodsSubCategoryItems = category => {
+    let path = null;
+    if (window.location.pathname === "/product-list/mens") {
+      path = "/product-list/mens";
+    } else if (window.location.pathname === "/product-list/womens") {
+      path = "/product-list/womens";
+    } else if (window.location.pathname === "/product-list/accessories") {
+      path = "/product-list/accessories";
+    }
+    return this.props.subCategoryList.map(subSategory => {
+      console.log(subSategory, "--------------");
       return (
         <li
-          key={category}
-          onClick={() => this.props.filterGoodsByCategory(category)}>
-          <Link
-            className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>
-            {category}
+          key={subSategory}
+          onClick={() => {
+            this.props.filterGoodsBySubcategory(category, subSategory);
+          }}>
+          <Link className={`${classes.sybCategoryLink} ${classes.sectionItem}`}>
+            {" "}
+            - {subSategory}
           </Link>
         </li>
       );
+    });
+  };
+
+  getGoodsCategoryItems = () => {
+    let path = null;
+    if (window.location.pathname === "/product-list/mens") {
+      path = "/product-list/mens";
+    } else if (window.location.pathname === "/product-list/womens") {
+      path = "/product-list/womens";
+    } else if (window.location.pathname === "/product-list/accessories") {
+      path = "/product-list/accessories";
+    }
+    return this.props.categoriesList.map(category => {
+      console.log(category);
+      if (window.location.pathname.split("/").includes("accessories")) {
+        return (
+          <li
+            key={category}
+            onClick={() => this.props.filterGoodsByCategory(category)}>
+            <Link
+              className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>
+              {category} {this.getGoodsSubCategoryItems(category)}
+            </Link>
+          </li>
+        );
+      } else {
+        return (
+          <li
+            key={category}
+            onClick={() => this.props.filterGoodsByCategory(category)}>
+            <Link
+              className={`${classes.categorySectionlinck} ${classes.sectionItem}`}>
+              {category}
+            </Link>
+          </li>
+        );
+      }
     });
   };
 
@@ -76,6 +124,26 @@ class ProductsFilter extends Component {
   };
 
   render() {
+    const {
+      categorySection,
+      sectionTitle,
+      categorySectionTitle,
+      categorySectionItem,
+      categorySectionlinck,
+      sectionItem,
+      colorSection,
+      colorSectionTitle,
+      colorSectionItem,
+      colorCircle,
+      colorItem,
+      priceSection,
+      priceSectionTitle,
+      priceDiapazon,
+      categoriesMenu,
+      mobileCategoiFilter,
+      mobileColor,
+      resetfilterBtn
+    } = classes;
 
     const whatProductsFilterReset = window.location.pathname
       .split("/")
@@ -83,19 +151,32 @@ class ProductsFilter extends Component {
       ? () => this.props.getGoods("mens")
       : () => this.props.getGoods("womens");
 
+    const resetAccessoryFilters = () => this.props.getGoods("accessories");
+
+    const mainReset = () => {
+      if(window.location.pathname.split("/").includes("mens")) {
+        return whatProductsFilterReset()
+      } else if (window.location.pathname.split("/").includes("womens")){
+        return whatProductsFilterReset()
+      } else {
+        return resetAccessoryFilters()
+      }
+    }
+
     const categoiesMenu = (
-      <div className={classes.categorySection}>
-        <p className={`${classes.categorySectionTitle} ${classes.sectionTitle}`}>
+      <div className={categorySection}>
+        <p className={`${categorySectionTitle} ${sectionTitle}`}>
           {this.props.categoryName}
         </p>
         <Link
           to={`${this.getPath()}`}
-          className={`${classes.categorySectionItem} ${classes.sectionItem}`}>
+          onClick = {() => {mainReset()}}
+          className={`${categorySectionItem} ${sectionItem}`}>
           View All
         </Link>
         <div>
           <p
-            className={classes.mobileCategoiFilter}
+            className={mobileCategoiFilter}
             onClick={() => this.props.showCategoru()}>
             Categories
           </p>
@@ -106,19 +187,25 @@ class ProductsFilter extends Component {
           )}
         </div>
         {this.props.showCategoriMenu ? (
-          <ul className={classes.categoriesMenu}>{this.getGoodsCategoryItems()}</ul>
+          <ul className={categoriesMenu}>{this.getGoodsCategoryItems()}</ul>
         ) : null}
       </div>
     );
     const whatProductsFilterColor = window.location.pathname
       .split("/")
       .includes("accessories")
-      ? () => null
+      ? () => (
+          <span
+            className={`${categorySectionItem} ${sectionItem} ${resetfilterBtn}`}
+            onClick={resetAccessoryFilters}>
+            Reset All
+          </span>
+        )
       : () => (
-          <div className={classes.colorSection}>
-            <div className={classes.mobileColor}>
+          <div className={colorSection}>
+            <div className={mobileColor}>
               <p
-                className={`${classes.sectionTitle} ${classes.colorSectionTitle}`}
+                className={`${sectionTitle} ${colorSectionTitle}`}
                 onClick={() => this.props.showColor()}>
                 colors
               </p>
@@ -130,7 +217,7 @@ class ProductsFilter extends Component {
             </div>
             {this.props.showColorMenu ? <ul>{this.getColorsItems()}</ul> : ""}
             <span
-              className={`${classes.categorySectionItem} ${classes.sectionItem}`}
+              className={`${categorySectionItem} ${sectionItem}`}
               onClick={whatProductsFilterReset}>
               Reset All
             </span>
@@ -138,10 +225,10 @@ class ProductsFilter extends Component {
         );
 
     const priceMenu = (
-      <div className={classes.priceSection}>
-        <div className={classes.mobileColor}>
+      <div className={priceSection}>
+        <div className={mobileColor}>
           <p
-            className={`${classes.sectionTitle} ${classes.priceSectionTitle}`}
+            className={`${sectionTitle} ${priceSectionTitle}`}
             onClick={() => this.props.showPrise()}>
             price
           </p>
@@ -177,7 +264,8 @@ const mapStateToProps = state => {
     showColorMenu: state.allCategories.isShowColorMenu,
     categoriesList: state.allCategories.categoriesList,
     categoryName: state.allCategories.categoryName,
-    colorsList: state.allCategories.colorsList
+    colorsList: state.allCategories.colorsList,
+    subCategoryList: state.allCategories.subCategoryList
   };
 };
 
@@ -188,9 +276,11 @@ const mapDispatchToProps = dispatch => {
     showDesctop: () => dispatch({ type: WINDOW_DESCTOP }),
     showColor: () => dispatch({ type: SHOW_COLOR_MENU }),
     showPrise: () => dispatch({ type: SHOW_PRICE_MENU }),
-    filterGoodsByCategory: category =>
-      dispatch(filterGoodsByCategory(category)),
+    filterGoodsByCategory: (category, subCategory) =>
+      dispatch(filterGoodsByCategory(category, subCategory)),
     filterGoodsByColor: color => dispatch(filterGoodsByColor(color)),
+    filterGoodsBySubcategory: (category, subCategory) =>
+      dispatch(filterGoodsBySubcategory(category, subCategory)),
     getGoods: url => dispatch(getGoods(url))
   };
 };

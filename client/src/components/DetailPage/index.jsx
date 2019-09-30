@@ -5,93 +5,142 @@ import Sizes from './ClothesSizes';
 import Colors from './ClothesColors';
 import Button from '../Button/index';
 import Header from '../Header';
-import { getGoodsDetailID } from "../../actions/detailGoodsAction"
+import { getGoodsDetailID, addToCart, saveUserCart } from "../../actions/detailGoodsAction"
 import GoodsSlider from './GoodsSlider';
 import {addToCart} from "../../actions/cartActions";
 
 
 
-class DetailPageComponent extends Component  {
-    
+class DetailPageComponent extends Component {
+    state = {
+        data: null
+    }
+
     componentDidMount() {
         let arrUrl = window.location.pathname.split("/")
         let ID = `${arrUrl[2]}`
         this.props.getDataID(ID)
     }
 
+    handlerImages1 = () => {
+        let photoColors1 = this.props.goodsItemDetails.map(item => {
+            let some = Object.entries(item.images)
+            console.log(some[0][0]);
+                console.log(some[0][1]);
+                return some[0][1]
+        })
+        this.setState({ data: photoColors1[0] })
+        return photoColors1
+
+    }
+    handlerImages2 = () => {
+        let photoColors2 = this.props.goodsItemDetails.map(item => {
+            let some = Object.entries(item.images)
+                return some[1][1]
+        })
+        this.setState({ data: photoColors2[0] });
+        return photoColors2
+    }
+
+    shooseColor = (color) => {
+        return this.props.goodsItemDetails.filter(item => {
+            if(color.toLowerCase() === item.color[0].toLowerCase()){  
+                return this.handlerImages1()
+            } else {
+                return this.handlerImages2() 
+            }
+        })
+    }
+    
+
     handlerItem = () => {
         return (
             this.props.goodsItemDetails.map(item => {
-                console.log(item);
                 const showColors = () => {
-                        if (item.color !== undefined) {
-                            return <Colors colors = {item.color}/>
-                        } else return null
+                    if (item.color) {
+                        return (
+                            <Fragment>
+                                <Colors colors={item.color} activeColor1 = {() => this.shooseColor(item.color[0])} activeColor2 = {() => this.shooseColor(item.color[1])} />  <Sizes sizes={item.size} />
+                            </Fragment>)
+                            
+                    } else return null
                 }
                 return (
-                    <Fragment key = {item.id}>
-                    <Header/>
-                    <div className = {classes.container}>
-                    <li className = {classes.liStyle}>
-                        <div className = {classes.imageParams}>
-                            <img src = {item.image[0]} alt= "dsa"/>
-                            <GoodsSlider images = {[item.image[1], item.image[2], item.image[2], item.image[3]]}/>
+                    <Fragment key={item.id}>
+                        <Header />
+                        <div className={classes.container}>
+                            <li className={classes.liStyle}>
+                                <div className={classes.imageParams}>
+                                    <img src={this.state.data ? this.state.data[0] : item.image[0]} alt="dsa" />
+                                    <GoodsSlider images={this.state.data ? this.state.data : item.image} sss = {item.images} />
+                                </div>
+
+                                <div className={classes.containerInfo}>
+                                    <div className={classes.headerInfoText}>
+                                        <h2>{item.name}</h2>
+                                        <h2>{item.price} $</h2>
+                                    </div>
+                                    <p className={classes.refStyle}>REF: {item.ref}</p>
+
+                                    {showColors()}
+
+                                    <div className={classes.sizeGuide}>
+                                        <a href="/">Size guide</a>
+                                    </div>
+
+                                    <div className={classes.description}>
+                                        <h3 className={classes.h3}>Details</h3>
+                                        <p>{item.description[0]}</p>
+                                        <p>{item.description[1]}</p>
+                                        <p>{item.description[2]}</p>
+                                    </div>
+
+                                    <Button
+                                        clickHandler={() => {
+                                            if (!this.props.shoppingBag.some(product => product.id === item.id)) {
+                                                this.props.addToCart(item);
+                                                this.props.saveUserCart();
+                                                return true;
+                                            }
+                                            return false;
+                                        }}
+                                        successMessage='Added Successfully!'
+                                        failMessage='Already in your Basket!'
+                                        btnSettings={classes.btnSettings}
+                                        black
+                                        name='add to bascket'
+                                    />
+                                </div>
+                            </li>
                         </div>
-                        
-                        <div className = {classes.containerInfo}>
-                            <div className = {classes.headerInfoText}>
-                                <h2>{item.name}</h2>
-                                <h2>{item.price} $</h2>
-                            </div>
-                            <p className = {classes.refStyle}>REF: {item.ref}</p>
-                        
-                        {showColors()}
-                        <Sizes/>
-        
-                        <div className = {classes.sizeGuide}>
-                            <a href="/">Size guide</a>
-                        </div>
-                        
-                        <div className = {classes.description}>
-                            <h3 className = {classes.h3}>Details</h3>
-                            <p>{item.description[0]}</p>
-                            <p>{item.description[1]}</p>
-                            <p>{item.description[2]}</p>
-                        </div>
-        
-                        <Button btnSettings = {classes.btnSettings} black name = "add to bascket"/>
-                        <button onClick={() => this.props.addToCart(item)}>dispatch</button>
-                        </div>
-                    </li>
-                </div>
-                </Fragment>  
+                    </Fragment>
                 )
             })
         )
     }
-    
+
     render() {
-      return (
+        return (
             <Fragment>
                 {this.handlerItem()}
             </Fragment>
-        )  
+        )
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         goodsItemDetails: state.active.objectId,
-        cart: state.cart        
-    }
-    
-}
+        shoppingBag: state.active.shoppingBag
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         getDataID: id => dispatch(getGoodsDetailID(id)),
-        addToCart: id => dispatch(addToCart(id))
-    }
-}
+        addToCart: product => dispatch(addToCart(product)),
+        saveUserCart: () => dispatch(saveUserCart())
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPageComponent)

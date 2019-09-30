@@ -7,17 +7,20 @@ export default function Colors(props) {
             <Fragment>
             <h3 className = {classes.h3}>Color</h3>
                 <div className = {classes.colorsDiv}>
-                    <div style = {{background: `${props.colors[0]}`}}>
-                        <span>{props.colors[0]}</span>
-                    </div>
-                    <div style = {{background: `${props.colors[1]}`}}>
-                        <span>{props.colors[1]}</span>
-                    </div>
+                    <Fragment>
+                        <div onClick = {() => props.activeColor1()} style = {{background: `${props.colors[0]}`}}>
+                            <span>{props.colors[0]}</span>
+                        </div>
+                    </Fragment>
+                    <Fragment >
+                        <div onClick = {() => props.activeColor2()} style = {{background: `${props.colors[1]}`}}>
+                            <span onClick = {props.activeColor}>{props.colors[1]}</span>
+                        </div>
+                    </Fragment>
                 </div>
         </Fragment>
         )
     }
-    console.log(props);
     return (
         <Fragment>
         {showColors()}

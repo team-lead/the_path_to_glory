@@ -58,7 +58,8 @@ const goodsSlider = {
 
     imageSize: {
         height: '603px',
-        width: '415px'
+        width: '415px',
+        objectFit: "cover"
     }
 }
 

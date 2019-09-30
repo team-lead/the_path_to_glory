@@ -1,6 +1,6 @@
 import React from 'react';
 import { classes } from '../style';
-import { updatePurchaseHistory } from '../../../actions/detailGoodsAction';
+import { updatePurchaseHistory, showCheckoutModal } from '../../../actions/detailGoodsAction';
 import { connect } from 'react-redux';
 
 class CheckoutForm extends React.Component {
@@ -31,22 +31,10 @@ class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.updatePurchaseHistory();
-    console.log('HandleSubmit');
-    alert(
-      'A form was submitted: ' +
-        this.state.cardNumber +
-        ' // ' +
-        this.state.cardName +
-        ' // ' +
-        this.state.expiryMonth +
-        ' // ' +
-        this.state.expiryYear +
-        ' // ' +
-        this.state.cardCCV
-    );
+    this.props.updatePurchaseHistory(this.props.shoppingBag);
+		this.props.showCheckoutModal();
   }
-
+	
   render() {
     const {
       checkoutBtn,
@@ -147,16 +135,22 @@ class CheckoutForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+	return {
+		shoppingBag: state.active.shoppingBag
+	}
+};
 const mapDispatchToProps = dispatch => {
   return {
-    updatePurchaseHistory: () => {
-      dispatch(updatePurchaseHistory());
-      console.log('updatePurchaseHistory');
-    }
+    updatePurchaseHistory: shoppingBag => {
+      dispatch(updatePurchaseHistory(shoppingBag));
+    },
+    showCheckoutModal: () => dispatch(showCheckoutModal())
   };
 };
 
+
 export default connect(
-  null,
+	mapStateToProps,
   mapDispatchToProps
 )(CheckoutForm);
