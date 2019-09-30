@@ -1,37 +1,61 @@
-import React, { Component } from 'react'
-import {connect} from 'react-redux'
-import {HANDL_SHENGE_PRICE} from "../../../actions/getGoodsCategoryAction"
-import InputRange from 'react-input-range';
-import {classes} from "./style"
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { HANDL_SHENGE_PRICE } from "../../../actions/getGoodsCategoryAction";
+import {
+  filterGoodsByPrice,
+  getPriceRange
+} from "../../../actions/filterGoods";
+import InputRange from "react-input-range";
+import { classes } from "./style";
 
-class PriceSlider extends Component{
-    render(){
-        const {value} = this.props
-        console.log(this.props.value.min)
-        return(
-            <div className = {classes.priceContainer}>
-                <p className = {classes.priceNum}>{`$${this.props.value.min} - $${this.props.value.max}`}</p>
-            <InputRange
-        maxValue={1000}
-        minValue={0}
-        value={value}
-        onChange={this.props.handleChange} />
-        </div>
-        )
-    }
+class PriceSlider extends Component {
+  componentDidMount() {
+    this.props.getPriceRange();
+  }
+  render() {
+    const { value, priceRange } = this.props;
+    console.log(value);
+    return (
+      <div className={classes.priceContainer}>
+        <p className={classes.priceNum}>
+          {value
+            ? `$${value.min} - $${value.max}`
+            : `$${priceRange.min} - $${priceRange.max}`}
+        </p>
+        <InputRange
+          maxValue={priceRange.max}
+          minValue={priceRange.min}
+          value={value ? value : priceRange}
+          onChange={value => {
+            this.props.handleChange(value);
+            // setTimeout(() => {
+              this.props.filterGoodsByPrice(value);
+            // }, 2000);
+          }}
+        />
+      </div>
+    );
+  }
 }
-const mapStateToProps=(state)=>{
-    return{
-        value:state.allCategories.priceValue
-    }
+const mapStateToProps = state => {
+  return {
+    value: state.allCategories.priceValue,
+    priceRange: state.allGoods.priceRange
+  };
 };
 
-const mapDispanchToProps = dispath =>{
-    return{
-        handleChange:(value)=>dispath({
-            type:HANDL_SHENGE_PRICE,
-            payload:value
-        })
-    }
-}
-export default connect(mapStateToProps,mapDispanchToProps)(PriceSlider);
+const mapDispanchToProps = dispatch => {
+  return {
+    handleChange: value =>
+      dispatch({
+        type: HANDL_SHENGE_PRICE,
+        payload: value
+      }),
+    filterGoodsByPrice: priceRange => dispatch(filterGoodsByPrice(priceRange)),
+    getPriceRange: () => dispatch(getPriceRange())
+  };
+};
+export default connect(
+  mapStateToProps,
+  mapDispanchToProps
+)(PriceSlider);

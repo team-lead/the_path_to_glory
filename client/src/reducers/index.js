@@ -1,20 +1,20 @@
 import { combineReducers } from "redux";
 import { activeGoodsReducer } from "./detailGoodReducer/detailReducer";
-import { allGoods } from "./getGoodsReducer/index";
+import { allGoods } from "./getGoodsReducer";
 import searchReducer from "./mainPageReducers/searchReducer";
-import cartReducer from "./cartReducers/addToCart";
-import showDropdownMenuReducer from "./mainPageReducers/dropDownMenuReducer";
+// import addToCartReducer from "./cartReducers/addToCart";
 import { allCategories } from "./getCategoriesReducer/index";
-import rangeSliderReducer from "./rangeSliderReducer";
-import { getFilterPath } from "./getFilterPathReducers"
+// import rangeSliderReducer from "./rangeSliderReducer";
+import { getFilterPath } from "./getFilterPathReducers";
+import { listHistory } from "./orderHistoryReduser/orderHistoryReduser";
 
 const rootReducer = combineReducers({
   active: activeGoodsReducer,
   search: searchReducer,
-  cart: cartReducer,
-  dropdownMenu: showDropdownMenuReducer,
+  // add: addToCartReducer,
   allGoods: allGoods,
-  rangeSlider: rangeSliderReducer,
+  // rangeSlider: rangeSliderReducer,
+  listHistoryAll: listHistory,
   allCategories,
   getFilterPath
 });

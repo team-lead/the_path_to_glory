@@ -21,7 +21,7 @@ let detailPageStyle = {
     linksNavs: {
         display: 'flex',
         justifyContent: 'space-between',
-        
+
         '& > a': {
             fontFamily: 'Josefin Sans',
             textDecoration: 'none',
@@ -34,7 +34,7 @@ let detailPageStyle = {
             }
         },
     },
-    
+
     liStyle: {
         display: 'flex',
         marginTop: '66px'
@@ -42,17 +42,20 @@ let detailPageStyle = {
 
     imageParams: {
         display: 'flex',
-        
+        transition: '1s',
+
         '& > img': {
             width: '416px',
             height: '603px',
             marginRight: '12px',
+            objectFit: "cover",
 
             '&:last-child': {
                 marginRight: '0'
             }
-        } 
+        }
     },
+
 
     containerInfo: {
         position: 'relative',
@@ -88,6 +91,11 @@ let detailPageStyle = {
             height: '32px',
             borderRadius: '50%',
 
+            '&:hover': {
+                textDecoration: 'underline',
+                cursor: 'pointer',
+            },
+
             '&:first-child': {
                 marginRight: '54px',
             },
@@ -102,12 +110,12 @@ let detailPageStyle = {
 
     sizeStyles: {
         marginTop: '72px',
-        
+
 
         '& > ul': {
             display: 'flex',
             marginTop: '35px',
-            
+
             '& > li': {
                 marginRight: '35px',
                 cursor: 'pointer',
@@ -146,7 +154,7 @@ let detailPageStyle = {
                 background: '#847A7A',
                 marginTop: '2px'
             }
-              
+
         }
     },
 
@@ -164,7 +172,7 @@ let detailPageStyle = {
             '&:last-child': {
                 marginTop: '12px'
             }
-        }   
+        }
     },
 
     btnSettings: {

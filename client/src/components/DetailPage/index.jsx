@@ -85,13 +85,13 @@ const mapStateToProps = (state) => {
         cart: state.cart        
     }
     
-};
+}
 
 const mapDispatchToProps = dispatch => {
     return {
         getDataID: id => dispatch(getGoodsDetailID(id)),
         addToCart: id => dispatch(addToCart(id))
     }
-};
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(DetailPageComponent)
