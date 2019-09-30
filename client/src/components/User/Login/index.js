@@ -283,7 +283,8 @@ class Login extends Component {
               userAuth = await response.json();
               console.log(`SignIn user post SingUp : userAuth = `, userAuth)
               localStorage.setItem('userAuth', JSON.stringify(userAuth));
-              this.setState({ userAuth: userAuth });
+              const nameUserDB = userAuth.firstName;
+              this.setState({ userAuth: userAuth, user: {displayName: nameUserDB}});
 
             })();
           })();
@@ -317,8 +318,6 @@ class Login extends Component {
 
   signIn = (emailAddress, password) => {
 
-
-
     if (this.state.isSignedIn) {
       return;
     }
@@ -346,7 +345,7 @@ class Login extends Component {
       auth.signInWithEmailAndPassword(emailAddress, password).then((value) => {
         this.closeSignInDialog(() => {
           const user = value.user;
-          const displayName = user.displayName;
+          let displayName = user.displayName;
           const emailAddress = user.email;
 
           let { urlBack, pathSignIn } = this.state
@@ -363,9 +362,11 @@ class Login extends Component {
             })
 
             const userAuth = await response.json();
-            console.log(`SignIn by user: userAuth = `, userAuth)
+            displayName = await userAuth.firstName;
+            console.log(`SignIn by user: userAuth = `)
             localStorage.setItem('userAuth', JSON.stringify(userAuth));
-            this.setState({ userAuth: userAuth });
+
+            this.setState({ userAuth: userAuth, user: {displayName: displayName}});
 
           })();
 
@@ -909,8 +910,8 @@ class Login extends Component {
       }).finally(() => {
         this.setState({
           isPerformingAuthAction: false,
-          userAuth: {}
         });
+        window.location = "/";
       });
     });
   };
@@ -1874,6 +1875,7 @@ class Login extends Component {
     }
 
     this.removeAuthObserver = firebase.auth().onAuthStateChanged((user) => {
+      const userDB = JSON.parse(localStorage.getItem('userAuth')).firstName
       if (this._isMounted) {
         this.setState({
           isAuthReady: true,
