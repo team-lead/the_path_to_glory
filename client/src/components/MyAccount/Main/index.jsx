@@ -15,7 +15,7 @@ const WelcomePage = () => {
         categoryDescription,
         icon,
         container,
-    } = classes
+    } = classes;
 
     const userAuth = JSON.parse(localStorage.getItem("userAuth"));
 
