@@ -3,6 +3,7 @@ export const GET_GOODS_BY_CATEGORY = "GET_GOODS_BY_CATEGORY";
 export const FILTER_GOODS_BY_PRICE = "FILTER_GOODS_BY_PRICE";
 export const GET_PRICE_RANGE = "GET_PRICE_RANGE";
 export const FILTER_GOODS_BY_SUBCATEGORY = "FILTER_GOODS_BY_SUBCATEGORY";
+export const SHOW_PRELOADER = "SHOW_PRELOADER";
 
 export function filterGoodsByCategory(category) {
   return async dispatch => {
@@ -160,11 +161,17 @@ function filterColorByPrice(category, priceRange, dispatch) {
       return true;
     }
   });
-
   dispatch({
-    type: FILTER_GOODS_BY_PRICE,
-    payload: category
+    type: SHOW_PRELOADER
   });
+  setTimeout(
+    () =>
+      dispatch({
+        type: FILTER_GOODS_BY_PRICE,
+        payload: category
+      }),
+    5000
+  );
 }
 
 function getPriceRangeByCategory(category, dispatch) {

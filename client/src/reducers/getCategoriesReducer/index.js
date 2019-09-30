@@ -12,12 +12,13 @@ const initialState = {
   colorsList: [],
   categoriesList: [],
   subCategoryList: [],
-  categoryName: '',
+  categoryName: "",
   isShowFilterMenu: false,
   isShowCategoriMenu: true,
   isShowColorMenu: true,
   isShowPriceMenu: true,
-  priceValue: { min: 50, max: 300 }
+  // priceValue: { min: 50, max: 300 }
+  priceValue: null
 };
 
 export function allCategories(state = initialState, action) {
@@ -28,9 +29,8 @@ export function allCategories(state = initialState, action) {
         categoriesList: action.payload,
         categoryName: action.payload1,
         colorsList: action.payload2,
-        subCategoryList: action.payload3,
-
-      }
+        subCategoryList: action.payload3
+      };
     }
     case SHOW_FILTER_MENU: {
       return {
