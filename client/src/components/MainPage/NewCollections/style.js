@@ -51,7 +51,8 @@ let newCollectionsStyle = {
     padding: "1em 1.7em",
     display: "inline-block",
     position: "absolute",
-    fontWeight: "bold"
+    fontWeight: "bold",
+    color: "white"
   }
 };
 export const { classes } = jss.createStyleSheet(newCollectionsStyle).attach();
