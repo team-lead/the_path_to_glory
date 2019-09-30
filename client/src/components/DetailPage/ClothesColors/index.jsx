@@ -28,15 +28,17 @@ import { connect } from "react-redux";
 //     )
 // }
 let ColorForm = (props) => {
+
     const { handleSubmit, pristine, reset, submitting } = props;
+// console.log(this.props.color);
     return (
         <form onSubmit={handleSubmit}>
             <div className={classes.colorsDiv} >
                 <label>Colors</label>
                 <div>
                     <label>
-                        <Field name="color" component="input" type="radio" value="green" />{' '}
-                        Male`${props.color[0]}`
+                        <Field name="color" component="input" type="radio" value="green" style = {{background: `${props.colors[0]}`}}/>{' '}
+                        Male
                     </label>
                     <label>
                         <Field name="color" component="input" type="radio" value="blue" />{' '}
@@ -60,8 +62,13 @@ let ColorForm = (props) => {
         </form>
     )
 };
+const mapStateToProps = (state) => {
+    return {
 
+        colors: state.active.objectId[0].color
+    }
 
+};
 
 ColorForm = connect(
     mapStateToProps,
