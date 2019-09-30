@@ -122,6 +122,7 @@ let headerStyle = {
     justifyContent: 'center',
     alignItems: 'center',
     fontSize: '14px',
+    fontWeight: '700',
     fontFamily: 'Open sans, sans-serif',
     background: 'CRIMSON',
     width: '28px',

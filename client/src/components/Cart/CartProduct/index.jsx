@@ -1,7 +1,7 @@
 import React from 'react';
 import { classes } from './style';
-// import image from './img/lady.jpg';
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import {
   removeProductFromCart,
   decCartProductQuantity,
@@ -23,11 +23,13 @@ const CartProduct = ({
   decCartProductQuantity,
   saveUserCart
 }) => {
-  console.log(image);
   const totalPrice = price * quantity;
+
   return (
     <div className={classes.cartProduct}>
-      <img src={image} alt='product name' className={classes.productImg} />
+      <Link to={`/detail/${id}`}>
+        <img src={image} alt='product name' className={classes.productImg} />
+      </Link>
       <div className={classes.productDetails}>
         <h3 className={classes.productName}>{name}</h3>
         <p className={classes.ref}>REF: {reference}</p>
