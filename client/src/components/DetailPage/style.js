@@ -47,6 +47,7 @@ let detailPageStyle = {
             width: '416px',
             height: '603px',
             marginRight: '12px',
+            objectFit: "cover",
 
             '&:last-child': {
                 marginRight: '0'
