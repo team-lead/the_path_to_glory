@@ -49,7 +49,8 @@ class Header extends Component {
       productItemSearch,
       resultCount,
       headerActionsItem,
-      badge
+      badge,
+      headerItem
     } = classes;
 
     const searchResultsView = this.state.searchText ? (
@@ -90,7 +91,7 @@ class Header extends Component {
     return (
       <Fragment>
         <header className={header}>
-          <nav className={navbarMenu}>
+          <nav className={`${navbarMenu} ${headerItem}`}>
             <a href="/product-list/mens" className={navbarMenuItem}>
               man
             </a>
@@ -101,17 +102,16 @@ class Header extends Component {
               accessory
             </a>
           </nav>
-          <div>
+          <div className={headerItem}>
             <NavLink to="/" className={logoItem}>
               Originalité
             </NavLink>
           </div>
-          <div className={headerActions}>
+          <div className={`${headerActions} ${headerItem}`}>
             <NavLink onClick={searchModal}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={headerActionsItemText}>Search</p>
             </NavLink>
-            <Login />
             <Link
               to="/cart"
               onClick={() => {
@@ -122,6 +122,7 @@ class Header extends Component {
               <p className={headerActionsItemText}>Shopping Bag</p>
               {cartProductsCount > 0 && cartBadge}
             </Link>
+              <Login />
           </div>
         </header>
         {searchModalItem}

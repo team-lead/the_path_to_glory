@@ -102,20 +102,20 @@ class Bar extends Component {
               aria-label="upload picture"
               disabled={isPerformingAuthAction}
               onClick={onSignInClick}
-              style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}
+              style={{ fontSize: "16px", margin: "0px", fontFamily: "Josefin Sans" }}
             >
               <PermIdentity />
-              SignIn
+              <p className={"headerActionsItemText"}>SignIn</p>
             </IconButton>
 
             <IconButton
               aria-label="upload picture"
               disabled={isPerformingAuthAction}
               onClick={onSignUpClick}
-              style={{ fontSize: "16px", margin: "8px", fontFamily: "Josefin Sans" }}
+              style={{ fontSize: "16px", margin: "0px", fontFamily: "Josefin Sans" }}
             >
               <PersonIcon />
-              SignUp
+              <p className={"headerActionsItemText"}>SignUp</p>
             </IconButton>
 
             {/* <Button className={classes.signUpButton} disabled={isPerformingAuthAction} variant="contained" onClick={onSignUpClick}>Sign Up</Button> */}
