@@ -10,7 +10,8 @@ import {
   UPDATE_PURCHASE_HISTORY,
   ADD_TO_CART,
   SHOW_CHECKOUT_MODAL,
-  HIDE_CHECKOUT_MODAL
+  HIDE_CHECKOUT_MODAL,
+    SET_COLOR
 } from '../../actions/detailGoodsAction';
 
 const initialState = {
@@ -65,12 +66,8 @@ export const activeGoodsReducer = (state = initialState, action) => {
     case UPDATE_CART: {
       return { ...state, shoppingBag: action.payload };
     }
-    case SAVE_USER_CART: {
-      localStorage.setItem('cart', JSON.stringify(state.cart));
-      return { ...state };
-    }
-    case UPDATE_CART: {
-      return { ...state, cart: action.payload };
+    case SET_COLOR: {
+      return {...state, color: "green"}
     }
     case SET_PREV_PAGE_PATH: {
       const prevPagePath = action.payload;

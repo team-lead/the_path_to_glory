@@ -11,6 +11,7 @@ export const UPDATE_PURCHASE_HISTORY = "UPDATE_PURCHASE_HISTORY";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const SHOW_CHECKOUT_MODAL = "SHOW_CHECKOUT_MODAL";
 export const HIDE_CHECKOUT_MODAL = "HIDE_CHECKOUT_MODAL";
+export const SET_COLOR = "SET_COLOR";
 
 export function getGoodsDetailID(id) {
   return dispatch => {
@@ -66,6 +67,9 @@ export function saveUserCart() {
 
 export function updateCart(newCart) {
   return { type: UPDATE_CART, payload: newCart };
+}
+export function setColor(color){
+  return{type:SET_COLOR, payload:color}
 }
 
 export function setPrevPagePath(path) {

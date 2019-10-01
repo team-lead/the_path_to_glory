@@ -8,9 +8,12 @@ import Header from "../Header";
 import {
   getGoodsDetailID,
   addToCart,
-  saveUserCart
+  saveUserCart, setColor
 } from "../../actions/detailGoodsAction";
 import GoodsSlider from "./GoodsSlider";
+import Radio from "./ColorForm";
+import {myInput} from "./colorInput";
+
 
 class DetailPageComponent extends Component {
   state = {
@@ -91,7 +94,9 @@ class DetailPageComponent extends Component {
                 </div>
                 <p className={classes.refStyle}>REF: {item.ref}</p>
 
-                {showColors()}
+                {/*{showColors()}*/}
+                <Radio/>
+
 
                 <div className={classes.sizeGuide}>
                   {/* <a href="#" className={classes.sizeHelper}>Size guide</a> */}
@@ -151,7 +156,8 @@ const mapDispatchToProps = dispatch => {
   return {
     getDataID: id => dispatch(getGoodsDetailID(id)),
     addToCart: product => dispatch(addToCart(product)),
-    saveUserCart: () => dispatch(saveUserCart())
+    saveUserCart: () => dispatch(saveUserCart()),
+  setColor:()=>dispatch(setColor())
   };
 };
 
