@@ -9,7 +9,7 @@ let detailPageStyle = {
         width: '1266px',
         margin: '0 auto',
         marginTop: '19px',
-        marginBottom: '10px'
+        marginBottom: '10px',
     },
 
     h3: {
@@ -37,12 +37,13 @@ let detailPageStyle = {
 
     liStyle: {
         display: 'flex',
-        marginTop: '66px'
+        marginTop: '66px',
     },
 
     imageParams: {
         display: 'flex',
-        transition: '1s',
+        animation: 'showImages ease-in-out',
+        animationDuration: '.8s',
 
         '& > img': {
             width: '416px',

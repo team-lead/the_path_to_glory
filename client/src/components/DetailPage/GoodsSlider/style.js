@@ -6,6 +6,7 @@ jss.setup(preset());
 const goodsSlider = {
     slider: {
         width: '415px',
+    
 
         '& > ul.slick-dots ': {
             position: 'relative',

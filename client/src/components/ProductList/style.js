@@ -22,12 +22,15 @@ const productListStyle = {
     marginLeft: "7%"
   },
   linkItem: {
+    position: 'relative',
     textDecoration: "none",
-    transition: "0.5s",
     color: "#000",
+    animation: 'showImages ease-in-out',
+    animationDuration: '.8s',
+    transition: '.8s',
 
     "&:hover": {
-      transform: "scale(1.01)"
+      transform: "scale(1.01)",
     }
   },
 
@@ -48,7 +51,8 @@ const productListStyle = {
   },
   itemImg: {
     width: "100%",
-    height: "auto"
+    height: "auto",
+    transition: '.6s',
   },
   goodsTitle: {
     textTransform: "uppercase",

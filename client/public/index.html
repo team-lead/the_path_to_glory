@@ -69,6 +69,17 @@
       top: 50%;
       width: 4px;
     }
+
+    @keyframes showImages {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
     @media (max-width: 768px){
       .input-range__track{
         background-color: rgb(78, 75, 75);
