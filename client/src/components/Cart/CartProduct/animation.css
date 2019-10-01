@@ -1,0 +1,13 @@
+@keyframes show_cart_product {
+  0% {
+    opacity: 0;
+    bottom: 30px;
+  }
+  80% {
+    bottom: -5px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
