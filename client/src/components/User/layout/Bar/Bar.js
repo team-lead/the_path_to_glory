@@ -4,18 +4,14 @@ import PropTypes from 'prop-types';
 
 import { withStyles } from '@material-ui/core/styles';
 
-import Myaccount from "../../../MyAccount"
-
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import Avatar from '@material-ui/core/Avatar';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import PermIdentity from '@material-ui/icons/PermIdentity';
+import Hidden from '@material-ui/core/Hidden';
 
 import PersonIcon from '@material-ui/icons/Person';
-import MyAccountPage from '../../../../pages/MyAccountPage';
 
 const styles = (theme) => ({
   signUpButton: {
@@ -24,16 +20,20 @@ const styles = (theme) => ({
 });
 
 
+
 class Bar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+
       menu: {
         anchorEl: null
       }
     };
   }
+
+
 
   openMenu = (event) => {
     const anchorEl = event.currentTarget;
@@ -55,7 +55,7 @@ class Bar extends Component {
 
   handleSettingsClick = () => {
     this.closeMenu();
-    // this.props.onSettingsClick();
+ 
 
   };
 
@@ -66,6 +66,7 @@ class Bar extends Component {
   };
 
   render() {
+
     // Styling
     const { classes } = this.props;
 
@@ -81,8 +82,11 @@ class Bar extends Component {
       <React.Fragment>
         {isSignedIn &&
           <React.Fragment>
-            <IconButton color="inherit" disabled={isPerformingAuthAction} onClick={this.openMenu}>
+            <IconButton color="inherit" disabled={isPerformingAuthAction} onClick={this.openMenu} style={{ color: "white", fontFamily: "Josefin Sans", fontSize: "16px" }}
+            >
               {user.photoURL ? <Avatar alt="Avatar" src={user.photoURL} /> : <PersonIcon style={{ color: "white", marginTop: "5px" }} />}
+              {this.props.user.displayName}
+
             </IconButton>
 
             <Menu anchorEl={menu.anchorEl} open={Boolean(menu.anchorEl)} onClose={this.closeMenu}>
@@ -117,10 +121,8 @@ class Bar extends Component {
               <PersonIcon />
               <p className={"headerActionsItemText"}>SignUp</p>
             </IconButton>
-
-            {/* <Button className={classes.signUpButton} disabled={isPerformingAuthAction} variant="contained" onClick={onSignUpClick}>Sign Up</Button> */}
-            {/* <Button color="primary" disabled={isPerformingAuthAction} variant="contained" onClick={onSignInClick}>Sign In</Button> */}
           </React.Fragment>
+
         }
       </React.Fragment>
     );
