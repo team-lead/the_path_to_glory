@@ -11,6 +11,8 @@ let headerStyle = {
     textDecoration: "none",
     color: "black",
     margin: "3%",
+    display: "block",
+    paddingTop: "20px"
   },
   navbarMenu: {
     display: "flex",
