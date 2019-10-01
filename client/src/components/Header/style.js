@@ -1,5 +1,7 @@
 import jss from "jss";
 import preset from "jss-preset-default";
+import { wrap } from "module";
+import { borderTop } from "@material-ui/system";
 
 jss.setup(preset());
 
@@ -11,13 +13,27 @@ let headerStyle = {
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '100%',
-    height: '95px'
+    "@media (max-width: 1000px)": {
+      flexWrap: "wrap",
+      justifyContent: "space-around"
+
+    }
+  },
+  headerItem: {
+    paddingTop: "5px",
+    paddingBottom: "5px"
   },
   navbarMenu: {
     display: "flex",
     justifyContent: "space-evenly",
     alignItems: "center",
-    width: "33%"
+    width: "33%",
+    "@media (max-width: 1000px)": {
+      order: 3,
+      width: "100%",
+      justifyContent: 'space-around',
+      borderTop: "1px solid white"
+    }
   },
   navbarMenuItem: {
     fontFamily: "Josefin Sans",
@@ -29,6 +45,9 @@ let headerStyle = {
     color: "#fff",
     "&:hover": {
       textDecoration: "underline"
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "12px",
     }
   },
   logoItem: {
@@ -36,13 +55,23 @@ let headerStyle = {
     color: "#fff",
     fontSize: "56px",
     textDecoration: "none",
-    lineHeight: 1.5
+    lineHeight: 1.5,
+    "@media (max-width: 1000px)": {
+      width: "50%"
+    },
+    "@media (max-width: 600px)": {
+      fontSize: "30px",
+    }
   },
   headerActions: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-around',
-    width: '33%'
+    width: '33%',
+    "@media (max-width: 1000px)": {
+      width: "50%"
+
+    }
   },
   headerActionsItemText: {
     fontFamily: "Josefin Sans",
@@ -52,6 +81,15 @@ let headerStyle = {
     borderBottom: "1px solid transparent",
     "&:hover": {
       borderBottom: "1px solid #fff"
+    },
+    '@media (min-width: 1001px) and (max-width: 1185px)': {
+      display: "none"
+    },
+    '@media (min-width: 801px) and (max-width: 1000px)': {
+      display: "inline-block"
+    },
+    '@media (max-width: 800px)': {
+      display: 'none',
     }
   },
   headerActionsItemImg: {
@@ -62,6 +100,7 @@ let headerStyle = {
   headerActionsItem: {
     position: 'relative'
   },
+  
   search: {
     width: "100%",
     height: "50%",
