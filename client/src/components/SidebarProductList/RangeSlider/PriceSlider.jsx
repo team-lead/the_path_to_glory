@@ -22,17 +22,29 @@ class PriceSlider extends Component {
             ? `$${value.min} - $${value.max}`
             : `$${priceRange.min} - $${priceRange.max}`}
         </p>
+        <p
+          className={classes.btn}
+          onClick={() => {
+            this.props.filterGoodsByPrice(value);
+          }}>
+          OK
+        </p>
         <InputRange
           maxValue={priceRange.max}
           minValue={priceRange.min}
           value={value ? value : priceRange}
           onChange={value => {
             this.props.handleChange(value);
-            // setTimeout(() => {
-              this.props.filterGoodsByPrice(value);
-            // }, 2000);
           }}
         />
+        <span
+          className={classes.resetfilterBtn}
+          onClick={() => {
+            this.props.filterGoodsByPrice(priceRange);
+            this.props.handleChange(priceRange);
+          }}>
+          Reset price
+        </span>
       </div>
     );
   }

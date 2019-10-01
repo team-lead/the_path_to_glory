@@ -219,7 +219,7 @@ class ProductsFilter extends Component {
             <span
               className={`${categorySectionItem} ${sectionItem}`}
               onClick={whatProductsFilterReset}>
-              Reset All
+              Reset Colors
             </span>
           </div>
         );

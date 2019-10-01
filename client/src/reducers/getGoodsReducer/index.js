@@ -4,8 +4,7 @@ import {
   FILTER_GOODS_BY_COLOR,
   FILTER_GOODS_BY_PRICE,
   GET_PRICE_RANGE,
-  FILTER_GOODS_BY_SUBCATEGORY,
-  SHOW_PRELOADER
+  FILTER_GOODS_BY_SUBCATEGORY
 } from "../../actions/filterGoods";
 
 const initialState = {
@@ -50,11 +49,6 @@ export function allGoods(state = initialState, action) {
       return {
         ...state,
         priceRange: action.payload
-      };
-    case SHOW_PRELOADER:
-      return {
-        ...state,
-        showPreloader: !state.showPreloader
       };
     default:
       return state;
