@@ -5,11 +5,17 @@ jss.setup(preset());
 
 const productListStyle = {
   productListContainer: {
-    width: "100%",
-    maxWidth: "1226px"
+    marginLeft: "29px",
+    marginRight: "29px"
+  },
+  categoryName: {
+    display: "none"
   },
   filter: {
-    display: "none"
+    display: "block",
+    fontSize: "20px",
+    marginTop: "19px",
+    fontFamily: "Josefin Sans"
   },
   productList: {
     display: "flex",
@@ -18,11 +24,7 @@ const productListStyle = {
     overflow: "hidden",
     marginTop: "40px"
   },
-  categoryName: {
-    fontSize: "24px",
-    marginTop: "80px",
-    marginLeft: "7%"
-  },
+
   linkItem: {
     textDecoration: "none",
     transition: "0.5s",
@@ -37,8 +39,8 @@ const productListStyle = {
     fontFamily: "Open Sans",
     cursor: "pointer",
     transition: "0.5s",
-    width: "416px",
-    marginBottom: "30px",
+    width: "136px",
+    marginBottom: "35px",
 
     "& > p": {
       transition: "0.5s"
@@ -49,53 +51,82 @@ const productListStyle = {
     }
   },
   itemImg: {
-    width: "100%",
-    height: "603px",
+    width: "136px",
+    height: "175px",
     objectFit: "cover"
   },
   goodsTitle: {
     textTransform: "uppercase",
-    fontSize: "18px",
-    marginTop: "20px",
-    fontWeight: "700",
-    color: "#000",
-    color: "#000000"
+    fontSize: "12px",
+    marginTop: "3px",
+    color: "#000"
   },
   goodsPrise: {
-    marginTop: "14px",
+    marginTop: "3px",
     color: "rgba(132, 122, 122, 1)"
   },
-
-  "@media (max-width: 768px)": {
+  "@media (min-width: 436px)": {
     productListContainer: {
-      marginLeft: "0"
-    },
-    goodsTitle: {
-      marginTop: "5px",
-      fontSize: "12px",
-      lineHeight: "16px"
-    },
-    goodsPrise: {
-      fontSize: "12px",
-      marginTop: "5px"
-    },
-    productList: {
-      margin: "0 auto",
-      justifyContent: "space-around"
-    },
-    linkItem: {
-      width: "35%",
-      height: "auto",
-      margin: "35px 0 0"
-    },
-    categoryName: {
-      display: "none"
+      marginLeft: "30px"
     },
     filter: {
-      display: "block",
-      fontSize: "16px",
-      marginTop: "19px",
-      marginLeft: "30px"
+      fontSize: "22px",
+      marginTop: "20px"
+    },
+    productList: {
+      marginTop: "42px"
+    },
+
+    productItem: {
+      width: "150px",
+      marginBottom: "37px"
+    },
+    itemImg: {
+      width: "200px",
+      height: "195px"
+    },
+    goodsTitle: {
+      fontSize: "15px",
+      marginTop: "5px"
+    },
+    goodsPrise: {
+      marginTop: "5px"
+    }
+  },
+  "@media (min-width: 509px)": {
+    productListContainer: {
+      width: "100%",
+      maxWidth: "1226px"
+    },
+    productList: {
+      marginTop: "40px"
+    },
+    categoryName: {
+      fontSize: "24px",
+      marginTop: "80px",
+      marginLeft: "7%"
+    },
+
+    productItem: {
+      width: "416px",
+      marginBottom: "30px"
+    },
+    itemImg: {
+      width: "100%",
+      height: "603px"
+    },
+    goodsTitle: {
+      fontSize: "18px",
+      marginTop: "20px",
+      fontWeight: "700"
+    },
+    goodsPrise: {
+      marginTop: "14px"
+    }
+  },
+  "@media (min-width: 769px)": {
+    filter: {
+      display: "none"
     }
   }
 };

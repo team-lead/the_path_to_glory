@@ -1,9 +1,14 @@
-import React from 'react';
-import DetailPageComponent from "../../components/DetailPage"
-
+import React, { Fragment } from "react";
+import { Helmet } from "react-helmet";
+import DetailPageComponent from "../../components/DetailPage";
 
 export default function DetailPage(props) {
-    return (
-        <DetailPageComponent  />
-    )
+  return (
+    <Fragment>
+      <Helmet>
+        <title>Goods detail</title>
+      </Helmet>
+      <DetailPageComponent />
+    </Fragment>
+  );
 }

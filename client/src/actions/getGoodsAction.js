@@ -1,4 +1,4 @@
-export const GET_GOODS_SUCCESS = 'GET_GOODS_SUCCESS';
+export const GET_GOODS_SUCCESS = "GET_GOODS_SUCCESS";
 
 export function getGoods(collection) {
   return async dispatch => {
