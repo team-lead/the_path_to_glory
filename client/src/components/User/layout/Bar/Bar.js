@@ -33,18 +33,6 @@ class Bar extends Component {
     };
   }
 
-  // componentDidMount() {
-  //   let userAuth = JSON.parse(localStorage.getItem("userAuth"));
-  //   while (userAuth) {
-  //     userAuth = JSON.parse(localStorage.getItem("userAuth"));
-  //   }
-
-  //   this.setState({
-  //     userAuth: userAuth
-  //   });
-
-  // }
-
 
 
   openMenu = (event) => {
@@ -67,7 +55,7 @@ class Bar extends Component {
 
   handleSettingsClick = () => {
     this.closeMenu();
-    // this.props.onSettingsClick();
+ 
 
   };
 
