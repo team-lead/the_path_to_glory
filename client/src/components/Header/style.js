@@ -134,6 +134,7 @@ let headerStyle = {
     left: '-21px',
     top: '-18px',
     border: '2px solid black',
+    animation: 'show_cart_badge ease-in-out 0.7s'
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();

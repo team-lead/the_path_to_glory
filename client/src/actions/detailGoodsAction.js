@@ -1,15 +1,16 @@
-export const GET_GOODS_DETAIL = 'GET_GOODS_DETAIL';
-export const REMOVE_PRODUCT_FROM_CART = 'REMOVE_PRODUCT_FROM_CART';
-export const SET_CHECKOUT_TOTAL = 'SET_CHECKOUT_TOTAL';
-export const DEC_CART_PRODUCT_QUANTITY = 'INC_CART_PRODUCT_QUANTITY';
-export const INC_CART_PRODUCT_QUANTITY = 'DEC_CART_PRODUCT_QUANTITY';
-export const SAVE_USER_CART = 'SAVE_USER_CART';
-export const UPDATE_CART = 'UPDATE_CART';
-export const SET_PREV_PAGE_PATH = 'SET_PREV_PAGE_PATH';
-export const UPDATE_PURCHASE_HISTORY = 'UPDATE_PURCHASE_HISTORY';
-export const ADD_TO_CART = 'ADD_TO_CART';
-export const SHOW_CHECKOUT_MODAL = 'SHOW_CHECKOUT_MODAL';
-export const HIDE_CHECKOUT_MODAL = 'HIDE_CHECKOUT_MODAL';
+import { addOrderHistoryPost } from "../actions/addOrderHistory";
+export const GET_GOODS_DETAIL = "GET_GOODS_DETAIL";
+export const REMOVE_PRODUCT_FROM_CART = "REMOVE_PRODUCT_FROM_CART";
+export const SET_CHECKOUT_TOTAL = "SET_CHECKOUT_TOTAL";
+export const DEC_CART_PRODUCT_QUANTITY = "INC_CART_PRODUCT_QUANTITY";
+export const INC_CART_PRODUCT_QUANTITY = "DEC_CART_PRODUCT_QUANTITY";
+export const SAVE_USER_CART = "SAVE_USER_CART";
+export const UPDATE_CART = "UPDATE_CART";
+export const SET_PREV_PAGE_PATH = "SET_PREV_PAGE_PATH";
+export const UPDATE_PURCHASE_HISTORY = "UPDATE_PURCHASE_HISTORY";
+export const ADD_TO_CART = "ADD_TO_CART";
+export const SHOW_CHECKOUT_MODAL = "SHOW_CHECKOUT_MODAL";
+export const HIDE_CHECKOUT_MODAL = "HIDE_CHECKOUT_MODAL";
 
 export function getGoodsDetailID(id) {
   return dispatch => {
@@ -71,8 +72,10 @@ export function setPrevPagePath(path) {
   return { type: SET_PREV_PAGE_PATH, payload: path };
 }
 
-export function updatePurchaseHistory() {
-  return { type: UPDATE_PURCHASE_HISTORY };
+export function updatePurchaseHistory(shoppingBag) {
+  console.log(shoppingBag, "shopingBag action");
+  addOrderHistoryPost("http://localhost:8080/api/history", shoppingBag);
+  return { type: UPDATE_PURCHASE_HISTORY, payload: shoppingBag };
 }
 
 export function addToCart(product) {
