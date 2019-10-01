@@ -3,16 +3,15 @@ export const GET_GOODS_BY_CATEGORY = "GET_GOODS_BY_CATEGORY";
 export const FILTER_GOODS_BY_PRICE = "FILTER_GOODS_BY_PRICE";
 export const GET_PRICE_RANGE = "GET_PRICE_RANGE";
 export const FILTER_GOODS_BY_SUBCATEGORY = "FILTER_GOODS_BY_SUBCATEGORY";
-export const SHOW_PRELOADER = "SHOW_PRELOADER";
 
 export function filterGoodsByCategory(category, subCategory) {
   console.log(subCategory);
   console.log(category);
-  
+
   return async dispatch => {
     let mens = await getGoodsByCategory("mens");
     let womens = await getGoodsByCategory("womens");
-    let accessories = await getGoodsByCategory("accessories")
+    let accessories = await getGoodsByCategory("accessories");
 
     if (window.location.pathname.split("/").includes("mens")) {
       mens = mens.filter(item => {
@@ -29,13 +28,13 @@ export function filterGoodsByCategory(category, subCategory) {
         if (item.category.toLowerCase() === category.toLowerCase()) {
           return true;
         }
-      })
+      });
       dispatch({
         type: GET_GOODS_BY_CATEGORY,
         payload: womens
       });
-    } 
-}
+    }
+  };
 }
 
 export function filterGoodsByColor(color) {
@@ -50,15 +49,19 @@ export function filterGoodsByColor(color) {
   };
 }
 export function filterGoodsByPrice(priceRange) {
+  console.log(priceRange, "---");
   return async dispatch => {
     let mens = await getGoodsByCategory("mens");
     let womens = await getGoodsByCategory("womens");
     let accessories = await getGoodsByCategory("accessories");
     if (window.location.pathname.split("/").includes("womens")) {
+      console.log("womens");
       filterColorByPrice(womens, priceRange, dispatch);
     } else if (window.location.pathname.split("/").includes("mens")) {
+      console.log("mens");
       filterColorByPrice(mens, priceRange, dispatch);
     } else if (window.location.pathname.split("/").includes("accessories")) {
+      console.log("accessories");
       filterColorByPrice(accessories, priceRange, dispatch);
     }
   };
@@ -155,7 +158,7 @@ function filterBySubcategory(
 }
 
 function filterColorByPrice(category, priceRange, dispatch) {
-  category = category.filter(item => {
+  let filtredGoods = category.filter(item => {
     if (
       item.price &&
       item.price >= priceRange.min &&
@@ -164,17 +167,11 @@ function filterColorByPrice(category, priceRange, dispatch) {
       return true;
     }
   });
+  console.log(filtredGoods, "--------");
   dispatch({
-    type: SHOW_PRELOADER
+    type: FILTER_GOODS_BY_PRICE,
+    payload: filtredGoods
   });
-  setTimeout(
-    () =>
-      dispatch({
-        type: FILTER_GOODS_BY_PRICE,
-        payload: category
-      }),
-    5000
-  );
 }
 
 function getPriceRangeByCategory(category, dispatch) {
