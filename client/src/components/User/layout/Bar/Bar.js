@@ -101,24 +101,25 @@ class Bar extends Component {
 
         {!isSignedIn &&
           <React.Fragment>
-              <IconButton
-                aria-label="upload picture"
-                disabled={isPerformingAuthAction}
-                onClick={onSignInClick}
-                style={{ fontSize: "16px",  fontFamily: "Josefin Sans" }}
-              >
-                <PermIdentity />
-                SignIn
+
+            <IconButton
+              aria-label="upload picture"
+              disabled={isPerformingAuthAction}
+              onClick={onSignInClick}
+              style={{ fontSize: "16px", margin: "0px", fontFamily: "Josefin Sans" }}
+            >
+              <PermIdentity />
+              <p className={"headerActionsItemText"}>SignIn</p>
             </IconButton>
 
-              <IconButton
-                aria-label="upload picture"
-                disabled={isPerformingAuthAction}
-                onClick={onSignUpClick}
-                style={{ fontSize: "16px",  fontFamily: "Josefin Sans" }}
-              >
-                <PersonIcon />
-                SignUp
+            <IconButton
+              aria-label="upload picture"
+              disabled={isPerformingAuthAction}
+              onClick={onSignUpClick}
+              style={{ fontSize: "16px", margin: "0px", fontFamily: "Josefin Sans" }}
+            >
+              <PersonIcon />
+              <p className={"headerActionsItemText"}>SignUp</p>
             </IconButton>
           </React.Fragment>
 
