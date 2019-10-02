@@ -26,12 +26,13 @@ const productListStyle = {
   },
 
   linkItem: {
+    position: 'relative',
     textDecoration: "none",
-    transition: "0.5s",
     color: "#000",
+    transition: '.8s',
 
     "&:hover": {
-      transform: "scale(1.01)"
+      transform: "scale(1.01)",
     }
   },
 

@@ -9,6 +9,10 @@ import InputRange from "react-input-range";
 import { classes } from "./style";
 
 class PriceSlider extends Component {
+  componentDidUpdate() {
+    this.props.getPriceRange();
+
+  }
   componentDidMount() {
     this.props.getPriceRange();
   }

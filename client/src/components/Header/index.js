@@ -49,7 +49,8 @@ class Header extends Component {
       resultCount,
       headerActionsItem,
       badge,
-      headerItem
+      headerItem,
+      searchHover
     } = classes;
 
     const searchResultsView = this.state.searchText ? (
@@ -107,7 +108,7 @@ class Header extends Component {
             </NavLink>
           </div>
           <div className={`${headerActions} ${headerItem}`}>
-            <NavLink onClick={searchModal}>
+            <NavLink className = {searchHover} onClick={searchModal}>
               <i className={`fas fa-search ${headerActionsItemImg}`} />
               <p className={headerActionsItemText}>Search</p>
             </NavLink>

@@ -11,7 +11,6 @@ export function filterGoodsByCategory(category, subCategory) {
   return async dispatch => {
     let mens = await getGoodsByCategory("mens");
     let womens = await getGoodsByCategory("womens");
-    let accessories = await getGoodsByCategory("accessories");
 
     if (window.location.pathname.split("/").includes("mens")) {
       mens = mens.filter(item => {
@@ -33,8 +32,8 @@ export function filterGoodsByCategory(category, subCategory) {
         type: GET_GOODS_BY_CATEGORY,
         payload: womens
       });
-    }
-  };
+    } 
+}
 }
 
 export function filterGoodsByColor(color) {
