@@ -8,6 +8,7 @@ import Checkout from './pages/Checkout';
 import DetailPage from './pages/DetailPage/DetailPage';
 import ProductsPage from './pages/ProductsPage';
 import Login from './components/User/Login'
+import './App.css';
 
 const App = () => {
   return (

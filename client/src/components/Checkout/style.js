@@ -14,7 +14,8 @@ const checkoutStyle = {
         height: '450px',
         margin: '0 auto',
         marginTop: '85px',
-
+        position: 'relative',
+        animation: 'SHOW_FROM_BOTTOM 1s ease-in-out'
     },
     headerSection: {
         height: '200px',

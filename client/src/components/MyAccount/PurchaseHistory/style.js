@@ -8,11 +8,12 @@ const small = "@media screen and (max-width: 375px)";
 const cartProductStyles = {
   cartProduct: {
     position: "relative",
+    animation: 'SHOW_FROM_BOTTOM 1s ease-in-out',
     display: "flex",
     fontFamily: "Open Sans, sans-serif",
     width: "780px",
     borderBottom: "1px solid #C4C4C4",
-    margin: "15px 15px",
+    margin: "15px 40px",
     paddingBottom: "40px",
     "@media screen and (max-width: 1212px)": {
       width: "700px"
@@ -54,6 +55,7 @@ const cartProductStyles = {
   historyDate: {
     color: "silver",
     margin: "10px",
+    marginLeft: '40px',
     fontSize: "13px"
   },
   productImg: {

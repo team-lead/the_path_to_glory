@@ -12,6 +12,7 @@ let myProfileStyle = {
     fontFamily: "Josefin Sans",
     fontSize: "1.5vw",
     marginLeft: "15vw",
+    width: "50%"
   },
   myProfileTitle: {
     marginTop: "3vw",

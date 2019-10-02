@@ -35,8 +35,11 @@ let detailPageStyle = {
         marginTop: "7px"
     },
     imageParams: {
+        position: 'relative',
+        animation: 'SHOW_FROM_LEFT 1s ease-in-out',
         display: "flex",
         justifyContent: "center",
+        transition: "1s",
 
         "& > img": {
             display: "none",
@@ -49,6 +52,7 @@ let detailPageStyle = {
 
     containerInfo: {
         position: "relative",
+        animation: 'SHOW_FROM_RIGHT 1s ease-in-out',
     },
     headerInfoText: {
         display: "flex",
@@ -68,12 +72,9 @@ let detailPageStyle = {
         color: "#847A7A",
         marginBottom: "13px"
     },
-
     activeColor: {
         boxShadow: '0px 0px 0px 2px MEDIUMSPRINGGREEN',
-
     },
-
     colorsDiv: {
         display: "flex",
         justifyContent: "flex-start",
@@ -85,12 +86,9 @@ let detailPageStyle = {
             width: "27px",
             height: "27px",
             borderRadius: "50%",
-            boxSizing: 'border-box',
-
-
 
             "&:hover": {
-                textDecoration: 'underline',
+                textDecoration: "underline",
                 cursor: "pointer"
             },
 
@@ -109,7 +107,6 @@ let detailPageStyle = {
     sizeGuide: {
         position: "relative"
     },
-
     activeSize: {
         color: 'green',
         textDecoration: 'underline',
@@ -123,8 +120,6 @@ let detailPageStyle = {
         margin: "18px 0 51px",
         "& > li": {
             marginRight: "25px",
-            cursor: 'pointer',
-
             "&:last-child": {
                 marginRight: "0"
             }
@@ -153,245 +148,246 @@ let detailPageStyle = {
     btnSettings: {
         marginTop: "20px"
     },
-    "@media(min-width: 480px)": {
-        h3: {
-            fontSize: "17px"
-        },
-        filterType: {
-            marginLeft: "35px"
-        },
-        liStyle: {
-            marginTop: "10px"
-        },
 
-        headerInfoText: {
-            "& > h2": {
-                fontSize: "18px"
-            }
-        },
+        "@media(min-width: 480px)": {
+            h3: {
+                fontSize: "17px"
+            },
+            filterType: {
+                marginLeft: "35px"
+            },
+            liStyle: {
+                marginTop: "10px"
+            },
 
-        refStyle: {
-            fontSize: "13px",
-            marginTop: "7px",
-            marginBottom: "15px"
-        },
-        colorsDiv: {
-            marginBottom: "55px",
-            marginLeft: "40px",
-
-            "& > div": {
-                marginTop: "30px",
-                width: "30px",
-                height: "30px",
-
-                "& > span": {
-                    top: "37px",
-                    fontSize: "16px"
-                }
-            }
-        },
-
-        sizes: {
-            top: "27px",
-            left: "40px",
-            margin: "20px 0 54px",
-            "& > li": {
-                marginRight: "30px"
-            }
-        },
-        sizeHelper: {
-            fontSize: "15px",
-            marginRight: "25px"
-        },
-        descriptionContainer: {
-            padding: "30px 0 25px 34px"
-        },
-        description: {
-            "& > p": {
-                fontSize: "15px"
-            }
-        },
-
-        btnSettings: {
-            marginTop: "23px"
-        }
-    },
-    "@media(min-width: 700px)": {
-        h3: {
-            fontSize: "19px"
-        },
-        filterType: {
-            marginLeft: "37px"
-        },
-        liStyle: {
-            marginTop: "12px"
-        },
-
-        headerInfoText: {
-            "& > h2": {
-                fontSize: "20px"
-            }
-        },
-
-        refStyle: {
-            fontSize: "15px",
-            marginTop: "9px",
-            marginBottom: "17px"
-        },
-        colorsDiv: {
-            marginBottom: "57px",
-            marginLeft: "42px",
-
-            "& > div": {
-                marginTop: "32px",
-                width: "32px",
-                height: "32px",
-
-                "& > span": {
-                    top: "39px",
+            headerInfoText: {
+                "& > h2": {
                     fontSize: "18px"
                 }
-            }
-        },
+            },
 
-        sizes: {
-            top: "29px",
-            left: "42px",
-            margin: "22px 0 56px",
-            "& > li": {
-                marginRight: "32px"
-            }
-        },
-        sizeHelper: {
-            fontSize: "17px",
-            marginRight: "27px"
-        },
-        descriptionContainer: {
-            padding: "32px 0 27px 36px"
-        },
-        description: {
-            "& > p": {
-                fontSize: "17px"
-            }
-        },
+            refStyle: {
+                fontSize: "13px",
+                marginTop: "7px",
+                marginBottom: "15px"
+            },
+            colorsDiv: {
+                marginBottom: "55px",
+                marginLeft: "40px",
 
-        btnSettings: {
-            marginTop: "25px"
-        }
-    },
+                "& > div": {
+                    marginTop: "30px",
+                    width: "30px",
+                    height: "30px",
 
-    "@media(min-width: 1260px)": {
-        container: {
-            marginTop: "19px",
-            marginBottom: "10px"
-        },
-
-        h3: {
-            fontSize: "16px"
-        },
-
-        liStyle: {
-            flexDirection: "row",
-            marginTop: "66px"
-        },
-
-        imageParams: {
-            "& > img": {
-                display: "inline-block",
-                width: "416px",
-                height: "603px",
-                marginRight: "12px"
-            }
-        },
-
-        containerInfo: {
-            width: "391px",
-            marginLeft: "31px",
-            height: "603px"
-        },
-
-        headerInfoText: {
-            "& > h2": {
-                fontSize: "24px"
-            }
-        },
-
-        refStyle: {
-            marginTop: "9px",
-            marginBottom: "50px"
-        },
-
-        colorsDiv: {
-            "& > div": {
-                marginTop: "22px",
-                width: "32px",
-                height: "32px",
-
-                "&:first-child": {
-                    marginRight: "54px"
-                },
-
-                "& > span": {
-                    top: "40px",
-                    fontSize: "14px"
+                    "& > span": {
+                        top: "37px",
+                        fontSize: "16px"
+                    }
                 }
-            }
-        },
+            },
 
-        sizeStyles: {
-            marginTop: "72px",
-
-            "& > ul": {
-                display: "flex",
-                marginTop: "35px",
-
+            sizes: {
+                top: "27px",
+                left: "40px",
+                margin: "20px 0 54px",
                 "& > li": {
-                    marginRight: "35px"
+                    marginRight: "30px"
                 }
-            }
-        },
-
-        active: {
-            "&:after": {
-                content: '""',
-                display: "block",
-                height: "1px",
-                width: "11px",
-                background: "#000",
-                position: "relative",
-                top: "1px",
-                right: "1px"
-            }
-        },
-
-        sizeGuide: {
-            marginTop: "20px",
-            marginBottom: "44px",
-
-            "& > a": {
-                fontSize: "12px",
-                paddingBottom: "20px"
-            }
-        },
-
-        description: {
-            "& > p": {
-                fontSize: "12px",
-                lineHeight: "16px",
-
-                "&:nth-child(2)": {
-                    marginTop: "14px"
-                },
-
-                "&:last-child": {
-                    marginTop: "12px"
+            },
+            sizeHelper: {
+                fontSize: "15px",
+                marginRight: "25px"
+            },
+            descriptionContainer: {
+                padding: "30px 0 25px 34px"
+            },
+            description: {
+                "& > p": {
+                    fontSize: "15px"
                 }
+            },
+
+            btnSettings: {
+                marginTop: "23px"
+            }
+        },
+        "@media(min-width: 700px)": {
+            h3: {
+                fontSize: "19px"
+            },
+            filterType: {
+                marginLeft: "37px"
+            },
+            liStyle: {
+                marginTop: "12px"
+            },
+
+            headerInfoText: {
+                "& > h2": {
+                    fontSize: "20px"
+                }
+            },
+
+            refStyle: {
+                fontSize: "15px",
+                marginTop: "9px",
+                marginBottom: "17px"
+            },
+            colorsDiv: {
+                marginBottom: "57px",
+                marginLeft: "42px",
+
+                "& > div": {
+                    marginTop: "32px",
+                    width: "32px",
+                    height: "32px",
+
+                    "& > span": {
+                        top: "39px",
+                        fontSize: "18px"
+                    }
+                }
+            },
+
+            sizes: {
+                top: "29px",
+                left: "42px",
+                margin: "22px 0 56px",
+                "& > li": {
+                    marginRight: "32px"
+                }
+            },
+            sizeHelper: {
+                fontSize: "17px",
+                marginRight: "27px"
+            },
+            descriptionContainer: {
+                padding: "32px 0 27px 36px"
+            },
+            description: {
+                "& > p": {
+                    fontSize: "17px"
+                }
+            },
+
+            btnSettings: {
+                marginTop: "25px"
             }
         },
 
-        btnSettings: {
-            position: "relative"
+        "@media(min-width: 1260px)": {
+            container: {
+                marginTop: "19px",
+                marginBottom: "10px"
+            },
+
+            h3: {
+                fontSize: "16px"
+            },
+
+            liStyle: {
+                flexDirection: "row",
+                marginTop: "66px"
+            },
+
+            imageParams: {
+                "& > img": {
+                    display: "inline-block",
+                    width: "416px",
+                    height: "603px",
+                    marginRight: "12px"
+                }
+            },
+
+            containerInfo: {
+                width: "391px",
+                marginLeft: "31px",
+                height: "603px"
+            },
+
+            headerInfoText: {
+                "& > h2": {
+                    fontSize: "24px"
+                }
+            },
+
+            refStyle: {
+                marginTop: "9px",
+                marginBottom: "50px"
+            },
+
+            colorsDiv: {
+                "& > div": {
+                    marginTop: "22px",
+                    width: "32px",
+                    height: "32px",
+
+                    "&:first-child": {
+                        marginRight: "54px"
+                    },
+
+                    "& > span": {
+                        top: "40px",
+                        fontSize: "14px"
+                    }
+                }
+            },
+
+            sizeStyles: {
+                marginTop: "72px",
+
+                "& > ul": {
+                    display: "flex",
+                    marginTop: "35px",
+
+                    "& > li": {
+                        marginRight: "35px"
+                    }
+                }
+            },
+
+            active: {
+                "&:after": {
+                    content: '""',
+                    display: "block",
+                    height: "1px",
+                    width: "11px",
+                    background: "#000",
+                    position: "relative",
+                    top: "1px",
+                    right: "1px"
+                }
+            },
+
+            sizeGuide: {
+                marginTop: "20px",
+                marginBottom: "44px",
+
+                "& > a": {
+                    fontSize: "12px",
+                    paddingBottom: "20px"
+                }
+            },
+
+            description: {
+                "& > p": {
+                    fontSize: "12px",
+                    lineHeight: "16px",
+
+                    "&:nth-child(2)": {
+                        marginTop: "14px"
+                    },
+
+                    "&:last-child": {
+                        marginTop: "12px"
+                    }
+                }
+            },
+
+            btnSettings: {
+                position: "relative"
+            }
         }
-    }
-};
-export const { classes } = jss.createStyleSheet(detailPageStyle).attach();
+    };
+    export const { classes } = jss.createStyleSheet(detailPageStyle).attach();

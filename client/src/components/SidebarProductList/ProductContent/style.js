@@ -9,6 +9,7 @@ let LeftSideMenuStyle = {
     paddingLeft: "7%",
     background: "#000",
     position: 'relative',
+    animation: 'SHOW_SIDEBAR_MENU 1s ease'
   },
 
   main: {

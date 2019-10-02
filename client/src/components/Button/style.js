@@ -52,7 +52,7 @@ let button = {
     bottom: '60px',
     color: 'DARKCYAN',
     textAlign: 'center',
-    animation: 'show_button_message 2s ease-in-out',
+    animation: 'SHOW_BUTTON_MESSAGE 2s ease-in-out',
     zIndex: '-999'
   },
   failMsg: {
@@ -62,7 +62,7 @@ let button = {
     bottom: '60px',
     color: 'red',
     textAlign: 'center',
-    animation: 'show_button_message 2s ease-in-out',
+    animation: 'SHOW_BUTTON_MESSAGE 2s ease-in-out',
     zIndex: '-999'
   },
 };

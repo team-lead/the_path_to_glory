@@ -37,6 +37,8 @@ const productListStyle = {
   },
 
   productItem: {
+    position: 'relative',
+    animation: 'SHOW_FROM_BOTTOM 1s ease-in-out',
     fontFamily: "Open Sans",
     cursor: "pointer",
     transition: "0.5s",

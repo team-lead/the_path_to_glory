@@ -14,7 +14,7 @@ const cartProductStyles = {
     borderBottom: '1px solid #C4C4C4',
     marginBottom: '40px',
     paddingBottom: '40px',
-    animation: 'show_cart_product 1s ease-in-out',
+    animation: 'SHOW_FROM_BOTTOM 1s ease-in-out',
     '@media screen and (max-width: 1212px)': {
       width: '700px'
     },
