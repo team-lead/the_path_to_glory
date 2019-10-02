@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { classes } from './style';
-import './animation.css';
 
 class Button extends Component {
   state = {
