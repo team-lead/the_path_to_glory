@@ -36,6 +36,8 @@ const CartPageStyles = {
     }
   },
   keepShoppingBtn: {
+    position: 'relative',
+    animation: 'SHOW_FROM_LEFT 1s ease-in-out',
     '@media screen and (max-width: 790px)': {
       display: 'none'
     },

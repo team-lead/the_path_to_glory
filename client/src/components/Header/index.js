@@ -7,7 +7,6 @@ import { SHOW_MODAL_WINDOW, searchGoods } from "../../actions/searchActions";
 import { setPrevPagePath } from "../../actions/detailGoodsAction";
 import ProductItemSearch from "../ProductItemSearch";
 import Login from "../User/Login";
-import './animation.css';
 import { Link } from "react-router-dom";
 
 class Header extends Component {

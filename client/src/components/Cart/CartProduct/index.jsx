@@ -8,7 +8,6 @@ import {
   incCartProductQuantity,
   saveUserCart
 } from '../../../actions/detailGoodsAction';
-import './animation.css';
 
 const CartProduct = ({
   id,

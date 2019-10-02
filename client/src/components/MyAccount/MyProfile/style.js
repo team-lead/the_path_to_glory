@@ -11,7 +11,9 @@ let myProfileStyle = {
     padding: "1vw",
     fontFamily: "Josefin Sans",
     fontSize: "1.5vw",
-    marginLeft: "15vw",
+    marginLeft: "1vw",
+    animation: 'SHOW_FROM_BOTTOM 1s ease-in-out',
+    position: 'relative'
   },
   myProfileTitle: {
     marginTop: "3vw",

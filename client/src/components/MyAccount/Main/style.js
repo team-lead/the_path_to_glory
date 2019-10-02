@@ -9,6 +9,8 @@ const welcomPageStyle = {
     margin: "0 auto"
   },
   title: {
+    position: 'relative',
+    animation: 'SHOW_FROM_TOP 1s ease-in-out',
     fontFamily: "Josefin Sans",
     fontSize: "36px",
     margin: "158px 0 0 80px"
@@ -26,6 +28,18 @@ const welcomPageStyle = {
     backgroundColor: "#000000",
     position: "relative",
     textAlign: "left"
+  },
+  myProfileItem: {
+    position: 'relative',
+    animation: 'SHOW_FROM_LEFT 1s ease-in-out',
+  },
+  purchaseHistoryItem: {
+    position: 'relative',
+    animation: 'SHOW_FROM_RIGHT 1s ease-in-out',
+  },
+  addressBookItem: {
+    position: 'relative',
+    animation: 'SHOW_FROM_BOTTOM 1s ease-in-out',
   },
   categoryTitle: {
     fontFamily: "Josefin Sans",
