@@ -87,7 +87,7 @@ export const activeGoodsReducer = (state = initialState, action) => {
         }
         case ADD_TO_CART: {
             const date = new Date();
-            const curentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
+            const currentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
             const product = {
                 id: action.payload.id,
                 category: action.payload.category,
@@ -96,10 +96,9 @@ export const activeGoodsReducer = (state = initialState, action) => {
                 color: state.objectId[0].pickedColor || "no color", // сюда нужно подставлять выбранный цвет
                 quantity: 1,
                 reference: action.payload.ref,
-                size: 6, // хардкод, нужно поменять
+                size: state.objectId[0].pickedSize || "no size", // хардкод, нужно поменять
                 image: action.payload.image[0],
-                date: curentDate,
-
+                date: currentDate
             };
             return {...state, shoppingBag: [...state.shoppingBag, product]};
         }
