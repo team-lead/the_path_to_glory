@@ -11,7 +11,6 @@ const WelcomePage = () => {
         title,
         categoryList,
         categoryItem,
-        addressBookItem,
         purchaseHistoryItem,
         myProfileItem,
         categoryTitle,
@@ -45,11 +44,6 @@ const WelcomePage = () => {
                                 <h3 className={categoryTitle}>My wishlist</h3>
                                 <p className={categoryDescription}>Manage your wishlist</p>
                             </Link> */}
-                            <Link to='/myaccount/addressbook' className={`${categoryItem} ${addressBookItem}`} >
-                                <i className={`far fa-file-alt ${icon}`}></i>
-                                <h3 className={categoryTitle}>Address book</h3>
-                                <p className={categoryDescription}>Save and manage your addresses</p>
-                            </Link>
                         </main>
                     </Fragment>
                 }

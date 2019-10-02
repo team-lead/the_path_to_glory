@@ -37,10 +37,6 @@ const welcomPageStyle = {
     position: 'relative',
     animation: 'SHOW_FROM_RIGHT 1s ease-in-out',
   },
-  addressBookItem: {
-    position: 'relative',
-    animation: 'SHOW_FROM_BOTTOM 1s ease-in-out',
-  },
   categoryTitle: {
     fontFamily: "Josefin Sans",
     fontWeight: "bold",
