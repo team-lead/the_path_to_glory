@@ -2,6 +2,7 @@ import React from "react";
 import { classes } from "../style";
 
 export default function Sizes(props) {
+    console.log(props);
   return (
     <div className={classes.sizeStyles}>
       <h3 className={`${classes.h3} ${classes.filterType}`}>Size</h3>
