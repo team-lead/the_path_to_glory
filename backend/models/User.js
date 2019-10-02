@@ -4,6 +4,18 @@ const crypto = require("crypto");
 const uuidv1 = require("uuid/v1");
 
 const UserSchema = new Schema({
+
+    addressFirst: {
+        type: String,
+        trim: true,
+        maxlength: 32
+    },
+    addressSecond: {
+        type: String,
+        trim: true,
+        maxlength: 32
+    },
+
     firstName: {
         type: String,
         trim: true,

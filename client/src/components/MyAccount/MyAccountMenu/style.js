@@ -25,7 +25,7 @@ let headerStyle = {
     fontSize: "2.2vw",
     textAlign: "center",
     color: "silver",
-    width: "25%",
+    width: "33%",
     margin: "5px",
     lineHeight: "200%",
     borderBottom: "1px solid transparent",

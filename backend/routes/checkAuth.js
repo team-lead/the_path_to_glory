@@ -5,13 +5,17 @@ const {
   updateUser,
   deliteUser,
   history,
-  addHistory
+  addHistory,
+  addressBook,
+  updateAddress,
 } = require("../controllers/checkAuth");
 
 router.get("/profile", checkAuth, profile);
-router.post("/updateuser", checkAuth, updateUser);
+router.put("/updateuser", checkAuth, updateUser);
 router.get("/deliteuser", checkAuth, deliteUser);
 router.get("/history", checkAuth, history);
 router.post("/history", checkAuth, addHistory);
+router.put("/updateaddress", checkAuth, updateAddress);
+router.get("/addressbook", checkAuth, addressBook);
 
 module.exports = router;
