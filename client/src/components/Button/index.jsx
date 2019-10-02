@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { classes } from './style';
+import './animation.css';
 
 class Button extends Component {
   state = {
@@ -51,8 +52,8 @@ class Button extends Component {
         onClick={() => {
           const success = clickHandler();
           success
-            ? this.showSuccessMessage(1500)
-            : this.showFailMessage(1500);
+            ? this.showSuccessMessage(2000)
+            : this.showFailMessage(2000);
         }}>
         
         {failMessage}

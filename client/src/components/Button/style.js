@@ -15,7 +15,7 @@ let button = {
     textAlign: 'center',
     padding: '16px 0',
     transition: ' all 0.3s',
-    cursor: 'pointer'
+    cursor: 'pointer',
   },
   name: {
     textTransform: 'uppercase',
@@ -52,6 +52,8 @@ let button = {
     bottom: '60px',
     color: 'DARKCYAN',
     textAlign: 'center',
+    animation: 'show_button_message 2s ease-in-out',
+    zIndex: '-999'
   },
   failMsg: {
     position: 'absolute',
@@ -60,7 +62,9 @@ let button = {
     bottom: '60px',
     color: 'red',
     textAlign: 'center',
-  }
+    animation: 'show_button_message 2s ease-in-out',
+    zIndex: '-999'
+  },
 };
 
 export const { classes } = jss.createStyleSheet(button).attach();

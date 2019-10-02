@@ -19,6 +19,10 @@ import {
 } from "../../../actions/getGoodsCategoryAction";
 
 class ProductsFilter extends Component {
+  componentDidUpdate() {
+    this.getGoodsSubCategoryItems()
+    this.getColorsItems()
+  }
   componentDidMount() {
     if (window.location.pathname === "/product-list/mens") {
       return this.props.getGoodsCategories("mens");
@@ -27,6 +31,8 @@ class ProductsFilter extends Component {
     } else if (window.location.pathname === "/product-list/accessories") {
       return this.props.getGoodsCategories("accessories");
     }
+    this.categoiesMenu()
+    this.priceMenu()
   }
 
   getGoodsSubCategoryItems = category => {
@@ -219,28 +225,30 @@ class ProductsFilter extends Component {
             <span
               className={`${categorySectionItem} ${sectionItem}`}
               onClick={whatProductsFilterReset}>
-              Reset All
+              Reset Colors
             </span>
           </div>
         );
 
-    const priceMenu = (
-      <div className={priceSection}>
-        <div className={mobileColor}>
-          <p
-            className={`${sectionTitle} ${priceSectionTitle}`}
-            onClick={() => this.props.showPrise()}>
-            price
-          </p>
-          {this.props.showPriceMenu ? (
-            <i class="fas fa-angle-up"></i>
-          ) : (
-            <i class="fas fa-angle-down"></i>
-          )}
+    const priceMenu = () => {
+      return (
+        <div className={priceSection}>
+          <div className={mobileColor}>
+            <p
+              className={`${sectionTitle} ${priceSectionTitle}`}
+              onClick={() => this.props.showPrise()}>
+              price
+            </p>
+            {this.props.showPriceMenu ? (
+              <i class="fas fa-angle-up"></i>
+            ) : (
+              <i class="fas fa-angle-down"></i>
+            )}
+          </div>
+          {this.props.showPriceMenu ? <PriseSlider /> : ""}
         </div>
-        {this.props.showPriceMenu ? <PriseSlider /> : ""}
-      </div>
-    );
+      )
+    };
 
     window.addEventListener("resize", () => {
       if (document.body.clientWidth > 768) {
@@ -251,7 +259,7 @@ class ProductsFilter extends Component {
       <div>
         {categoiesMenu}
         {whatProductsFilterColor()}
-        {priceMenu}
+        {setTimeout(priceMenu, 1500)}
       </div>
     );
   }

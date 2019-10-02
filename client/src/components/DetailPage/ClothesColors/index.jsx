@@ -5,7 +5,7 @@ export default function Colors(props) {
     const showColors = () => {
         return (
             <Fragment>
-            <h3 className = {classes.h3}>Color</h3>
+            <h3 className = {`${classes.h3} ${classes.filterType}`}>Color</h3>
                 <div className = {classes.colorsDiv}>
                     <Fragment>
                         <div onClick = {() => props.activeColor1()} style = {{background: `${props.colors[0]}`}}>

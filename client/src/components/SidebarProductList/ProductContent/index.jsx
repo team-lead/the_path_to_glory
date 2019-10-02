@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { classes } from "./style";
 
@@ -6,35 +6,44 @@ import FilterPath from '../FilterPath'
 import ProductsFilter from '../ProductsFilter';
 import ProductList from '../../ProductList'
 import FilterHeader from '../FilterHeader/FilterHeader'
+import "./animation.css"
 
 
-class ProductContent extends Component{
-render(){
-    const desctopView = <div className={classes.main}>
-                <div className={classes.leftMenu}>
-                    <FilterPath />
-                    <ProductsFilter/>
-                </div>
-                <ProductList/>
-            </div>
-
-    const mobileView = <div>
-        <FilterHeader/>
-        <ProductsFilter/>
+class ProductContent extends Component {
+    desctopView = () => <div className={classes.main}>
+        <div className={classes.leftMenu}>
+            <FilterPath />
+            <ProductsFilter />
         </div>
+        <ProductList />
+    </div>
 
-    const showMenu = this.props.showFilterMenu ? mobileView : desctopView
+    mobileView = () => <div>
+        <FilterHeader />
+        <ProductsFilter />
+    </div>
 
-    return(
-                <>
-                    {showMenu}
-                </>
-            )
-        }
-    };
-const mapStateToProps=(state)=>{
+
+
+
+    showMenu = () => this.props.showFilterMenu ? this.mobileView() : this.desctopView()
+
+    render() {
+
+
+        return (
+            <>
+                {this.desctopView()}
+            </>
+        )
+    }
+    componentWillMount() {
+        this.showMenu()
+    }
+};
+const mapStateToProps = (state) => {
     return {
-        showFilterMenu:state.allCategories.isShowFilterMenu
+        showFilterMenu: state.allCategories.isShowFilterMenu
     };
 }
 
