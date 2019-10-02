@@ -66,3 +66,33 @@
     left: 0;
   }
 }
+
+@keyframes SHOW_BUTTON_MESSAGE {
+  0% {
+    opacity: 0;
+    bottom: 30px;
+  }
+  20% {
+    bottom: 60px;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+    bottom: 60px;
+  }
+  100% {
+    opacity: 0;
+    bottom: 30px;
+  }
+}
+
+@keyframes SHOW_SEARCH_MODAL {
+  0% {
+    opacity: 0;
+    height: 10%;
+  }
+  100% {
+    opacity: 1;
+    height: 50%;
+  }
+}

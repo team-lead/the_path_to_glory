@@ -111,7 +111,8 @@ let headerStyle = {
     zIndex: "999",
     justifyContent: "center",
     flexDirection: "column",
-    alignItems: "center"
+    alignItems: "center",
+    animation: 'SHOW_SEARCH_MODAL 0.7s ease'
   },
   searchInput: {
     border: "none",
