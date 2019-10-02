@@ -35,9 +35,24 @@ exports.profile = (req, res) => {
         err: "User with that id does not exist"
       });
     }
-    const { phone, firstName, secondName, birthday, email } = user;
+    const { phone, firstName, lastName, birthday, email } = user;
 
-    res.json({ phone, firstName, secondName, birthday, email });
+    res.json({ phone, firstName, lastName, birthday, email });
+  });
+};
+
+exports.addressBook = (req, res) => {
+  // find the user based on id
+  const _id = decodedID(req, res);
+  User.findOne({ _id }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        err: "User with that id does not exist"
+      });
+    }
+    const { addressFirst, addressSecond } = user;
+
+    res.json({ addressFirst, addressSecond });
   });
 };
 
@@ -53,12 +68,9 @@ exports.updateUser = (req, res) => {
       });
     }
     console.log(user);
-    const { phone, firstName, secondName, birthday, email } = req.body;
-    user.phone = phone;
-    user.firstName = firstName;
-    user.secondName = secondName;
+    const { lastName, birthday} = req.body;
+    user.lastName = lastName;
     user.birthday = birthday;
-    user.email = email;
 
     user.save((err, user) => {
       if (err) {
@@ -68,6 +80,33 @@ exports.updateUser = (req, res) => {
       }
       // user.salt = undefined;
       // user.hashed_password = undefined;
+      return res.status(200).json({ user });
+    });
+  });
+};
+
+exports.updateAddress = (req, res) => {
+  // find the user based on id
+
+  const _id = decodedID(req, res);
+  // let usser;
+  User.findOne({ _id }, (err, user) => {
+    if (err || !user) {
+      return res.status(400).json({
+        err: "User with that id does not exist"
+      });
+    }
+    console.log(user);
+    const { addressFirst, addressSecond} = req.body;
+    user.addressFirst = addressFirst;
+    user.addressSecond = addressSecond;
+
+    user.save((err, user) => {
+      if (err) {
+        return res.status(400).json({
+          error: errorHandler(err)
+        });
+      }
       return res.status(200).json({ user });
     });
   });
