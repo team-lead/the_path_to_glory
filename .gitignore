@@ -33,3 +33,5 @@ yarn-error.log*
 .gitignore
 /yarn.lock
 /client/yarn.lock
+/client/src/components/DetailPage/ColorForm/
+the_path_to_glory.iml

@@ -8,13 +8,13 @@ export default function Colors(props) {
             <h3 className = {`${classes.h3} ${classes.filterType}`}>Color</h3>
                 <div className = {classes.colorsDiv}>
                     <Fragment>
-                        <div onClick = {() => props.activeColor1()} style = {{background: `${props.colors[0]}`}}>
+                        <div onClick = {(event) => {props.activeColor1();console.log(event)}} style = {{background: `${props.colors[0]}`}}>
                             <span>{props.colors[0]}</span>
                         </div>
                     </Fragment>
                     <Fragment >
-                        <div onClick = {() => props.activeColor2()} style = {{background: `${props.colors[1]}`}}>
-                            <span onClick = {props.activeColor}>{props.colors[1]}</span>
+                        <div onClick = {(event) => {props.activeColor2();console.log(event)}} style = {{background: `${props.colors[1]}`}}>
+                            <span>{props.colors[1]}</span>
                         </div>
                     </Fragment>
                 </div>

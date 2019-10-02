@@ -17,6 +17,7 @@ const rootReducer = combineReducers({
   listHistoryAll: listHistory,
   allCategories,
   getFilterPath
+
 });
 
 export default rootReducer;
