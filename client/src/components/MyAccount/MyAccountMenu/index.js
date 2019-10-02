@@ -29,7 +29,13 @@ class MyAccountMenu extends Component {
             className={`${classes.navbarMenuItem} ${this.isActive("history")}`}>
             Purchase history
           </NavLink>
-          
+          <NavLink
+            to="/myaccount/addressbook"
+            className={`${classes.navbarMenuItem} ${this.isActive(
+              "addressbook"
+            )}`}>
+            Address book
+          </NavLink>
         </nav>
       </>
     );
