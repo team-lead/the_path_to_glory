@@ -34,6 +34,8 @@ let detailPageStyle = {
     marginTop: "7px"
   },
   imageParams: {
+    position: 'relative',
+    animation: 'SHOW_FROM_LEFT 1s ease-in-out',
     display: "flex",
     justifyContent: "center",
     transition: "1s",
@@ -48,7 +50,8 @@ let detailPageStyle = {
   },
 
   containerInfo: {
-    position: "relative"
+    position: "relative",
+    animation: 'SHOW_FROM_RIGHT 1s ease-in-out',
   },
   headerInfoText: {
     display: "flex",

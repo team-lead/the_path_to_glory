@@ -8,6 +8,8 @@ jss.setup(preset());
 let headerStyle = {
   header: {
     userSelect: 'none',
+    position: 'relative',
+    animation: 'SHOW_FROM_TOP 1s ease-in-out',
     background: '#000',
     display: 'flex',
     justifyContent: 'space-between',
@@ -16,7 +18,6 @@ let headerStyle = {
     "@media (max-width: 1000px)": {
       flexWrap: "wrap",
       justifyContent: "space-around"
-
     }
   },
   headerItem: {
@@ -172,8 +173,8 @@ let headerStyle = {
     position: 'absolute',
     left: '-21px',
     top: '-18px',
+    animation: 'SHOW_CART_BADGE .7s ease-in-out',
     border: '2px solid black',
-    animation: 'show_cart_badge ease-in-out 0.7s'
   }
 };
 export const { classes } = jss.createStyleSheet(headerStyle).attach();
