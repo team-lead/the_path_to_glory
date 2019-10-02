@@ -15,7 +15,6 @@ let headerStyle = {
   navbarMenu: {
     display: "flex",
     margin: "1%",
-
   },
   navbarMenuItem: {
     fontFamily: "Josefin Sans",

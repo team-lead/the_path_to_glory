@@ -7,8 +7,11 @@ const small = '@media screen and (max-width: 790px)';
 
 const cartSummaryStyles = {
   summaryContainer: {
+    position: 'relative',
+    left: '0',
     display: 'inline-block',
     verticalAlign: 'top',
+    animation: 'SHOW_FROM_RIGHT 1s ease-in-out',
     [small]: {
       marginTop: '60px'
     }
