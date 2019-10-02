@@ -6,7 +6,7 @@ export default function DetailPage(props) {
   return (
     <Fragment>
       <Helmet>
-        <title>Goods detail</title>
+        <title>Goods Detail</title>
       </Helmet>
       <DetailPageComponent />
     </Fragment>

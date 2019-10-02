@@ -86,6 +86,8 @@ export const activeGoodsReducer = (state = initialState, action) => {
             return {...state, purchaseHistory, shoppingBag};
         }
         case ADD_TO_CART: {
+            console.log(state.objectId);
+            
             const date = new Date();
             const currentDate = `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()}`
             const product = {
