@@ -4,7 +4,6 @@ import ProductItem from "./ProductItem";
 import { classes } from "./style";
 import { CircleArrow as ScrollUpButton } from "react-scroll-up-button";
 import { SHOW_FILTER_MENU } from "../../actions/getGoodsCategoryAction";
-import './animation.css'
 
 class ProductList extends Component {
   render() {

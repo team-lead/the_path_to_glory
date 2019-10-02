@@ -42,11 +42,13 @@ let headerStyle = {
     textDecoration: "none",
     textTransform: "uppercase",
     fontSize: 20,
-    padding: "16px",
     borderBottom: "1px solid transparent",
     color: "#fff",
+    transition: '.4s',
+
     "&:hover": {
-      textDecoration: "underline"
+      borderBottom: "1px solid #fff",
+      transform: 'scale(1.1)',
     },
     "@media (max-width: 600px)": {
       fontSize: "12px",
@@ -81,8 +83,11 @@ let headerStyle = {
     display: "inline-block",
     fontSize: "16px",
     borderBottom: "1px solid transparent",
+    transition: '.4s',
+
+  
     "&:hover": {
-      borderBottom: "1px solid #fff"
+      borderBottom: "1px solid #fff",
     },
     '@media (min-width: 1001px) and (max-width: 1185px)': {
       display: "none"
@@ -97,10 +102,16 @@ let headerStyle = {
   headerActionsItemImg: {
     color: "#fff",
     fontSize: "16px",
-    paddingRight: "7px"
+    paddingRight: "7px",
+    transition: '.4s',
   },
   headerActionsItem: {
-    position: 'relative'
+    position: 'relative',
+    transition: '.4s',
+
+    "&:hover": {
+      transform: 'scale(1.1)',
+    },
   },
   
   search: {
@@ -123,7 +134,13 @@ let headerStyle = {
     width: "50%",
     paddingBottom: "5px",
     marginBottom: "61px",
-    animation: 'search_input_opacity .7s ease'
+  },
+
+  searchHover: {
+    transition: '.4s',
+    "&:hover": {
+      transform: 'scale(1.1)',
+    }
   },
   clearSearchBtn: {
     fontSize: "20px",

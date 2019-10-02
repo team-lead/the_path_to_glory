@@ -8,14 +8,17 @@ import Header from "../Header";
 import {
   getGoodsDetailID,
   addToCart,
-  saveUserCart
+  saveUserCart,
+  setColor, setSize
 } from "../../actions/detailGoodsAction";
 import GoodsSlider from "./GoodsSlider";
-import "./animation.css"
+
 
 class DetailPageComponent extends Component {
   state = {
-    data: null
+    data: null,
+    chosenColor: null,
+    chosenSize: null
   };
 
   componentDidMount() {
@@ -27,8 +30,6 @@ class DetailPageComponent extends Component {
   handlerImages1 = () => {
     let photoColors1 = this.props.goodsItemDetails.map(item => {
       let some = Object.entries(item.images);
-      console.log(some[0][0]);
-      console.log(some[0][1]);
       return some[0][1];
     });
     this.setState({ data: photoColors1[0] });
@@ -43,21 +44,42 @@ class DetailPageComponent extends Component {
     return photoColors2;
   };
 
-  shooseColor = color => {
+
+  chooseColor = color => {
     return this.props.goodsItemDetails.filter(item => {
       if (color.toLowerCase() === item.color[0].toLowerCase()) {
-        console.log(color);
-        return this.handlerImages1();
+        this.props.setColor(color);
+        return this.handlerImages1()
       } else {
+        this.props.setColor(color);
         return this.handlerImages2();
       }
     });
   };
 
-  activeColor = (color) => {
-    console.log(color);
-    
+  chooseSize = size => {
+    return this.props.goodsItemDetails.filter(item => {
+      if (size.toLowerCase() === item.size[0].toLowerCase()) {
+        this.props.setSize(size);
+      } else {
+        this.props.setSize(size);
+      }
+    });
   }
+
+  chosenColor = (color) => {
+    console.log(color);
+
+    return this.setState({ chosenColor: color });
+  }
+
+
+  chosenSize = (size) => {
+    console.log(size);
+
+    return this.setState({ chosenSize: size });
+  }
+
 
   handlerItem = () => {
     return this.props.goodsItemDetails.map(item => {
@@ -66,11 +88,21 @@ class DetailPageComponent extends Component {
           return (
             <Fragment>
               <Colors
+                active={this.state.chosenColor}
+                chosenColor={this.chosenColor}
                 colors={item.color}
-                activeColor1={() => this.shooseColor(item.color[0])}
-                activeColor2={() => this.shooseColor(item.color[1])}
+                activeColor1={() => this.chooseColor(item.color[0])}
+                activeColor2={() => this.chooseColor(item.color[1])}
               />
-              <Sizes sizes={item.size} />
+              <Sizes
+                active={this.state.chosenSize}
+                chosenSize={this.chosenSize}
+                sizes={item.size}
+                activeSize1={() => this.chooseSize(item.size[0])}
+                activeSize2={() => this.chooseSize(item.size[1])}
+                activeSize3={() => this.chooseSize(item.size[2])}
+                activeSize4={() => this.chooseSize(item.size[3])}
+              />
             </Fragment>
           );
         } else return null;
@@ -107,7 +139,7 @@ class DetailPageComponent extends Component {
                 <div className={classes.description}>
                   <h3 className={`${classes.h3} ${classes.filterType}`}>
                     Details
-                  </h3>
+                                    </h3>
                   <div className={classes.descriptionContainer}>
                     <p>{item.description[0]}</p>
                     <p>{item.description[1]}</p>
@@ -132,7 +164,7 @@ class DetailPageComponent extends Component {
                   failMessage="Already in your Basket!"
                   btnSettings={classes.btnSettings}
                   black
-                  name="add to bascket"
+                  name="add to basket"
                 />
               </div>
             </li>
@@ -158,7 +190,9 @@ const mapDispatchToProps = dispatch => {
   return {
     getDataID: id => dispatch(getGoodsDetailID(id)),
     addToCart: product => dispatch(addToCart(product)),
-    saveUserCart: () => dispatch(saveUserCart())
+    saveUserCart: () => dispatch(saveUserCart()),
+    setColor: (color) => dispatch(setColor(color)),
+    setSize: (size) => dispatch(setSize(size))
   };
 };
 

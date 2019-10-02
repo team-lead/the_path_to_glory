@@ -6,7 +6,6 @@ import FilterPath from '../FilterPath'
 import ProductsFilter from '../ProductsFilter';
 import ProductList from '../../ProductList'
 import FilterHeader from '../FilterHeader/FilterHeader'
-import "./animation.css"
 
 
 class ProductContent extends Component {

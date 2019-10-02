@@ -1,9 +1,0 @@
-@keyframes show_sidebar_slowly {
-  0% {
-    left: -25%;
-  }
-  100% {
-    left: 0;
-  }
-}
-

@@ -1,5 +1,6 @@
 import jss from "jss";
 import preset from "jss-preset-default";
+import { red, green } from "@material-ui/core/colors";
 
 jss.setup(preset());
 
@@ -36,8 +37,6 @@ let detailPageStyle = {
     imageParams: {
         display: "flex",
         justifyContent: "center",
-        animation: 'show_details_photo_slowly .8s ease',
-        animationDuration: '.8s',
 
         "& > img": {
             display: "none",
@@ -50,7 +49,6 @@ let detailPageStyle = {
 
     containerInfo: {
         position: "relative",
-        animation: 'show_details_info_slowly .8s ease',
     },
     headerInfoText: {
         display: "flex",
@@ -70,6 +68,12 @@ let detailPageStyle = {
         color: "#847A7A",
         marginBottom: "13px"
     },
+
+    activeColor: {
+        boxShadow: '0px 0px 0px 2px MEDIUMSPRINGGREEN',
+
+    },
+
     colorsDiv: {
         display: "flex",
         justifyContent: "flex-start",
@@ -81,9 +85,12 @@ let detailPageStyle = {
             width: "27px",
             height: "27px",
             borderRadius: "50%",
+            boxSizing: 'border-box',
+
+
 
             "&:hover": {
-                textDecoration: "underline",
+                textDecoration: 'underline',
                 cursor: "pointer"
             },
 
@@ -102,6 +109,12 @@ let detailPageStyle = {
     sizeGuide: {
         position: "relative"
     },
+
+    activeSize: {
+        color: 'green',
+        textDecoration: 'underline',
+    },
+
     sizes: {
         display: "flex",
         position: "relative",
@@ -110,6 +123,8 @@ let detailPageStyle = {
         margin: "18px 0 51px",
         "& > li": {
             marginRight: "25px",
+            cursor: 'pointer',
+
             "&:last-child": {
                 marginRight: "0"
             }

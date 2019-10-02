@@ -29,7 +29,6 @@ const productListStyle = {
     position: 'relative',
     textDecoration: "none",
     color: "#000",
-    animation: 'show_images .5s ease-in-out',
     transition: '.8s',
 
     "&:hover": {
