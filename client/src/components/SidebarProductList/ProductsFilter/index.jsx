@@ -259,7 +259,7 @@ class ProductsFilter extends Component {
       <div>
         {categoiesMenu}
         {whatProductsFilterColor()}
-        {setTimeout(priceMenu, 1500)}
+        {priceMenu()}
       </div>
     );
   }

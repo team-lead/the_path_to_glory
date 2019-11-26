@@ -16,7 +16,7 @@ let headerStyle = {
     alignItems: 'center',
     width: '100%',
     position:  'relative',
-    animation: 'show_header_slowly .8s ease',
+    animation: 'SHOW_FROM_TOP 1s ease-in-out',
     "@media (max-width: 1000px)": {
       flexWrap: "wrap",
       justifyContent: "space-around"

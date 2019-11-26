@@ -128,6 +128,9 @@ const productListStyle = {
     }
   },
   "@media (min-width: 769px)": {
+    categoryName:{
+      display: 'block'
+    },
     filter: {
       display: "none"
     }
